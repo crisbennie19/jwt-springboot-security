@@ -1,0 +1,59 @@
+<div class="component-container">
+  <div class="component-header" style="flex-wrap:wrap">
+    <div class="normal-flex-el">
+      <h4 mat-subheader>All messages ({{tableLength}})</h4>
+      <!-- <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon>
+        <input type="text" class="mSearch"
+        (keyup)="applyFilter()"
+        [(ngModel)]="searchKey"
+        placeholder="Search...">
+        <mat-icon class="suffix" *ngIf="searchKey != ''"
+        (click)="clearSearch()">close</mat-icon>
+      </div> -->
+  
+      &nbsp;
+      <div *ngIf="loading">
+        <mat-spinner 
+          color="accent"
+          [strokeWidth]= 3
+          [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+
+    <div>
+      <button mat-raised-button 
+      (click)="composeMessage()"
+      color="accent"> <mat-icon>add</mat-icon> Compose</button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-list>
+    <mat-list-item *ngFor="let msg of listData">
+      <mat-icon color="primary" mat-list-icon>email</mat-icon>
+      <h3 mat-line style="font-weight:500">{{msg.datecreated|date}}</h3>
+      <h4 mat-line> 
+        {{msg.description}} 
+      </h4>
+      <p mat-line style="font-size:13px; color:#aaa">Priority: {{msg.priority}}</p>&nbsp;&nbsp;
+
+      <div style="display:flex">
+        <button mat-icon-button [matMenuTriggerFor]="menu" >
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editMessage(msg)" color="accent">
+            Edit
+          </button>
+          <button mat-menu-item (click)="deleteMsg(msg)" style="color:crimson">
+            Delete
+          </button>
+        </mat-menu>
+      </div>
+    <mat-divider></mat-divider>
+
+    </mat-list-item>
+  </mat-list>
+
+</div>

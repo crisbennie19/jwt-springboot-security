@@ -1,0 +1,160 @@
+<div class="component-header">
+  <div class="flex-el"> 
+    <!-- <mat-icon class="mat-18x">add_comment</mat-icon>&nbsp;  -->
+    <span>Edit User</span> 
+    &nbsp;
+    &nbsp;
+    <div *ngIf="loading">
+      <mat-spinner 
+        color="accent"
+        [strokeWidth]= 3
+        [diameter]=18>
+      </mat-spinner>
+    </div>
+  </div>
+</div>
+<form [formGroup]="addUserForm" autocomplete="off"
+(ngSubmit)="addUser()">
+<div class="info-container">
+  <div class="info-left">
+    <div class="fancy"> Personal Information</div>
+    <div class="left-container">
+      <div class="info-column">
+        <mat-form-field>
+          <input matInput formControlName='name' placeholder="Full name">
+        </mat-form-field> 
+
+        <mat-form-field>
+          <input matInput type="password" formControlName='password' 
+          placeholder="Password">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput formControlName='email' placeholder="Contact email">
+        </mat-form-field> 
+
+        <mat-form-field>
+          <input matInput formControlName='phone' placeholder="Contact number">
+        </mat-form-field> 
+
+        <mat-radio-group aria-label="Select an option" formControlName='gender' >
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button value="female">Female</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="info-column">
+        <mat-form-field>
+          <mat-label>Select State</mat-label>
+          <mat-select  formControlName="state"
+          (selectionChange)="selectedState($event.value)">
+            <mat-option
+            *ngFor="let state of states"
+            [value]="state.state.name">
+            {{state.state.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Select LGA</mat-label>
+          <mat-select  formControlName="lga">
+            <mat-option 
+            *ngFor = "let local of lga"
+            [value] = "local.name"
+            >
+              {{local.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput formControlName='address' placeholder="Contact address">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput formControlName='work_id' placeholder="Work id">
+        </mat-form-field>
+
+        <mat-checkbox formControlName='card'>Card status</mat-checkbox> 
+
+        <!-- <mat-form-field> -->
+        <!-- <div>Photograph</div>
+        &nbsp;
+        <input type="file" accept="image/*"  class='custom-file-input' formControlName='photograph'> -->
+        <!-- </mat-form-field> -->
+
+        <!-- 
+        <mat-form-field>
+          <input matInput type="number" formControlName='points' placeholder="Points">
+        </mat-form-field> 
+
+        <mat-form-field>
+          <mat-select placeholder="Priority" formControlName='priority' >
+            <mat-option value="HIGHEST">High</mat-option>
+            <mat-option value="MODERATE">Moderate</mat-option>
+            <mat-option value="LOW">Low</mat-option>
+          </mat-select>
+        </mat-form-field>  
+        -->
+      </div>
+    </div>
+  </div>
+
+  <div class="info-right">
+    <div class="fancy"> Financial Information</div>
+    <div class="right-container">
+      <div class="info-column">
+        <mat-form-field>
+          <input matInput formControlName='accountno' placeholder="Account number">
+        </mat-form-field> 
+
+        <mat-form-field>
+          <input matInput formControlName='accountstatement' placeholder="Account statement">
+        </mat-form-field> 
+
+        <mat-form-field>
+          <input matInput formControlName='accounttype' placeholder="Account type">
+        </mat-form-field> 
+
+        <mat-form-field>
+          <input matInput formControlName='referral' placeholder="Referral">
+        </mat-form-field> 
+
+        <mat-checkbox formControlName='active'>Active</mat-checkbox>
+      </div>
+
+      <div class="info-column">
+
+        <mat-form-field>
+          <mat-select  formControlName='status' placeholder="Status">
+            <mat-option value="active">Active</mat-option>&nbsp;
+            <mat-option value="inactive">Inactive</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="User roles" formControlName='roles' multiple>
+            <mat-option [value]="role.id" 
+            *ngFor="let role of roles"
+            >
+              {{role.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field> 
+
+        <mat-checkbox formControlName='bvn'>BVN verified</mat-checkbox>
+
+        <mat-checkbox formControlName='reg'>Registration completed</mat-checkbox>
+
+      </div>
+    </div>
+  </div>
+</div>
+    
+  <div style="display: flex; justify-content: flex-end;">
+    <button mat-button color="accent">Save</button> &nbsp; &nbsp;
+    <button mat-button color="warn" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>
+  

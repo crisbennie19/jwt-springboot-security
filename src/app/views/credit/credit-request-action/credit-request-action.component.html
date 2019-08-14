@@ -1,0 +1,36 @@
+<div class="component-header">
+  <div class="flex-el"> 
+    <span>Action</span> 
+    &nbsp;
+    &nbsp;
+    <div *ngIf="loading">
+      <mat-spinner 
+        color="accent"
+        [strokeWidth]= 3
+        [diameter]=18>
+      </mat-spinner>
+    </div>
+  </div>
+</div>
+<form [formGroup]="requestActionForm" autocomplete="off"
+(ngSubmit)="request()">
+  <div class="info-container">
+    <div class="info-column">
+      <mat-form-field>
+        <mat-select placeholder="Action" formControlName='status' >
+          <mat-option value=true>Approve</mat-option>
+          <mat-option value=false>Decline</mat-option>
+        </mat-select>
+      </mat-form-field> 
+
+      <mat-form-field>
+        <textarea matInput formControlName='comment' placeholder="Comments"></textarea>
+      </mat-form-field> 
+    </div>
+  </div>
+    
+  <div style="display: flex; justify-content: flex-end;">
+    <button mat-button color="accent">Save</button> &nbsp; &nbsp;
+    <button mat-button color="warn" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>

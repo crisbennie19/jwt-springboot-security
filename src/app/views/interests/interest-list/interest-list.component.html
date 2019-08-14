@@ -1,0 +1,115 @@
+<div class="component-container">
+  <div class="flex-btw wrap">
+    <div class="normal-flex-el">
+      <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon>
+        <input type="text" class="mSearch"
+        [(ngModel)]="searchKey" 
+        placeholder="Email Address">
+        <mat-icon class="suffix" *ngIf="searchKey != ''"
+        (click)="clearSearch()">close</mat-icon>
+      </div>
+      &nbsp;
+      <button mat-raised-button 
+      (click)="filterSearch()"
+      color="accent">Search</button>
+      &nbsp;
+      <div *ngIf="loading">
+        <mat-spinner 
+          color="accent"
+          [strokeWidth]= 3
+          [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+
+    <div>
+      <mat-form-field class="jamez-input"
+      floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="fromdate"
+        [matDatepicker]="pickers" placeholder="Start date">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off"  [(ngModel)]="todate"
+        [matDatepicker]="picker" placeholder="End date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <mat-select placeholder="Filter by" 
+        [(ngModel)]="savingsFilter"
+        (selectionChange)="triggerFilter($event)"
+        >
+        <!-- (selectionChange)="searchReport()"
+        [(ngModel)]="report.aggregatorid" -->
+        <mat-option value="accountholder">Filter by account holder</mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <div>
+    <table mat-table class="full-width-table" [dataSource]="listData" 
+    matSort aria-label="Elements">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account name</th>
+        <td mat-cell *matCellDef="let row"  data-label="Account Name">{{row.accountname}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account email</th>
+        <td mat-cell *matCellDef="let row" data-label="Account Email">{{row.accountemail}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let row" data-label="Date">{{row.trandate|date}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+        <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="savingtype">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Savings type</th>
+        <td mat-cell *matCellDef="let row" data-label="Savings Type">{{row.savingtype}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="trantype">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tran. type</th>
+        <td mat-cell *matCellDef="let row" data-label="Action">{{row.trantype}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+        <td mat-cell *matCellDef="let row" data-label="Phone">{{row.accountphone}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="no-activity">
+        <mat-footer-cell *matFooterCellDef>
+          No record found
+        </mat-footer-cell>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <mat-footer-row *matFooterRowDef="['no-activity']" 
+        [ngClass]="{'hide': tableLength != 0 }">
+      </mat-footer-row>
+    </table>
+  
+    <mat-paginator #paginator
+      [length]="tableLength"
+      [pageIndex]="0"
+      [pageSize]="7">
+    </mat-paginator>
+  </div>
+
+</div>
+  

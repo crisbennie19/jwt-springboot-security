@@ -1,0 +1,48 @@
+<div class="component-header">
+  <div class="flex-el"> 
+    <!-- <mat-icon class="mat-18x">add</mat-icon>&nbsp; -->
+    <span>New Savings interest</span> 
+    &nbsp;
+    &nbsp;
+    <div *ngIf="loading">
+      <mat-spinner 
+        color="accent"
+        [strokeWidth]= 3
+        [diameter]=18>
+      </mat-spinner>
+    </div>
+  </div>
+</div>
+<form [formGroup]="addInterestForm" autocomplete="off"
+(ngSubmit)="saveInterest()">
+  <div class="info-vertical">
+    <mat-form-field>
+      <input matInput type="number" formControlName='rate' placeholder="Rate">
+    </mat-form-field> 
+
+    <mat-form-field>
+      <mat-select placeholder="Savings type" formControlName='savingstype' >
+        <mat-option [value]="type.id" *ngFor="let type of savingsType">
+          {{type.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> 
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" 
+      formControlName='datecreated'
+      placeholder="Date created">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-checkbox formControlName='active'>Active</mat-checkbox>
+
+  </div>
+    
+  <div style="display: flex; justify-content: flex-end;">
+    <button mat-button color="accent">Save</button> &nbsp; &nbsp;
+    <button mat-button color="warn" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>
+  

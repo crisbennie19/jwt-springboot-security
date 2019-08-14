@@ -1,0 +1,88 @@
+<div class="component-container">
+  <div class="flex-btw">
+    <div class="normal-flex-el">
+      <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon>
+        <input type="text" class="mSearch"
+        (keyup)=applyFilter()
+        [(ngModel)]="searchKey"
+        placeholder="Search...">
+        <mat-icon class="suffix" *ngIf="searchKey != ''"
+        (click)="clearSearch()">close</mat-icon>
+      </div>
+      &nbsp;
+      &nbsp;
+      <div *ngIf="loading">
+        <mat-spinner 
+          color="accent"
+          [strokeWidth]= 3
+          [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+
+  </div>
+  
+  <div>
+    <table mat-table class="full-width-table" [dataSource]="listData" 
+    matSort aria-label="Elements">
+      <ng-container matColumnDef="card">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Card holder</th>
+        <td mat-cell *matCellDef="let row" data-label="Card Holder">{{row.cardholder}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="balance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Balance</th>
+        <td mat-cell *matCellDef="let row" data-label="Balance">{{row.balance | currency:'N'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="expiry">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiry date</th>
+        <td mat-cell *matCellDef="let row" data-label="Expiry Date">{{row.expirdate}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date created</th>
+        <td mat-cell *matCellDef="let row" data-label="Date Created">{{row.datecreated|date}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row" data-label="Status">{{row.active == true ?'Active':'Inactive'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let row"  data-label="Action">
+          <button mat-icon-button [matMenuTriggerFor]="menu" >
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+
+          <mat-menu #menu = "matMenu">
+            <!-- <button mat-menu-item>View details</button> -->
+            <button mat-menu-item 
+            (click)="activateCard(row)"
+            style="color:#44b137">Unfreeze card</button>
+            <button mat-menu-item   
+            (click)="deactivateCard(row)"
+            style="color:crimson">Freeze card</button>
+            <button mat-menu-item
+            (click)="terminateCard(row)"
+            style="color:crimson">Terminate card</button>
+          </mat-menu>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator #paginator
+      [length]="tableLength"
+      [pageIndex]="0"
+      [pageSize]="7">
+    </mat-paginator>
+  </div>
+
+</div>
+  

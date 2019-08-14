@@ -1,0 +1,64 @@
+<div class="component-header">
+  <div class="flex-el"> 
+    <mat-icon class="mat-18x">account_box</mat-icon>&nbsp; 
+    <span>Create new user</span> 
+    &nbsp;
+    &nbsp;
+    <div *ngIf="loading">
+      <mat-spinner 
+        color="accent"
+        [strokeWidth]= 3
+        [diameter]=18>
+      </mat-spinner>
+    </div>
+  </div>
+</div>
+<form [formGroup]="addUserForm" autocomplete="off"
+(ngSubmit)="addUser()">
+  <div class="info-container">
+    <div class="info-column">
+      <mat-form-field>
+        <input matInput formControlName='name' placeholder="Full name">
+      </mat-form-field> 
+
+      <mat-form-field>
+        <input matInput type="password" formControlName='password' 
+        placeholder="Password">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName='email' placeholder="Contact email">
+      </mat-form-field> 
+
+      <mat-radio-group aria-label="Select an option" formControlName='gender' >
+        <mat-radio-button value="male">Male</mat-radio-button>&nbsp;
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="info-column">
+      <mat-form-field>
+        <input matInput formControlName='phone' placeholder="Contact number">
+      </mat-form-field> 
+
+      <mat-form-field>
+        <mat-select placeholder="User roles" formControlName='roles' multiple>
+          <mat-option [value]="role.id" 
+          *ngFor="let role of roles"
+          >
+            {{role.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> 
+
+      <mat-form-field>
+        <input matInput formControlName='referral' placeholder="Referral">
+      </mat-form-field> 
+    </div>
+  </div>
+    
+  <div style="display: flex; justify-content: flex-end;">
+    <button mat-button color="accent">Save</button> &nbsp; &nbsp;
+    <button mat-button color="warn" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>

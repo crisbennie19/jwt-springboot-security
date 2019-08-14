@@ -1,0 +1,95 @@
+<div class="component-container">
+  <div class="flex-btw">
+    <div class="normal-flex-el">
+      <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon>
+        <input type="text" class="mSearch"
+        (keyup)="applyFilter()"
+        [(ngModel)]="searchKey"
+        placeholder="Search...">
+        <mat-icon class="suffix" *ngIf="searchKey != ''"
+        (click)="clearSearch()">close</mat-icon>
+      </div>
+      &nbsp;
+      &nbsp;
+      <div *ngIf="loading">
+        <mat-spinner 
+          color="accent"
+          [strokeWidth]= 3
+          [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+
+    <div>
+      <button mat-raised-button (click)="openTypeAdd()"
+      color="accent">Add type</button>
+    </div>
+    <!-- <div>
+      <mat-checkbox>Core savings</mat-checkbox>&nbsp;&nbsp;
+      <mat-checkbox>Target save</mat-checkbox>&nbsp;&nbsp;
+      <mat-checkbox>Swipe lock</mat-checkbox>
+    </div> -->
+  </div>
+
+  <div>
+    <table mat-table class="full-width-table" [dataSource]="listData" 
+    matSort aria-label="Elements">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let row" data-label="Name">{{row.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="min">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Min day</th>
+        <td mat-cell *matCellDef="let row" data-label="Min Day">{{row.minday|number}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="max">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Max day</th>
+        <td mat-cell *matCellDef="let row" data-label="Max Day">{{row.maxday|number}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="points">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Points</th>
+        <td mat-cell *matCellDef="let row" data-label="Points">{{row.points|number}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="maxwithdrawal">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Max withdrawal</th>
+        <td mat-cell *matCellDef="let row" data-label="Max Withdrawal">{{row.maxwithdrawal|number}}</td>
+      </ng-container>
+  
+      <!-- <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date created</th>
+        <td mat-cell *matCellDef="let row">{{row.datecreated|date}}</td>
+      </ng-container> -->
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let row"  data-label="Actions">
+          <button mat-icon-button [matMenuTriggerFor]="menu" >
+            <mat-icon>more_horiz</mat-icon>
+          </button>
+
+          <mat-menu #menu = "matMenu">
+            <button mat-menu-item  (click)="openTypeEdit(row)">Edit</button>
+            <!-- <button mat-menu-item style="color:crimson"  
+            (click)="deleteType(row)">Delete</button> -->
+          </mat-menu>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator #paginator
+      [length]="tableLength"
+      [pageIndex]="0"
+      [pageSize]="7">
+    </mat-paginator>
+  </div>
+
+</div>
+  

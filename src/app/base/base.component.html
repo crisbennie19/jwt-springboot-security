@@ -1,0 +1,76 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+      <div class="flex-stretch">
+        <div>
+          <mat-toolbar> 
+            <img src="../../admin/assets/images/swipe-logo.png" width="150" alt="">
+          </mat-toolbar>
+          <mat-nav-list>
+            <!-- <div class="nav-header">NAVIGATIONS</div> -->
+            <a mat-list-item [routerLink]="menu.route" *ngFor="let menu of menuList"
+            routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+              true}"> 
+              <mat-icon>{{menu.icon}}</mat-icon> 
+              <span class="sidebar-name"> {{menu.name}} </span>
+            </a>
+          </mat-nav-list>
+        </div>
+        <!-- <div class="logout">
+            <div>FAQ</div>
+            <div>
+            <mat-icon class="mat-18x" color="primary">power_settings_new</mat-icon> 
+            <span>LOGOUT</span>
+          </div>
+        </div> -->
+      </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+        <!-- <span style="color:#fafafa; font-weight:500; font-size:15px"></span> -->
+        <span style="font-weight:500; font-size:18px">
+         <span class="web-view">Welcome,</span> {{activeUser.data.name}}
+        </span>
+
+      <span class="remaining-space"></span>
+
+      <!-- <button mat-button>FAQs</button> -->
+      <button mat-button (click)="logout()">
+        <mat-icon class="mat-18x" color="accent">power_settings_new</mat-icon>
+        <span>Logout</span>
+      </button>
+
+      <!-- <div style="border-right:1px solid #ddd; padding-right:5px" class="flex-el">
+        <button mat-icon-button>
+          <mat-icon class="mat-18x" color="accent">power_settings_new</mat-icon>
+        </button>
+        <span style="color:#fafafa; font-weight:500; font-size:16px">Logout</span>
+        &nbsp;
+      </div> -->
+
+      <!-- <div style=" position:relative; padding-right:5px">
+        <button mat-icon-button>
+          <mat-icon class="mat-24x" style="color:#fafafa">notifications_none</mat-icon>
+        </button>  -->
+        <!-- <mat-icon style="padding-left: 10px;position:absolute; right:-2px; top:4px;"
+        class="mat-15x" color="accent">fiber_manual_record</mat-icon> -->
+      <!-- </div> -->
+
+      
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

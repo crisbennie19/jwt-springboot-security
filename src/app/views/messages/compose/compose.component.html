@@ -1,0 +1,50 @@
+<div class="component-header">
+  <div class="flex-el"> 
+    <div>
+      <mat-icon class="mat-18x">add_comment</mat-icon>&nbsp; 
+      <span>Compose message</span> 
+    </div>
+    &nbsp;
+    &nbsp;
+    <div *ngIf="loading">
+      <mat-spinner 
+        color="accent"
+        [strokeWidth]= 3
+        [diameter]=18>
+      </mat-spinner>
+    </div>
+  </div>
+</div>
+<form [formGroup]="addMessageForm" autocomplete="off"
+(ngSubmit)="saveMessage()">
+  <div class="info-container">
+    <div class="info-column">
+      <mat-form-field>
+        <input matInput formControlName='category' placeholder="Category">
+      </mat-form-field> 
+
+      <mat-form-field>
+        <textarea matInput formControlName='description' placeholder="Description"></textarea>
+      </mat-form-field> 
+    </div>
+
+    <div class="info-column">
+      <mat-form-field>
+        <input matInput type="number" formControlName='points' placeholder="Points">
+      </mat-form-field> 
+
+      <mat-form-field>
+        <mat-select placeholder="Priority" formControlName='priority' >
+          <mat-option value="HIGHEST">High</mat-option>
+          <mat-option value="MODERATE">Moderate</mat-option>
+          <mat-option value="LOW">Low</mat-option>
+        </mat-select>
+      </mat-form-field> 
+    </div>
+  </div>
+    
+  <div style="display: flex; justify-content: flex-end;">
+    <button mat-button color="accent">Save</button> &nbsp; &nbsp;
+    <button mat-button color="warn" (click)="closeDialog()">Cancel</button>
+  </div>
+</form>

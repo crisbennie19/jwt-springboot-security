@@ -1,0 +1,12 @@
+{
+  "/api": {
+    "target": "https://swipe.net.ng/api",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

@@ -1,0 +1,65 @@
+<div class="component-header">
+  <div>
+    <mat-icon class="mat-18x">account_balance_wallet</mat-icon> &nbsp;Wallet Details
+  </div>
+  <button mat-button color="warn" (click)="closeDialog()">Close</button>
+</div>
+<div class="view-container">
+  <div class="view-column">
+    <div class="info">
+      <div class="header">Account name</div>
+      <div class="content">{{selectedRow.accountname}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Email address</div>
+      <div class="content">{{selectedRow.accountemail}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Phone number</div>
+      <div class="content">{{selectedRow.accountphone}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Channel</div>
+      <div class="content">{{selectedRow.channel}}</div>
+    </div>
+  </div>
+  <div class="view-column">
+    <div class="info">
+      <div class="header">Currency</div>
+      <div class="content">{{selectedRow.currency}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Amount</div>
+      <div class="content">{{selectedRow.amount|number}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Balance</div>
+      <div class="content">{{selectedRow.balance|number}}</div>
+    </div>
+
+    <div class="info">
+      <div class="header">Transaction type</div>
+      <div class="content">{{selectedRow.trantype}}</div>
+    </div>
+  </div>
+  <div class="view-column">
+    
+    <div class="info">
+      <div class="header">Reference</div>
+      <div class="content">{{selectedRow.reference}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Status</div>
+      <div class="content">{{selectedRow.status}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Can withdraw</div>
+      <div class="content">{{selectedRow.canwithdraw == true?'Yes':'No'}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Transaction date</div>
+      <div class="content">{{selectedRow.trandate|date}}</div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="component-header">
+  <div>
+    <mat-icon class="mat-18x">save_alt</mat-icon> &nbsp;Savings Balance Details
+  </div>
+  <button mat-button color="warn" (click)="closeDialog()">Close</button>
+</div>
+<div class="view-container">
+  <div class="view-column">
+    <div class="info">
+      <div class="header">Account name</div>
+      <div class="content">{{selectedRow.accountname}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Email address</div>
+      <div class="content">{{selectedRow.accountemail}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Phone number</div>
+      <div class="content">{{selectedRow.accountphone}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Savings type</div>
+      <div class="content">{{selectedRow.savingtype}}</div>
+    </div>
+  </div>
+  <div class="view-column">
+    <div class="info">
+      <div class="header">Amount</div>
+      <div class="content">{{selectedRow.amount|number}}</div>
+    </div>
+    
+    <div class="info">
+      <div class="header">Auto save</div>
+      <div class="content">{{selectedRow.autosave == true ?'Active':'Inactive'}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Auto saving amount</div>
+      <div class="content">{{selectedRow.autosaveamount|number}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Auto save type</div>
+      <div class="content">{{selectedRow.autosavetype}}</div>
+    </div>
+  </div>
+  <div class="view-column">
+    <div class="info">
+      <div class="header">Min day</div>
+      <div class="content">{{selectedRow.minday}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Max day</div>
+      <div class="content">{{selectedRow.maxday}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Transaction date</div>
+      <div class="content">{{selectedRow.datecreated|date}}</div>
+    </div>
+    <div class="info">
+      <div class="header">Last modified</div>
+      <div class="content">{{selectedRow.lastmodified|date}}</div>
+    </div>
+  </div>
+</div>
+&nbsp;
