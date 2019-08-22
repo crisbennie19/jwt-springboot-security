@@ -18,6 +18,8 @@ export class LandingpageComponent implements OnInit {
     username:'',
     password:''
   }
+  isForgot = false;
+
 
   constructor(
     private formBuilder:FormBuilder,

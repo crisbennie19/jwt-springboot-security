@@ -6,7 +6,7 @@
       <div class="flex-stretch">
         <div>
           <mat-toolbar> 
-            <img src="../../admin/assets/images/swipe-logo.png" width="150" alt="">
+            <img src="assets/images/newswipe-logo.svg" width="150" alt="">
           </mat-toolbar>
           <mat-nav-list>
             <!-- <div class="nav-header">NAVIGATIONS</div> -->
@@ -28,7 +28,7 @@
       </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar>
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -45,8 +45,8 @@
       <span class="remaining-space"></span>
 
       <!-- <button mat-button>FAQs</button> -->
-      <button mat-button (click)="logout()">
-        <mat-icon class="mat-18x" color="accent">power_settings_new</mat-icon>
+      <button mat-button color="warn" (click)="logout()">
+        <mat-icon class="mat-18x">power_settings_new</mat-icon>
         <span>Logout</span>
       </button>
 

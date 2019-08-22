@@ -1,4 +1,134 @@
-<div class="landing-container">
+<div style="position:relative">
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+  <div class="onboard-container">
+    <div>
+      <div class="onboarding">
+        <div>
+          &nbsp;
+          <div class="flex-center">
+            <img src="assets/images/newswipe-logo-dark.svg" class="logo" routerLink="/landing" alt="">
+          </div>
+
+          <div class="signin-wrapper">
+            <!-- Signin wrapper -->
+            <div *ngIf="!isForgot" style="margin-top:50px"  class="signin-container">
+              <div class="header-text">
+                Welcome to Admin Portal
+              </div>
+              <form [formGroup]="SigninForm" (ngSubmit)="SignIn()">
+                <!-- <div class="align-center">
+                  <img src="../../../assets/images/newswipe-logo-dark.svg" width="160"
+                  class="logo" alt="">
+                </div> -->
+                <p class="warning-msg">{{message}}</p>
+                <mat-form-field>
+                  <span matPrefix>
+                    <mat-icon class="mat-18x position-relative" style="top:3px; color:#666">account_circle</mat-icon> &nbsp;
+                  </span>
+                  <input matInput formControlName="email" placeholder="Username">
+                </mat-form-field> 
+        
+                <mat-form-field>
+                  <input type="password" id="loginpassword"
+                  formControlName="password"
+                  matInput placeholder="Password">
+                  <span matPrefix>
+                    <mat-icon class="mat-18x position-relative" style="top:3px; color:#666">lock</mat-icon> &nbsp;
+                  </span>
+                  <button matSuffix 
+                  (click)="showPass()" *ngIf=shown
+                  mat-icon-button 
+                  aria-label="Visible" >
+                    <mat-icon>visibility</mat-icon>
+                  </button>
+        
+                  <button matSuffix 
+                  (click)="showPass()" *ngIf=!shown
+                  mat-icon-button 
+                  aria-label="Visible" >
+                    <mat-icon>visibility_off</mat-icon>
+                  </button>
+                </mat-form-field>
+        
+                <div class="align-center">
+                  <button mat-raised-button color="accent"
+                  [disabled]="loading">Log in to your account
+                  </button>
+                </div>
+                &nbsp;
+              </form>
+            </div>
+          
+            <!-- Forgot password wrapper -->
+            <div *ngIf="isForgot" class="recover-password-container" style="margin-top:50px">
+              <div class="header-text mt-10" style="margin:0; font-size:22px;color: black;">
+                Recover your password
+              </div>
+              <div class="header-text" style="margin-top:5px;font-size:16px">Enter your email address</div>
+              <form [formGroup]="forgotPasswordForm" (ngSubmit)="forgotPassword()">
+                <p class="text-center text-secondary">{{forgotPasswordMessage}}</p>
+                <mat-form-field>
+                  <span matPrefix>
+                    <mat-icon class="mat-18x position-relative prefix-icon">email</mat-icon> &nbsp;
+                  </span>
+                  <input matInput formControlName="forgotPasswordemail" placeholder="Email">
+                </mat-form-field>
+                
+                <div></div>
+          
+                <!-- <mat-form-field>
+                  <span matPrefix>
+                    <mat-icon class="mat-18x position-relative prefix-icon">email</mat-icon> &nbsp;
+                  </span>
+                  <input matInput formControlName="forgotPasswordemail" placeholder="Email" hidden>
+                </mat-form-field> -->
+          
+                <div class="mb-3">
+                  <button mat-raised-button class="signin-button full-width" color="primary" [disabled]="toggleResetLoading">NEXT <i
+                      *ngIf="toggleResetLoading" class="fa fa-spinner fa-pulse fa-fw"></i>
+                  </button>
+                </div>
+          
+                <div class="flex-center">
+                  <a (click)="toggleForgotPassword()" style="
+                    font-size: 15px; cursor: pointer;" >
+                    Sign In
+                  </a>
+                </div>
+                &nbsp;
+              </form>
+            </div>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+          </div>             
+        </div>
+        <div class="flex-btw home-mobile-footer">
+          <div>&copy; 2019 SwipeNG.</div>
+          <!-- <div class="flex-el">
+            <a routerLink="/terms-of-use">Terms</a> &nbsp; | &nbsp;
+            <a routerLink="/privacy-policy">Privacy</a> &nbsp; | &nbsp;
+            <a routerLink="/faq">FAQ</a>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="flex-btw home-footer">
+        <div routerLink="/landing">&copy; 2019 SwipeNG.</div>
+        <!-- <div class="flex-el">
+          <div routerLink="/terms-of-use">Terms</div> &nbsp; | &nbsp;
+          <div routerLink="/privacy-policy">Privacy</div> &nbsp; | &nbsp;
+          <div routerLink="/faq">FAQ</div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="landing-container">
   <div class="overlay">
     <div class="signin">
       <div *ngIf="loading" class="loader">
@@ -10,7 +140,7 @@
       </div>
       <form [formGroup]="SigninForm" (ngSubmit)="SignIn()">
         <div class="align-center">
-          <img src="../../../admin/assets/images/swipe-logo.png" width="160"
+          <img src="assets/images/newswipe-logo.png" width="160"
           class="logo" alt="">
         </div>
         <p class="warning-msg">{{message}}</p>
@@ -41,15 +171,12 @@
           aria-label="Visible" >
             <mat-icon>visibility_off</mat-icon>
           </button>
-          <!-- <span matPrefix><mat-icon class="mat-20x position-relative" style="top:3px">lock</mat-icon></span>
-          <input matInput type="password" formControlName="password" placeholder="pasword"> -->
         </mat-form-field>
 
         <div class="align-center">
           <button mat-raised-button class="signin-button" color="accent"
           [disabled]="loading">Log in to your account
-          <!-- <i class="fa fa-spinner fa-pulse fa-fw"></i> -->
-          <!-- <span class="sr-only">Loading...</span> -->
+
           </button>
         </div>
         &nbsp;
@@ -60,10 +187,9 @@
     <div style="position:fixed; bottom:0;">
       <div style="display:flex; justify-content:center; font: size 16px;
       padding:30px; color:#fafafa">
-        <div>&copy; 2019 <span style="color:#44b137">SWIPE NG.</span> All rights reserved</div>
-
+        <div>&copy; 2019 <span style="color:#8948fc">SWIPE NG.</span> All rights reserved</div>
       </div>
 
     </div>
   </div>
-</div>
+</div> -->

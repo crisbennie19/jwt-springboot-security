@@ -27,7 +27,7 @@ $swip-brand: (
     A100: #ffffff,
     A200: #dde6f3,
     A400: #6992c9,
-    A700: #17223e,
+    A700: #8948fc,
     contrast: (
         50: $black-87-opacity,
         100: $black-87-opacity,
@@ -55,7 +55,7 @@ $swip-accent: (
     600: #4072b4,
     700: #38649d,
     800: #305687,
-    900: #44b137,
+    900: #8948fc,
     A100: #ffffff,
     A200: #dde6f3,
     A400: #6992c9,
@@ -95,11 +95,9 @@ $swipe-theme: mat-light-theme($swipe-primary, $swipe-accent, $swipe-warn);
 $primary: map-get($swipe-theme, primary);
 $accent: map-get($swipe-theme, accent);
 
-.active-link{
-  .mat-icon,.sidebar-name{
-    color: mat-color($accent)!important;
-  }
-}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*{
+  box-sizing: border-box;
+}

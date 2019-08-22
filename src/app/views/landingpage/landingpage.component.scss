@@ -1,11 +1,50 @@
+.signin-wrapper{
+    min-width: 320px;
+}
+
+.signin-container{
+    margin: 5% auto;
+    width: 75%;
+}
+
+.header-text{
+    font-size:20px; font-weight:500; text-align:center; margin:20px auto 10px
+}
+
+.mat-form-field{
+    width:100%!important;
+}
+
+.recover-password-container{
+    margin: 5% auto;
+    width: 75%;
+}
+
+.onboard-container{
+    background: radial-gradient(ellipse at bottom, #141419 0%, #262729 100%);
+    min-height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    .onboarding{
+        background: #fff;
+        border-radius: 5px;
+        // height: 75vh;
+        // min-height: 500px;
+        background: #fff;
+        // min-width: 350px;
+    }
+}
+
 .landing-container{
     min-height: 100vh;
     background-color: rgba(25, 25, 78, 00.9);
-    // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
+    // background-image: url(../../../assets/img/footerbg.png);
     // background-size: cover;
     .overlay{
         min-height:100vh;
-        background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
+        // background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
         display:flex;
         justify-content: center;
         align-items: center;
@@ -26,6 +65,10 @@
             }
         }
     }
+}
+
+.logo{
+    width:120px;
 }
 
 .loader{
@@ -49,101 +92,124 @@
     text-align: center;
 }
 
-
-@media (max-width: 576px) {
-    .landing-container{
-        min-height: 100vh;
-        background-color: rgba(25, 25, 78, 00.9);
-        // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
-        // background-size: cover;
-        .overlay{
-            min-height:100vh;
-            background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            .signin{
-                width:80%!important;
-                padding:20px;
-                background: #fff;
-                border-radius: 10px;
-                box-shadow: 0px 0px 5px 0px #eee;
-                display:flex;
-                flex-direction: column;
-                form{
-                    display:flex;
-                    flex-direction: column;
-                    margin:auto;
-                    width: 80%;
-                }
-            }
-        }
-    }    
+.swipe-bg-primary{
+    background: linear-gradient(0deg, #17223E 0%, #2E447C 57.71%, #293D70 100%);
 }
 
-@media (max-width: 712px){
-    .landing-container{
-        min-height: 100vh;
-        background-color: rgba(25, 25, 78, 00.9);
-        // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
-        // background-size: cover;
-        .overlay{
-            min-height:100vh;
-            background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            .signin{
-                width:60%;
-                padding:20px;
-                background: #fff;
-                border-radius: 10px;
-                box-shadow: 0px 0px 5px 0px #eee;
-                display:flex;
-                flex-direction: column;
-                form{
-                    display:flex;
-                    flex-direction: column;
-                    margin:auto;
-                    width: 80%;
-                }
-            }
-        }
-    } 
+.home-footer{
+    color:#ffffff; font-size: 13px; margin-top: 10px;
 }
 
-@media (max-width: 790px){
-    .landing-container{
-        min-height: 100vh;
-        background-color: rgba(25, 25, 78, 00.9);
-        // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
-        // background-size: cover;
-        .overlay{
-            min-height:100vh;
-            background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            .signin{
-                width:50%;
-                padding:20px;
-                background: #fff;
-                border-radius: 10px;
-                box-shadow: 0px 0px 5px 0px #eee;
-                display:flex;
-                flex-direction: column;
-                form{
-                    display:flex;
-                    flex-direction: column;
-                    margin:auto;
-                    width: 80%;
-                }
-            }
-        }
-    } 
+.home-mobile-footer{
+    display: none;
+    color:#333; font-size: 13px; margin-top: 10px;
 }
 
-// @media (max-width: 812px){
+@media screen and (max-width:440px){
+
+    .onboarding{
+        min-height:100vh;
+        width:100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 0px!important;
+    }
+
+    .home-mobile-footer{
+        display: flex;
+        font-size: 13px; margin: 10px;
+    }
+
+    .home-footer{
+        display: none;
+        color:#cccccc; font-size: 13px; margin-top: 10px;
+    }
+}
+
+
+@media only screen and (max-width: 440px) {
+    .signin-container{
+        margin: 5% auto;
+        width: 85%;
+    }
+    
+    .header-text{
+        font-size:18px; font-weight:500; text-align:center; margin:20px auto 10px
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .landing-container{
+//     min-height: 100vh;
+//     background-color: rgba(25, 25, 78, 00.9);
+//     // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
+//     // background-size: cover;
+//     .overlay{
+//         min-height:100vh;
+//         background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
+//         display:flex;
+//         justify-content: center;
+//         align-items: center;
+//         .signin{
+//             position: relative;
+//             width:30%;
+//             padding:20px;
+//             background: #fff;
+//             border-radius: 10px;
+//             box-shadow: 0px 0px 5px 0px #eee;
+//             display:flex;
+//             flex-direction: column;
+//             form{
+//                 display:flex;
+//                 flex-direction: column;
+//                 margin:auto;
+//                 width: 80%;
+//             }
+//         }
+//     }
+// }
+
+// .loader{
+//     position: absolute;
+//     right:10px;
+//     top:10px;
+// }
+
+// .warning-msg{
+//     text-align: center;
+//     font-size: 14px;
+//     color: crimson;
+// }
+
+// .mat-raised-button{
+//     border-radius: 20px!important;
+//     box-shadow: 0px 0px 8px -2px #ccc!important;
+// }
+
+// .align-center{
+//     text-align: center;
+// }
+
+
+// @media (max-width: 576px) {
 //     .landing-container{
 //         min-height: 100vh;
 //         background-color: rgba(25, 25, 78, 00.9);
@@ -156,7 +222,38 @@
 //             justify-content: center;
 //             align-items: center;
 //             .signin{
-//                 width:40%;
+//                 width:80%!important;
+//                 padding:20px;
+//                 background: #fff;
+//                 border-radius: 10px;
+//                 box-shadow: 0px 0px 5px 0px #eee;
+//                 display:flex;
+//                 flex-direction: column;
+//                 form{
+//                     display:flex;
+//                     flex-direction: column;
+//                     margin:auto;
+//                     width: 80%;
+//                 }
+//             }
+//         }
+//     }    
+// }
+
+// @media (max-width: 712px){
+//     .landing-container{
+//         min-height: 100vh;
+//         background-color: rgba(25, 25, 78, 00.9);
+//         // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
+//         // background-size: cover;
+//         .overlay{
+//             min-height:100vh;
+//             background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
+//             display:flex;
+//             justify-content: center;
+//             align-items: center;
+//             .signin{
+//                 width:60%;
 //                 padding:20px;
 //                 background: #fff;
 //                 border-radius: 10px;
@@ -174,7 +271,7 @@
 //     } 
 // }
 
-// @media (min-width: 1024px){
+// @media (max-width: 790px){
 //     .landing-container{
 //         min-height: 100vh;
 //         background-color: rgba(25, 25, 78, 00.9);
@@ -187,7 +284,7 @@
 //             justify-content: center;
 //             align-items: center;
 //             .signin{
-//                 width:30%;
+//                 width:50%;
 //                 padding:20px;
 //                 background: #fff;
 //                 border-radius: 10px;
@@ -204,3 +301,65 @@
 //         }
 //     } 
 // }
+
+// // @media (max-width: 812px){
+// //     .landing-container{
+// //         min-height: 100vh;
+// //         background-color: rgba(25, 25, 78, 00.9);
+// //         // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
+// //         // background-size: cover;
+// //         .overlay{
+// //             min-height:100vh;
+// //             background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
+// //             display:flex;
+// //             justify-content: center;
+// //             align-items: center;
+// //             .signin{
+// //                 width:40%;
+// //                 padding:20px;
+// //                 background: #fff;
+// //                 border-radius: 10px;
+// //                 box-shadow: 0px 0px 5px 0px #eee;
+// //                 display:flex;
+// //                 flex-direction: column;
+// //                 form{
+// //                     display:flex;
+// //                     flex-direction: column;
+// //                     margin:auto;
+// //                     width: 80%;
+// //                 }
+// //             }
+// //         }
+// //     } 
+// // }
+
+// // @media (min-width: 1024px){
+// //     .landing-container{
+// //         min-height: 100vh;
+// //         background-color: rgba(25, 25, 78, 00.9);
+// //         // background: url(../../../assets/images/swipe-art.jpg) no-repeat;
+// //         // background-size: cover;
+// //         .overlay{
+// //             min-height:100vh;
+// //             background: linear-gradient(to right, rgba(100, 138, 103, 0.5) 2%,rgba(25, 25, 78, 0.5) 100%);
+// //             display:flex;
+// //             justify-content: center;
+// //             align-items: center;
+// //             .signin{
+// //                 width:30%;
+// //                 padding:20px;
+// //                 background: #fff;
+// //                 border-radius: 10px;
+// //                 box-shadow: 0px 0px 5px 0px #eee;
+// //                 display:flex;
+// //                 flex-direction: column;
+// //                 form{
+// //                     display:flex;
+// //                     flex-direction: column;
+// //                     margin:auto;
+// //                     width: 80%;
+// //                 }
+// //             }
+// //         }
+// //     } 
+// // }

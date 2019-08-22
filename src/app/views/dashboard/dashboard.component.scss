@@ -1,3 +1,6 @@
+$primary-color : #8948fc;
+$secondary-color:#3fc5fa;
+$tertiary-color:#17223E;
 
 .component-container{
     padding-bottom:0px;
@@ -45,13 +48,13 @@
     .digits{
         font-weight: 500;
         font-size:23px;
-        color:#44b137;
+        color:$primary-color;
     }
 
     .title{
         font-weight: 500;
         font-size:15px;
-        color:#17223e;
+        color:$tertiary-color;
         margin:5px 0;
     }
 }
@@ -102,10 +105,13 @@
     width:50px;
     height:50px;
     border-radius: 50%;
-    background:rgba(#44b137,0.2);
+    background:rgba($tertiary-color,0.8);
     display: flex;
     justify-content: center;
     align-items: center;
+    .mat-icon{
+        color:#fff;
+    }
 }
 
 .component-container{

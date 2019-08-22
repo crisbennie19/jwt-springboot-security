@@ -1,3 +1,6 @@
+$primary-color : #8948fc;
+$secondary-color:#3fc5fa;
+$tertiary-color:#17223E;
 
 .sidenav-container {
   height: 100%;
@@ -6,8 +9,8 @@
 .sidenav {
   width: 230px;
   border-right: none;
-  box-shadow: 1px 0px 12px -2px #ccc;
-  background: linear-gradient(to top,#e0e4ec,#fefefe)
+  box-shadow: 1px 0px 12px -2px #aaa;
+  background: #212529;
 }
 
 .flex-stretch{ 
@@ -33,14 +36,19 @@
   // margin:5px 0;
   font-size: 15px;
   font-weight:500;
+  &.active-link{
+    border-right:5px solid $primary-color!important;
+    background-color:#2e343a!important;
+  }
   .mat-icon{
     // margin:0 auto;
     font-size: 20px;
-    color:#17223e;
+    color:#fff;
   }
+  
   .sidebar-name{
     margin-left:10px;
-    color:#17223e;
+    color:#fff;
   }
 }
 .user-block{
@@ -70,8 +78,8 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  color:#fafafa;
-  // background: #ffffff;
+  // color:#fafafa;
+  background: #ffffff;
   padding-right:30px;  
 }
 
