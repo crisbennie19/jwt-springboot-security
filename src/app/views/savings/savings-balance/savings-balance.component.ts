@@ -38,9 +38,9 @@ export class SavingsBalanceComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
-    dialogConfig.data = row
-    dialogConfig.minWidth = '90%'
-    dialogConfig.maxHeight = '90vh'
+    dialogConfig.data = row;
+    dialogConfig.minWidth = '60%';
+    dialogConfig.maxHeight = '90vh';
     this.dialog.open(SavingsBalanceViewComponent, dialogConfig)
   }
 

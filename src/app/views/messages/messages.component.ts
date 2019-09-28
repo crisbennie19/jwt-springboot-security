@@ -27,7 +27,7 @@ export class MessagesComponent implements OnInit {
 
   composeMessage(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = "50%";
     dialogConfig.maxHeight = '90vh'
@@ -39,7 +39,7 @@ export class MessagesComponent implements OnInit {
 
   editMessage(row){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = "50%";
     dialogConfig.maxHeight = '90vh'

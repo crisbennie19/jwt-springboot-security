@@ -63,7 +63,7 @@ export class CreditRequestComponent implements OnInit {
 
   requestAction(row){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = '40%';
     dialogConfig.data = row

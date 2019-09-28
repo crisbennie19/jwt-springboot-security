@@ -109,7 +109,7 @@ export class WalletComponent implements OnInit {
 
   openWallet(row){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     dialogConfig.data = row
     dialogConfig.minWidth = '60%';

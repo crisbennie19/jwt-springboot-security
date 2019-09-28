@@ -19,7 +19,7 @@ export class SavingsListComponent implements OnInit {
   public listData: MatTableDataSource<any>; 
 
   savingsFilter:string = "accountholder";
-  placeholder = 'Savings phone or email'
+  placeholder = 'Phone or email'
   searchKey: any = ''; // Search box model
   fromdate: Date = null;
   todate:Date = null; 
@@ -43,13 +43,13 @@ export class SavingsListComponent implements OnInit {
       this.placeholder = "Savings type"
       break;
       case 'accountholder':
-      this.placeholder = "Savings phone or email"
+      this.placeholder = "Phone or email"
       break;
       case 'category':
       this.placeholder = "Savings category"
       break;
       default:
-      this.placeholder = "Savings phone or email"      
+      this.placeholder = "Phone or email"      
         break;
     }
 
@@ -62,7 +62,7 @@ export class SavingsListComponent implements OnInit {
         case 'type':
         this.loading = true;
         this.data.savingsService.getSavingsByType(this.searchKey)
-        // .pipe(map( res => res['data']))
+        .pipe(map( res => res['data']))
         .subscribe( res => {
           this.response = res;
           this.loading = false;
@@ -97,7 +97,7 @@ export class SavingsListComponent implements OnInit {
         case 'category':
         this.loading = true;
         this.data.savingsService.getSavingsByCategory(this.searchKey)
-        // .pipe(map( res => res['data'])) 
+        .pipe(map( res => res['data'])) 
         .subscribe( res => {
           this.response = res;
           this.loading = false;
@@ -178,7 +178,7 @@ export class SavingsListComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
     dialogConfig.data = row
-    dialogConfig.minWidth = '90%'
+    dialogConfig.minWidth = '60%'
     dialogConfig.maxHeight = '90vh'
     this.dialog.open(SavingsViewComponent, dialogConfig)
   }

@@ -54,7 +54,7 @@ export class AdminUsersListComponent implements OnInit {
 
   addAdmin(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     // dialogConfig.width = "80%";
     dialogConfig.minWidth = "50%";
@@ -66,7 +66,7 @@ export class AdminUsersListComponent implements OnInit {
 
   editUser(row){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = "80%";
     dialogConfig.maxHeight = '90vh'

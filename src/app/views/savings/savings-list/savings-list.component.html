@@ -46,14 +46,16 @@
         >
         <!-- (selectionChange)="searchReport()"
         [(ngModel)]="report.aggregatorid" -->
-          <mat-option value="accountholder">Filter by account holder</mat-option>
+          <mat-option value="accountholder">Filter by customer</mat-option>
           <mat-option value="category">Filter by category</mat-option>
-          <mat-option value="type">filter by type</mat-option>
+          <mat-option value="type">Filter by type</mat-option>
           
         </mat-select>
       </mat-form-field>
     </div>
   </div>
+
+  &nbsp;
   
   <div>
     <table mat-table class="full-width-table" [dataSource]="listData" 
@@ -84,8 +86,8 @@
       </ng-container>
   
       <ng-container matColumnDef="trantype">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Transaction type</th>
-        <td mat-cell *matCellDef="let row" data-label="Transaction Type">{{row.trantype}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</td>
       </ng-container>
 
       <ng-container matColumnDef="action">

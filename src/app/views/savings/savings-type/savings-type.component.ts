@@ -55,7 +55,7 @@ export class SavingsTypeComponent implements OnInit {
   
   openTypeAdd(){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = "40%";
     dialogConfig.maxHeight = '90vh'; 
@@ -67,7 +67,7 @@ export class SavingsTypeComponent implements OnInit {
 
   openTypeEdit(row){
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
+    dialogConfig.disableClose = true;
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = "40%";
     dialogConfig.maxHeight = '90vh'; 
