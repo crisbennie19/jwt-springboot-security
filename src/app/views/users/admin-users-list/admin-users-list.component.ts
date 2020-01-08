@@ -12,8 +12,8 @@ import { AdminUsersEditComponent } from '../admin-users-edit/admin-users-edit.co
 })
 export class AdminUsersListComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['fullname','account','email','phone', 'status','action'];

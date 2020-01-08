@@ -12,8 +12,8 @@ import { EditSavinginterestComponent } from '../edit-savinginterest/edit-savingi
 })
 export class SavingsInterestComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['category','rate','type','date', 'status','action'];

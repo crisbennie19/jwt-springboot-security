@@ -12,8 +12,8 @@ import { SavingsBalanceViewComponent } from '../savings-balance-view/savings-bal
 
 export class SavingsBalanceComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['name','phone','savingtype','amount','date','action'];

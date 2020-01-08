@@ -12,8 +12,8 @@ import { AddSavingtypeComponent } from '../add-savingtype/add-savingtype.compone
 })
 export class SavingsTypeComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['name','points','max','min','maxwithdrawal','action'];

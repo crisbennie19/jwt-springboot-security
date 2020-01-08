@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
-import { ImageViewerModule } from 'ng2-image-viewer';
+// import { ImageViewerModule } from 'ng2-image-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -122,7 +122,7 @@ import { SettingsComponent } from './views/settings/settings.component'
     SettingsComponent
   ],
   imports: [
-    ImageViewerModule,
+    // ImageViewerModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

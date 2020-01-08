@@ -10,8 +10,8 @@ import { DataService } from 'src/app/data.service';
 })
 export class AdminRolesComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   displayedColumns = ['account','fullname','phone','email'];
   public listData: MatTableDataSource<any>; 
