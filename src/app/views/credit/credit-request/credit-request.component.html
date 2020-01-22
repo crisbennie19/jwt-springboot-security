@@ -20,6 +20,39 @@
         </mat-spinner>
       </div>
     </div>
+
+    <div>
+      <mat-form-field class="jamez-input"
+      floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="fromdate"
+        [matDatepicker]="pickers" placeholder="Start date">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off"  [(ngModel)]="todate"
+        [matDatepicker]="picker" placeholder="End date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <mat-select placeholder="Filter by" 
+        [(ngModel)]="creditFilter"
+        (selectionChange)="triggerFilter($event)"
+        >
+        <!-- (selectionChange)="searchReport()"
+        [(ngModel)]="report.aggregatorid" -->
+          <mat-option value="accountholder">Filter by customer</mat-option>
+          <mat-option value="category">Filter by category</mat-option>
+          <mat-option value="type">Filter by type</mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
   </div>
   
   <div>

@@ -5,7 +5,8 @@
         <mat-icon class="prefix">search</mat-icon>
         <input type="text" class="mSearch"
         [(ngModel)]="searchKey"
-        [placeholder]="placeholder">
+        [placeholder]="placeholder"
+        (keyup)="applyFilter()">
         <mat-icon class="suffix" *ngIf="searchKey != ''"
         (click)="clearSearch()">close</mat-icon>
       </div>
@@ -27,14 +28,14 @@
       <mat-form-field class="jamez-input"
       floatLabel="never">
         <input matInput autocomplete="off" [(ngModel)]="fromdate"
-        [matDatepicker]="pickers" placeholder="Start date">
+        [matDatepicker]="pickers" placeholder="Start date" (dateInput)="addEvent('change', $event)">
         <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
         <mat-datepicker #pickers></mat-datepicker>
       </mat-form-field>
       &nbsp;
       <mat-form-field class="jamez-input" floatLabel="never">
         <input matInput autocomplete="off"  [(ngModel)]="todate"
-        [matDatepicker]="picker" placeholder="End date">
+        [matDatepicker]="picker" placeholder="End date" (dateInput)="addEvent('change', $event)">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

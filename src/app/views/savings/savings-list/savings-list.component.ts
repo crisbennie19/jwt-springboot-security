@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialogConfig, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialogConfig, MatDialog, MatDatepickerInputEvent } from '@angular/material';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 import { SavingsViewComponent } from '../savings-view/savings-view.component';
 
+import * as moment from 'moment';
 @Component({
   selector: 'app-savings-list',
   templateUrl: './savings-list.component.html',
@@ -37,6 +38,7 @@ export class SavingsListComponent implements OnInit {
     this.getSavingsList();
   }
   triggerFilter(event){    
+    console.log("========================================================")
     let filtername = event.value
     switch (filtername) {
       case 'type':
@@ -57,6 +59,7 @@ export class SavingsListComponent implements OnInit {
 
   filterSearch(){
     if(this.searchKey != ''){
+      console.log(this.searchKey)
       let filter = this.savingsFilter
       switch (filter) {
         case 'type':
@@ -183,8 +186,38 @@ export class SavingsListComponent implements OnInit {
     this.dialog.open(SavingsViewComponent, dialogConfig)
   }
 
+  addEvent(type:string, event:MatDatepickerInputEvent<Date>){
+    this.applyDateRangeFilter();
+  };
+
+  applyDateRangeFilter(){
+    let setToday:Date = new Date();
+    const formatFromDate: string = moment(this.fromdate).format();
+    let formatToDate: string = moment(this.todate).format();
+
+    if(this.todate === null) { formatToDate = setToday.toString() }; //current time if value is empty
+    this.data.savingsService.getSavingsByDateRange(formatFromDate, formatToDate)
+    .pipe(
+        map( res => res['data'])
+    ).subscribe(res => {
+      this.response = res;
+      this.loading = false;
+      this.tableLength = this.response.length
+      this.listData = new MatTableDataSource(this.response);        
+      this.listData.paginator = this.paginator;
+      this.listData.sort = this.sort;
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Check your network and try again", "Dismiss", {
+        duration:2500
+      })
+    });
+
+  }
+
+
   applyFilter(){
-    this.listData.filter = this.searchKey.toString();
+    this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
   clearSearch(){

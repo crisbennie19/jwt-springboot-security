@@ -19,8 +19,12 @@ export class CreditRequestComponent implements OnInit {
   displayedColumns = ['description','account','phone','date', 'status','action'];
   public listData: MatTableDataSource<any>; 
 
+  creditFilter:string = "accountholder";
   searchKey: any = ''; // left search box model
-  
+  fromdate: Date = null;
+  todate:Date = null; 
+  placeholder = 'Phone or email'
+
   loading: boolean;
   tableLength: number;
 
@@ -30,6 +34,25 @@ export class CreditRequestComponent implements OnInit {
 
   ngOnInit() {
     this.getCreditRequests();
+  }
+
+  triggerFilter(event){    
+    let filtername = event.value
+    switch (filtername) {
+      case 'type':
+      this.placeholder = "Savings type"
+      break;
+      case 'accountholder':
+      this.placeholder = "Phone or email"
+      break;
+      case 'category':
+      this.placeholder = "Savings category"
+      break;
+      default:
+      this.placeholder = "Phone or email"      
+        break;
+    }
+
   }
 
   getCreditRequests(){

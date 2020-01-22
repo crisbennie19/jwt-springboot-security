@@ -18,6 +18,10 @@ export class CreditCardComponent implements OnInit {
   public listData: MatTableDataSource<any>; 
 
   searchKey: any = ''; // left search box model
+  creditFilter:string = "accountholder";
+  fromdate: Date = null;
+  todate:Date = null; 
+  placeholder = 'Phone or email'
   
   loading: boolean;
   tableLength: number;
@@ -27,6 +31,25 @@ export class CreditCardComponent implements OnInit {
 
   ngOnInit() {
     this.getCardList();
+  }
+
+  triggerFilter(event){    
+    let filtername = event.value
+    switch (filtername) {
+      case 'type':
+      this.placeholder = "Savings type"
+      break;
+      case 'accountholder':
+      this.placeholder = "Phone or email"
+      break;
+      case 'category':
+      this.placeholder = "Savings category"
+      break;
+      default:
+      this.placeholder = "Phone or email"      
+        break;
+    }
+
   }
 
   getCardList(){
