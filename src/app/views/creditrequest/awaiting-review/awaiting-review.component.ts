@@ -5,17 +5,17 @@ import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
 @Component({
-  selector: 'app-credit-card',
-  templateUrl: './credit-card.component.html',
-  styleUrls: ['./credit-card.component.scss']
+  selector: 'app-awaiting-review',
+  templateUrl: './awaiting-review.component.html',
+  styleUrls: ['./awaiting-review.component.scss']
 })
-export class CreditCardComponent implements OnInit {
+export class AwaitingReviewComponent implements OnInit {
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['card','balance','expiry','date', 'status','action'];
+  displayedColumns = ['description','account','phone','date', 'status','action'];
   public listData: MatTableDataSource<any>; 
 
   searchKey: any = ''; // left search box model
@@ -31,31 +31,12 @@ export class CreditCardComponent implements OnInit {
     private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-    this.getCardList();
+    this.getCreditList();
   }
 
-  triggerFilter(event){    
-    let filtername = event.value
-    switch (filtername) {
-      case 'type':
-      this.placeholder = "Savings type"
-      break;
-      case 'accountholder':
-      this.placeholder = "Phone or email"
-      break;
-      case 'category':
-      this.placeholder = "Savings category"
-      break;
-      default:
-      this.placeholder = "Phone or email"      
-        break;
-    }
-
-  }
-
-  getCardList(){
+  getCreditList(){
     this.loading = true;
-    this.data.cardService.getCards(0,100)
+    this.data.creditService.getCreditRequestsAwaitReview()
     .pipe(
       map( res => res['data'])
     )
@@ -136,7 +117,7 @@ export class CreditCardComponent implements OnInit {
       
     if(this.todate === null) { formatToDate = moment(setToday).format() }; //current time if value is empty
     this.loading = true;
-    this.data.cardService.getCardsByDateRange(formatFromDate, formatToDate)
+    this.data.creditService.getCreditRequestsAwaitReviewByDateRange(formatFromDate, formatToDate)
     .pipe(
       map( res => res['data'])
     )
@@ -153,6 +134,8 @@ export class CreditCardComponent implements OnInit {
       })
     })
   }
+
+  requestAction(row){}
  
   clearSearch(){
     this.searchKey = '';

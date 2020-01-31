@@ -45,16 +45,16 @@ export class SavingsBalanceComponent implements OnInit {
     let filtername = event.value
     switch (filtername) {
       case 'type':
-      this.placeholder = "Savings type"
+        this.placeholder = "Savings type"
       break;
       case 'accountholder':
-      this.placeholder = "Phone or email"
+        this.placeholder = "Phone or email"
       break;
       case 'category':
-      this.placeholder = "Savings category"
+        this.placeholder = "Savings category"
       break;
       default:
-      this.placeholder = "Phone or email"      
+        this.placeholder = "Phone or email"      
         break;
     }
 

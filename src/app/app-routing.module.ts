@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { TransactionsComponent } from './views/transactions/transactions.component';
 import { CreditComponent } from './views/credit/credit.component';
+import { CreditRequestComponent } from './views/creditrequest/creditrequest.component';
 import { SavingsComponent } from './views/savings/savings.component';
 import { MessagesComponent } from './views/messages/messages.component';
 import { ChargesComponent } from './views/charges/charges.component';
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path:'transactions',
     component:TransactionsComponent
+  },
+  {
+    path:'creditrequests',
+    component:CreditRequestComponent
   },
   {
     path:'credit',

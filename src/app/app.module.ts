@@ -64,10 +64,13 @@ import { WalletsComponent } from './views/wallets/wallets.component';
 import { SavingsBalanceViewComponent } from './views/savings/savings-balance-view/savings-balance-view.component';
 import { SavingsViewComponent } from './views/savings/savings-view/savings-view.component';
 import { WalletViewComponent } from './views/wallets/wallet-view/wallet-view.component';
-import { CreditRequestComponent } from './views/credit/credit-request/credit-request.component';
 import { CreditRequestActionComponent } from './views/credit/credit-request-action/credit-request-action.component';
 import { CreditBankStatementComponent } from './views/credit/credit-bank-statement/credit-bank-statement.component';
 import { SettingsComponent } from './views/settings/settings.component'
+import { CreditRequestComponent } from './views/creditrequest/creditrequest.component';
+import { CreditApproveComponent } from './views/creditrequest/credit-approve/credit-approve';
+import { AwaitingReviewComponent } from './views/creditrequest/awaiting-review/awaiting-review.component';
+import { AwaitingApprrovalComponent } from './views/creditrequest/awaiting-approval/awaiting-approval.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { SettingsComponent } from './views/settings/settings.component'
     ChargesComponent,
     SavingsComponent,
     ReportsComponent,
+    CreditRequestComponent,
     CreditComponent,
     MessagesComponent,
     TableComponent,
@@ -117,8 +121,11 @@ import { SettingsComponent } from './views/settings/settings.component'
     SavingsViewComponent,
     WalletViewComponent,
     CreditRequestComponent,
+    CreditApproveComponent,
     CreditRequestActionComponent,
     CreditBankStatementComponent,
+    AwaitingReviewComponent,
+    AwaitingApprrovalComponent,
     SettingsComponent
   ],
   imports: [
@@ -170,7 +177,8 @@ import { SettingsComponent } from './views/settings/settings.component'
     SavingsBalanceViewComponent,
     SavingsViewComponent,
     CreditRequestActionComponent,
-    CreditBankStatementComponent
+    CreditBankStatementComponent,
+    AwaitingApprrovalComponent
   ],
   bootstrap: [AppComponent]
 })
