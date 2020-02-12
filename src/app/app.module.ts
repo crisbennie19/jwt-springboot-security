@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // import { ImageViewerModule } from 'ng2-image-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,8 +13,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, 
-  MatListModule, MatTableModule, MatPaginatorModule, MatSortModule, MatGridListModule, 
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
+  MatListModule, MatTableModule, MatPaginatorModule, MatSortModule, MatGridListModule,
   MatCardModule, MatMenuModule, MatInputModule, MatDialogModule,MatFormFieldModule,MatSelectModule,
   MatRadioModule,MatTooltipModule, MatSliderModule, MatCheckboxModule,MatSnackBarModule
   ,MatNativeDateModule,
@@ -67,7 +68,10 @@ import { WalletViewComponent } from './views/wallets/wallet-view/wallet-view.com
 import { CreditRequestComponent } from './views/credit/credit-request/credit-request.component';
 import { CreditRequestActionComponent } from './views/credit/credit-request-action/credit-request-action.component';
 import { CreditBankStatementComponent } from './views/credit/credit-bank-statement/credit-bank-statement.component';
-import { SettingsComponent } from './views/settings/settings.component'
+import { SettingsComponent } from './views/settings/settings.component';
+import { AccountHolderComponent } from './views/wallets/search/account-holder/account-holder.component'
+import { DateRangeComponent } from './views/wallets/search/date-range/date-range.component';
+import { UsersViewComponent } from './views/users/users-view/users-view.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +123,10 @@ import { SettingsComponent } from './views/settings/settings.component'
     CreditRequestComponent,
     CreditRequestActionComponent,
     CreditBankStatementComponent,
-    SettingsComponent
+    SettingsComponent,
+    DateRangeComponent,
+    AccountHolderComponent,
+    UsersViewComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -154,7 +161,8 @@ import { SettingsComponent } from './views/settings/settings.component'
     MatFormFieldModule,
     MatSliderModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgbModule
   ],
   providers: [],
   entryComponents:[
@@ -170,7 +178,8 @@ import { SettingsComponent } from './views/settings/settings.component'
     SavingsBalanceViewComponent,
     SavingsViewComponent,
     CreditRequestActionComponent,
-    CreditBankStatementComponent
+    CreditBankStatementComponent,
+    UsersViewComponent
   ],
   bootstrap: [AppComponent]
 })

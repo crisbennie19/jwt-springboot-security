@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialogConfig, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialogConfig, MatDialog, MatDatepickerInput, MatDatepickerInputEvent } from '@angular/material';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 import { WalletViewComponent } from '../wallet-view/wallet-view.component';
@@ -16,16 +16,17 @@ export class WalletComponent implements OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['name','phone','amount','bal','trantype','date','action'];
-  public listData: MatTableDataSource<any>; 
+  public listData: MatTableDataSource<any>;
 
   savingsFilter:string = "accountholder";
   placeholder = 'Savings phone or email'
   searchKey: any = ''; // Search box model
   fromdate: Date = null;
-  todate:Date = null; 
+  todate:Date = null;
   loading: boolean;
   tableLength: number;
   response: any;
+  daterRangeMsg:"No record found for the date range "
 
   constructor(private data:DataService,
     private snackBar:MatSnackBar,
@@ -35,7 +36,11 @@ export class WalletComponent implements OnInit {
   ngOnInit() {
     this.getWalletsList();
   }
-  triggerFilter(event){    
+  applyFilterDate(filter:string){
+  this.listData.filter
+ 
+}
+  triggerFilter(event){
     let filtername = event.value
     switch (filtername) {
       case 'type':
@@ -48,7 +53,7 @@ export class WalletComponent implements OnInit {
       this.placeholder = "Savings category"
       break;
       default:
-      this.placeholder = "Savings phone or email"      
+      this.placeholder = "Savings phone or email"
         break;
     }
 
@@ -58,11 +63,11 @@ export class WalletComponent implements OnInit {
     if(this.searchKey != ''){
       this.loading = true;
       this.data.walletService.getWalletByAccountholder(this.searchKey)
-      .pipe(map( res => res['data'])) 
+      .pipe(map( res => res['data']))
       .subscribe( res => {
         this.loading = false;
         this.tableLength = res.length
-        this.listData = new MatTableDataSource(res);        
+        this.listData = new MatTableDataSource(res); 
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
       }, err => {
@@ -70,7 +75,7 @@ export class WalletComponent implements OnInit {
         this.snackBar.open("Check your network and try again", "Dismiss", {
           duration:2500
         })
-      })
+      }) 
     }
     else if(this.searchKey == '' && this.fromdate != null && this.todate != null ){
       const fromday = this.fromdate.getDate();
@@ -82,15 +87,15 @@ export class WalletComponent implements OnInit {
       const tomonth = this.todate.getMonth();
       const toyear = this.todate.getFullYear()
       const todateFormatted = toyear+'-'+tomonth+'-'+today;
-      
+
       this.loading = true;
       this.data.walletService.getWalletByDateRange(fromdateFormatted,todateFormatted)
-      .pipe(map( res => res['data'])) 
+      .pipe(map( res => res['data']))
       .subscribe( res => {
         this.response = res;
         this.loading = false;
-        this.tableLength = res
-        this.listData = new MatTableDataSource(res);        
+        this.tableLength = res.length
+        this.listData = new MatTableDataSource(res);
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
       }, err => {
@@ -99,10 +104,44 @@ export class WalletComponent implements OnInit {
           duration:2500
         })
       })
-    }
+    } 
 
     else{
       this.getWalletsList()
+    }
+
+  }
+  searchByDate(){
+    console.log(this.fromdate +" "+ this.todate)
+    if(this.searchKey == '' && this.fromdate != null && this.todate != null ){
+      const fromday = this.fromdate.getDate();
+      const frommonth = this.fromdate.getMonth()+1;
+      const fromyear = this.fromdate.getFullYear(); 
+      const fromdateFormatted = fromyear+'-'+frommonth+'-'+fromday;
+
+      const today = this.todate.getDate();
+      const tomonth = this.todate.getMonth()+1;
+      const toyear = this.todate.getFullYear()
+      const todateFormatted = toyear+'-'+tomonth+'-'+today;
+
+      this.loading = true;
+      this.data.walletService.getWalletByDateRange(fromdateFormatted,todateFormatted)
+      .pipe(map( res => res['data']))
+      .subscribe( res => {
+        this.response = res;
+        this.loading = false;
+        this.tableLength = res.length
+        this.listData = new MatTableDataSource(res);
+        this.listData.paginator = this.paginator;
+        this.listData.sort = this.sort;
+      }, err => {
+        this.loading = false;
+        this.snackBar.open("Check your network and try again", "Dismiss", {
+          duration:2500
+        })
+      })
+    } else{
+      this.daterRangeMsg
     }
     
   }
@@ -119,7 +158,7 @@ export class WalletComponent implements OnInit {
 
   getWalletsList(){
     this.loading = true;
-    this.data.walletService.getWallets(0,1000)
+    this.data.walletService.getWallets(1,1000)
     .pipe(
       map( res => res['data'])
     )
@@ -127,7 +166,7 @@ export class WalletComponent implements OnInit {
       this.response = res;
       this.loading = false;
       this.tableLength = this.response.length
-      this.listData = new MatTableDataSource(this.response);        
+      this.listData = new MatTableDataSource(this.response);
       this.listData.paginator = this.paginator;
       this.listData.sort = this.sort;
     }, err => {
@@ -138,8 +177,8 @@ export class WalletComponent implements OnInit {
     })
   }
 
-  applyFilter(){
-    this.listData.filter = this.searchKey.toString();
+  applyFilter(filter:string){
+    this.listData.filter = filter.toLowerCase();
   }
 
   clearSearch(){

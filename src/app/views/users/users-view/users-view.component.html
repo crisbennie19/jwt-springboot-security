@@ -1,0 +1,67 @@
+<div class="component-header">
+    <div>
+      <mat-icon class="mat-18x">account_balance_wallet</mat-icon> &nbsp;User Details
+    </div>
+    <button mat-button color="warn" (click)="closeDialog()">Close</button>
+  </div>
+  <div class="view-container">
+    <div class="view-column">
+      <div class="info">
+        <div class="header">ID</div>
+        <div class="content">{{selectedRow.id}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Fullname</div>
+        <div class="content">{{selectedRow.fullname}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Phone number</div>
+        <div class="content">{{selectedRow.phone}}</div>
+      </div>
+      <div class="info">
+        <div class="header">email</div>
+        <div class="content">{{selectedRow.email}}</div>
+      </div>
+    </div>
+    <div class="view-column">
+        <div class="info">
+          <div class="header">Account</div>
+          <div class="content">{{selectedRow.accountno}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Account name</div>
+          <div class="content">{{selectedRow.accountname}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Bank</div>
+          <div class="content">{{selectedRow.bank}}</div>
+        </div>
+        <div class="info">
+          <div class="header">BVN</div>
+          <div class="content">{{selectedRow.bvn}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Salary range</div>
+          <div class="content">{{selectedRow.salaryrange}}</div>
+        </div>
+      </div>
+  
+      <div class="view-column">
+        <div class="info">
+          <div class="header">Work place</div>
+          <div class="content">{{selectedRow.placeofwork}}</div>
+        </div>
+        <div class="info">
+          <div class="header">DOB</div>
+          <div class="content">{{selectedRow.dob}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Date reg</div>
+          <div class="content">{{selectedRow.datereg}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Status</div>
+          <div class="content">{{selectedRow.status}}</div>
+        </div>
+      </div>
+  </div>

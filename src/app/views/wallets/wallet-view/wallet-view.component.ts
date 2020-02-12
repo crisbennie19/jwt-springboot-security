@@ -14,7 +14,7 @@ export class WalletViewComponent implements OnInit {
   private dialogRef: MatDialogRef<WalletViewComponent>,
   ) { }
 
-  ngOnInit() {    
+  ngOnInit() {     
   }
 
   closeDialog(){

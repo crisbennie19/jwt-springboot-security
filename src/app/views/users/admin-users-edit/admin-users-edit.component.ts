@@ -13,9 +13,9 @@ export class AdminUsersEditComponent implements OnInit {
 
   public addUserForm:FormGroup;
   
-  newUser = {
+  newUser = { 
     accountno: '',
-    accountstatement: '',
+    accountstatement: '', 
     accounttype: '',
     active: false,
     bvnverify: false,

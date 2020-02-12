@@ -4,26 +4,24 @@
       <div class="search-container">
         <mat-icon class="prefix">search</mat-icon>
         <input type="text" class="mSearch"
+        (keyup)="applyFilter()"
+
         [(ngModel)]="searchKey"
-        placeholder="Phone or email">
+        placeholder="Search...">
         <mat-icon class="suffix" *ngIf="searchKey != ''"
         (click)="clearSearch()">close</mat-icon>
       </div>
       &nbsp;
-      <button mat-raised-button 
-      (click)="filterSearch()"
-      color="accent">Search</button>
       &nbsp;
       <div *ngIf="loading">
-        <mat-spinner 
+        <mat-spinner
           color="accent"
           [strokeWidth]= 3
           [diameter]=18>
         </mat-spinner>
       </div>
     </div>
-
-    <div>
+      <div>
       <mat-form-field class="jamez-input"
       floatLabel="never">
         <input matInput autocomplete="off" [(ngModel)]="fromdate"
@@ -38,11 +36,17 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+
+      <button mat-raised-button
+      (click)="searchByDate()"
+      color="accent">Search date</button>
     </div>
-  </div>
-  
+    </div>  
+
+
+
   <div>
-    <table mat-table class="full-width-table" [dataSource]="listData" 
+    <table mat-table class="full-width-table" [dataSource]="listData"
     matSort aria-label="Elements">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Account name</th>
@@ -66,7 +70,7 @@
 
     <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-      <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount|number}}</td>
+      <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount}}</td>
     </ng-container>
 
     <ng-container matColumnDef="phone">
@@ -85,22 +89,33 @@
 
       <ng-container matColumnDef="no-activity">
         <mat-footer-cell *matFooterCellDef>
-          No record found
+          Now fund in the wallet
         </mat-footer-cell>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <mat-footer-row *matFooterRowDef="['no-activity']" 
+      <mat-footer-row *matFooterRowDef="['no-activity']"
         [ngClass]="{'hide': tableLength != 0 }">
       </mat-footer-row>
     </table>
-  
+<!-- <div *ngIf="tableLength==0">
+  {{daterRangeMsg}}
+
+<button mat-raised-button
+      (click)="filterSearch()"
+      color="accent">Back</button>
+</div> -->
     <mat-paginator #paginator
       [length]="tableLength"
       [pageIndex]="0"
       [pageSize]="7">
     </mat-paginator>
+
+    <!-- <div  class="mr-5">
+    <button  mat-raised-button
+      
+      color="accent" (click)="getWalletsList()">Back</button>
+</div> -->
   </div>
 </div>
-  

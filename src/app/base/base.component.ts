@@ -15,17 +15,19 @@ export class BaseComponent {
 
   
   menuList = [
-    {route:'/dashboard',icon:'assessment', name:'Dashboard'},
+    {route:'/dashboard',icon:'dashboard', name:'Dashboard'},
     {route:'/wallet',icon:'account_balance_wallet', name:'Wallet'},
     {route:'/transactions',icon:'compare_arrows', name:'Transactions'},
     // {route:'/charges',icon:'import_export', name:'Charges'},
-    {route:'/interests',icon:'report', name:'Interests'},
+    {route:'/interests',icon:'monetization_on', name:'Interests'},
     {route:'/messages',icon:'email', name:'Messages'},
     {route:'/users',icon:'account_box', name:'Users'},
     {route:'/credit',icon:'credit_card', name:'Credit'},
     {route:'/savings',icon:'save_alt', name:'Savings'},
     {route:'/logs',icon:'receipt', name:'Logs'},
     {route:'/referrals',icon:'insert_comment', name:'Referral'},
+
+    {route:'/reports',icon:'report', name:'Report'},
     {route:'/settings',icon:'settings', name:'Settings'}
   ]
 
