@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
