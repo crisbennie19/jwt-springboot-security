@@ -5,17 +5,17 @@ import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
 @Component({
-  selector: 'app-credit-interest',
-  templateUrl: './credit-interest.component.html',
-  styleUrls: ['./credit-interest.component.scss']
+  selector: 'app-credit-approve',
+  templateUrl: './credit-approve.component.html',
+  styleUrls: ['./credit-approve.component.scss']
 })
-export class CreditInterestComponent implements OnInit {
+export class CreditApproveComponent implements OnInit {
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['account','phone','email','date', 'status'];
+  displayedColumns = ['description','account','phone','date', 'status','action'];
   public listData: MatTableDataSource<any>; 
 
   creditFilter:string = "accountholder";
@@ -31,31 +31,12 @@ export class CreditInterestComponent implements OnInit {
     private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-    this.getCardList();
+    this.getCreditRequestApproveList();
   }
 
-  triggerFilter(event){    
-    let filtername = event.value
-    switch (filtername) {
-      case 'type':
-      this.placeholder = "Savings type"
-      break;
-      case 'accountholder':
-      this.placeholder = "Phone or email"
-      break;
-      case 'category':
-      this.placeholder = "Savings category"
-      break;
-      default:
-      this.placeholder = "Phone or email"      
-        break;
-    }
-
-  }
-
-  getCardList(){
+  getCreditRequestApproveList(){
     this.loading = true;
-    this.data.creditService.getCredits(0,100)
+    this.data.creditService.getCreditRequestsApprove()
     .pipe(
       map( res => res['data'])
     )
@@ -97,7 +78,7 @@ export class CreditInterestComponent implements OnInit {
     let formatToDate: string = moment(this.todate).format();
     
     if(this.todate === null) { formatToDate = moment(setToday).format() }; //current time if value is empty
-    this.data.creditService.getCreditByDateRange(formatFromDate, formatToDate)
+    this.data.creditService.getCreditRequestsApproveByDateRange(formatFromDate, formatToDate)
     .pipe(
         map( res => res['data'])
     ).subscribe(res => {
@@ -116,6 +97,8 @@ export class CreditInterestComponent implements OnInit {
     });
 
   }
+
+  requestAction(row){}
 
   clearSearch(){
     this.searchKey = '';

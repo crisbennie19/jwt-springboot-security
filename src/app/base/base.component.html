@@ -45,6 +45,11 @@
       <span class="remaining-space"></span>
 
       <!-- <button mat-button>FAQs</button> -->
+      <a routerLink="/creditrequests" mat-button color="accentgit">
+        <mat-icon class="mat-18x">money</mat-icon>
+        <span>Credit Request</span>
+      </a>
+
       <button mat-button color="warn" (click)="logout()">
         <mat-icon class="mat-18x">power_settings_new</mat-icon>
         <span>Logout</span>
@@ -65,9 +70,6 @@
         <!-- <mat-icon style="padding-left: 10px;position:absolute; right:-2px; top:4px;"
         class="mat-15x" color="accent">fiber_manual_record</mat-icon> -->
       <!-- </div> -->
-
-      
-
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

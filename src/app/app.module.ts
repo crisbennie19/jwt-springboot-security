@@ -65,13 +65,18 @@ import { WalletsComponent } from './views/wallets/wallets.component';
 import { SavingsBalanceViewComponent } from './views/savings/savings-balance-view/savings-balance-view.component';
 import { SavingsViewComponent } from './views/savings/savings-view/savings-view.component';
 import { WalletViewComponent } from './views/wallets/wallet-view/wallet-view.component';
-import { CreditRequestComponent } from './views/credit/credit-request/credit-request.component';
 import { CreditRequestActionComponent } from './views/credit/credit-request-action/credit-request-action.component';
 import { CreditBankStatementComponent } from './views/credit/credit-bank-statement/credit-bank-statement.component';
-import { SettingsComponent } from './views/settings/settings.component';
 import { AccountHolderComponent } from './views/wallets/search/account-holder/account-holder.component'
 import { DateRangeComponent } from './views/wallets/search/date-range/date-range.component';
 import { UsersViewComponent } from './views/users/users-view/users-view.component';
+import { SettingsComponent } from './views/settings/settings.component'
+import { CreditRequestComponent } from './views/creditrequest/creditrequest.component';
+import { CreditApproveComponent } from './views/creditrequest/credit-approve/credit-approve';
+import { AwaitingReviewComponent } from './views/creditrequest/awaiting-review/awaiting-review.component';
+import { AwaitingApprrovalComponent } from './views/creditrequest/awaiting-approval/awaiting-approval.component';
+import { CreditReviewComponent } from './views/creditrequest/credit-review/credit-review.component';
+import { CreditToApproveComponent } from './views/creditrequest/credit-to-approve/credit-to-approve.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +88,7 @@ import { UsersViewComponent } from './views/users/users-view/users-view.componen
     ChargesComponent,
     SavingsComponent,
     ReportsComponent,
+    CreditRequestComponent,
     CreditComponent,
     MessagesComponent,
     TableComponent,
@@ -121,12 +127,18 @@ import { UsersViewComponent } from './views/users/users-view/users-view.componen
     SavingsViewComponent,
     WalletViewComponent,
     CreditRequestComponent,
+    CreditApproveComponent,
     CreditRequestActionComponent,
     CreditBankStatementComponent,
     SettingsComponent,
     DateRangeComponent,
     AccountHolderComponent,
-    UsersViewComponent
+    UsersViewComponent,
+    AwaitingReviewComponent,
+    AwaitingApprrovalComponent,
+    SettingsComponent,
+    CreditReviewComponent,
+    CreditToApproveComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -179,7 +191,10 @@ import { UsersViewComponent } from './views/users/users-view/users-view.componen
     SavingsViewComponent,
     CreditRequestActionComponent,
     CreditBankStatementComponent,
-    UsersViewComponent
+    UsersViewComponent,
+    AwaitingApprrovalComponent,
+    CreditReviewComponent,
+    CreditToApproveComponent
   ],
   bootstrap: [AppComponent]
 })

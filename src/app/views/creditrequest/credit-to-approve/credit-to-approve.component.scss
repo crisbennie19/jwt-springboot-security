@@ -1,0 +1,48 @@
+.dialog-row {
+    display: flex;
+    flex-flow: wrap row;
+    flex-basis: 40%;
+    justify-content: space-evenly;
+    flex-basis: 50%;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    background-color: rgba($color: #ddd, $alpha: 0.2);
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.form-field {
+    width: 100%;
+}
+.performance {
+    display: flex;
+    flex-flow: wrap column;
+}
+
+.performance a {
+    text-align: end;
+}
+
+.dialog-footer{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-bottom: 2rem;
+}
+
+input {
+    padding-left: 1rem;
+}
+.prefix{
+    position:relative;
+    top: -10px;
+    left: -100px;
+}

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 
 export class CardService {
-  
+
   constructor( private http: HttpClient, private base:HttpService ) { }
 
   private _baseUrl = this.base.baseurl
@@ -23,6 +23,17 @@ export class CardService {
       catchError( err => this.errorHandler(err) )
     );
   }
+
+  getCardsByDateRange(from:string, to:string){
+    return this.http.get(
+      this._baseUrl + 
+      `swipe_admin/card/list/date_range?from=${from}&to=${to}` 
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+  
    
   activateCard(id:number,body){
     return this.http.post(

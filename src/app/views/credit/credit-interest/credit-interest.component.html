@@ -20,6 +20,26 @@
         </mat-spinner>
       </div>
     </div>
+
+
+    <div>
+      <mat-form-field class="jamez-input"
+      floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="fromdate"
+        [matDatepicker]="pickers" placeholder="Start date" (dateInput)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off"  [(ngModel)]="todate"
+        [matDatepicker]="picker" placeholder="End date" (dateInput)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+    </div>
+
   </div>
   
   <div>

@@ -20,6 +20,41 @@
         </mat-spinner>
       </div>
     </div>
+
+    <div>
+      <mat-form-field class="jamez-input"
+      floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="fromdate"
+        [matDatepicker]="pickers" placeholder="Start date" (dateInput)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off"  [(ngModel)]="todate"
+        [matDatepicker]="picker" placeholder="End date" (dateInput)="addEvent('change', $event)">
+        <mat-datepicker #picker>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        </mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <mat-select placeholder="Filter by" 
+        [(ngModel)]="creditFilter"
+        (selectionChange)="triggerFilter($event)"
+        >
+        <!-- (selectionChange)="searchReport()"
+        [(ngModel)]="report.aggregatorid" -->
+          <mat-option value="approve">Approved Requests</mat-option>
+          <mat-option value="decline">Declined Requests</mat-option>
+          <mat-option value="inProgress">Waiting For Approval</mat-option>
+          <mat-option value="review">Waiting For Review</mat-option>
+          
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
   </div>
   
   <div>

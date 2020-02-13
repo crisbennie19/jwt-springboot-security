@@ -36,6 +36,16 @@ export class SavingsService {
     );
   }
 
+  getSavingsBalanceByDateRange(fromDate:string, toDate:string){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/v2/list/savings_balance/by_date_range?from=${fromDate}&to=${toDate}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
   getSavingsByAccountholder(person){
     return this.http.get(
       encodeURI(this._baseUrl + 
@@ -66,7 +76,7 @@ export class SavingsService {
     );
   }
 
-  getSavingsByDateRange(from,to){
+  getSavingsByDateRange(from, to){
     return this.http.get(
       encodeURI(this._baseUrl + 
       `swipe_admin/v2/list/savings/date_range?from=${from}&to=${to}`)

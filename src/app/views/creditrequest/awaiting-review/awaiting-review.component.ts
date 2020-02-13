@@ -1,21 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDatepickerInputEvent } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDatepickerInputEvent, MatDialogConfig, MatDialog } from '@angular/material';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
+import { CreditReviewComponent } from '../credit-review/credit-review.component';
+
 @Component({
-  selector: 'app-credit-card',
-  templateUrl: './credit-card.component.html',
-  styleUrls: ['./credit-card.component.scss']
+  selector: 'app-awaiting-review',
+  templateUrl: './awaiting-review.component.html',
+  styleUrls: ['./awaiting-review.component.scss']
 })
-export class CreditCardComponent implements OnInit {
+export class AwaitingReviewComponent implements OnInit {
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['card','balance','expiry','date', 'status','action'];
+  displayedColumns = ['description','account','phone','date', 'status','action'];
   public listData: MatTableDataSource<any>; 
 
   searchKey: any = ''; // left search box model
@@ -28,34 +30,16 @@ export class CreditCardComponent implements OnInit {
   tableLength: number;
 
   constructor(private data:DataService,
-    private snackBar:MatSnackBar) { }
+    private snackBar:MatSnackBar,
+    private dialog:MatDialog ) { }
 
   ngOnInit() {
-    this.getCardList();
+    this.getCreditList();
   }
 
-  triggerFilter(event){    
-    let filtername = event.value
-    switch (filtername) {
-      case 'type':
-      this.placeholder = "Savings type"
-      break;
-      case 'accountholder':
-      this.placeholder = "Phone or email"
-      break;
-      case 'category':
-      this.placeholder = "Savings category"
-      break;
-      default:
-      this.placeholder = "Phone or email"      
-        break;
-    }
-
-  }
-
-  getCardList(){
+  getCreditList(){
     this.loading = true;
-    this.data.cardService.getCards(0,100)
+    this.data.creditService.getCreditRequestsAwaitReview()
     .pipe(
       map( res => res['data'])
     )
@@ -136,7 +120,7 @@ export class CreditCardComponent implements OnInit {
       
     if(this.todate === null) { formatToDate = moment(setToday).format() }; //current time if value is empty
     this.loading = true;
-    this.data.cardService.getCardsByDateRange(formatFromDate, formatToDate)
+    this.data.creditService.getCreditRequestsAwaitReviewByDateRange(formatFromDate, formatToDate)
     .pipe(
       map( res => res['data'])
     )
@@ -152,6 +136,24 @@ export class CreditCardComponent implements OnInit {
         duration:2000
       })
     })
+  }
+
+  requestAction(row){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '60%';
+    dialogConfig.data = row;
+    this.dialog.open(CreditReviewComponent, dialogConfig);
+  }
+
+  viewStatement(row){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '80%';
+    dialogConfig.data = row;
+    this.dialog.open(CreditReviewComponent, dialogConfig);
   }
  
   clearSearch(){

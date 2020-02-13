@@ -22,6 +22,14 @@ export class CreditService {
     );
   }
 
+  getCreditByDateRange(from: string, to: string){
+    return this.http.get(
+      encodeURI(this._baseUrl +
+        `swipe_admin/credit/list/date_range?from=${from}&to=${to}`
+        )
+    )
+  }
+
   getCreditRequests(page:number,size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 
@@ -32,6 +40,76 @@ export class CreditService {
     );
   }
 
+  getCreditRequestsApprove(){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/credit_request/approve`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
+  getCreditRequestsApproveByDateRange(from:string, to:string){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/credit_request/approve/by_date_range?from=${from}&to=${to}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+  
+  getCreditRequestsAwaitApproval(){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/credit_request/await_approve`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
+  getCreditRequestsAwaitApprovalByDateRange(from:string, to:string){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/credit_request/await_approve/by_date_range?from=${from}&to=${to}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
+  getCreditRequestsAwaitReview() {
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/credit_request/await_review`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
+  getCreditRequestsAwaitReviewByDateRange(from:string, to:string){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/credit_request/await_review/by_date_range?from=${from}&to=${to}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
+  // /credit_request/history?page=1&size=100
+  getCreditRequestHistory(page:number, size:number){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/credit_request/history?page=${page}&size=${size}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err))
+    );
+  }
   UpdateCreditRequest(comment:string,id:number, status:boolean, body){
     return this.http.post(
       encodeURI(this._baseUrl + 
