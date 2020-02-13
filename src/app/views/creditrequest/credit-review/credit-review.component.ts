@@ -7,11 +7,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'app-credit-bank-statement',
-  templateUrl: './credit-bank-statement.component.html',
-  styleUrls: ['./credit-bank-statement.component.scss']
+  selector: 'app-credit-review',
+  templateUrl: './credit-review.component.html',
+  styleUrls: ['./credit-review.component.scss']
 })
-export class CreditBankStatementComponent implements OnInit {
+export class CreditReviewComponent implements OnInit {
   // public requestActionForm:FormGroup;
   
   // newMessage = {
@@ -32,7 +32,7 @@ export class CreditBankStatementComponent implements OnInit {
   
   constructor(
     @Inject(MAT_DIALOG_DATA) private selectedRequest:any,
-    private dialogRef: MatDialogRef<CreditBankStatementComponent>,
+    private dialogRef: MatDialogRef<CreditReviewComponent>,
     private formBuilder: FormBuilder,
     private domSanitizer:DomSanitizer,
     private data:DataService,
@@ -79,6 +79,12 @@ export class CreditBankStatementComponent implements OnInit {
         duration:2000
       })
     })
+  }
+
+  approveCredit(){}
+
+  creditCheck(){
+    window.open("https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf", "_blank")
   }
 
   closeDialog(){

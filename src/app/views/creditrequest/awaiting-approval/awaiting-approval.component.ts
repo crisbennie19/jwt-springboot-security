@@ -3,9 +3,10 @@ import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialogConfig
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 import { CreditRequestActionComponent } from '../credit-request-action/credit-request-action.component';
-import { CreditBankStatementComponent } from '../credit-bank-statement/credit-bank-statement.component';
 
 import * as moment from 'moment'
+import { CreditReviewComponent } from '../credit-review/credit-review.component';
+import { CreditToApproveComponent } from '../credit-to-approve/credit-to-approve.component';
 @Component({
   selector: 'app-awaiting-approval',
   templateUrl: './awaiting-approval.component.html',
@@ -84,10 +85,16 @@ export class AwaitingApprrovalComponent implements OnInit {
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = '80%';
     dialogConfig.data = row
-    this.dialog.open(CreditBankStatementComponent, dialogConfig)
+    this.dialog.open(CreditToApproveComponent, dialogConfig)
   }
 
   requestAction(row){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '50%';
+    dialogConfig.data = row
+    this.dialog.open(CreditToApproveComponent, dialogConfig)
     // const dialogConfig = new MatDialogConfig();
     // dialogConfig.disableClose = true;
     // dialogConfig.autoFocus = false;

@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDatepickerInputEvent } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDatepickerInputEvent, MatDialogConfig, MatDialog } from '@angular/material';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
+import { CreditReviewComponent } from '../credit-review/credit-review.component';
+
 @Component({
   selector: 'app-awaiting-review',
   templateUrl: './awaiting-review.component.html',
@@ -28,7 +30,8 @@ export class AwaitingReviewComponent implements OnInit {
   tableLength: number;
 
   constructor(private data:DataService,
-    private snackBar:MatSnackBar) { }
+    private snackBar:MatSnackBar,
+    private dialog:MatDialog ) { }
 
   ngOnInit() {
     this.getCreditList();
@@ -135,7 +138,23 @@ export class AwaitingReviewComponent implements OnInit {
     })
   }
 
-  requestAction(row){}
+  requestAction(row){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '60%';
+    dialogConfig.data = row;
+    this.dialog.open(CreditReviewComponent, dialogConfig);
+  }
+
+  viewStatement(row){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '80%';
+    dialogConfig.data = row;
+    this.dialog.open(CreditReviewComponent, dialogConfig);
+  }
  
   clearSearch(){
     this.searchKey = '';

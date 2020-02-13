@@ -1,0 +1,42 @@
+<div class="main-dialog">
+  <div class="dialog-title">
+    <h3 mat-dialog-title style="padding-top: 1em;">Review</h3>
+    <mat-icon (click)="closeDialog()" color="warn">close</mat-icon>
+  </div>
+  
+
+  <mat-dialog-content class="dialog-row">
+    <div>
+      <mat-form-field class="form-field" appearance="outline">
+        <input matInput placeholder="Amount" class="amount">
+        <span matPrefix>&#8358;</span>
+        <span matSuffix>.00</span>
+      </mat-form-field>
+  
+      <mat-form-field class="form-field " appearance="outline">
+        <mat-icon matPrefix class="">comment</mat-icon>
+        <textarea matInput placeholder="Comment"></textarea>
+      </mat-form-field>
+    </div>
+   
+    <div class="performance">
+      <h4>Performance History</h4>
+      <a mat-button>Unsettled credit</a>
+      <a mat-button>Requsest amount</a>
+      <a mat-button>Reviewer Comment</a>
+      <a mat-button>Review amount</a>
+      
+      <div style="text-align: end;">
+        
+      </div>
+    </div>  
+  </mat-dialog-content>
+  <mat-dialog-actions class="dialog-footer">
+      <button mat-button mat-raised-button color="primary" (click)="approveCredit()">Approve</button>
+      <button mat-button mat-raised-button color="warn">Decline</button>
+  </mat-dialog-actions>
+  <div >
+    
+  </div>
+  
+</div>
