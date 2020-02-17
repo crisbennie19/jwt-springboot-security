@@ -18,6 +18,10 @@
     padding-right: 1em;
 }
 
+.action-form {
+    width: 50%;
+}
+
 .form-field {
     width: 100%;
 }
@@ -32,7 +36,7 @@
 
 .dialog-footer{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding-left: 3rem;
     padding-right: 3rem;
     margin-bottom: 2rem;

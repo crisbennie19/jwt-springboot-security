@@ -1,12 +1,12 @@
 <div class="main-dialog">
   <div class="dialog-title">
-    <h3 mat-dialog-title style="padding-top: 1em;">Review</h3>
+    <h3 mat-dialog-title style="padding-top: 1em;">Credit Approve</h3>
     <mat-icon (click)="closeDialog()" color="warn">close</mat-icon>
   </div>
   
 
   <mat-dialog-content class="dialog-row">
-    <div>
+    <div class="action-form">
       <mat-form-field class="form-field" appearance="outline">
         <input matInput placeholder="Amount" class="amount">
         <span matPrefix>&#8358;</span>
@@ -14,8 +14,17 @@
       </mat-form-field>
   
       <mat-form-field class="form-field " appearance="outline">
-        <mat-icon matPrefix class="">comment</mat-icon>
-        <textarea matInput placeholder="Comment"></textarea>
+        <input matInput placeholder="Comment" >
+        <mat-icon matPrefix>comment</mat-icon>   
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Seclect Action</mat-label>
+        <mat-select [(value)]="selecdtedAction" matNativeControl required>
+          <mat-option>Select action</mat-option>
+          <mat-option value="0">Approve</mat-option>
+          <mat-option value="1">Decline</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
    
@@ -26,14 +35,10 @@
       <a mat-button>Reviewer Comment</a>
       <a mat-button>Review amount</a>
       
-      <div style="text-align: end;">
-        
-      </div>
     </div>  
   </mat-dialog-content>
-  <mat-dialog-actions class="dialog-footer">
-      <button mat-button mat-raised-button color="primary" (click)="approveCredit()">Approve</button>
-      <button mat-button mat-raised-button color="warn">Decline</button>
+  <mat-dialog-actions class="dialog-footer">    
+      <button mat-button mat-raised-button color="primary">Post</button>
   </mat-dialog-actions>
   <div >
     

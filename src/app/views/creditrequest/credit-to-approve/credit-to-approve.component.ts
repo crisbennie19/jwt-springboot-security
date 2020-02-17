@@ -18,6 +18,7 @@ export class CreditToApproveComponent implements OnInit {
   //   comment:'',
   //   status:false
   // }
+  selecdtedAction:any = '';
   loading: boolean;
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
