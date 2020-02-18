@@ -78,6 +78,7 @@ import { AwaitingReviewComponent } from './views/creditrequest/awaiting-review/a
 import { AwaitingApprrovalComponent } from './views/creditrequest/awaiting-approval/awaiting-approval.component';
 import { CreditReviewComponent } from './views/creditrequest/credit-review/credit-review.component';
 import { CreditToApproveComponent } from './views/creditrequest/credit-to-approve/credit-to-approve.component';
+import { UserReportComponent } from './views/users/user-report/user-report.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +140,8 @@ import { CreditToApproveComponent } from './views/creditrequest/credit-to-approv
     AwaitingApprrovalComponent,
     SettingsComponent,
     CreditReviewComponent,
-    CreditToApproveComponent
+    CreditToApproveComponent,
+    UserReportComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -195,8 +197,10 @@ import { CreditToApproveComponent } from './views/creditrequest/credit-to-approv
     UsersViewComponent,
     AwaitingApprrovalComponent,
     CreditReviewComponent,
-    CreditToApproveComponent
+    CreditToApproveComponent,
+    UserReportComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
