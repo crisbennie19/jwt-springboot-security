@@ -93,13 +93,14 @@
 
           <mat-menu #menu = "matMenu">
             <button mat-menu-item  (click)="openUserView(row)">View details</button>
+            <button mat-menu-item  (click)="openUserReport(row)">User report</button>
             <!-- <button mat-menu-item (click)="openUserEdit(row)" >Edit user</button> -->
             <button mat-menu-item (click)="disableUser(row.id)" style="color:rgb(110, 81, 87)">{{status}}</button>
 
           </mat-menu>
         </mat-cell>
       </ng-container>  
-
+  
       <ng-container matColumnDef="no-activity">
         <mat-footer-cell *matFooterCellDef>
           No record found

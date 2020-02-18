@@ -4,6 +4,8 @@ import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/data.service';
 import { UsersViewComponent } from '../users-view/users-view.component';
 import { AdminUsersEditComponent } from '../admin-users-edit/admin-users-edit.component';
+import { UserReportComponent } from '../user-report/user-report.component';
+
 
 @Component({
   selector: 'app-users-list',
@@ -91,7 +93,17 @@ dialConfig.maxHeight = "90vh"
 this.dialog.open(UsersViewComponent,dialConfig)
 
 } 
-
+openUserReport(row){
+ 
+  const dialConfig = new MatDialogConfig();
+  dialConfig.disableClose = true;
+  dialConfig.autoFocus = false;
+  dialConfig.data = row;
+  dialConfig.minWidth = "760px";
+  dialConfig.maxHeight = "90vh"
+  this.dialog.open(UserReportComponent,dialConfig)
+  
+  }
 
 openUserEdit(row){
   const dialConfig = new MatDialogConfig();
