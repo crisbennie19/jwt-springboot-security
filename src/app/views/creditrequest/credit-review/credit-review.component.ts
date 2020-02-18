@@ -5,7 +5,6 @@ import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 
-
 @Component({
   selector: 'app-credit-review',
   templateUrl: './credit-review.component.html',
