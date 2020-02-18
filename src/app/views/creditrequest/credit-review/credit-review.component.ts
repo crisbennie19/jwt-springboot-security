@@ -1,9 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CreditCheckComponent } from '../credit-check/credit-check.component';
+import { CreditAccountStatementComponent } from '../credit-account-statement/credit-account-statement.component';
+import { CreditRequestHistoryComponent } from '../credit-request-history/credit-request-history.component';
 
 @Component({
   selector: 'app-credit-review',
@@ -36,7 +39,8 @@ export class CreditReviewComponent implements OnInit {
     private formBuilder: FormBuilder,
     private domSanitizer:DomSanitizer,
     private data:DataService,
-    private snackBar:MatSnackBar) { }
+    private snackBar:MatSnackBar,
+    private dialog:MatDialog) { }
 
   ngOnInit() {
     console.log(this.selectedRequest);
@@ -84,7 +88,31 @@ export class CreditReviewComponent implements OnInit {
   approveCredit(){}
 
   creditCheck(){
-    window.open("https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf", "_blank")
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '50%';
+    // dialogConfig.data = row;
+    this.dialog.open(CreditCheckComponent, dialogConfig);
+    // window.open("https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf", "_blank")
+  }
+
+  viewStatement(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '50%';
+    // dialogConfig.data = row;
+    this.dialog.open(CreditAccountStatementComponent, dialogConfig);
+  }
+
+  viewCreditHistory() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = '50%';
+    // dialogConfig.data = row;
+    this.dialog.open(CreditRequestHistoryComponent, dialogConfig);
   }
 
   closeDialog(){
@@ -92,3 +120,4 @@ export class CreditReviewComponent implements OnInit {
     event.preventDefault();
   }
 }
+

@@ -1,14 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 
 @Component({
-  selector: 'app-credit-request-action',
-  templateUrl: './credit-request-action.component.html',
-  styleUrls: ['./credit-request-action.component.scss']
+  selector: 'app-credit-check',
+  templateUrl: './credit-check.component.html',
+  styleUrls: ['./credit-check.component.scss']
 })
-export class CreditRequestActionComponent implements OnInit {
+export class CreditCheckComponent implements OnInit {
   public requestActionForm:FormGroup;
   toPerform:string;
   
@@ -20,7 +20,7 @@ export class CreditRequestActionComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private selectedRequest:any,
-    private dialogRef: MatDialogRef<CreditRequestActionComponent>,
+    private dialogRef: MatDialogRef<CreditCheckComponent>,
     private formBuilder: FormBuilder,
     private data:DataService,
     private snackBar:MatSnackBar) { }

@@ -1,7 +1,9 @@
 <div class="main-dialog">
   <div class="dialog-title">
     <h3 mat-dialog-title style="padding-top: 1em;">Credit Review</h3>
-    <mat-icon (click)="closeDialog()" color="warn">close</mat-icon>
+    <button mat-icon-button aria-label="closeDialog" (click)="closeDialog()">
+      <mat-icon  color="warn">close</mat-icon>
+    </button>
   </div>
 
   <mat-dialog-content class="dialog-row">
@@ -31,12 +33,10 @@
    
     <div class="performance">
       <h4>Performance History</h4>
+      <a mat-button >Amount Reqeust:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">&#8358; 8,000</span></a>
       <a mat-button (click)="creditCheck()">Credit Check</a>
-      <a mat-button>Credit History</a>
-      
-      <div style="text-align: end;">
-        
-      </div>
+      <a mat-button (click)="viewStatement()">Bank Statement</a>
+      <a mat-button (click)="viewCreditHistory()">Credit History</a>
     </div>  
   </mat-dialog-content>
   <mat-dialog-actions class="dialog-footer">

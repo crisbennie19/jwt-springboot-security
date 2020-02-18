@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort, MatSnackBar, MatDialogConfig, MatDialog, MatDatepickerInputEvent } from '@angular/material';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
-import { CreditRequestActionComponent } from '../credit-request-action/credit-request-action.component';
 
 import * as moment from 'moment'
 import { CreditReviewComponent } from '../credit-review/credit-review.component';

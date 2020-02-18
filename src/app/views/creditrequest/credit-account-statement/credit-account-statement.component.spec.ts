@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreditRequestActionComponent } from './credit-request-action.component';
+import { CreditAccountStatementComponent } from './credit-account-statement.component';
 
 describe('CreditRequestActionComponent', () => {
-  let component: CreditRequestActionComponent;
-  let fixture: ComponentFixture<CreditRequestActionComponent>;
+  let component: CreditAccountStatementComponent;
+  let fixture: ComponentFixture<CreditAccountStatementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreditRequestActionComponent ]
+      declarations: [ CreditAccountStatementComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreditRequestActionComponent);
+    fixture = TestBed.createComponent(CreditAccountStatementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

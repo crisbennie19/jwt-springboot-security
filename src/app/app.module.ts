@@ -20,6 +20,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MAT_DIALOG_DATA
 } from '@angular/material';
 
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 import { BaseComponent } from './base/base.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { TransactionsComponent } from './views/transactions/transactions.component';
@@ -73,6 +75,9 @@ import { AwaitingReviewComponent } from './views/creditrequest/awaiting-review/a
 import { AwaitingApprrovalComponent } from './views/creditrequest/awaiting-approval/awaiting-approval.component';
 import { CreditReviewComponent } from './views/creditrequest/credit-review/credit-review.component';
 import { CreditToApproveComponent } from './views/creditrequest/credit-to-approve/credit-to-approve.component';
+import { CreditCheckComponent } from './views/creditrequest/credit-check/credit-check.component';
+import { CreditAccountStatementComponent } from './views/creditrequest/credit-account-statement/credit-account-statement.component';
+import { CreditRequestHistoryComponent } from './views/creditrequest/credit-request-history/credit-request-history.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +135,10 @@ import { CreditToApproveComponent } from './views/creditrequest/credit-to-approv
     AwaitingApprrovalComponent,
     SettingsComponent,
     CreditReviewComponent,
-    CreditToApproveComponent
+    CreditToApproveComponent,
+    CreditCheckComponent,
+    CreditAccountStatementComponent,
+    CreditRequestHistoryComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -165,7 +173,8 @@ import { CreditToApproveComponent } from './views/creditrequest/credit-to-approv
     MatFormFieldModule,
     MatSliderModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    PdfViewerModule
   ],
   providers: [],
   entryComponents:[
@@ -184,7 +193,10 @@ import { CreditToApproveComponent } from './views/creditrequest/credit-to-approv
     CreditBankStatementComponent,
     AwaitingApprrovalComponent,
     CreditReviewComponent,
-    CreditToApproveComponent
+    CreditToApproveComponent,
+    CreditCheckComponent,
+    CreditAccountStatementComponent,
+    CreditRequestHistoryComponent
   ],
   bootstrap: [AppComponent]
 })
