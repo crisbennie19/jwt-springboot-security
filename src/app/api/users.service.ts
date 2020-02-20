@@ -36,10 +36,10 @@ export class UsersService {
     );
   }
 
-  getDefaultUsers(){
+  getUsers(page:number,size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 
-      `swipe_admin/defaultusers/list`)
+      `swipe_admin/user/list?page=${page}&size=${size}`)
     )
     .pipe(
       catchError( err => this.errorHandler(err) )

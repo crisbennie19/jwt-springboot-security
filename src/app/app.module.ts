@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,8 +14,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, 
-  MatListModule, MatTableModule, MatPaginatorModule, MatSortModule, MatGridListModule, 
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
+  MatListModule, MatTableModule, MatPaginatorModule, MatSortModule, MatGridListModule,
   MatCardModule, MatMenuModule, MatInputModule, MatDialogModule,MatFormFieldModule,MatSelectModule,
   MatRadioModule,MatTooltipModule, MatSliderModule, MatCheckboxModule,MatSnackBarModule
   ,MatNativeDateModule,
@@ -68,6 +70,9 @@ import { SavingsViewComponent } from './views/savings/savings-view/savings-view.
 import { WalletViewComponent } from './views/wallets/wallet-view/wallet-view.component';
 import { CreditRequestActionComponent } from './views/credit/credit-request-action/credit-request-action.component';
 import { CreditBankStatementComponent } from './views/credit/credit-bank-statement/credit-bank-statement.component';
+import { AccountHolderComponent } from './views/wallets/search/account-holder/account-holder.component'
+import { DateRangeComponent } from './views/wallets/search/date-range/date-range.component';
+import { UsersViewComponent } from './views/users/users-view/users-view.component';
 import { SettingsComponent } from './views/settings/settings.component'
 import { CreditRequestComponent } from './views/creditrequest/creditrequest.component';
 import { CreditApproveComponent } from './views/creditrequest/credit-approve/credit-approve';
@@ -75,9 +80,13 @@ import { AwaitingReviewComponent } from './views/creditrequest/awaiting-review/a
 import { AwaitingApprrovalComponent } from './views/creditrequest/awaiting-approval/awaiting-approval.component';
 import { CreditReviewComponent } from './views/creditrequest/credit-review/credit-review.component';
 import { CreditToApproveComponent } from './views/creditrequest/credit-to-approve/credit-to-approve.component';
+<<<<<<< HEAD
 import { CreditCheckComponent } from './views/creditrequest/credit-check/credit-check.component';
 import { CreditAccountStatementComponent } from './views/creditrequest/credit-account-statement/credit-account-statement.component';
 import { CreditRequestHistoryComponent } from './views/creditrequest/credit-request-history/credit-request-history.component';
+=======
+import { UserReportComponent } from './views/users/user-report/user-report.component';
+>>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
 
 @NgModule({
   declarations: [
@@ -131,14 +140,22 @@ import { CreditRequestHistoryComponent } from './views/creditrequest/credit-requ
     CreditApproveComponent,
     CreditRequestActionComponent,
     CreditBankStatementComponent,
+    SettingsComponent,
+    DateRangeComponent,
+    AccountHolderComponent,
+    UsersViewComponent,
     AwaitingReviewComponent,
     AwaitingApprrovalComponent,
     SettingsComponent,
     CreditReviewComponent,
     CreditToApproveComponent,
+<<<<<<< HEAD
     CreditCheckComponent,
     CreditAccountStatementComponent,
     CreditRequestHistoryComponent
+=======
+    UserReportComponent
+>>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
   ],
   imports: [
     // ImageViewerModule,
@@ -174,7 +191,11 @@ import { CreditRequestHistoryComponent } from './views/creditrequest/credit-requ
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
+<<<<<<< HEAD
     PdfViewerModule
+=======
+    NgbModule
+>>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
   ],
   providers: [],
   entryComponents:[
@@ -191,13 +212,19 @@ import { CreditRequestHistoryComponent } from './views/creditrequest/credit-requ
     SavingsViewComponent,
     CreditRequestActionComponent,
     CreditBankStatementComponent,
+    UsersViewComponent,
     AwaitingApprrovalComponent,
     CreditReviewComponent,
     CreditToApproveComponent,
+<<<<<<< HEAD
     CreditCheckComponent,
     CreditAccountStatementComponent,
     CreditRequestHistoryComponent
+=======
+    UserReportComponent
+>>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

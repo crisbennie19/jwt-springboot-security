@@ -1,0 +1,511 @@
+<div class="container">
+<div class="component-header"  >
+  <div>
+    <mat-icon class="mat-18x">account_balance_wallet</mat-icon> &nbsp;User Details
+  </div>
+  <button mat-button color="warn" (click)="closeDialog()">Close</button>
+</div>
+
+<div class="view-container" *ngFor="let list of listData">
+  
+  <div>
+    <table width="760px" border="0">
+      <tr>
+        <td width="204px" height="45px">Report Order Number</td>
+        <td width="180px">W-000030000</td>
+        <td width="284px" rowspan="3"><div align="center">
+          <h2><strong>CRC Credit Bureau Limited</strong></h2>
+        </div></td>
+      </tr>
+      <tr>
+        <td>Institution Name</td>
+        <td>FCMB</td>
+      </tr>
+      <tr>
+        <td>User Name</td>
+        <td>{{list.fullname}}</td>
+      </tr>
+    </table>
+    
+    <div>
+    <label>
+      <div align="center">
+        <hr />
+        Consumer Classic Report
+      </div>
+    </label>
+    </div>
+    <hr />
+    <p>Report And Search Details</p>
+    <table width="760px" border="1">
+      <tr>
+        <td width="132px">Institution Name</td>
+        <td width="104px">FCMB</td>
+        <td width="144px">Report Number</td>
+        <td width="119px">W-0000222222</td>
+        <td width="230px">Report Order Date: </td>
+      </tr>
+      <tr>
+        <td>BVN Number</td>
+        <td>22242940726</td>
+        <td colspan="2"><div align="center">Search Confidence Score</div></td>
+        <td><div align="center">100%</div></td>
+      </tr>
+    </table>
+    <div>
+      <hr />
+    </div>
+    <div>
+      <p><strong>Customer Merge Details</strong></p>
+      <p>No Data found</p>
+    </div>
+    <hr />
+    <div>
+      <table width="760px" border="1">
+        <tr>
+          <td colspan="4"><strong>Customer Details (Demographics)</strong></td>
+        </tr>
+        <tr>
+          <td width="127px">Full Name</td>
+          <td width="198px">GARBA NA SALISU</td>
+          <td width="189px">Gender</td>
+          <td width="177px">Male</td>
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td>{{list.dob}}</td>
+          <td>Nationality</td>
+          <td>Nigeria</td>
+        </tr>
+        <tr>
+          <td height="72px" rowspan="3">Address</td>
+          <td rowspan="3">&nbsp;</td>
+          <td>Telephone Number (01)</td>
+          <td>07088888888</td>
+        </tr>
+        <tr>
+          <td height="22px">Telephone Number (02)</td>
+          <td>08034264838</td>
+        </tr>
+        <tr>
+          <td height="23px">Application Viability Score</td>
+          <td>NA</td>
+        </tr>
+      </table>
+      <hr />
+      <div>
+        <p>
+          <label>Credit Risk Overview</label>
+        </p>
+        <table width="760px" border="1">
+          <tr>
+            <td width="576px">Indicator</td>
+            <td width="133px">Value</td>
+          </tr>
+          <tr>
+            <td>Maximum number of days overdue in the last 12 months</td>
+            <td>60</td>
+          </tr>
+          <tr>
+            <td>Maximum number of facilities overdue in the last 12 months</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Number of Inquiries by Financial Institutions in the last 12 months</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Number of Dishonour Cheques</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Number of Suit Filed</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>Number of Guaranteed Loans</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>First Credit Reported Date</td>
+            <td>30-Jun-2014</td>
+          </tr>
+        </table>
+        <div>
+          <hr />
+          <div>
+            <p>Summary of Performance</p>
+            <table width="760px" height="121px" border="1">
+              <tr>
+                <td width="135px" height="46px">Institution Name</td>
+                <td width="95px">Facilities Count</td>
+                <td width="130px">Performing Facilities</td>
+                <td width="153px"><p>Non Performing Facilities</p></td>
+                <td width="66px">Approved Amount</td>
+                <td width="57px">Account balance</td>
+                <td width="42px">Overdue Amount</td>
+              </tr>
+              <tr>
+                <td>FCMB</td>
+                <td>4</td>
+                <td>4</td>
+                <td>0</td>
+                <td>351,500</td>
+                <td>266,678</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td height="42px">KEYSTONE BANK</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" border="1">
+              <tr>
+                <td colspan="7">Classification of Active Accounts by Institution Type</td>
+              </tr>
+              <tr>
+                <td width="107px">Institution Type</td>
+                <td width="94px">No. of Account</td>
+                <td width="64px">Currency</td>
+                <td width="122px">Approved Amount</td>
+                <td width="94px">Outstanding Balance</td>
+                <td width="82px">Amount Overdue</td>
+                <td width="111px">Legal Action Taken</td>
+              </tr>
+              <tr>
+                <td>Commercial bank</td>
+                <td>2</td>
+                <td>NGN</td>
+                <td>351,500</td>
+                <td>266,678</td>
+                <td>0</td>
+                <td>No</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" border="1">
+              <tr>
+                <td colspan="8">Classification of Active Accounts by Product Type</td>
+              </tr>
+              <tr>
+                <td width="91px" rowspan="2">Product Type</td>
+                <td width="51px" rowspan="2">No. of Account</td>
+                <td width="81px" rowspan="2">Accounts Opened in last 6 months</td>
+                <td width="62px" rowspan="2">Currency</td>
+                <td width="79px" rowspan="2">Approved Amount</td>
+                <td width="118px" rowspan="2">Total Outstanding Balance</td>
+                <td colspan="2">Amount Overdue</td>
+              </tr>
+              <tr>
+                <td>Overdue Amount</td>
+                <td>Recent Overdue Date</td>
+              </tr>
+              <tr>
+                <td>Overdraft</td>
+                <td>1</td>
+                <td>0</td>
+                <td>NGN</td>
+                <td>0</td>
+                <td>0</td>
+                <td width="85px">0</td>
+                <td width="95px">ND</td>
+              </tr>
+              <tr>
+                <td>Personal Loan</td>
+                <td>1</td>
+                <td>0</td>
+                <td>NGN</td>
+                <td>351,500</td>
+                <td>266,678</td>
+                <td>0</td>
+                <td>ND</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" height="234px" border="1">
+              <tr>
+                <td colspan="8">Credit Facility Details - Open Account</td>
+              </tr>
+              <tr>
+                <td><strong>S/N</strong></td>
+                <td><strong>Institution Name</strong></td>
+                <td><strong>Account Number</strong></td>
+                <td><strong>Credit facility type</strong></td>
+                <td><strong>Credit facility Status</strong></td>
+                <td><strong>Currency</strong></td>
+                <td><strong>Approved Amount</strong></td>
+                <td><strong>Current Balance</strong></td>
+              </tr>
+              <tr>
+                <td rowspan="5">1</td>
+                <td rowspan="5">FCMB</td>
+                <td>0054865666</td>
+                <td>Personal Loan</td>
+                <td>Open</td>
+                <td>NGN</td>
+                <td>351,500</td>
+                <td>266,678</td>
+              </tr>
+              <tr>
+                <td><strong>Amount Overdue</strong></td>
+                <td><strong>Amount Written Off</strong></td>
+                <td><strong>Credit Facility Opened Date</strong></td>
+                <td><strong>Credit Facility Maturity Date</strong></td>
+                <td><strong>Repayment</strong></td>
+                <td><strong>Last Payment Date</strong></td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>01-Jan-2021</td>
+                <td>11842</td>
+                <td>ND</td>
+              </tr>
+              <tr>
+                <td><strong>NDIA</strong></td>
+                <td><strong>Date Restrutured</strong></td>
+                <td><strong>Asset Classification</strong></td>
+                <td><strong>Security Coverage</strong></td>
+                <td><strong>Reported Date</strong></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>ND</td>
+                <td>Performing</td>
+                <td>Partial Secured</td>
+                <td>30-Apr-2018</td>
+                <td>&nbsp;</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" border="1">
+              <tr>
+                <td colspan="14">Days Past Due History (Last 24 Months)</td>
+              </tr>
+              <tr>
+                <td height="46px"><strong>S/N</strong></td>
+                <td><strong>Account Number</strong></td>
+                <td><strong>Apr-18</strong></td>
+                <td><strong>Mar-18</strong></td>
+                <td><strong>Feb-18</strong></td>
+                <td><strong>Jan-18</strong></td>
+                <td><strong>Dec-17</strong></td>
+                <td><strong>Nov-17</strong></td>
+                <td><strong>Oct-17</strong></td>
+                <td><strong>Sep-17</strong></td>
+                <td><strong>Aug-17</strong></td>
+                <td><strong>Jul-17</strong></td>
+                <td><strong>Jun-17</strong></td>
+                <td><strong>May-17</strong></td>
+              </tr>
+              <tr>
+                <td rowspan="3">1</td>
+                <td rowspan="3"><p>12545607</p>
+                <p>63340002</p></td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>60</td>
+                <td>32</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>29</td>
+                <td>29</td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>OK</td>
+              </tr>
+              <tr>
+                <td><strong>Apr-17</strong></td>
+                <td><strong>Mar-17</strong></td>
+                <td><strong>Feb-17</strong></td>
+                <td><strong>Jan-17</strong></td>
+                <td><strong>Dec-16</strong></td>
+                <td><strong>Nov-16</strong></td>
+                <td><strong>Oct-16</strong></td>
+                <td><strong>Sep-16</strong></td>
+                <td><strong>Aug-16</strong></td>
+                <td><strong>Jul-16</strong></td>
+                <td><strong>Jun-16</strong></td>
+                <td><strong>May-16</strong></td>
+              </tr>
+              <tr>
+                <td height="23px">OK</td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>OK</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" border="1">
+              <tr>
+                <td width="690px">Exposure Of Guarantors</td>
+              </tr>
+              <tr>
+                <td>No Data found</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" height="238px" border="1">
+              <tr>
+                <td colspan="8">Credit Facility Details - Open Account</td>
+              </tr>
+              <tr>
+                <td>S/N</td>
+                <td><strong>Institution Name</strong></td>
+                <td><strong>Account Number</strong></td>
+                <td><strong>Credit facility type</strong></td>
+                <td><strong>Credit facility Status</strong></td>
+                <td><strong>Currency</strong></td>
+                <td><strong>Approved Amount</strong></td>
+                <td><strong>Current Balance</strong></td>
+              </tr>
+              <tr>
+                <td rowspan="5">2</td>
+                <td rowspan="5">FCMB</td>
+                <td>0763340013</td>
+                <td>Overdraft</td>
+                <td>Open</td>
+                <td>NGN</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td><strong>Amount Overdue</strong></td>
+                <td><strong>Amount Written Off</strong></td>
+                <td><strong>Credit Facility Opened Date</strong></td>
+                <td><strong>Credit Facility Maturity Date</strong></td>
+                <td><strong>Repayment</strong></td>
+                <td><strong>Last Payment Date</strong></td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>ND</td>
+                <td>07-Jun-2012</td>
+                <td>03-Sep-2015</td>
+                <td>Demand 0</td>
+                <td>ND</td>
+              </tr>
+              <tr>
+                <td><strong>NDIA</strong></td>
+                <td><strong>Date Restrutured</strong></td>
+                <td><strong>Asset Classification</strong></td>
+                <td><strong>Security Coverage</strong></td>
+                <td><strong>Reported Date</strong></td>
+                <td>&nbsp;</td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>ND</td>
+                <td>Performing</td>
+                <td>Unsecured</td>
+                <td>31-Oct-2015</td>
+                <td>&nbsp;</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" border="1">
+              <tr>
+                <td colspan="14">Days Past Due History (Last 24 Months)</td>
+              </tr>
+              <tr>
+                <td>S/N</td>
+                <td>Account Number</td>
+                <td><strong>Oct-15</strong></td>
+                <td><strong>Sep-15</strong></td>
+                <td><strong>Aug-15</strong></td>
+                <td><strong>Jul-15</strong></td>
+                <td><strong>Jun-15</strong></td>
+                <td><strong>May-15</strong></td>
+                <td><strong>Apr-15</strong></td>
+                <td><strong>Mar-15</strong></td>
+                <td><strong>Feb-15</strong></td>
+                <td><strong>Jan-15</strong></td>
+                <td><strong>Dec-14</strong></td>
+                <td><strong>Nov-14</strong></td>
+              </tr>
+              <tr>
+                <td rowspan="3">2</td>
+                <td rowspan="3">0763340013</td>
+                <td>OK</td>
+                <td>ND</td>
+                <td>OK</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+              </tr>
+              <tr>
+                <td><strong>Oct-14</strong></td>
+                <td><strong>Sep-14</strong></td>
+                <td><strong>Aug-14</strong></td>
+                <td><strong>Jul-14</strong></td>
+                <td><strong>Jun-14</strong></td>
+                <td><strong>May-14</strong></td>
+                <td><strong>Apr-14</strong></td>
+                <td><strong>Mar-14</strong></td>
+                <td><strong>Feb-14</strong></td>
+                <td><strong>Jan-14</strong></td>
+                <td><strong>Dec-13</strong></td>
+                <td><strong>Nov-13</strong></td>
+              </tr>
+              <tr>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+                <td>ND</td>
+              </tr>
+            </table>
+            <hr />
+            <table width="760px" border="1">
+              <tr>
+                <td width="690px">Exposure Of Guarantors</td>
+              </tr>
+              <tr>
+                <td>No Data found</td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+          </div>
+        </div>
+        <p>&nbsp;</p>
+      </div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </div>
+    <p>&nbsp;</p>
+  </div>
+
+ </div> 
+</div>
+  

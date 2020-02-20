@@ -26,7 +26,7 @@ export class InterestsService {
     );
   }
 
-  getInterestsBalance(page:number, size:number){
+    getInterestsBalance(page:number, size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 
       `swipe_admin/list/interest_balance?page=${page}&size=${size}`)

@@ -2,10 +2,10 @@
   <div class="component-header">
     <div>All transactions</div>
   </div>
-
-  <div class="normal-flex-el">
+  <div class="flex-btw wrap">
+  <div class="flex-el">
     <div class="search-container">
-      <mat-icon class="prefix">search</mat-icon>
+      <mat-icon class="prefix">search</mat-icon> 
       <input type="text" class="mSearch"
       (keyup)=applyFilter()
       [(ngModel)]="searchKey"
@@ -16,17 +16,37 @@
     &nbsp;
     &nbsp;
     <div *ngIf="loading">
-      <mat-spinner 
+      <mat-spinner
         color="accent"
         [strokeWidth]= 3
         [diameter]=18>
       </mat-spinner>
     </div>
   </div>
-  
- 
+    <div>
+    <mat-form-field class="jamez-input"
+    floatLabel="never">
+      <input matInput autocomplete="off" [(ngModel)]="fromdate"
+      [matDatepicker]="pickers" placeholder="Start date">
+      <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+      <mat-datepicker #pickers></mat-datepicker>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field class="jamez-input" floatLabel="never">
+      <input matInput autocomplete="off"  [(ngModel)]="todate"
+      [matDatepicker]="picker" placeholder="End date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    
+  </div>
+  <button mat-raised-button
+      (click)="searchByDate()"
+      color="accent">Search</button>
+  </div>
   <div>
-    <table mat-table class="full-width-table" [dataSource]="listData" matSort 
+    <table mat-table class="full-width-table" [dataSource]="listData" matSort
     aria-label="Elements">
       <ng-container matColumnDef="channel">
         <th mat-header-cell *matHeaderCellDef>Channel</th>
@@ -47,7 +67,7 @@
         <th mat-header-cell *matHeaderCellDef>Account holder</th>
         <td mat-cell *matCellDef="let row" data-label="Account Holder">{{row.accountholder}}</td>
       </ng-container>
-  
+
       <!-- Name Column -->
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef>Amount</th>
@@ -63,11 +83,11 @@
         <th mat-header-cell *matHeaderCellDef>Charges</th>
         <td mat-cell *matCellDef="let row" data-label="Charges">{{row.deduction}}</td>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-  
+
     <mat-paginator #paginator class="paginator"
       [length]="tableLength"
       [pageIndex]="0"

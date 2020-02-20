@@ -1,27 +1,50 @@
 <div class="component-container">
-  <div class="flex-btw">
-    <div class="normal-flex-el">
+  <div class="flex-btw wrap">
+    <div class="flex-el">
       <div class="search-container">
         <mat-icon class="prefix">search</mat-icon>
         <input type="text" class="mSearch"
-        [(ngModel)]="searchKey" (keyup)="applyFilter()"
-        placeholder="Search">
+        (keyup)="applyFilter()"
+
+        [(ngModel)]="searchKey"
+        placeholder="Search...">
         <mat-icon class="suffix" *ngIf="searchKey != ''"
         (click)="clearSearch()">close</mat-icon>
       </div>
       &nbsp;
+      &nbsp;
       <div *ngIf="loading">
-        <mat-spinner 
+        <mat-spinner
           color="accent"
           [strokeWidth]= 3
           [diameter]=18>
         </mat-spinner>
       </div>
     </div>
-  </div>
-  
+      <div>
+      <mat-form-field class="jamez-input"
+      floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="fromdate"
+        [matDatepicker]="pickers" placeholder="Start date">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off"  [(ngModel)]="todate"
+        [matDatepicker]="picker" placeholder="End date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button
+      (click)="searchByDate()"
+      color="accent">Search date</button>
+    </div>
+    </div>
+
   <div>
-    <table mat-table class="full-width-table" [dataSource]="listData" 
+    <table mat-table class="full-width-table" [dataSource]="listData"
     matSort aria-label="Elements">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Account name</th>
@@ -43,7 +66,7 @@
     </ng-container>
     <ng-container matColumnDef="amount">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-      <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount|number}}</td>
+      <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount}}</td>
     </ng-container>
 
     <ng-container matColumnDef="phone">
@@ -56,14 +79,14 @@
           No record found
         </mat-footer-cell>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <mat-footer-row *matFooterRowDef="['no-activity']" 
+      <mat-footer-row *matFooterRowDef="['no-activity']"
         [ngClass]="{'hide': tableLength != 0 }">
       </mat-footer-row>
     </table>
-  
+
     <mat-paginator #paginator
       [length]="tableLength"
       [pageIndex]="0"
@@ -72,4 +95,3 @@
   </div>
 
 </div>
-  
