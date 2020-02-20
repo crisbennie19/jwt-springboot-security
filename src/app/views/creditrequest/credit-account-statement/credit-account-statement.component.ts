@@ -24,6 +24,8 @@ export class CreditAccountStatementComponent implements OnInit {
     
   }
 
+  
+
 
 
   closeDialog(){
