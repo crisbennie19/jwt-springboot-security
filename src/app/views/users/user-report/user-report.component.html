@@ -1,11 +1,12 @@
-<div class="component-header">
+<div class="container">
+<div class="component-header"  >
   <div>
     <mat-icon class="mat-18x">account_balance_wallet</mat-icon> &nbsp;User Details
   </div>
   <button mat-button color="warn" (click)="closeDialog()">Close</button>
 </div>
 
-<div class="view-container">
+<div class="view-container" *ngFor="let list of listData">
   
   <div>
     <table width="760px" border="0">
@@ -22,7 +23,7 @@
       </tr>
       <tr>
         <td>User Name</td>
-        <td>AKOWE CHRISTIAN</td>
+        <td>{{list.fullname}}</td>
       </tr>
     </table>
     
@@ -36,7 +37,7 @@
     </div>
     <hr />
     <p>Report And Search Details</p>
-    <table width="743px" border="1">
+    <table width="760px" border="1">
       <tr>
         <td width="132px">Institution Name</td>
         <td width="104px">FCMB</td>
@@ -55,14 +56,14 @@
       <hr />
     </div>
     <div>
-      <p>Customer Merge Details</p>
+      <p><strong>Customer Merge Details</strong></p>
       <p>No Data found</p>
     </div>
     <hr />
     <div>
-      <table width="719px" border="1">
+      <table width="760px" border="1">
         <tr>
-          <td colspan="4">Customer Details (Demographics)</td>
+          <td colspan="4"><strong>Customer Details (Demographics)</strong></td>
         </tr>
         <tr>
           <td width="127px">Full Name</td>
@@ -72,7 +73,7 @@
         </tr>
         <tr>
           <td>Date of Birth</td>
-          <td>24-Apr-1978</td>
+          <td>{{list.dob}}</td>
           <td>Nationality</td>
           <td>Nigeria</td>
         </tr>
@@ -96,7 +97,7 @@
         <p>
           <label>Credit Risk Overview</label>
         </p>
-        <table width="725px" border="1">
+        <table width="760px" border="1">
           <tr>
             <td width="576px">Indicator</td>
             <td width="133px">Value</td>
@@ -134,7 +135,7 @@
           <hr />
           <div>
             <p>Summary of Performance</p>
-            <table width="724px" height="121px" border="1">
+            <table width="760px" height="121px" border="1">
               <tr>
                 <td width="135px" height="46px">Institution Name</td>
                 <td width="95px">Facilities Count</td>
@@ -164,7 +165,7 @@
               </tr>
             </table>
             <hr />
-            <table width="720px" border="1">
+            <table width="760px" border="1">
               <tr>
                 <td colspan="7">Classification of Active Accounts by Institution Type</td>
               </tr>
@@ -188,7 +189,7 @@
               </tr>
             </table>
             <hr />
-            <table width="714px" border="1">
+            <table width="760px" border="1">
               <tr>
                 <td colspan="8">Classification of Active Accounts by Product Type</td>
               </tr>
@@ -227,7 +228,7 @@
               </tr>
             </table>
             <hr />
-            <table width="709px" height="234px" border="1">
+            <table width="760px" height="234px" border="1">
               <tr>
                 <td colspan="8">Credit Facility Details - Open Account</td>
               </tr>
@@ -285,7 +286,7 @@
               </tr>
             </table>
             <hr />
-            <table width="706px" border="1">
+            <table width="760px" border="1">
               <tr>
                 <td colspan="14">Days Past Due History (Last 24 Months)</td>
               </tr>
@@ -352,7 +353,7 @@
               </tr>
             </table>
             <hr />
-            <table width="700px" border="1">
+            <table width="760px" border="1">
               <tr>
                 <td width="690px">Exposure Of Guarantors</td>
               </tr>
@@ -361,7 +362,7 @@
               </tr>
             </table>
             <hr />
-            <table width="697px" height="238px" border="1">
+            <table width="760px" height="238px" border="1">
               <tr>
                 <td colspan="8">Credit Facility Details - Open Account</td>
               </tr>
@@ -419,7 +420,7 @@
               </tr>
             </table>
             <hr />
-            <table width="698px" border="1">
+            <table width="760px" border="1">
               <tr>
                 <td colspan="14">Days Past Due History (Last 24 Months)</td>
               </tr>
@@ -485,7 +486,7 @@
               </tr>
             </table>
             <hr />
-            <table width="700px" border="1">
+            <table width="760px" border="1">
               <tr>
                 <td width="690px">Exposure Of Guarantors</td>
               </tr>
@@ -506,4 +507,5 @@
   </div>
 
  </div> 
+</div>
   
