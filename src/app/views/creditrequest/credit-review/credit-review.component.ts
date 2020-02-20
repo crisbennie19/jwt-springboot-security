@@ -94,7 +94,6 @@ export class CreditReviewComponent implements OnInit {
     dialogConfig.minWidth = '50%';
     // dialogConfig.data = row;
     this.dialog.open(CreditCheckComponent, dialogConfig);
-    // window.open("https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf", "_blank")
   }
 
   viewStatement(){
@@ -102,6 +101,7 @@ export class CreditReviewComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = '50%';
+    dialogConfig.data = { pdfSrc: 'https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf'}
     // dialogConfig.data = row;
     this.dialog.open(CreditAccountStatementComponent, dialogConfig);
   }
