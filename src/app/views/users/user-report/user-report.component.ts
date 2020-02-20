@@ -17,25 +17,25 @@ listData:[];
   ) { }
 
   ngOnInit() {
-    this.getUsersList();
+    // this.getUsersList();
   }
   closeDialog(){
     this.dialogRef.close()
     event.preventDefault()
   }
-  getUsersList(){
+  // getUsersList(){
     
-    this.data.usersService.getUsers(0,1000)
-    .pipe(
-      map( res => res['data'])
-    )
-    .subscribe( (res:any) => {
-     this.listData = res
+  //   this.data.usersService.getUsers(0,1000)
+  //   .pipe(
+  //     map( res => res['data'])
+  //   )
+  //   .subscribe( (res:any) => {
+  //    this.listData = res
       
-   console.log(this.listData); 
+  //  console.log(this.listData); 
 
     
-  });
+  // });
 
-  }
+  // }
 }

@@ -7,6 +7,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { CreditCheckComponent } from '../credit-check/credit-check.component';
 import { CreditAccountStatementComponent } from '../credit-account-statement/credit-account-statement.component';
 import { CreditRequestHistoryComponent } from '../credit-request-history/credit-request-history.component';
+import { UsersViewComponent } from '../../users/users-view/users-view.component';
+import { UserReportComponent } from '../../users/user-report/user-report.component';
 
 @Component({
   selector: 'app-credit-review',
@@ -114,7 +116,17 @@ export class CreditReviewComponent implements OnInit {
     // dialogConfig.data = row;
     this.dialog.open(CreditRequestHistoryComponent, dialogConfig);
   }
-
+  openUserView(){
+ 
+    const dialConfig = new MatDialogConfig();
+    dialConfig.disableClose = true;
+    dialConfig.autoFocus = false;
+    // dialConfig.data = row;
+    dialConfig.minWidth = "60%";
+    dialConfig.maxHeight = "90vh"
+    this.dialog.open(UserReportComponent,dialConfig)
+    
+    }
   closeDialog(){
     this.dialogRef.close();
     event.preventDefault();

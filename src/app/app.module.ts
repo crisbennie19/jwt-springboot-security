@@ -80,13 +80,10 @@ import { AwaitingReviewComponent } from './views/creditrequest/awaiting-review/a
 import { AwaitingApprrovalComponent } from './views/creditrequest/awaiting-approval/awaiting-approval.component';
 import { CreditReviewComponent } from './views/creditrequest/credit-review/credit-review.component';
 import { CreditToApproveComponent } from './views/creditrequest/credit-to-approve/credit-to-approve.component';
-<<<<<<< HEAD
 import { CreditCheckComponent } from './views/creditrequest/credit-check/credit-check.component';
 import { CreditAccountStatementComponent } from './views/creditrequest/credit-account-statement/credit-account-statement.component';
 import { CreditRequestHistoryComponent } from './views/creditrequest/credit-request-history/credit-request-history.component';
-=======
 import { UserReportComponent } from './views/users/user-report/user-report.component';
->>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
 
 @NgModule({
   declarations: [
@@ -149,13 +146,10 @@ import { UserReportComponent } from './views/users/user-report/user-report.compo
     SettingsComponent,
     CreditReviewComponent,
     CreditToApproveComponent,
-<<<<<<< HEAD
     CreditCheckComponent,
     CreditAccountStatementComponent,
-    CreditRequestHistoryComponent
-=======
+    CreditRequestHistoryComponent,
     UserReportComponent
->>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
   ],
   imports: [
     // ImageViewerModule,
@@ -191,11 +185,8 @@ import { UserReportComponent } from './views/users/user-report/user-report.compo
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
-<<<<<<< HEAD
-    PdfViewerModule
-=======
+    PdfViewerModule,
     NgbModule
->>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
   ],
   providers: [],
   entryComponents:[
@@ -216,13 +207,10 @@ import { UserReportComponent } from './views/users/user-report/user-report.compo
     AwaitingApprrovalComponent,
     CreditReviewComponent,
     CreditToApproveComponent,
-<<<<<<< HEAD
     CreditCheckComponent,
     CreditAccountStatementComponent,
-    CreditRequestHistoryComponent
-=======
+    CreditRequestHistoryComponent,
     UserReportComponent
->>>>>>> afb5c4e1eb901b543fe3510651d19c2f41b214ba
   ],
   bootstrap: [AppComponent],
   

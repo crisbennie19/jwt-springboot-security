@@ -103,7 +103,7 @@ openUserReport(row){
   dialConfig.maxHeight = "90vh"
   this.dialog.open(UserReportComponent,dialConfig)
   
-  }
+  } 
 
 openUserEdit(row){
   const dialConfig = new MatDialogConfig();
