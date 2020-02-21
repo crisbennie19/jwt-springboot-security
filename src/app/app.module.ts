@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
 
@@ -153,7 +154,8 @@ import { CreditSubjectComponent } from './views/creditrequest/credit-subject/cre
     CreditRequestHistoryComponent,
     UserReportComponent,
     CreditReportComponent,
-    CreditSubjectComponent
+    CreditSubjectComponent,
+    UserReportComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -214,7 +216,8 @@ import { CreditSubjectComponent } from './views/creditrequest/credit-subject/cre
     CreditCheckComponent,
     CreditAccountStatementComponent,
     CreditRequestHistoryComponent,
-    UserReportComponent
+    UserReportComponent,
+    CreditRequestHistoryComponent
   ],
   bootstrap: [AppComponent],
   
