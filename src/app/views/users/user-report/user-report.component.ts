@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class UserReportComponent implements OnInit {
 listData:[];
+@Input() row:number
   constructor(
     @Inject(MAT_DIALOG_DATA) public selectedRow:any,
     private dialogRef: MatDialogRef<UserReportComponent>,
@@ -17,25 +18,12 @@ listData:[];
   ) { }
 
   ngOnInit() {
+    //console.log(this.selectedRow)
     // this.getUsersList();
   }
   closeDialog(){
     this.dialogRef.close()
     event.preventDefault()
   }
-  // getUsersList(){
-    
-  //   this.data.usersService.getUsers(0,1000)
-  //   .pipe(
-  //     map( res => res['data'])
-  //   )
-  //   .subscribe( (res:any) => {
-  //    this.listData = res
-      
-  //  console.log(this.listData); 
-
-    
-  // });
-
-  // }
+ 
 }

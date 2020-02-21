@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
@@ -22,6 +22,7 @@ export class CreditReviewComponent implements OnInit {
   //   comment:'',
   //   status:false
   // }
+  @Input() row:number;
   loading: boolean;
   selecdtedAction: any = '';
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -45,7 +46,7 @@ export class CreditReviewComponent implements OnInit {
     private dialog:MatDialog) { }
 
   ngOnInit() {
-    console.log(this.selectedRequest);
+    this.creditCheckPerformance();
     this.request()
     
     // this.requestActionForm = this.formBuilder.group({
@@ -57,7 +58,13 @@ export class CreditReviewComponent implements OnInit {
   transform(){
     return this.domSanitizer.bypassSecurityTrustResourceUrl(this.doc);
   }
-
+   creditCheckPerformance(){
+      this.data.creditService.creditCheckPerformance().pipe(
+        map(res=>res['message'])
+      ).subscribe(res=>{
+        console.log(res);
+      })
+   }
   request(){
     // if(this.requestActionForm.invalid){
     //   return;
@@ -121,7 +128,7 @@ export class CreditReviewComponent implements OnInit {
     const dialConfig = new MatDialogConfig();
     dialConfig.disableClose = true;
     dialConfig.autoFocus = false;
-    // dialConfig.data = row;
+    dialConfig.data = this.selectedRequest;
     dialConfig.minWidth = "60%";
     dialConfig.maxHeight = "90vh"
     this.dialog.open(UserReportComponent,dialConfig)

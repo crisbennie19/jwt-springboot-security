@@ -22,7 +22,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MAT_DIALOG_DATA
 } from '@angular/material';
 
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { BaseComponent } from './base/base.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -84,6 +84,8 @@ import { CreditCheckComponent } from './views/creditrequest/credit-check/credit-
 import { CreditAccountStatementComponent } from './views/creditrequest/credit-account-statement/credit-account-statement.component';
 import { CreditRequestHistoryComponent } from './views/creditrequest/credit-request-history/credit-request-history.component';
 import { UserReportComponent } from './views/users/user-report/user-report.component';
+import { CreditReportComponent } from './views/creditrequest/credit-report/credit-report.component';
+import { CreditSubjectComponent } from './views/creditrequest/credit-subject/credit-subject.component';
 
 @NgModule({
   declarations: [
@@ -149,7 +151,9 @@ import { UserReportComponent } from './views/users/user-report/user-report.compo
     CreditCheckComponent,
     CreditAccountStatementComponent,
     CreditRequestHistoryComponent,
-    UserReportComponent
+    UserReportComponent,
+    CreditReportComponent,
+    CreditSubjectComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -185,7 +189,7 @@ import { UserReportComponent } from './views/users/user-report/user-report.compo
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    PdfViewerModule,
+    // PdfViewerModule,
     NgbModule
   ],
   providers: [],

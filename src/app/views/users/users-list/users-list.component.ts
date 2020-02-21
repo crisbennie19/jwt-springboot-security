@@ -42,7 +42,7 @@ export class UsersListComponent implements OnInit {
     this.loading = true;
     this.data.usersService.getUsers(0,1000)
     .pipe(
-      map( res => res['data'])
+      map( res => res['data']) 
     )
     .subscribe( res => {
       //  res.forEach((dat)=>{

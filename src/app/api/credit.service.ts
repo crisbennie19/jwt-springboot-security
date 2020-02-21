@@ -29,7 +29,14 @@ export class CreditService {
         )
     )
   }
-
+ creditCheckPerformance(){
+   let bvns= '22363225076'
+   return this.http.get(
+     encodeURI(this._baseUrl+
+      `credit_check/verify_performance?bvn=${bvns}`
+      )
+   )
+ }
   getCreditRequests(page:number,size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 
