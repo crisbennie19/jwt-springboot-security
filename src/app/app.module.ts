@@ -85,6 +85,7 @@ import { CreditCheckComponent } from './views/creditrequest/credit-check/credit-
 import { CreditAccountStatementComponent } from './views/creditrequest/credit-account-statement/credit-account-statement.component';
 import { CreditRequestHistoryComponent } from './views/creditrequest/credit-request-history/credit-request-history.component';
 import { UserReportComponent } from './views/users/user-report/user-report.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @NgModule({
   declarations: [
@@ -216,3 +217,5 @@ import { UserReportComponent } from './views/users/user-report/user-report.compo
   
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

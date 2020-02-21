@@ -2,10 +2,26 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'app-credit-account-statement',
-  templateUrl: './credit-account-statement.component.html',
+  // templateUrl: './credit-account-statement.component.html',
+  template:`
+  <mat-dialog-content>
+  <pdf-viewer
+  [src]="pdfSrc"
+  [render-text]="true"
+  [page]="page"
+  [show-all]="true"
+  style="display: block;">
+  
+  </pdf-viewer>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-footer">
+  <button mat-button mat-dialog-close mat-raised-button color="primary">Back</button>
+</mat-dialog-actions>
+  `,
   styleUrls: ['./credit-account-statement.component.scss']
 })
 export class CreditAccountStatementComponent implements OnInit {
@@ -24,14 +40,9 @@ export class CreditAccountStatementComponent implements OnInit {
     
   }
 
-  
-
-
-
   closeDialog(){
     this.dialogRef.close();
     event.preventDefault();
   }
 
 }
-
