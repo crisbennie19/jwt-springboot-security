@@ -27,7 +27,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 export class CreditAccountStatementComponent implements OnInit {
 
   page:number = 1;
-  pdfSrc:string = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
+  // pdfSrc:string = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
   
    constructor(
     @Inject(MAT_DIALOG_DATA) private selectedRequest:any,

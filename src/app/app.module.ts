@@ -23,7 +23,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MAT_DIALOG_DATA
 } from '@angular/material';
 
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { BaseComponent } from './base/base.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -85,7 +85,12 @@ import { CreditCheckComponent } from './views/creditrequest/credit-check/credit-
 import { CreditAccountStatementComponent } from './views/creditrequest/credit-account-statement/credit-account-statement.component';
 import { CreditRequestHistoryComponent } from './views/creditrequest/credit-request-history/credit-request-history.component';
 import { UserReportComponent } from './views/users/user-report/user-report.component';
+<<<<<<< HEAD
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+=======
+import { CreditReportComponent } from './views/creditrequest/credit-report/credit-report.component';
+import { CreditSubjectComponent } from './views/creditrequest/credit-subject/credit-subject.component';
+>>>>>>> 1fa00f8d7cbb3b75cd2867818520fb4aed93fabe
 
 @NgModule({
   declarations: [
@@ -151,6 +156,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     CreditCheckComponent,
     CreditAccountStatementComponent,
     CreditRequestHistoryComponent,
+    UserReportComponent,
+    CreditReportComponent,
+    CreditSubjectComponent,
     UserReportComponent
   ],
   imports: [
@@ -187,8 +195,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    NgbModule,
-    PdfViewerModule
+    // PdfViewerModule,
+    NgbModule
   ],
   providers: [],
   entryComponents:[
@@ -211,6 +219,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     CreditToApproveComponent,
     CreditCheckComponent,
     CreditAccountStatementComponent,
+    CreditRequestHistoryComponent,
+    UserReportComponent,
     CreditRequestHistoryComponent
   ],
   bootstrap: [AppComponent],

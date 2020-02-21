@@ -45,6 +45,7 @@ export class AwaitingReviewComponent implements OnInit {
     )
     .subscribe( res => {
       this.loading = false;
+      
       this.tableLength = res.length
       this.listData = new MatTableDataSource(res);        
       this.listData.paginator = this.paginator;
@@ -139,9 +140,11 @@ export class AwaitingReviewComponent implements OnInit {
   }
 
   requestAction(row){
+    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
+    dialogConfig.data=row
     dialogConfig.minWidth = '60%';
     dialogConfig.data = row;
     this.dialog.open(CreditReviewComponent, dialogConfig);

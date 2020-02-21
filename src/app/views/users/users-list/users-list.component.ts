@@ -42,7 +42,7 @@ export class UsersListComponent implements OnInit {
     this.loading = true;
     this.data.usersService.getUsers(0,1000)
     .pipe(
-      map( res => res['data'])
+      map( res => res['data']) 
     )
     .subscribe( res => {
       //  res.forEach((dat)=>{
@@ -103,7 +103,7 @@ openUserReport(row){
   dialConfig.maxHeight = "90vh"
   this.dialog.open(UserReportComponent,dialConfig)
   
-  }
+  } 
 
 openUserEdit(row){
   const dialConfig = new MatDialogConfig();

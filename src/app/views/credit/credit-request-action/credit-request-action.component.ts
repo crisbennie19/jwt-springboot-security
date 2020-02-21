@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA, MatDialogConfig, MatDialog } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
+import { UserReportComponent } from '../../users/user-report/user-report.component';
 
 @Component({
   selector: 'app-credit-request-action',
@@ -23,7 +24,9 @@ export class CreditRequestActionComponent implements OnInit {
     private dialogRef: MatDialogRef<CreditRequestActionComponent>,
     private formBuilder: FormBuilder,
     private data:DataService,
-    private snackBar:MatSnackBar) { }
+    private snackBar:MatSnackBar,
+    private dialog:MatDialog
+    ) { }
 
   ngOnInit() {
     this.requestActionForm = this.formBuilder.group({
@@ -33,15 +36,15 @@ export class CreditRequestActionComponent implements OnInit {
   }
 
   performAction(event){
-    let filtername = event.value;
-    switch(filtername){
-      case "credit_check": 
-        this.toPerform = filtername;
-        alert(filtername)
-      break;
-      default:
-    }
+   const dialConfig = new MatDialogConfig();
+    dialConfig.disableClose = true;
+    dialConfig.autoFocus = false;
+    
+    dialConfig.minWidth = "760px";
+    dialConfig.maxHeight = "90vh"
+    this.dialog.open(UserReportComponent,dialConfig)
   }
+ 
 
   request(){
     if(this.requestActionForm.invalid){
