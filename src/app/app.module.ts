@@ -23,7 +23,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MAT_DIALOG_DATA
 } from '@angular/material';
 
-// import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { BaseComponent } from './base/base.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -87,6 +87,7 @@ import { CreditRequestHistoryComponent } from './views/creditrequest/credit-requ
 import { UserReportComponent } from './views/users/user-report/user-report.component';
 import { CreditReportComponent } from './views/creditrequest/credit-report/credit-report.component';
 import { CreditSubjectComponent } from './views/creditrequest/credit-subject/credit-subject.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @NgModule({
   declarations: [
@@ -191,7 +192,7 @@ import { CreditSubjectComponent } from './views/creditrequest/credit-subject/cre
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    // PdfViewerModule,
+    PdfViewerModule,
     NgbModule
   ],
   providers: [],
@@ -223,3 +224,5 @@ import { CreditSubjectComponent } from './views/creditrequest/credit-subject/cre
   
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

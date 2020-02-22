@@ -9,14 +9,14 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
   // templateUrl: './credit-account-statement.component.html',
   template:`
   <mat-dialog-content>
-  <pdf-viewer
+  <!-- <pdf-viewer
   [src]="pdfSrc"
   [render-text]="true"
   [page]="page"
   [show-all]="true"
   style="display: block;">
   
-  </pdf-viewer>
+  </pdf-viewer> -->
 </mat-dialog-content>
 <mat-dialog-actions class="dialog-footer">
   <button mat-button mat-dialog-close mat-raised-button color="primary">Back</button>
