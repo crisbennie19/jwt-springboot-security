@@ -22,6 +22,7 @@ export class CreditReviewComponent implements OnInit {
   //   comment:'',
   //   status:false
   // }
+
   @Input() row:number;
   loading: boolean;
   selecdtedAction: any = '';
@@ -59,10 +60,12 @@ export class CreditReviewComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(this.doc);
   }
    creditCheckPerformance(){
-      this.data.creditService.creditCheckPerformance().pipe(
-        map(res=>res['message'])
-      ).subscribe(res=>{
-        console.log(res);
+    let bvns= '22363225076'
+      this.data.creditService.creditCheckPerformance(bvns).subscribe((res)=>{
+        var success = res.message.substring(8);
+        if(success==3){
+          
+        }
       })
    }
   request(){
@@ -134,6 +137,7 @@ export class CreditReviewComponent implements OnInit {
     this.dialog.open(UserReportComponent,dialConfig)
     
     }
+    
   closeDialog(){
     this.dialogRef.close();
     event.preventDefault();

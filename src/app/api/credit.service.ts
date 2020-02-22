@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpService } from './http.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { verifyPerformance } from '../models/savings.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,13 +30,25 @@ export class CreditService {
         )
     )
   }
- creditCheckPerformance(){
-   let bvns= '22363225076'
-   return this.http.get(
-     encodeURI(this._baseUrl+
-      `credit_check/verify_performance?bvn=${bvns}`
-      )
-   )
+ creditCheckPerformance(body){
+  
+  return this.http.post(
+    encodeURI(this._baseUrl+`credit_check/verify_performance?bvn=22363225076`), body
+  ).
+  pipe(
+    map((data:any)=>{ 
+      return data
+    }),
+        catchError( err => this.errorHandler(err) )
+
+    );
+  
+
+  //  return this.http.post(
+  //    encodeURI(this._baseUrl+
+  //     `credit_check/verify_performance?bvn=${bvn}`), body
+  //     )
+   
  }
   getCreditRequests(page:number,size:number){
     return this.http.get(

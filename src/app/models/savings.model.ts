@@ -13,3 +13,6 @@ export interface Savingstype {
     name: string,
     points: number
   }
+  export interface verifyPerformance{
+    bvn:string
+  }
