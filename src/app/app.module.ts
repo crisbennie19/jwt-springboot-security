@@ -85,12 +85,8 @@ import { CreditCheckComponent } from './views/creditrequest/credit-check/credit-
 import { CreditAccountStatementComponent } from './views/creditrequest/credit-account-statement/credit-account-statement.component';
 import { CreditRequestHistoryComponent } from './views/creditrequest/credit-request-history/credit-request-history.component';
 import { UserReportComponent } from './views/users/user-report/user-report.component';
-<<<<<<< HEAD
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-=======
 import { CreditReportComponent } from './views/creditrequest/credit-report/credit-report.component';
 import { CreditSubjectComponent } from './views/creditrequest/credit-subject/credit-subject.component';
->>>>>>> 1fa00f8d7cbb3b75cd2867818520fb4aed93fabe
 
 @NgModule({
   declarations: [
@@ -227,5 +223,3 @@ import { CreditSubjectComponent } from './views/creditrequest/credit-subject/cre
   
 })
 export class AppModule { }
-
-platformBrowserDynamic().bootstrapModule(AppModule);
