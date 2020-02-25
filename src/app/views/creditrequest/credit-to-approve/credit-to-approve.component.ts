@@ -57,7 +57,6 @@ export class CreditToApproveComponent implements OnInit {
 
   getUserPerformance(){
     this.loading = true;
-    console.log(this.selectedRequest.accountid);
     this.dataService.creditService.userPerformanceDetails(this.selectedRequest.accountid)
     .pipe(
       map( res => res['data'])
@@ -65,7 +64,6 @@ export class CreditToApproveComponent implements OnInit {
     .subscribe( res => {
       this.userPerformance = res;
       this.loading = false;
-      console.log(this.userPerformance)
     }, err => {
       this.loading = false;
       this.snackBar.open("Error connecting to server, try again", "Dismiss", {
