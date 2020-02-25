@@ -139,15 +139,14 @@ export class AwaitingReviewComponent implements OnInit {
     })
   }
 
-  requestAction(row){
-    
+  requestAction(row){    
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
     dialogConfig.data=row
     dialogConfig.minWidth = '60%';
-    dialogConfig.data = row;
     this.dialog.open(CreditReviewComponent, dialogConfig);
+    console.log(row)
   }
 
   viewStatement(row){

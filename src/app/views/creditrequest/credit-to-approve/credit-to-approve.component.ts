@@ -18,6 +18,7 @@ export class CreditToApproveComponent implements OnInit {
   //   comment:'',
   //   status:false
   // }
+  public userPerformance: any = '';
   selecdtedAction:any = '';
   loading: boolean;
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -32,16 +33,17 @@ export class CreditToApproveComponent implements OnInit {
   gAAAAhAHBrJcnJAQAAiwUAABIAAAAAAAAAAAAAAAAAvjcAAHdvcmQvZm9udFRhYmxlLnhtbFBLBQYAAAAADAAMAAEDAAC3OQAAAAA=`
   
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     @Inject(MAT_DIALOG_DATA) private selectedRequest:any,
     private dialogRef: MatDialogRef<CreditToApproveComponent>,
     private formBuilder: FormBuilder,
     private domSanitizer:DomSanitizer,
-    private data:DataService,
+    private dataService:DataService,
     private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-    console.log(this.selectedRequest);
     this.request()
+    this.getUserPerformance()
     
     // this.requestActionForm = this.formBuilder.group({
     //   'comment':['', Validators.required],
@@ -53,6 +55,26 @@ export class CreditToApproveComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(this.doc);
   }
 
+  getUserPerformance(){
+    this.loading = true;
+    console.log(this.selectedRequest.accountid);
+    this.dataService.creditService.userPerformanceDetails(this.selectedRequest.accountid)
+    .pipe(
+      map( res => res['data'])
+    )
+    .subscribe( res => {
+      this.userPerformance = res;
+      this.loading = false;
+      console.log(this.userPerformance)
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Error connecting to server, try again", "Dismiss", {
+        duration:2000
+      })
+    })
+  }
+
+  
   request(){
     // if(this.requestActionForm.invalid){
     //   return;
@@ -63,7 +85,7 @@ export class CreditToApproveComponent implements OnInit {
     // this.newMessage.comment = form.get('comment').value;
     // this.newMessage.status = form.get('status').value;
 
-    this.data.creditService.previewBankStatement(this.selectedRequest.id)
+    this.dataService.creditService.previewBankStatement(this.selectedRequest.id)
     .pipe(
       map( res => res['data'])
     )

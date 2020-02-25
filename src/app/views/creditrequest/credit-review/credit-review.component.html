@@ -15,7 +15,7 @@
       </mat-form-field>
   
       <mat-form-field class="form-field" appearance="outline">
-        <input matInput placeholder="Comment" >
+        <input matInput placeholder="Comment" [(ngModel)]="comment" >
         <mat-icon matPrefix>comment</mat-icon>        
       </mat-form-field>
 
@@ -23,8 +23,8 @@
         <mat-label>Seclect Action</mat-label>
         <mat-select [(value)]="selecdtedAction" matNativeControl required>
           <mat-option>Select action</mat-option>
-          <mat-option value="0">Approve</mat-option>
-          <mat-option value="1">Decline</mat-option>
+          <mat-option value="1">Approve</mat-option>
+          <mat-option value="0">Decline</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -32,15 +32,16 @@
     </div>
    
     <div class="performance">
-      <h4>Performance History</h4>
-      <a mat-button >Amount Reqeust:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">&#8358; 8,000</span></a>
-      <a mat-button (click)="creditCheck()">Credit Check</a>
-      <a mat-button (click)="viewStatement()">Bank Statement</a>
-      <a mat-button (click)="viewCreditHistory()">Credit History</a>
+      <h4>Performance History</h4>      
+      <a mat-button >Amount Reqeust:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ data.requestedamount | currency:"NGN":"symbol-narrow" }}</span></a>
+      <a mat-button >Amount On Card:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.amount_on_card | currency:"NGN":"symbol-narrow" }}</span></a>
+      <a mat-button >Default History:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.default_history| currency:"NGN":"symbol-narrow" }}</span></a>
+      <a mat-button >Last Saving Date:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.last_saving_date | date }}</span></a>
+      <a mat-button >Total Saving:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.total_current_saving | currency:"NGN":"symbol-narrow" }}</span></a>
     </div>  
   </mat-dialog-content>
   <mat-dialog-actions class="dialog-footer">
-    <button mat-button mat-dialog-close mat-raised-button color="primary">Post</button>
+    <button mat-button mat-dialog-close mat-raised-button color="primary" (click)="approveCreditReview()">Post</button>
     <button mat-button mat-raised-button color="primary" (click)="openUserView()">Verify Performance</button>
   </mat-dialog-actions>
   <div >
