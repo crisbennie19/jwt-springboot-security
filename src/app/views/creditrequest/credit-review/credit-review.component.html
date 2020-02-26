@@ -50,21 +50,8 @@
         <a mat-button >Total Saving:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.total_current_saving | currency:"NGN":"symbol-narrow" }}</span></a>
         <a mat-button >Unsettled Credit:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.unsettled_credit | currency:"NGN":"symbol-narrow" }}</span></a>
       </div>  
-      
-    </div>
-   
-    <div class="performance">
-      <h4>Performance History</h4>
-      <a mat-button >Amount Reqeust:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">&#8358; 8,000</span></a>
-      <a mat-button (click)="creditCheck()">Credit Check</a>
-      <a mat-button (click)="viewStatement()">Bank Statement</a>
-      <a mat-button (click)="viewCreditHistory()">Credit History</a>
-      <div >
       {{creditCheckMsg}}
-      </div>
-    </div>  
-  </mat-dialog-content>
-  <mat-dialog-actions class="dialog-footer">
+       <mat-dialog-actions class="dialog-footer">
     <button mat-button mat-dialog-close mat-raised-button color="primary">Post</button>
     <div *ngIf="loading">
       <mat-spinner
@@ -75,16 +62,7 @@
     </div>
     <button mat-button mat-raised-button color="primary" (click)="creditCheckPerformance()">Verify Performance</button>
   </mat-dialog-actions>
-  <div>
-    
-  </div>
-    </mat-dialog-content>
-    <mat-dialog-actions class="dialog-footer">
-      <button mat-raised-button color="primary" (click)="approveCreditReview()">Post</button>
-      <button mat-button mat-raised-button color="primary" (click)="openUserView()">Verify Performance</button>
-    </mat-dialog-actions>
+  </mat-dialog-content>
   </form>
-  
-  
-  
-</div>
+    </div>
+ 

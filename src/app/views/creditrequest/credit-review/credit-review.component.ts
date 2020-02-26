@@ -52,8 +52,8 @@ export class CreditReviewComponent implements OnInit {
   ngOnInit() {
     
     this.request()
-    this.creditCheckPerformance();
-    this.request(); 
+    console.log(this.selectedRequest.accountid , "bvn",this.selectedRequest.bvn)
+    
     this.getUserPerformance()
     this.formBuilder.group({
       reviewAmount:['', Validators.required],
@@ -88,9 +88,9 @@ export class CreditReviewComponent implements OnInit {
    creditCheckPerformance(){
     
     this.loading = true;
-    this.selectedRequest=22150331920
+    // this.selectedRequest.bvn
     console.log(this.selectedRequest)
-      this.data.creditService.creditCheckPerformance(this.selectedRequest,null).subscribe((res:any)=>{
+      this.dataService.creditService.creditCheckPerformance(22150331920,this.selectedRequest).subscribe((res:any)=>{
         var success = res.message.substring(8);
         
         if(success==0){
