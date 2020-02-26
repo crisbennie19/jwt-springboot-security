@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { MatSnackBar, MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
@@ -17,18 +17,15 @@ import { CreditBureauComponent } from '../credit-bureau/credit-bureau.component'
   styleUrls: ['./credit-review.component.scss']
 })
 export class CreditReviewComponent implements OnInit {
-  // public requestActionForm:FormGroup;
-  
-  // newMessage = {
-  //   comment:'',
-  //   status:false
-  // }
-
+ 
   @Input() row:number;
   creditData:{};
+  public userPerformance: any = '';
   loading: boolean;
   creditCheckMsg:any
   selecdtedAction: any = '';
+  comment: any = '';
+  public formModel:any = {};
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -41,27 +38,53 @@ export class CreditReviewComponent implements OnInit {
   gAAAAhAHBrJcnJAQAAiwUAABIAAAAAAAAAAAAAAAAAvjcAAHdvcmQvZm9udFRhYmxlLnhtbFBLBQYAAAAADAAMAAEDAAC3OQAAAAA=`
   
   constructor(
-    @Inject(MAT_DIALOG_DATA) private selectedRequest:any,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) private  selectedRequest:any,
     private dialogRef: MatDialogRef<CreditReviewComponent>,
     private formBuilder: FormBuilder,
     private domSanitizer:DomSanitizer,
-    private data:DataService,
+    private dataService:DataService,
     private snackBar:MatSnackBar,
-    private dialog:MatDialog) { }
+    private dialog:MatDialog,  
+    ) { }
 
+        
   ngOnInit() {
     
     this.request()
+    this.creditCheckPerformance();
+    this.request(); 
+    this.getUserPerformance()
+    this.formBuilder.group({
+      reviewAmount:['', Validators.required],
+      comment:['', Validators.required],
+      action:['', Validators.required],
+    })
     
-    // this.requestActionForm = this.formBuilder.group({
-    //   'comment':['', Validators.required],
-    //   'status':['', Validators.required],
-    // })
+    
   }
 
   transform(){
     return this.domSanitizer.bypassSecurityTrustResourceUrl(this.doc);
   }
+
+  getUserPerformance(){
+    this.loading = true;
+    this.dataService.creditService.userPerformanceDetails(this.selectedRequest.accountid)
+    .pipe(
+      map( res => res['data'])
+    )
+    .subscribe( res => {
+      this.userPerformance = res;
+      this.loading = false;
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Error connecting to server, try again", "Dismiss", {
+        duration:2000
+      })
+    })
+  }
+
    creditCheckPerformance(){
     
     this.loading = true;
@@ -137,7 +160,7 @@ this.creditCheckMsg="No record available"
     // this.newMessage.comment = form.get('comment').value;
     // this.newMessage.status = form.get('status').value;
 
-    this.data.creditService.previewBankStatement(this.selectedRequest.id)
+    this.dataService.creditService.previewBankStatement(this.selectedRequest.id)
     .pipe(
       map( res => res['data'])
     )
@@ -145,7 +168,7 @@ this.creditCheckMsg="No record available"
       this.loading = false;
       this.doc = 'data:image/png;base64,'+ res;
       // this.dialogRef.close();
-      this.snackBar.open('DOne',"Dismiss", {
+      this.snackBar.open('Done',"Dismiss", {
         duration:2000
       })
     }, err => {
@@ -156,7 +179,32 @@ this.creditCheckMsg="No record available"
     })
   }
 
-  approveCredit(){}
+  approveCreditReview(){
+    this.loading = true;
+    this.formModel = { 
+      approveamount: '',
+      comment: '',
+      action: '',
+      requestid: this.selectedRequest.accountid
+    }
+    console.log(this.formModel);
+
+    this.dataService.creditService.approveRequestReview(this.formModel)
+    .subscribe( (res) => {
+      this.loading = false;
+      this.doc = 'data:image/png;base64,'+ res;
+      // this.dialogRef.close();
+      this.snackBar.open('Done',"Dismiss", {
+        duration:2000
+      })
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Error! try again","Dismiss",{
+        duration:2000
+      })
+    })
+    
+  }
 
   creditCheck(){
     const dialogConfig = new MatDialogConfig();
@@ -195,16 +243,15 @@ this.creditCheckMsg="No record available"
     this.dialog.open(CreditBureauComponent, dialogConfig);
   }
   openUserView(){
- 
     const dialConfig = new MatDialogConfig();
     dialConfig.disableClose = true;
     dialConfig.autoFocus = false;
     dialConfig.data = this.selectedRequest;
     dialConfig.minWidth = "60%";
-    dialConfig.maxHeight = "90vh"
+    dialConfig.maxHeight = "90vh";
     this.dialog.open(UserReportComponent,dialConfig)
     
-    }
+  }
     
   closeDialog(){
     this.dialogRef.close();

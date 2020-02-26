@@ -94,14 +94,11 @@ export class AwaitingApprrovalComponent implements OnInit {
     dialogConfig.autoFocus = false;
     dialogConfig.minWidth = '50%';
     dialogConfig.data = row
-    this.dialog.open(CreditToApproveComponent, dialogConfig)
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = false;
-    // dialogConfig.minWidth = '40%';
-    // dialogConfig.data = row
-    // this.dialog.open(CreditRequestActionComponent, dialogConfig).afterClosed()
-    // .subscribe( () => this.getCreditRequestsAwaitApproval())
+    this.dialog.open(CreditToApproveComponent, dialogConfig);
+    console.log(row)
+  }
+
+  userPerformance(){
   }
 
   applyFilter(){

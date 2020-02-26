@@ -158,7 +158,35 @@ export class CreditService {
     );
   }
   
+  userPerformanceDetails(accountid:number) {
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `credit_check/user_performance?accountid=${accountid}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
+  approveCreditRequest(body) {
+    return this.http.post(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/credit/approve`),
+    body)
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
   
+  approveRequestReview(body) {
+    return this.http.post(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/credit/request_review`),
+    body)
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
   
   errorHandler(error:HttpErrorResponse){
     return Observable.throw(error.message || "Server Error") 

@@ -18,6 +18,8 @@ export class CreditToApproveComponent implements OnInit {
   //   comment:'',
   //   status:false
   // }
+  public userPerformance: any = '';
+  public formModel: any = {};
   selecdtedAction:any = '';
   loading: boolean;
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -32,16 +34,17 @@ export class CreditToApproveComponent implements OnInit {
   gAAAAhAHBrJcnJAQAAiwUAABIAAAAAAAAAAAAAAAAAvjcAAHdvcmQvZm9udFRhYmxlLnhtbFBLBQYAAAAADAAMAAEDAAC3OQAAAAA=`
   
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
     @Inject(MAT_DIALOG_DATA) private selectedRequest:any,
     private dialogRef: MatDialogRef<CreditToApproveComponent>,
     private formBuilder: FormBuilder,
     private domSanitizer:DomSanitizer,
-    private data:DataService,
+    private dataService:DataService,
     private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-    console.log(this.selectedRequest);
     this.request()
+    this.getUserPerformance()
     
     // this.requestActionForm = this.formBuilder.group({
     //   'comment':['', Validators.required],
@@ -53,6 +56,24 @@ export class CreditToApproveComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(this.doc);
   }
 
+  getUserPerformance(){
+    this.loading = true;
+    this.dataService.creditService.userPerformanceDetails(this.selectedRequest.accountid)
+    .pipe(
+      map( res => res['data'])
+    )
+    .subscribe( res => {
+      this.userPerformance = res;
+      this.loading = false;
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Error connecting to server, try again", "Dismiss", {
+        duration:2000
+      })
+    })
+  }
+
+  
   request(){
     // if(this.requestActionForm.invalid){
     //   return;
@@ -63,7 +84,7 @@ export class CreditToApproveComponent implements OnInit {
     // this.newMessage.comment = form.get('comment').value;
     // this.newMessage.status = form.get('status').value;
 
-    this.data.creditService.previewBankStatement(this.selectedRequest.id)
+    this.dataService.creditService.previewBankStatement(this.selectedRequest.id)
     .pipe(
       map( res => res['data'])
     )
@@ -82,7 +103,27 @@ export class CreditToApproveComponent implements OnInit {
     })
   }
 
-  approveCredit(){}
+  approveCredit(){
+    this.loading = true;
+    this.formModel.requestid = this.selectedRequest.accountid;
+
+    this.dataService.creditService.approveCreditRequest(this.formModel)
+    .subscribe( (res) => {
+      this.loading = false;
+      this.doc = 'data:image/png;base64,'+ res;
+      // this.dialogRef.close();
+      this.snackBar.open('Done',"Dismiss", {
+        duration:2000
+      })
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Error! try again","Dismiss",{
+        duration:2000
+      })
+    })
+    
+    console.log(this.formModel)
+  }
 
   closeDialog(){
     this.dialogRef.close();
