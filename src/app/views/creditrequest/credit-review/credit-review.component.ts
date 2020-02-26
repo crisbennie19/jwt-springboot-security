@@ -27,6 +27,7 @@ export class CreditReviewComponent implements OnInit {
   @Input() row:number;
   creditData:{};
   loading: boolean;
+  creditCheckMsg:any
   selecdtedAction: any = '';
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -69,11 +70,35 @@ export class CreditReviewComponent implements OnInit {
       this.data.creditService.creditCheckPerformance(this.selectedRequest,null).subscribe((res:any)=>{
         var success = res.message.substring(8);
         
+        if(success==0){
+this.creditCheckMsg="No record available"
+        }
+
        
-      
-        
-        
-        if(success==3){
+
+        else if(success==2){
+          var burid = res.data.body.searchResultlist.searchResultItem.bureauid;
+          var checkSubject={
+            "bureauid":burid,
+            "reference":res.data.reference_no,
+            "requestid":res.data.request_id
+          }
+         this.data.creditService.checkCreditSubjectPost(checkSubject).subscribe((res:any)=>{
+          
+         const dialogConfig = new MatDialogConfig();
+         dialogConfig.disableClose = true;
+         dialogConfig.autoFocus = false;
+         dialogConfig.data = res;
+         dialogConfig.minWidth = "60%";
+         dialogConfig.maxHeight = "90vh"
+         
+         this.dialog.open(UserReportComponent,dialogConfig)
+         
+           })
+
+        }
+
+        else if(success==3){
           var bureauLength = res.data.body.searchResultlist.searchResultItem.length
           var val1 = res.data.body.searchResultlist.searchResultItem[0].bureauid;
           var val2 = res.data.body.searchResultlist.searchResultItem[1].bureauid;
@@ -85,8 +110,10 @@ export class CreditReviewComponent implements OnInit {
              
              var ref = res.data.reference_no;
              var req = res.data.request_id;
-             
-             this.creditData = {ref,req,val1,val2}
+             var name = res.data.body.searchResultlist.searchResultItem[0].name;
+             var gender = res.data.body.searchResultlist.searchResultItem[0].gender;
+            
+             this.creditData = {ref,req,val1,val2,name,gender}
              this.loading = false;
           
           const dialogConfig = new MatDialogConfig();

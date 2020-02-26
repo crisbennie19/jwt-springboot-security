@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td>Institution Name</td>
-        <td></td>
+        <td>{{institution}}</td>
       </tr>
       <tr>
         <td>User Name</td>
@@ -40,16 +40,16 @@
     <table width="760px" border="1">
       <tr>
         <td width="132px">Institution Name</td>
-        <td width="104px">FCMB</td>
+        <td width="104px">{{institution}}</td>
         <td width="144px">Report Number</td>
-        <td width="119px">W-0000222222</td>
-        <td width="230px">Report Order Date: </td>
+        <td width="119px">{{reportOrderNumber}}</td>
+        <td width="230px">Report Order Date: {{reportOrderDate}}</td>
       </tr>
       <tr>
         <td>BVN Number</td>
-        <td>22242940726</td>
+        <td>{{bvn}}</td>
         <td colspan="2"><div align="center">Search Confidence Score</div></td>
-        <td><div align="center">100%</div></td>
+        <td><div align="center">{{confidenceScore}}%</div></td>
       </tr>
     </table>
     <div>
@@ -67,25 +67,25 @@
         </tr>
         <tr>
           <td width="127px">Full Name</td>
-          <td width="198px">GARBA NA SALISU</td>
+          <td width="198px">{{userName}}</td>
           <td width="189px">Gender</td>
-          <td width="177px">Male</td>
+          <td width="177px">{{gender}}</td>
         </tr>
         <tr>
           <td>Date of Birth</td>
-          <td>02-05-1996</td>
+          <td>{{dob}}</td>
           <td>Nationality</td>
-          <td>Nigeria</td>
+          <td>{{citizenship}}</td>
         </tr>
         <tr>
           <td height="72px" rowspan="3">Address</td>
-          <td rowspan="3">&nbsp;</td>
+          <td rowspan="3">{{address}}</td>
           <td>Telephone Number (01)</td>
-          <td>07088888888</td>
+          <td>{{phone}}</td>
         </tr>
         <tr>
           <td height="22px">Telephone Number (02)</td>
-          <td>08034264838</td>
+          <td></td>
         </tr>
         <tr>
           <td height="23px">Application Viability Score</td>
@@ -100,7 +100,7 @@
         <table width="760px" border="1">
           <tr>
             <td width="576px">Indicator</td>
-            <td width="133px">Value</td>
+            <td width="133px">Value</td> 
           </tr>
           <tr>
             <td>Maximum number of days overdue in the last 12 months</td>
@@ -116,7 +116,7 @@
           </tr>
           <tr>
             <td>Number of Dishonour Cheques</td>
-            <td>0</td>
+            <td>{{dishonoredChequesCount}}</td>
           </tr>
           <tr>
             <td>Number of Suit Filed</td>
@@ -128,7 +128,7 @@
           </tr>
           <tr>
             <td>First Credit Reported Date</td>
-            <td>30-Jun-2014</td>
+            <td>{{firstReportedDate}}</td>
           </tr>
         </table>
         <div>
@@ -146,15 +146,15 @@
                 <td width="42px">Overdue Amount</td>
               </tr>
               <tr>
-                <td>FCMB</td>
-                <td>4</td>
-                <td>4</td>
-                <td>0</td>
-                <td>351,500</td>
-                <td>266,678</td>
+                <td>{{institution}}</td>
+                <td>{{facilitiesCount}}</td>
+                <td>{{performingFacility}}</td>
+                <td>{{nonPerformingFacility}}</td>
+                <td>{{approvedAmount}}</td>
+                <td>{{accountBalance}}</td>
                 <td>0</td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td height="42px">KEYSTONE BANK</td>
                 <td>1</td>
                 <td>1</td>
@@ -162,7 +162,7 @@
                 <td>0</td>
                 <td>0</td>
                 <td>0</td>
-              </tr>
+              </tr> -->
             </table>
             <hr />
             <table width="760px" border="1">

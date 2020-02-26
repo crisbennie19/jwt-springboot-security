@@ -11,6 +11,8 @@ import { UserReportComponent } from '../../users/user-report/user-report.compone
 export class CreditBureauComponent implements OnInit {
 referenceNo:any;
 requestId:any
+name:any
+gender:any
 val1:string;
 val2: string;
 
@@ -25,8 +27,8 @@ val2: string;
     //this.DataFromPreviousDial.og();
    this.val1 = this.bureauData.val1;
    this.val2 = this.bureauData.val2
-   this.referenceNo = this.bureauData.req;
-   this.requestId = this.requestId
+   this.name = this.bureauData.name;
+   this.gender = this.bureauData.gender
   
    
   }
