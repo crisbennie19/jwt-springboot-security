@@ -24,7 +24,6 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MAT_DIALOG_DATA
 } from '@angular/material';
 
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { BaseComponent } from './base/base.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -195,7 +194,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    PdfViewerModule,
+    
     NgbModule
   ],
   providers: [],
