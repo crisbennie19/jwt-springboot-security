@@ -19,6 +19,7 @@ export class CreditToApproveComponent implements OnInit {
   //   status:false
   // }
   public userPerformance: any = '';
+  public formModel: any = {};
   selecdtedAction:any = '';
   loading: boolean;
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -102,7 +103,27 @@ export class CreditToApproveComponent implements OnInit {
     })
   }
 
-  approveCredit(){}
+  approveCredit(){
+    this.loading = true;
+    this.formModel.requestid = this.selectedRequest.accountid;
+
+    this.dataService.creditService.approveCreditRequest(this.formModel)
+    .subscribe( (res) => {
+      this.loading = false;
+      this.doc = 'data:image/png;base64,'+ res;
+      // this.dialogRef.close();
+      this.snackBar.open('Done',"Dismiss", {
+        duration:2000
+      })
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Error! try again","Dismiss",{
+        duration:2000
+      })
+    })
+    
+    console.log(this.formModel)
+  }
 
   closeDialog(){
     this.dialogRef.close();

@@ -94,6 +94,7 @@ export class AwaitingApprrovalComponent implements OnInit {
     dialogConfig.minWidth = '50%';
     dialogConfig.data = row
     this.dialog.open(CreditToApproveComponent, dialogConfig);
+    console.log(row)
   }
 
   userPerformance(){

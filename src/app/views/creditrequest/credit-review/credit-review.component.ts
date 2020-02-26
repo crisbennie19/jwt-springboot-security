@@ -22,6 +22,7 @@ export class CreditReviewComponent implements OnInit {
   loading: boolean;
   selecdtedAction: any = '';
   comment: any = '';
+  public formModel:any = {};
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -44,16 +45,18 @@ export class CreditReviewComponent implements OnInit {
     private dialog:MatDialog,  
     ) { }
 
-    
+        
   ngOnInit() {
     this.creditCheckPerformance();
-    this.request();
+    this.request(); 
     this.getUserPerformance()
+    this.formBuilder.group({
+      reviewAmount:['', Validators.required],
+      comment:['', Validators.required],
+      action:['', Validators.required],
+    })
     
-    // this.requestActionForm = this.formBuilder.group({
-    //   'comment':['', Validators.required],
-    //   'status':['', Validators.required],
-    // })
+    
   }
 
   transform(){
@@ -116,7 +119,30 @@ export class CreditReviewComponent implements OnInit {
   }
 
   approveCreditReview(){
-    console.log(this.selecdtedAction, this.comment, this.selectedRequest.accountid);
+    this.loading = true;
+    this.formModel = { 
+      approveamount: '',
+      comment: '',
+      action: '',
+      requestid: this.selectedRequest.accountid
+    }
+    console.log(this.formModel);
+
+    this.dataService.creditService.approveRequestReview(this.formModel)
+    .subscribe( (res) => {
+      this.loading = false;
+      this.doc = 'data:image/png;base64,'+ res;
+      // this.dialogRef.close();
+      this.snackBar.open('Done',"Dismiss", {
+        duration:2000
+      })
+    }, err => {
+      this.loading = false;
+      this.snackBar.open("Error! try again","Dismiss",{
+        duration:2000
+      })
+    })
+    
   }
 
   creditCheck(){

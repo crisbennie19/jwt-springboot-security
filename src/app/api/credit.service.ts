@@ -160,16 +160,25 @@ export class CreditService {
     );
   }
 
-  approveRequestReview(approveamount: number, comment: string, requestid: number, body) {
+  approveCreditRequest(body) {
     return this.http.post(
       encodeURI(this._baseUrl + 
-      `swipe_admin/credit/update?approveamount=${approveamount}&requestid=${requestid}&comment=${comment}`),
+      `swipe_admin/credit/approve`),
     body)
     .pipe(
       catchError( err => this.errorHandler(err) )
     );
   }
   
+  approveRequestReview(body) {
+    return this.http.post(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/credit/request_review`),
+    body)
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
   
   errorHandler(error:HttpErrorResponse){
     return Observable.throw(error.message || "Server Error") 
