@@ -26,8 +26,9 @@
     "hammerjs": "^2.0.8",
     "iv-viewer": "^2.0.1",
     "moment": "^2.24.0",
-    
     "ngx-doc-viewer": "^0.1.19",
+    "primeicons": "^2.0.0",
+    "primeng": "^9.0.0-rc.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.9.0",
     "viewerjs": "^1.3.3",

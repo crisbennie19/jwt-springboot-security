@@ -1,4 +1,4 @@
-<div class="main-dialog">
+<div>
   <div class="dialog-title">
     <h3 mat-dialog-title style="padding-top: 1em;">Credit Review</h3>
     <button mat-icon-button aria-label="closeDialog" (click)="closeDialog()">
@@ -41,9 +41,16 @@
   </mat-dialog-content>
   <mat-dialog-actions class="dialog-footer">
     <button mat-button mat-dialog-close mat-raised-button color="primary">Post</button>
-    <button mat-button mat-raised-button color="primary" (click)="openUserView()">Verify Performance</button>
+    <div *ngIf="loading">
+      <mat-spinner
+        color="accent"
+        [strokeWidth]= 3
+        [diameter]=30>
+      </mat-spinner>
+    </div>
+    <button mat-button mat-raised-button color="primary" (click)="creditCheckPerformance()">Verify Performance</button>
   </mat-dialog-actions>
-  <div >
+  <div>
     
   </div>
   

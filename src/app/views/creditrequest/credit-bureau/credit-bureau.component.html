@@ -1,0 +1,65 @@
+<!-- <div class="container"> -->
+<!-- <mat-table  [dataSource]="dataSource">
+
+<ng-container matColumnDef="ref">
+  <mat-header-cell *matHeaderCellDef>Ref</mat-header-cell>
+    <mat-cell *matCellDef ="let row">{{row.ref}}</mat-cell>
+
+</ng-container>
+<ng-container matColumnDef="req">
+  <mat-header-cell *matHeaderCellDef>Req</mat-header-cell>
+    <mat-cell *matCellDef ="let row">{{row.req}}</mat-cell>
+
+</ng-container>
+<ng-container matColumnDef="id">
+  <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+    <mat-cell *matCellDef ="let row">{{row.id}}</mat-cell>
+
+</ng-container>
+
+<mat-header-row *matHeaderRowDef = "displayColumn"></mat-header-row>
+<mat-row *matRowDef="let row; columns:displayColumn;" ></mat-row>
+</mat-table> -->
+
+<!-- <div>{{bureauData.ref}}</div>
+<div>{{bureauData.req}}</div>
+<div>{{bureauData.id}}</div>
+</div> -->
+<div>
+  <div class="dialog-title">
+    <h3 mat-dialog-title style="padding-top: 1em;">Credit Review</h3>
+    <button mat-icon-button aria-label="closeDialog" (click)="onDialoglose()">
+      <mat-icon  color="warn">close</mat-icon>
+    </button>
+  
+</div>
+<mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-tile>
+    
+    <div class="container">
+     <div>Request Id</div>
+     <div>{{bureauData.req}}</div>
+    </div>
+  </mat-grid-tile>
+ 
+  <mat-grid-tile>
+     <div class="container"> 
+    <div>Reference Number</div>
+    <div>{{bureauData.ref}}</div>
+   </div>
+  </mat-grid-tile>
+  <mat-grid-tile >
+    
+    <div class="container">
+      <div>Credit Bureau Number</div>
+      
+      <div ><label class="bureaurId"  (click)="performance(val1)">{{val1}}</label></div>
+      <mat-divider></mat-divider>
+      <div>
+      <label class="bureaurId"  (click)="performance(val2)">{{val2}}</label></div>
+      
+     </div>
+  </mat-grid-tile>
+  
+</mat-grid-list>
+</div>

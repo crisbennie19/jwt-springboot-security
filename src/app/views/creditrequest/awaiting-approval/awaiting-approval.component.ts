@@ -45,6 +45,7 @@ export class AwaitingApprrovalComponent implements OnInit {
     )
     .subscribe( res => {
       this.loading = false;
+      
       this.tableLength = res.length
       this.listData = new MatTableDataSource(res);        
       this.listData.paginator = this.paginator;

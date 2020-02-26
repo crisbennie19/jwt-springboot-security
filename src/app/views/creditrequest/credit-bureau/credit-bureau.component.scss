@@ -1,0 +1,17 @@
+.bureaurId{
+    color: blueviolet;
+    font-size: 16px;
+}
+.bureaurId:hover{
+    color: red;
+    cursor: pointer;
+}
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    background-color: rgba($color: #ddd, $alpha: 0.2);
+    padding-left: 1em;
+    padding-right: 1em;
+}

@@ -30,10 +30,10 @@ export class CreditService {
         )
     )
   }
- creditCheckPerformance(body){
+ creditCheckPerformance(bvn,body){
   
   return this.http.post(
-    encodeURI(this._baseUrl+`credit_check/verify_performance?bvn=22363225076`), body
+    encodeURI(this._baseUrl+`credit_check/verify_performance?bvn=${bvn}`), body
   ).
   pipe(
     map((data:any)=>{ 
@@ -49,6 +49,14 @@ export class CreditService {
   //     `credit_check/verify_performance?bvn=${bvn}`), body
   //     )
    
+ }
+ checkCreditSubjectPost(body){
+   return this.http.post(
+    
+    encodeURI(this._baseUrl+`credit_check/check_subject`), body
+   ).pipe(
+    catchError( err => this.errorHandler(err) )
+   )
  }
   getCreditRequests(page:number,size:number){
     return this.http.get(

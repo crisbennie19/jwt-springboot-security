@@ -10,16 +10,31 @@ import { map } from 'rxjs/operators';
 })
 export class UserReportComponent implements OnInit {
 listData:[];
+reportOrderNumber:any;
+userName:any
+institution:any
+bvn:any
+reportNumber:any
+reportOrderDate:any
 @Input() row:number
   constructor(
-    @Inject(MAT_DIALOG_DATA) public selectedRow:any,
+    @Inject(MAT_DIALOG_DATA) public selectedData:any,
     private dialogRef: MatDialogRef<UserReportComponent>,
     private data:DataService
   ) { }
 
   ngOnInit() {
-    //console.log(this.selectedRow)
-    // this.getUsersList();
+    
+    this.reportData() 
+    
+  }
+  reportData(){
+    this.reportOrderNumber=this.selectedData.data['HEADER']['REPORT-HEADER']['REPORT-ORDER-NUMBER'];
+    this.userName=this.selectedData.data['HEADER']['SEARCH-RESULT-LIST']['SEARCH-RESULT-ITEM']['NAME'];
+    //this.institution=this.selectedData.data['BODY']['CREDIT_SUMMARY']['CURRENCY']['SUMMARY_OF_PERFORMANCE']['PROVIDER_SOURCE']
+    console.log(this.reportOrderNumber );
+    console.log(this.userName );
+    //console.log(this.institution );
   }
   closeDialog(){
     this.dialogRef.close()

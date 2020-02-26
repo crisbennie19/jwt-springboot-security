@@ -9,6 +9,7 @@ import { CreditAccountStatementComponent } from '../credit-account-statement/cre
 import { CreditRequestHistoryComponent } from '../credit-request-history/credit-request-history.component';
 import { UsersViewComponent } from '../../users/users-view/users-view.component';
 import { UserReportComponent } from '../../users/user-report/user-report.component';
+import { CreditBureauComponent } from '../credit-bureau/credit-bureau.component';
 
 @Component({
   selector: 'app-credit-review',
@@ -24,6 +25,7 @@ export class CreditReviewComponent implements OnInit {
   // }
 
   @Input() row:number;
+  creditData:{};
   loading: boolean;
   selecdtedAction: any = '';
   doc: any = `data:image/png;base64, UEsDBBQABgAIAAAAIQAykW9XZgEAAKUFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -47,7 +49,7 @@ export class CreditReviewComponent implements OnInit {
     private dialog:MatDialog) { }
 
   ngOnInit() {
-    this.creditCheckPerformance();
+    
     this.request()
     
     // this.requestActionForm = this.formBuilder.group({
@@ -60,11 +62,41 @@ export class CreditReviewComponent implements OnInit {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(this.doc);
   }
    creditCheckPerformance(){
-    let bvns= '22363225076'
-      this.data.creditService.creditCheckPerformance(bvns).subscribe((res)=>{
+    
+    this.loading = true;
+    this.selectedRequest=22150331920
+    console.log(this.selectedRequest)
+      this.data.creditService.creditCheckPerformance(this.selectedRequest,null).subscribe((res:any)=>{
         var success = res.message.substring(8);
+        
+       
+      
+        
+        
         if(success==3){
+          var bureauLength = res.data.body.searchResultlist.searchResultItem.length
+          var val1 = res.data.body.searchResultlist.searchResultItem[0].bureauid;
+          var val2 = res.data.body.searchResultlist.searchResultItem[1].bureauid;
+          // var val3 = res.data.body.searchResultlist.searchResultItem[2].bureauid;
+          // var val4 = res.data.body.searchResultlist.searchResultItem[4].bureauid
           
+            
+            //  var id = res.data.body.searchResultlist.searchResultItem[i].bureauid
+             
+             var ref = res.data.reference_no;
+             var req = res.data.request_id;
+             
+             this.creditData = {ref,req,val1,val2}
+             this.loading = false;
+          
+          const dialogConfig = new MatDialogConfig();
+          dialogConfig.disableClose = false;
+          dialogConfig.autoFocus = false;
+          dialogConfig.data=this.creditData
+          dialogConfig.minWidth = '50%';
+          // dialogConfig.data = row;
+          this.dialog.open(CreditBureauComponent, dialogConfig);
+        
         }
       })
    }
@@ -72,7 +104,7 @@ export class CreditReviewComponent implements OnInit {
     // if(this.requestActionForm.invalid){
     //   return;
     // }
-    this.loading = true;
+    // this.loading = true;
 
     // let form = this.requestActionForm
     // this.newMessage.comment = form.get('comment').value;
@@ -125,6 +157,15 @@ export class CreditReviewComponent implements OnInit {
     dialogConfig.minWidth = '50%';
     // dialogConfig.data = row;
     this.dialog.open(CreditRequestHistoryComponent, dialogConfig);
+  }
+  viewBureauId() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data=
+    dialogConfig.minWidth = '50%';
+    // dialogConfig.data = row;
+    this.dialog.open(CreditBureauComponent, dialogConfig);
   }
   openUserView(){
  
