@@ -6,6 +6,7 @@
       <mat-icon  color="warn">close</mat-icon>
     </button>
   </div>
+  <div>
   <form #creditReviewForm="ngForm" ngSubmit="approveCreditReview()" novalidate>
     <mat-dialog-content class="dialog-row">
       <div class="action-form">
@@ -48,14 +49,8 @@
         <a mat-button >Total Saving:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.total_current_saving | currency:"NGN":"symbol-narrow" }}</span></a>
         <a mat-button >Unsettled Credit:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.unsettled_credit | currency:"NGN":"symbol-narrow" }}</span></a>
       </div>  
-<<<<<<< HEAD
-     
-    </mat-dialog-content>
-  <mat-dialog-actions class="dialog-footer">
-=======
       {{creditCheckMsg}}
        <mat-dialog-actions class="dialog-footer">
->>>>>>> 39ed9ac2103b12b424e7c2f8608a9933987b2322
     <button mat-button mat-dialog-close mat-raised-button color="primary">Post</button>
     <div *ngIf="loading">
       <mat-spinner
