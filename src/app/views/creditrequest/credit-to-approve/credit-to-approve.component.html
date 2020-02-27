@@ -51,7 +51,7 @@
     </div>  
   </mat-dialog-content>
   <mat-dialog-actions class="dialog-footer">
-      <button mat-button mat-dialog-close mat-raised-button color="primary" (click)="approveCredit()">Post</button>      
+      <button mat-button mat-dialog-close mat-raised-button color="primary" (click)="approveCredit()" [disabled]="creditToApproveForm.form.invalid">Post</button>      
     <button mat-button mat-dialog-close mat-raised-button color="primary">Verify Performance</button>
   </mat-dialog-actions>
  </form> 

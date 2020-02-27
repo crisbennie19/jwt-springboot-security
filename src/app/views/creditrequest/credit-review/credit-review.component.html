@@ -52,7 +52,7 @@
     </mat-dialog-content>
        
     <mat-dialog-actions class="dialog-footer">
-    <button mat-button mat-dialog-close mat-raised-button color="primary">Post</button>
+    <button mat-button mat-dialog-close mat-raised-button color="primary" [disabled]="creditReviewForm.form.invalid">Post</button>
     <div *ngIf="loading">
       <mat-spinner
         color="accent"
