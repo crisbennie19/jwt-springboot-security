@@ -22,7 +22,7 @@ export class CreditReviewComponent implements OnInit {
   creditData:{};
   public userPerformance: any = '';
   loading: boolean;
-  creditCheckMsg:any
+  creditCheckMsg:boolean
   selecdtedAction: any = '';
   comment: any = '';
   public formModel:any = {};
@@ -89,12 +89,15 @@ export class CreditReviewComponent implements OnInit {
     
     this.loading = true;
     // this.selectedRequest.bvn
-    console.log(this.selectedRequest)
-      this.dataService.creditService.creditCheckPerformance(22150331920,this.selectedRequest).subscribe((res:any)=>{
+    //console.log(this.selectedRequest)
+      this.dataService.creditService.creditCheckPerformance(this.selectedRequest.bvn,this.selectedRequest).subscribe((res:any)=>{
         var success = res.message.substring(8);
         
         if(success==0){
-this.creditCheckMsg="No record available"
+          
+this.creditCheckMsg=true
+this.loading = false;
+
         }
 
        
@@ -107,7 +110,7 @@ this.creditCheckMsg="No record available"
             "requestid":res.data.request_id
           }
          this.data.creditService.checkCreditSubjectPost(checkSubject).subscribe((res:any)=>{
-          
+          this.loading = false;
          const dialogConfig = new MatDialogConfig();
          dialogConfig.disableClose = true;
          dialogConfig.autoFocus = false;

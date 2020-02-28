@@ -49,8 +49,10 @@
         <a mat-button >Total Saving:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.total_current_saving | currency:"NGN":"symbol-narrow" }}</span></a>
         <a mat-button >Unsettled Credit:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.unsettled_credit | currency:"NGN":"symbol-narrow" }}</span></a>
       </div>  
+
     </mat-dialog-content>
-       
+
+
     <mat-dialog-actions class="dialog-footer">
     <button mat-button mat-dialog-close mat-raised-button color="primary" [disabled]="creditReviewForm.form.invalid">Post</button>
     <div *ngIf="loading">
@@ -60,6 +62,7 @@
         [diameter]=30>
       </mat-spinner>
     </div>
+    <div *ngIf="creditCheckMsg" >No record available</div>
     <button mat-button mat-raised-button color="primary" (click)="creditCheckPerformance()">Verify Performance</button>
   </mat-dialog-actions>
   </form>
