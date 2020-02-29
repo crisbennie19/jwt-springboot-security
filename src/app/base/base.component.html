@@ -45,7 +45,11 @@
       <span class="remaining-space"></span>
 
       <!-- <button mat-button>FAQs</button> -->
-      <a routerLink="/creditrequests" mat-button color="accentgit">
+      <a (click)="collectDebt()" mat-button color="accent">
+        <span>Debt Collection</span>
+      </a>
+
+      <a routerLink="/creditrequests" mat-button color="accent">
         <mat-icon class="mat-18x">money</mat-icon>
         <span>Credit Request</span>
       </a>
