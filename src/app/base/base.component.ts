@@ -42,7 +42,7 @@ export class BaseComponent {
   }
 
   collectDebt(){
-    this.data.creditService.collectDebit();
+    this.data.creditService.collectDebt();
     // console.log("it is working");
   }
 
