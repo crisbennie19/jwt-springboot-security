@@ -7,7 +7,9 @@ import { catchError } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({
     'Access-Control-Allow-Origin':'*',
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Access-Control-Request-Headers': 'access-token,authorization',
+    'Authorization':'Bearer a24b31dc-f49b-4407-a661-d487dc105dbb'
   })
 };
 
@@ -23,9 +25,14 @@ export class TransactionsService {
   private _baseUrl = this.base.baseurl
 
   getTransactions(page:number,size:number){
+ const headerss = new HttpHeaders({
+        'Content-Type':'Application/json',
+        'Authorization': 'a24b31dc-f49b-4407-a661-d487dc105dbb'
+      })
     return this.http.get(
+
       this._baseUrl +
-      `swipe_admin/list/transactions?page=${page}&size=${size}`
+      `swipe_admin/list/transactions?page=${page}&size=${size}`, {headers:headerss}
     )
     .pipe(
       catchError( err => this.errorHandler(err) )

@@ -11,7 +11,7 @@ import * as moment from 'moment'
   templateUrl: './credit-request.component.html',
   styleUrls: ['./credit-request.component.scss']
 })
-export class CreditRequestComponent implements OnInit {
+export class CreditRequestComponentMain implements OnInit {
 
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;

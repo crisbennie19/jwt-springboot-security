@@ -32,7 +32,7 @@ import { UsersListComponent } from './views/users/users-list/users-list.componen
 import { ChargesComponent } from './views/charges/charges.component';
 import { SavingsComponent } from './views/savings/savings.component';
 import { ReportsComponent } from './views/reports/reports.component';
-import { CreditComponent } from './views/credit/credit.component';
+import {CreditComponent } from './views/credit/credit.component';
 import { MessagesComponent } from './views/messages/messages.component';
 import { TableComponent } from './table/table.component';
 import { AdminUsersListComponent } from './views/users/admin-users-list/admin-users-list.component';
@@ -75,7 +75,6 @@ import { AccountHolderComponent } from './views/wallets/search/account-holder/ac
 import { DateRangeComponent } from './views/wallets/search/date-range/date-range.component';
 import { UsersViewComponent } from './views/users/users-view/users-view.component';
 import { SettingsComponent } from './views/settings/settings.component'
-import { CreditRequestComponent } from './views/creditrequest/creditrequest.component';
 import { CreditApproveComponent } from './views/creditrequest/credit-approve/credit-approve';
 import { AwaitingReviewComponent } from './views/creditrequest/awaiting-review/awaiting-review.component';
 import { AwaitingApprrovalComponent } from './views/creditrequest/awaiting-approval/awaiting-approval.component';
@@ -89,6 +88,8 @@ import { CreditReportComponent } from './views/creditrequest/credit-report/credi
 import { CreditSubjectComponent } from './views/creditrequest/credit-subject/credit-subject.component';
 import { CreditBureauComponent } from './views/creditrequest/credit-bureau/credit-bureau.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { CreditRequestComponent } from './views/creditrequest/creditrequest.component';
+import { CreditRequestComponentMain } from './views/credit/credit-request/credit-request.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     SavingsComponent,
     ReportsComponent,
     CreditRequestComponent,
+    CreditRequestComponentMain,
+    
+
     CreditComponent,
+
     MessagesComponent,
     TableComponent,
     AdminUsersListComponent,
@@ -138,7 +143,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     SavingsBalanceViewComponent,
     SavingsViewComponent,
     WalletViewComponent,
-    CreditRequestComponent,
     CreditApproveComponent,
     CreditRequestActionComponent,
     CreditBankStatementComponent,

@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 
 export class HttpService {
-  public baseurl = "/api/"
+  public baseurl = "https://swipe.ng:8443/base_api/"
   constructor() {}
-}
+} 

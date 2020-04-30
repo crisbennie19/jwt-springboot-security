@@ -1,9 +1,9 @@
 {
-  "/api": {
-    "target": "https://swipe.net.ng/api",
+  "/base_api/": {
+    "target": "https://swipe.ng:8443",
     "secure": false,
     "pathRewrite": {
-      "^/api": ""
+      "^/base_api": ""
     },
     
     "changeOrigin": true,
