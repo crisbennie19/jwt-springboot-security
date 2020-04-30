@@ -12,6 +12,7 @@ import { DataService } from '../data.service';
 export class BaseComponent {
 
   activeUser:any;
+  dataService:DataService = null;
 
   
   menuList = [
@@ -38,6 +39,11 @@ export class BaseComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private data:DataService) {
     this.activeUser = JSON.parse(localStorage.getItem('adminUser') )
+  }
+
+  collectDebt(){
+    this.data.creditService.collectDebt();
+    // console.log("it is working");
   }
 
   logout(){

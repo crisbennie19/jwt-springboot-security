@@ -30,6 +30,20 @@ export class CreditService {
         )
     )
   }
+  collectDebt(){  
+    return this.http.post(
+      encodeURI(`https://swipe.ng/job_api/collections/start`), null
+    ).
+    pipe(
+      map((data:any)=>{ 
+        return data
+      }),
+          catchError( err => this.errorHandler(err) )
+  
+      );
+     
+   }
+  
  creditCheckPerformance(bvn,body){
   
   return this.http.post(
