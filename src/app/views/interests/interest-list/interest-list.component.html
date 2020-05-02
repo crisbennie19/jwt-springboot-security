@@ -11,9 +11,11 @@
         (click)="clearSearch()">close</mat-icon>
       </div>  
       &nbsp;
-      <button mat-raised-button
+      <button mat-icon-button
       (click)="filterSearch()"
-      color="accent">Search</button>
+      color="accent">
+      <mat-icon>send</mat-icon>
+      </button>
       &nbsp;
       <div *ngIf="loading">
         <mat-spinner

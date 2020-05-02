@@ -38,12 +38,13 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
-    
+    &nbsp;    
+    <button mat-raised-button
+        (click)="searchByDate()"
+        color="accent">Search
+    </button>
   </div>
-  <button mat-raised-button
-      (click)="searchByDate()"
-      color="accent">Search</button>
+  
   </div>
   <div>
     <table mat-table class="full-width-table" [dataSource]="listData" matSort

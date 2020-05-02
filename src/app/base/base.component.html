@@ -8,15 +8,17 @@
           <mat-toolbar> 
             <img src="assets/images/newswipe-logo.svg" width="150" alt="">
           </mat-toolbar>
-          <mat-nav-list>
-            <!-- <div class="nav-header">NAVIGATIONS</div> -->
-            <a mat-list-item [routerLink]="menu.route" *ngFor="let menu of menuList"
-            routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-              true}"> 
-              <mat-icon>{{menu.icon}}</mat-icon> 
-              <span class="sidebar-name"> {{menu.name}} </span>
-            </a>
-          </mat-nav-list>
+          <div class="menu-wrapper">
+            <mat-nav-list>
+              <!-- <div class="nav-header">NAVIGATIONS</div> -->
+              <a mat-list-item [routerLink]="menu.route" *ngFor="let menu of menuList"
+              routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                true}"> 
+                <mat-icon>{{menu.icon}}</mat-icon> 
+                <span class="sidebar-name"> {{menu.name}} </span>
+              </a>
+            </mat-nav-list>
+          </div>
         </div>
         <!-- <div class="logout">
             <div>FAQ</div>
@@ -28,7 +30,7 @@
       </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
+    <mat-toolbar class="top-bar">
       <button
         type="button"
         aria-label="Toggle sidenav"

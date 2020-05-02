@@ -67,6 +67,7 @@ export class LandingpageComponent implements OnInit {
     .subscribe( res => { 
       if(res['message'] == 'Success: Authentication Completed'){
         localStorage.setItem('adminUser', JSON.stringify(res['data']))
+        this.data.setToken(res['data'].tokendata.access_token);
         this.data.loginUser(true)
         this.router.navigate(['/dashboard']);
         this.loading = false

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -90,6 +90,8 @@ import { CreditBureauComponent } from './views/creditrequest/credit-bureau/credi
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { CreditRequestComponent } from './views/creditrequest/creditrequest.component';
 import { CreditRequestComponentMain } from './views/credit/credit-request/credit-request.component';
+
+import { AuthInterceptor } from '../app/api/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -201,7 +203,9 @@ import { CreditRequestComponentMain } from './views/credit/credit-request/credit
     
     NgbModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   entryComponents:[
     ComposeComponent,
     EditMessageComponent,

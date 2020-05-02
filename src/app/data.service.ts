@@ -94,6 +94,14 @@ export class DataService {
     }
   }
 
+  setToken(data) {
+    localStorage.setItem('token', data);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
   checkLoginStatus() {
     if (localStorage.getItem('adminUser') !== null) {
       this.loginAuth.next(true);
