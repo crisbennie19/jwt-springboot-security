@@ -139,17 +139,23 @@ export class AdminUserAddComponent implements OnInit {
 
   
     this.data.usersService.createAdminUser(this.newUser, rolesArray)
-    .subscribe( () => {
-      this.loading = false;
-      this.dialogRef.close();
-      this.snackBar.open("New Admin User Added", "Dismiss", {
-        duration:2000
-      })
+    .subscribe( (res) => {
+      if(res['message'] == 'Success'){
+        this.loading = false;
+        this.dialogRef.close();
+        this.snackBar.open('New user added', "Dismiss", {
+          duration:2000
+        })
+      }
+      else{
+        this.loading = false;
+        this.snackBar.open(res['data'], "Dismiss")
+      }
     }, 
     err => {
       this.loading = false;
       this.snackBar.open("Error creating new user, try again","Dismiss",{
-        duration:2000
+        duration:5000
       })
     })
   }
