@@ -36,10 +36,10 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-
+      &nbsp;
       <button mat-raised-button
       (click)="searchByDate()"
-      color="accent">Search date</button>
+      color="accent">Search</button>
     </div>
     </div>  
 
@@ -107,6 +107,7 @@
       color="accent">Back</button>
 </div> -->
     <mat-paginator #paginator
+    showFirstLastButtons
       [length]="tableLength"
       [pageIndex]="0"
       [pageSize]="7">

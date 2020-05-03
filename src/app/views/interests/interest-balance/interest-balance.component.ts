@@ -39,7 +39,6 @@ export class InterestBalanceComponent implements OnInit {
     )
     .subscribe( res => {
       this.response = res;
-      console.log(this.response);
       this.loading = false;
       this.tableLength = this.response.length
       this.listData = new MatTableDataSource(this.response);        
