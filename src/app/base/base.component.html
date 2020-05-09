@@ -11,12 +11,28 @@
           <div class="menu-wrapper">
             <mat-nav-list>
               <!-- <div class="nav-header">NAVIGATIONS</div> -->
-              <a mat-list-item [routerLink]="menu.route" *ngFor="let menu of menuList"
-              routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
-                true}"> 
-                <mat-icon>{{menu.icon}}</mat-icon> 
-                <span class="sidebar-name"> {{menu.name}} </span>
-              </a>
+              <div *ngIf="isBank == 'BANK'">
+                <div *ngFor="let menu of menuList">
+                  <a mat-list-item [routerLink]="menu.route" *ngIf="menu.role == isBank" 
+                  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                    true}"> 
+                    <mat-icon>{{menu.icon}}</mat-icon> 
+                    <span class="sidebar-name"> {{menu.name}} </span>
+                  </a>
+                </div>
+              </div>
+
+              <div *ngIf="isBank != 'BANK'">
+                <div *ngFor="let menu of menuList">
+                  <a mat-list-item [routerLink]="menu.route" 
+                  routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+                    true}"> 
+                    <mat-icon>{{menu.icon}}</mat-icon> 
+                    <span class="sidebar-name"> {{menu.name}} </span>
+                  </a>
+                </div>
+              </div>
+
             </mat-nav-list>
           </div>
         </div>
@@ -41,13 +57,14 @@
       </button>
         <!-- <span style="color:#fafafa; font-weight:500; font-size:15px"></span> -->
         <span style="font-weight:500; font-size:18px">
-         <span class="web-view">Welcome,</span> {{activeUser.data.name}}
+          Administrator
+         <!-- <span class="web-view">Welcome,</span> {{activeUser.data.name}} -->
         </span>
 
       <span class="remaining-space"></span>
 
       <!-- <button mat-button>FAQs</button> -->
-      <a (click)="collectDebt()" mat-button color="accent">
+      <a (click)="collectDebt()" *ngIf="!isBank" mat-button color="accent">
         <span>Debt Collection</span>
       </a>
 
@@ -56,10 +73,45 @@
         <span>Credit Request</span>
       </a>
 
-      <button mat-button color="warn" (click)="logout()">
+      <div class="flex-el">
+        <div [matMenuTriggerFor]="profile" class="avatar" 
+        style="margin-right:10px;">
+          {{getInitials(activeUser.data.name)}}
+
+          <!-- <div class="indication">
+            <mat-icon class="mat-18x">settings</mat-icon>
+          </div> -->
+        </div>
+        <div>
+          <div style="font-size: 16px; font-weight: 400">{{activeUser.data.name}}</div>
+          <!-- <div class="head-office">Head Office</div> -->
+        </div>
+      </div>
+      
+      <mat-menu #profile="matMenu">
+        <div class="user-toolbar-container">
+          <div class="flex-el wrap" style="margin-bottom:20px;">
+            <div class="avatar">
+              {{getInitials(activeUser.data.name)}}
+            </div>
+
+            <div style="margin-top:5px;">
+              <div class="user-toolbar-name">{{activeUser.data.name}}</div>
+              <div class="user-toolbar-email">{{activeUser.data.contactemail}}</div>
+            </div>
+          </div>
+          <div class="user-toolbar-menu">
+            <!-- <li disabled class="list">Notifications <sup class="has-text-primary">{{ '0' }}</sup></li> -->
+            <li class="list" (click)="changePassword()">Change Password</li>
+            <li class="list" (click)="logout()" style="color: red"> Sign Out </li>
+          </div>
+        </div>
+      </mat-menu>
+
+      <!-- <button mat-button color="warn" >
         <mat-icon class="mat-18x">power_settings_new</mat-icon>
         <span>Logout</span>
-      </button>
+      </button> -->
 
       <!-- <div style="border-right:1px solid #ddd; padding-right:5px" class="flex-el">
         <button mat-icon-button>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { verifyRole } from 'src/app/helpers/roles';
 
 @Component({
   selector: 'app-credit-request',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creditrequest.component.scss']
 })
 export class CreditRequestComponent implements OnInit {
+  isBank: any;
 
-  constructor() { }
+  constructor() {
+    this.isBank = verifyRole('BANK')
+   }
 
   ngOnInit() {
   }

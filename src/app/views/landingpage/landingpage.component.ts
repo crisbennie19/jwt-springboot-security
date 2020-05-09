@@ -20,6 +20,8 @@ export class LandingpageComponent implements OnInit {
   }
   isForgot = false;
 
+  year = new Date().getFullYear()
+
 
   constructor(
     private formBuilder:FormBuilder,
@@ -67,9 +69,22 @@ export class LandingpageComponent implements OnInit {
     .subscribe( res => { 
       if(res['message'] == 'Success: Authentication Completed'){
         localStorage.setItem('adminUser', JSON.stringify(res['data']))
+        let activeUser = JSON.parse(localStorage.getItem('adminUser') )
+        let isBank;
         this.data.setToken(res['data'].tokendata.access_token);
         this.data.loginUser(true)
-        this.router.navigate(['/dashboard']);
+
+        isBank = activeUser.data.roles.find( role => {
+          return role == 'BANK'
+        })
+
+        if(isBank == "BANK"){
+          this.router.navigate(['/credit']);
+        }
+        else{
+          this.router.navigate(['/dashboard']);
+        }
+
         this.loading = false
       }
       else{

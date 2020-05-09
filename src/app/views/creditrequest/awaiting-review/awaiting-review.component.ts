@@ -17,7 +17,7 @@ export class AwaitingReviewComponent implements OnInit {
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['description','account','phone','date', 'status','action'];
+  displayedColumns = ['description','account','phone', 'amount','date','action'];
   public listData: MatTableDataSource<any>; 
 
   searchKey: any = ''; // left search box model
@@ -143,17 +143,19 @@ export class AwaitingReviewComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
-    dialogConfig.data=row
-    dialogConfig.minWidth = '60%';
-    this.dialog.open(CreditReviewComponent, dialogConfig);
-    console.log(row)
+    dialogConfig.data = row
+    dialogConfig.width = '60%';
+    this.dialog.open(CreditReviewComponent, dialogConfig).afterClosed()
+    .subscribe( () => {
+      this.getCreditList();
+    });
   }
 
   viewStatement(row){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = false;
-    dialogConfig.minWidth = '80%';
+    dialogConfig.width = '50%';
     dialogConfig.data = row;
     this.dialog.open(CreditReviewComponent, dialogConfig);
   }

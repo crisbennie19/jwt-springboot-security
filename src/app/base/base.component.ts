@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data.service';
+import { verifyRole } from '../helpers/roles';
 
 @Component({
   selector: 'app-base',
@@ -16,20 +17,19 @@ export class BaseComponent {
 
   
   menuList = [
-    {route:'/dashboard',icon:'dashboard', name:'Dashboard'},
-    {route:'/wallet',icon:'account_balance_wallet', name:'Wallet'},
-    {route:'/transactions',icon:'compare_arrows', name:'Transactions'},
+    {route:'/dashboard',icon:'dashboard', name:'Dashboard', role:"ADMINISTRATOR"},
+    {route:'/wallet',icon:'account_balance_wallet', name:'Wallet', role:"ADMINISTRATOR"},
+    {route:'/transactions',icon:'compare_arrows', name:'Transactions', role:"ADMINISTRATOR"},
     // {route:'/charges',icon:'import_export', name:'Charges'},
-    {route:'/interests',icon:'monetization_on', name:'Interests'},
-    {route:'/messages',icon:'email', name:'Messages'},
-    {route:'/users',icon:'account_box', name:'Users'},
-    {route:'/credit',icon:'credit_card', name:'Credit'},
-    {route:'/savings',icon:'save_alt', name:'Savings'},
-    {route:'/logs',icon:'receipt', name:'Logs'},
-    {route:'/referrals',icon:'insert_comment', name:'Referral'},
-
-    {route:'/reports',icon:'report', name:'Report'},
-    {route:'/settings',icon:'settings', name:'Settings'}
+    {route:'/interests',icon:'monetization_on', name:'Interests', role:"ADMINISTRATOR"},
+    {route:'/messages',icon:'email', name:'Messages', role:"ADMINISTRATOR"},
+    {route:'/users',icon:'account_box', name:'Users', role:"ADMINISTRATOR"},
+    {route:'/credit',icon:'credit_card', name:'Credit', role:"BANK"},
+    {route:'/savings',icon:'save_alt', name:'Savings', role:"BANK"},
+    {route:'/logs',icon:'receipt', name:'Logs', role:"ADMINISTRATOR"},
+    {route:'/referrals',icon:'insert_comment', name:'Referral', role:"ADMINISTRATOR"},
+    {route:'/reports',icon:'report', name:'Report', role:"ADMINISTRATOR"},
+    {route:'/settings',icon:'settings', name:'Settings', role:"BANK"}
   ]
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -37,9 +37,23 @@ export class BaseComponent {
       map(result => result.matches)
     );
 
+  isBank: any;
+
   constructor(private breakpointObserver: BreakpointObserver, private data:DataService) {
     this.activeUser = JSON.parse(localStorage.getItem('adminUser') )
+
+    this.isBank = verifyRole('BANK')
   }
+
+  getInitials(string) {
+    var names = string.split(' '),
+    initials = names[0].substring(0, 1).toUpperCase();
+    
+    if (names.length > 1) {
+        initials += names[names.length - 1].substring(0, 1).toUpperCase();
+    }
+    return initials;
+  };
 
   collectDebt(){
     this.data.creditService.collectDebt();

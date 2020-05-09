@@ -105,9 +105,9 @@ export class DataService {
   checkLoginStatus() {
     if (localStorage.getItem('adminUser') !== null) {
       this.loginAuth.next(true);
-      this.router.navigateByUrl('/dashboard');
+      // this.router.navigateByUrl('/dashboard');
     } else {
-      this.router.navigateByUrl('/');
+      this.logout();
     }
   }
 

@@ -1,18 +1,26 @@
 <mat-tab-group color="accent">
   <mat-tab label="Credit Approve"> 
-    <app-credit-approve></app-credit-approve>
+    <ng-template matTabContent> 
+      <app-credit-approve></app-credit-approve>
+    </ng-template>
   </mat-tab>
 
   <mat-tab label="Awaiting Review">
-    <app-awaiting-review></app-awaiting-review>
+    <ng-template matTabContent> 
+      <app-awaiting-review></app-awaiting-review>
+    </ng-template>
   </mat-tab>
 
-  <mat-tab label="Awaiting Approval">
-    <app-awaiting-approval></app-awaiting-approval>
+  <mat-tab label="Awaiting Approval" *ngIf="!isBank">
+    <ng-template matTabContent> 
+      <app-awaiting-approval></app-awaiting-approval>
+    </ng-template>
   </mat-tab>
 
   <mat-tab label="Credit Request History">
-    <app-awaiting-approval></app-awaiting-approval>
+    <ng-template matTabContent> 
+      <app-awaiting-approval></app-awaiting-approval>
+    </ng-template>
   </mat-tab>
 
 </mat-tab-group>

@@ -37,6 +37,9 @@ export class CreditReviewComponent implements OnInit {
   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`
   
+
+  creditReviewForm:FormGroup
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     @Inject(MAT_DIALOG_DATA) private  selectedRequest:any,
@@ -50,16 +53,21 @@ export class CreditReviewComponent implements OnInit {
 
         
   ngOnInit() {
+
+    this.creditReviewForm = this.formBuilder.group({
+      amount:['', Validators.required],
+      // action:['', Validators.required],
+      comment:['']
+    })
+
+    // console.log(this.data, "Data ");
+    // console.log(this.selectedRequest, "Selected Request");
     
-    this.request()
+    
+    // this.request()
     console.log(this.selectedRequest.accountid , "bvn",this.selectedRequest.bvn)
     
     this.getUserPerformance()
-    this.formBuilder.group({
-      reviewAmount:['', Validators.required],
-      comment:['', Validators.required],
-      action:['', Validators.required],
-    })
     
     
   }
@@ -71,16 +79,23 @@ export class CreditReviewComponent implements OnInit {
   getUserPerformance(){
     this.loading = true;
     this.dataService.creditService.userPerformanceDetails(this.selectedRequest.accountid)
-    .pipe(
-      map( res => res['data'])
-    )
+    
     .subscribe( res => {
-      this.userPerformance = res;
-      this.loading = false;
+      if(res['message'] == "Success"){
+        this.userPerformance = res;
+        this.loading = false;
+      }
+      else{
+        this.loading = false;
+        this.snackBar.open(res['data'], "Dismiss", {
+          duration:6000
+        })
+      }
+      
     }, err => {
       this.loading = false;
       this.snackBar.open("Error connecting to server, try again", "Dismiss", {
-        duration:2000
+        duration:6000
       })
     })
   }
@@ -90,18 +105,13 @@ export class CreditReviewComponent implements OnInit {
     this.loading = true;
     // this.selectedRequest.bvn
     //console.log(this.selectedRequest)
-      this.dataService.creditService.creditCheckPerformance(this.selectedRequest.bvn,this.selectedRequest).subscribe((res:any)=>{
+      this.dataService.creditService.creditCheckPerformance(this.selectedRequest.bvn,this.selectedRequest)
+      .subscribe((res:any)=>{
         var success = res.message.substring(8);
-        
         if(success==0){
-          
-this.creditCheckMsg=true
-this.loading = false;
-
+          this.creditCheckMsg=true
+          this.loading = false;
         }
-
-       
-
         else if(success==2){
           var burid = res.data.body.searchResultlist.searchResultItem.bureauid;
           var checkSubject={
@@ -110,18 +120,15 @@ this.loading = false;
             "requestid":res.data.request_id
           }
          this.data.creditService.checkCreditSubjectPost(checkSubject).subscribe((res:any)=>{
-          this.loading = false;
-         const dialogConfig = new MatDialogConfig();
-         dialogConfig.disableClose = true;
-         dialogConfig.autoFocus = false;
-         dialogConfig.data = res;
-         dialogConfig.minWidth = "60%";
-         dialogConfig.maxHeight = "90vh"
-         
-         this.dialog.open(UserReportComponent,dialogConfig)
-         
+            this.loading = false;
+            const dialogConfig = new MatDialogConfig();
+            dialogConfig.disableClose = true;
+            dialogConfig.autoFocus = false;
+            dialogConfig.data = res;
+            dialogConfig.minWidth = "60%";
+            dialogConfig.maxHeight = "90vh"
+            this.dialog.open(UserReportComponent,dialogConfig)
            })
-
         }
 
         else if(success==3){
@@ -163,7 +170,7 @@ this.loading = false;
     // this.newMessage.comment = form.get('comment').value;
     // this.newMessage.status = form.get('status').value;
 
-    this.dataService.creditService.previewBankStatement(this.selectedRequest.id)
+    this.dataService.creditService.previewBankStatement(this.selectedRequest.accountid)
     .pipe(
       map( res => res['data'])
     )
@@ -185,21 +192,30 @@ this.loading = false;
   approveCreditReview(){
     this.loading = true;
     this.formModel = { 
-      approveamount: '',
-      comment: '',
-      action: '',
+      approveamount: this.creditReviewForm.get('amount').value,
+      comment: this.creditReviewForm.get('comment').value,
+      // action: this.creditReviewForm.get('action').value,
       requestid: this.selectedRequest.accountid
     }
-    console.log(this.formModel);
+
+    // console.log(this.formModel);
 
     this.dataService.creditService.approveRequestReview(this.formModel)
     .subscribe( (res) => {
-      this.loading = false;
-      this.doc = 'data:image/png;base64,'+ res;
-      // this.dialogRef.close();
-      this.snackBar.open('Done',"Dismiss", {
-        duration:2000
-      })
+      if(res['message'] == "Success"){
+        this.loading = false;
+        this.doc = 'data:image/png;base64,'+ res['data'];
+        // this.dialogRef.close();
+        this.snackBar.open('Done',"Dismiss", {
+          duration:2000
+        })
+      }
+
+      else{
+        this.loading = false;        // this.dialogRef.close();
+        this.snackBar.open(res['data'],"Dismiss")
+      }
+      
     }, err => {
       this.loading = false;
       this.snackBar.open("Error! try again","Dismiss",{

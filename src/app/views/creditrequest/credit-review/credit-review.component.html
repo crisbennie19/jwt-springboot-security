@@ -1,60 +1,116 @@
 
 <div class="main-dialog">
-  <div class="dialog-title">
-    <h3 mat-dialog-title style="padding-top: 1em;">Credit Review</h3>
+  <div class="component-header">
+    <div class="flex-el"> 
+      <span>Credit Review</span> 
+      &nbsp;
+      &nbsp;
+      <div *ngIf="loading">
+        <mat-spinner 
+          color="accent"
+          [strokeWidth]= 3
+          [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+
     <button mat-icon-button aria-label="closeDialog" (click)="closeDialog()">
       <mat-icon  color="warn">close</mat-icon>
     </button>
   </div>
-  <div>
-  <form #creditReviewForm="ngForm" ngSubmit="approveCreditReview()" novalidate>
+  <!-- <div class="dialog-title">
+    <h3 mat-dialog-title style="padding-top: 1em;">Credit Review</h3>
+    <button mat-icon-button aria-label="closeDialog" (click)="closeDialog()">
+      <mat-icon  color="warn">close</mat-icon>
+    </button>
+  </div> -->
+
+  
+  <div class="flex-btw" style="align-items: flex-start;">
+    <div style="width: 40%; padding: 0 20px;">
+      <form [formGroup]="creditReviewForm" 
+      (ngSubmit)="approveCreditReview()">
+        <h4>Enter amount and take action</h4>      
+        <mat-form-field class="form-field">
+          <input matInput 
+            placeholder="Amount" formControlName="amount">
+        </mat-form-field>
+
+        <!-- <mat-form-field class="form-field">
+          <mat-label>Select Action</mat-label>
+          <mat-select placeholder="Request action"
+          formControlName="action">
+            <mat-option value=1>Approve</mat-option>
+            <mat-option value=0>Decline</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Comment" formControlName="comment">
+          <!-- <mat-icon matPrefix>comment</mat-icon>         -->
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Post</button>
+      </form>
+    </div>
+
+    <div style="width: 50%;">
+      <div class="performance">
+        <div class="flex-btw">
+          <h4>Performance History</h4>
+          <div>
+            <button mat-button color="primary" class="faint-button" 
+            (click)="creditCheckPerformance()">Get Performance</button>
+          </div>
+        </div>
+
+        <div class="text-container" mat-button >
+          <span class="text-width"> Requested Amount:</span>
+          <span class="mat-title ">{{ data.requestedamount | currency:"NGN":"symbol-narrow" }}</span>
+        </div>
+        <div class="text-container" mat-button >
+          <span class="text-width">Card Balance: </span> 
+          <span class="mat-title ">{{ userPerformance.amount_on_card | currency:"NGN":"symbol-narrow" }}</span>
+        </div>
+        <div class="text-container" mat-button>
+          <span class="text-width">Default History:</span>  
+          <span class="mat-title ">{{ userPerformance.default_history| currency:"NGN":"symbol-narrow" }}</span>
+        </div>
+        <div class="text-container" mat-button>
+          <span class="text-width">Last Saving Date:</span>  
+           
+          <span class="mat-title ">{{ userPerformance.last_saving_date | date }}</span>
+        </div>
+        <div class="text-container" mat-button >
+          <span class="text-width">Total Saving:</span>   
+          <span class="mat-title ">{{ userPerformance.total_current_saving | currency:"NGN":"symbol-narrow" }}</span>
+        </div>
+        <div class="text-container" mat-button>
+          <span class="text-width">Unsettled Credit:</span>    
+          <span class="mat-title ">{{ userPerformance.unsettled_credit | currency:"NGN":"symbol-narrow" }}</span>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- <div> -->
+
+  <!-- <form #creditReviewForm="ngForm" ngSubmit="approveCreditReview()" novalidate>
     <mat-dialog-content class="dialog-row">
       <div class="action-form">
-
-        <mat-form-field class="form-field" appearance="outline">
-          <input matInput 
-            placeholder="Amount" required 
-            name="reviewAmount" ngModel #reviewAmount="ngModel" [(ngModel)]="formModel.approveamount"
-            [class.warn]="reviewAmount.invalid && reviewAmount.touched">
-          <span matPrefix>&#8358;</span>
-          <span matSuffix>.00</span>
-        </mat-form-field>
-    
-        <mat-form-field class="form-field" appearance="outline">
-          <input matInput placeholder="Comment" name="comment" ngModel #comment="ngModel" 
-          [(ngModel)]="formModel.comment">
-          <mat-icon matPrefix>comment</mat-icon>        
-        </mat-form-field>
-  
-        <mat-form-field class="form-field" appearance="outline">
-          <mat-label>Seclect Action</mat-label>
-          <mat-select 
-            [(value)]="selecdtedAction" 
-            matNativeControl required name="action" ngModel #action="ngModel"
-            [class.warn]="action.invalid"
-            [(ngModel)]="formModel.action" >
-            <mat-option>Select action</mat-option>
-            <mat-option value="1">Approve</mat-option>
-            <mat-option value="0">Decline</mat-option>
-          </mat-select>
-        </mat-form-field> 
+         
       </div>
      
-      <div class="performance">
-        <h4>Performance History</h4>      
-        <a mat-button >Amount Reqeust:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ data.requestedamount | currency:"NGN":"symbol-narrow" }}</span></a>
-        <a mat-button >Amount On Card:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.amount_on_card | currency:"NGN":"symbol-narrow" }}</span></a>
-        <a mat-button >Default History:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.default_history| currency:"NGN":"symbol-narrow" }}</span></a>
-        <a mat-button >Last Saving Date:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.last_saving_date | date }}</span></a>
-        <a mat-button >Total Saving:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.total_current_saving | currency:"NGN":"symbol-narrow" }}</span></a>
-        <a mat-button >Unsettled Credit:&nbsp;&nbsp;&nbsp; <span class="mat-title primary-text">{{ userPerformance.unsettled_credit | currency:"NGN":"symbol-narrow" }}</span></a>
-      </div>  
+        
 
     </mat-dialog-content>
 
 
     <mat-dialog-actions class="dialog-footer">
-    <button mat-button mat-dialog-close mat-raised-button color="primary" [disabled]="creditReviewForm.form.invalid">Post</button>
+    <button mat-button mat-dialog-close mat-raised-button color="primary" 
+    [disabled]="creditReviewForm.form.invalid">Post</button>
     <div *ngIf="loading">
       <mat-spinner
         color="accent"
@@ -63,8 +119,7 @@
       </mat-spinner>
     </div>
     <div *ngIf="creditCheckMsg" >No record available</div>
-    <button mat-button mat-raised-button color="primary" (click)="creditCheckPerformance()">Verify Performance</button>
   </mat-dialog-actions>
   </form>
-    </div>
+    </div> -->
  

@@ -157,6 +157,72 @@ $tertiary-color:#17223E;
   }
 }
 
+
+.head-office{
+  font-size: 15px; position: relative; 
+  top:-10px; 
+  color: $primary-color;
+}
+
+.mat-list-item{
+  font-size: 15px;
+
+  &.active-link{
+    background-color:#2f2e2e5e!important
+  }
+  
+}
+
+
+.avatar{
+  border-radius: 50%;
+  width:40px;
+  height:40px;
+  background-color:#7a7a7a;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color:#fafafa;
+  position: relative;
+
+  .indication{
+    // border-radius: 50%;
+    // width:10px;
+    // height:10px;
+    position: absolute;
+    bottom: -5px;
+    color: #bababa;
+    right: -5px;
+  }
+}
+
+.user-toolbar-container{
+  padding:10px 20px;
+  .user-toolbar-name{
+    font-size: 20px; margin-bottom:5px; font-weight:300;
+    color: #9ab358;
+  }
+  .user-toolbar-email{
+    font-size: 14px;color:rgb(104, 103, 103); 
+    margin-bottom:5px; font-weight: 500;
+  }
+
+  .user-toolbar-menu{
+    .list{
+      padding:10px 0; 
+      color: #666;
+      font-size: 15px;
+      list-style: none;
+      cursor: pointer;
+      &.notif-no{
+        color:#8948fc;
+      }
+    }         
+  }
+}
+
+
 @media only screen and (max-width: 600px) {
   .mat-toolbar {
     position: sticky;

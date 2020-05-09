@@ -1,14 +1,15 @@
 .signin-wrapper{
-    min-width: 320px;
+    min-width: 300px;
 }
 
 .signin-container{
     margin: 5% auto;
-    width: 75%;
+    width: 65%;
 }
 
 .header-text{
-    font-size:20px; font-weight:500; text-align:center; margin:20px auto 10px
+    font-size:20px; font-weight:500; 
+    text-align:center; margin:20px auto;
 }
 
 .mat-form-field{
@@ -21,7 +22,8 @@
 }
 
 .onboard-container{
-    background: radial-gradient(ellipse at bottom, #141419 0%, #262729 100%);
+    // background: radial-gradient(ellipse at bottom, #141419 0%, #262729 100%);
+    background-color: #8948fc1a;;
     min-height:100vh;
     display:flex;
     justify-content: center;
@@ -30,8 +32,10 @@
     .onboarding{
         background: #fff;
         border-radius: 5px;
+        padding-top: 20px;
         // height: 75vh;
         // min-height: 500px;
+        box-shadow: 0 0 14px -2px #ccc;
         background: #fff;
         // min-width: 350px;
     }
@@ -68,7 +72,8 @@
 }
 
 .logo{
-    width:120px;
+    width:160px;
+    margin-bottom: 20px;
 }
 
 .loader{
@@ -84,7 +89,8 @@
 }
 
 .mat-raised-button{
-    border-radius: 20px!important;
+    width: 100%;
+    // border-radius: 20px!important;
     box-shadow: 0px 0px 8px -2px #ccc!important;
 }
 
@@ -97,12 +103,12 @@
 }
 
 .home-footer{
-    color:#ffffff; font-size: 13px; margin-top: 10px;
+    color:#333; font-size: 15px; margin-top: 10px;
 }
 
 .home-mobile-footer{
     display: none;
-    color:#333; font-size: 13px; margin-top: 10px;
+    color:#333; font-size: 15px; margin-top: 10px;
 }
 
 @media screen and (max-width:440px){

@@ -43,7 +43,6 @@ sourceId:any
 idValue:any
 displayName:any
 
-
 //CRC_CONSUMER_ADDRESS
 consumerAddress:any
 slno:any
@@ -53,7 +52,6 @@ inquiryDate:any
 institution_type:any
 product_name:any
 institution_name:any
-
 
 //CONSUMER_RELATION
 headingText:any
@@ -65,61 +63,61 @@ total_outstanding:any
 
 //SUMMARY_OF_PERFORMANCE
 consumer_credit_facility_si
-           bureau_loan_type    
-           structure_id   
-           sanctioned_amount   
-           first_disburse_date    
-           ownership_indicator               
-           installment_amount  
-           last_amount_paid   
-           asset_classification
-           current_balance 
-           outstanding_amt_principal
-           over_due_amt_pricipal 
-           max_num_days_due 
-           over_due_amt_int
-           
-           planned_closure_date
-           account_status 
-           bureau_guarantor_coverage
-           bureau_security_coverage
-           bureau_currency 
-           sanction_date  
-           primary_root_id 
-           active_root_id 
-           ruid    
-           provider_source
-           category_desc   
-           institution_sequence  
-           bureau_acc_status   
-           balanceamount    
-           ranking    
-           coverage   
-           title_of_facility
-           title_of_facility1 
-           currency_value  
-           principal_repayment
-           identifyinstitution  
-           primaryroot_id:any    
-           activeroot_id 
-           first_reported_date  
-           last_reported_date 
-           from_month_year   
-           to_month_year  
+bureau_loan_type    
+structure_id   
+sanctioned_amount   
+first_disburse_date    
+ownership_indicator               
+installment_amount  
+last_amount_paid   
+asset_classification
+current_balance 
+outstanding_amt_principal
+over_due_amt_pricipal 
+max_num_days_due 
+over_due_amt_int
 
-          // consumer_history_summary   
-          activeRoot_id  
-          frommonth_year 
-          tomonth_year   
-          month   
-          maximum_number_of_days_overdue_int  
-          maximum_number_of_days_overdue 
+planned_closure_date
+account_status 
+bureau_guarantor_coverage
+bureau_security_coverage
+bureau_currency 
+sanction_date  
+primary_root_id 
+active_root_id 
+ruid    
+provider_source
+category_desc   
+institution_sequence  
+bureau_acc_status   
+balanceamount    
+ranking    
+coverage   
+title_of_facility
+title_of_facility1 
+currency_value  
+principal_repayment
+identifyinstitution  
+primaryroot_id:any    
+activeroot_id 
+first_reported_date  
+last_reported_date 
+from_month_year   
+to_month_year  
 
-          ///////////////////////////
-          mgconsumer_credit_facility_si 
-          consumer_dishonoured_cheques 
-          mfconsumer_dishonoured_cheques 
-          mgconsumer_dishonoured_cheques  
+// consumer_history_summary   
+activeRoot_id  
+frommonth_year 
+tomonth_year   
+month   
+maximum_number_of_days_overdue_int  
+maximum_number_of_days_overdue 
+
+///////////////////////////
+mgconsumer_credit_facility_si 
+consumer_dishonoured_cheques 
+mfconsumer_dishonoured_cheques 
+mgconsumer_dishonoured_cheques  
    
 
 
