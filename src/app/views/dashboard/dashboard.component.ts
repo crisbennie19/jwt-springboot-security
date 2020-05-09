@@ -58,9 +58,9 @@ export class DashboardComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -71,13 +71,15 @@ export class DashboardComponent implements OnInit {
       map( res => res['data'])
     )
     .subscribe( res => {
+      console.log(res)
       this.dashboard = res;
+      
       this.loading = false;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error connecting to server, try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Error connecting to server, try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 }

@@ -63,9 +63,9 @@ export class CreditCheckComponent implements OnInit {
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! try again","Dismiss",{
-        duration:2000
-      })
+      // this.snackBar.open("Error! try again","Dismiss",{
+      //   duration:2000
+      // })
     })
   }
 

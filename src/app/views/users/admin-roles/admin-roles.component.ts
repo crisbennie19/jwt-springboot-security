@@ -43,9 +43,9 @@ export class AdminRolesComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 
@@ -59,9 +59,9 @@ export class AdminRolesComponent implements OnInit {
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 

@@ -88,9 +88,9 @@ export class EditSavinginterestComponent implements OnInit {
       this.savingsType = res
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 
