@@ -49,9 +49,9 @@ export class TransactionsComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
   filterSearch(){
@@ -67,9 +67,9 @@ export class TransactionsComponent implements OnInit {
         this.listData.sort = this.sort;
       }, err => {
         this.loading = false;
-        this.snackBar.open("Check your network and try again", "Dismiss", {
-          duration:2500
-        })
+        // this.snackBar.open("Check your network and try again", "Dismiss", {
+        //   duration:2500
+        // })
       })
     }
     else if(this.searchKey == '' && this.fromdate != null && this.todate != null ){
@@ -95,9 +95,9 @@ export class TransactionsComponent implements OnInit {
         this.listData.sort = this.sort;
       }, err => {
         this.loading = false;
-        this.snackBar.open("Check your network and try again", "Dismiss", {
-          duration:2500
-        })
+        // this.snackBar.open("Check your network and try again", "Dismiss", {
+        //   duration:2500
+        // })
       })
     }
 
@@ -131,9 +131,9 @@ export class TransactionsComponent implements OnInit {
         this.listData.sort = this.sort;
       }, err => {
         this.loading = false;
-        this.snackBar.open("Check your network and try again", "Dismiss", {
-          duration:2500
-        })
+        // this.snackBar.open("Check your network and try again", "Dismiss", {
+        //   duration:2500
+        // })
       })
     } else{
       this.daterRangeMsg

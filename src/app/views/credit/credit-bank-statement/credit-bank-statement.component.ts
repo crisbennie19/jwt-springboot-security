@@ -39,7 +39,6 @@ export class CreditBankStatementComponent implements OnInit {
     private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-    console.log(this.selectedRequest);
     this.request()
     
     // this.requestActionForm = this.formBuilder.group({
@@ -67,17 +66,24 @@ export class CreditBankStatementComponent implements OnInit {
       map( res => res['data'])
     )
     .subscribe( (res) => {
-      this.loading = false;
+      if(res['message'] == 'Success'){
+this.loading = false;
       this.doc = 'data:image/png;base64,'+ res;
       // this.dialogRef.close();
       this.snackBar.open('DOne',"Dismiss", {
         duration:2000
       })
+      }
+      else{
+        this.loading = false;
+        this.snackBar.open(res['data'], "Dismiss") 
+      }
+      
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! try again","Dismiss",{
-        duration:2000
-      })
+      // this.snackBar.open("Error! try again","Dismiss",{
+      //   duration:2000
+      // })
     })
   }
 

@@ -70,9 +70,9 @@ export class InterestListComponent implements OnInit {
           this.searchBack = true;
         }, err => {
           this.loading = false;
-          this.snackBar.open("Check your network and try again", "Dismiss", {
-            duration:2500
-          })
+          // this.snackBar.open("Check your network and try again", "Dismiss", {
+          //   duration:2500
+          // })
         })
         break;
 
@@ -105,9 +105,9 @@ export class InterestListComponent implements OnInit {
         this.listData.sort = this.sort;
       }, err => {
         this.loading = false;
-        this.snackBar.open("Check your network and try again", "Dismiss", {
-          duration:2500
-        })
+        // this.snackBar.open("Check your network and try again", "Dismiss", {
+        //   duration:2500
+        // })
       })
     }
 
@@ -135,9 +135,9 @@ export class InterestListComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
   searchByDate(){
@@ -167,9 +167,9 @@ export class InterestListComponent implements OnInit {
         this.searchBack = true;
       }, err => {
         this.loading = false;
-        this.snackBar.open("Check your network and try again", "Dismiss", {
-          duration:2500
-        })
+        // this.snackBar.open("Check your network and try again", "Dismiss", {
+        //   duration:2500
+        // })
       })
     } else{
       this.daterRangeMsg
@@ -195,9 +195,9 @@ export class InterestListComponent implements OnInit {
       this.searchBack = true;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
     
     }

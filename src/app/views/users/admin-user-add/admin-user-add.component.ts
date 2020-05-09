@@ -149,14 +149,14 @@ export class AdminUserAddComponent implements OnInit {
       }
       else{
         this.loading = false;
-        this.snackBar.open(res['data'], "Dismiss")
+        this.snackBar.open(res['data'], "Dismiss") 
       }
     }, 
     err => {
       this.loading = false;
-      this.snackBar.open("Error creating new user, try again","Dismiss",{
-        duration:5000
-      })
+      // this.snackBar.open("Error creating new user, try again","Dismiss",{
+      //   duration:5000
+      // })
     })
   }
 

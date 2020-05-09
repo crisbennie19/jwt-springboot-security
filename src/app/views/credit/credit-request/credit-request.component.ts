@@ -88,9 +88,9 @@ export class CreditRequestComponentMain implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -108,9 +108,9 @@ export class CreditRequestComponentMain implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
   
@@ -128,9 +128,9 @@ export class CreditRequestComponentMain implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -148,9 +148,9 @@ export class CreditRequestComponentMain implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -169,9 +169,9 @@ export class CreditRequestComponentMain implements OnInit {
     }, err => {
       this.loading = false;
       console.log(err);
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 
@@ -189,9 +189,9 @@ export class CreditRequestComponentMain implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -209,9 +209,9 @@ export class CreditRequestComponentMain implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -247,7 +247,6 @@ export class CreditRequestComponentMain implements OnInit {
     let setToday:Date = new Date();
     const formatFromDate: string = moment(this.fromdate).format();
     let formatToDate: string = moment(this.todate).format();
-    console.log(formatFromDate, "From");
 
     if(this.todate === null) { formatToDate = moment(setToday).format() }; //current time if value is empty
         

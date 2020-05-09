@@ -52,9 +52,9 @@ export class AwaitingReviewComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -68,9 +68,9 @@ export class AwaitingReviewComponent implements OnInit {
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! Activating card, try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Error! Activating card, try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
   
@@ -84,9 +84,9 @@ export class AwaitingReviewComponent implements OnInit {
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -100,9 +100,9 @@ export class AwaitingReviewComponent implements OnInit {
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 
@@ -133,9 +133,9 @@ export class AwaitingReviewComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -146,7 +146,6 @@ export class AwaitingReviewComponent implements OnInit {
     dialogConfig.data=row
     dialogConfig.minWidth = '60%';
     this.dialog.open(CreditReviewComponent, dialogConfig);
-    console.log(row)
   }
 
   viewStatement(row){

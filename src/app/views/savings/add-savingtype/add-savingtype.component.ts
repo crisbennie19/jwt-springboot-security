@@ -61,9 +61,9 @@ export class AddSavingtypeComponent implements OnInit {
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error adding savings type, try again","Dismiss",{
-        duration:2000
-      })
+      // this.snackBar.open("Error adding savings type, try again","Dismiss",{
+      //   duration:2000
+      // })
     })
   }
 

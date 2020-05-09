@@ -59,17 +59,21 @@ export class CreditCardComponent implements OnInit {
     .pipe(
       map( res => res['data'])
     )
-    .subscribe( res => {
+    .subscribe( (res) => {
+      
       this.loading = false;
       this.tableLength = res.length
       this.listData = new MatTableDataSource(res);        
       this.listData.paginator = this.paginator;
       this.listData.sort = this.sort;
+      
+    
+      
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -77,15 +81,23 @@ export class CreditCardComponent implements OnInit {
     this.loading = true;
     this.data.cardService.activateCard(e.accountid, {})
     .subscribe( (res) => {
+
+      if(res['message'] == 'Success'){
       this.loading = false;
       this.snackBar.open(res['Message'], "Dismiss", {
         duration:2000
       })
+      }
+      else{
+        this.loading = false;
+        this.snackBar.open(res['data'], "Dismiss") 
+      }
+     
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! Activating card, try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Error! Activating card, try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
   
@@ -93,31 +105,46 @@ export class CreditCardComponent implements OnInit {
     this.loading = true;
     this.data.cardService.deactivateCard(e.accountid, {})
     .subscribe( (res) => {
-      this.loading = false;
+      if(res['message'] == 'Success'){
+ this.loading = false;
       this.snackBar.open(res['Message'], "Dismiss", {
         duration:2000
       })
+      }
+      else{
+        this.loading = false;
+        this.snackBar.open(res['data'], "Dismiss") 
+      }
+
+     
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
   terminateCard(e){
     this.loading = true;
     this.data.cardService.terminateCard(e.bin)
-    .subscribe( () => {
+    .subscribe( (res) => {
+      if(res['message'] == 'Success'){
       this.loading = false;
       this.snackBar.open("Card deactivated", "Dismiss", {
         duration:2500
       })
+      }
+      else{
+        this.loading = false;
+        this.snackBar.open(res['data'], "Dismiss") 
+      }
+      
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Error! Deactivating card, try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 
@@ -148,9 +175,9 @@ export class CreditCardComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
  

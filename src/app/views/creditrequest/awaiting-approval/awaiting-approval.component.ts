@@ -52,9 +52,9 @@ export class AwaitingApprrovalComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
   // applyDateRangeFilter()

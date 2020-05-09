@@ -80,9 +80,9 @@ export class LandingpageComponent implements OnInit {
     err => {
       this.loading = false;
       this.message = 'Error! Try again';
-      this.snackBar.open("Can't connect to server! Check your network and try again","Dismiss",{
-        duration:2500
-      })
+      // this.snackBar.open("Can't connect to server! Check your network and try again","Dismiss",{
+      //   duration:2500
+      // })
     })
   }
 }

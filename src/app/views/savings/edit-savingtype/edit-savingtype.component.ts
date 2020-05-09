@@ -61,9 +61,9 @@ export class EditSavingtypeComponent implements OnInit {
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error adding savings type, try again","Dismiss",{
-        duration:2000
-      })
+      // this.snackBar.open("Error adding savings type, try again","Dismiss",{
+      //   duration:2000
+      // })
     })
   }
 
@@ -83,9 +83,9 @@ export class EditSavingtypeComponent implements OnInit {
       this.savingsType = res
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 

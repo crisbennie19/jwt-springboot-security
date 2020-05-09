@@ -75,9 +75,9 @@ export class SavingsListComponent implements OnInit {
           this.listData.sort = this.sort;
         }, err => {
           this.loading = false;
-          this.snackBar.open("Check your network and try again", "Dismiss", {
-            duration:2500
-          })
+          // this.snackBar.open("Check your network and try again", "Dismiss", {
+          //   duration:2500
+          // })
         })
         break;
         case 'accountholder':
@@ -92,9 +92,9 @@ export class SavingsListComponent implements OnInit {
           this.listData.sort = this.sort;
         }, err => {
           this.loading = false;
-          this.snackBar.open("Check your network and try again", "Dismiss", {
-            duration:2500
-          })
+          // this.snackBar.open("Check your network and try again", "Dismiss", {
+          //   duration:2500
+          // })
         })
         break;
         case 'category':
@@ -110,9 +110,9 @@ export class SavingsListComponent implements OnInit {
           this.listData.sort = this.sort;
         }, err => {
           this.loading = false;
-          this.snackBar.open("Check your network and try again", "Dismiss", {
-            duration:2500
-          })
+          // this.snackBar.open("Check your network and try again", "Dismiss", {
+          //   duration:2500
+          // })
         })
         break;
         default:
@@ -143,9 +143,9 @@ export class SavingsListComponent implements OnInit {
         this.listData.sort = this.sort;
       }, err => {
         this.loading = false;
-        this.snackBar.open("Check your network and try again", "Dismiss", {
-          duration:2500
-        })
+        // this.snackBar.open("Check your network and try again", "Dismiss", {
+        //   duration:2500
+        // })
       })
     }
 
@@ -170,9 +170,9 @@ export class SavingsListComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     })
   }
 
@@ -208,9 +208,9 @@ export class SavingsListComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Check your network and try again", "Dismiss", {
-        duration:2500
-      })
+      // this.snackBar.open("Check your network and try again", "Dismiss", {
+      //   duration:2500
+      // })
     });
 
   }

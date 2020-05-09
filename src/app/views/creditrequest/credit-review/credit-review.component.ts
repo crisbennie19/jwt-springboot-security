@@ -79,9 +79,9 @@ export class CreditReviewComponent implements OnInit {
       this.loading = false;
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error connecting to server, try again", "Dismiss", {
-        duration:2000
-      })
+      // this.snackBar.open("Error connecting to server, try again", "Dismiss", {
+      //   duration:2000
+      // })
     })
   }
 
@@ -176,9 +176,9 @@ this.loading = false;
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! try again","Dismiss",{
-        duration:2000
-      })
+      // this.snackBar.open("Error! try again","Dismiss",{
+      //   duration:2000
+      // })
     })
   }
 
@@ -202,9 +202,9 @@ this.loading = false;
       })
     }, err => {
       this.loading = false;
-      this.snackBar.open("Error! try again","Dismiss",{
-        duration:2000
-      })
+      // this.snackBar.open("Error! try again","Dismiss",{
+      //   duration:2000
+      // })
     })
     
   }
