@@ -22,6 +22,8 @@ import { MatSnackBar } from '@angular/material';
 
 export class DataService {
 
+  activeUser = JSON.parse(localStorage.getItem('adminUser') )
+
   private loginAuth = new BehaviorSubject(false);
   isLoggedin = this.loginAuth.asObservable();
 

@@ -77,7 +77,16 @@ export class UsersService {
       catchError( err => this.errorHandler(err) )
     );
   }
+
+  changePassword(accountid,newpassword,oldpassword,data): Observable<any> {
+    return this.http.post<any>(this._baseUrl + `setting/change/password?accountid=${accountid}&newpassword=${newpassword}&oldpassword=${oldpassword}`, data)
+    .pipe(
+      catchError( err =>  this.errorHandler(err))
+    )
+  }
   
+  
+
   errorHandler(error:HttpErrorResponse){
     return Observable.throw(error.message || "Server Error") 
   }

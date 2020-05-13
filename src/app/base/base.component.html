@@ -55,23 +55,28 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-        <!-- <span style="color:#fafafa; font-weight:500; font-size:15px"></span> -->
-        <span style="font-weight:500; font-size:18px">
-          Administrator
-         <!-- <span class="web-view">Welcome,</span> {{activeUser.data.name}} -->
-        </span>
+
+      <!-- <span style="color:#fafafa; font-weight:500; font-size:15px"></span> -->
+      <span style="font-weight:500; font-size:18px">
+        <span *ngIf="!isBank">Administrator</span>
+        <span *ngIf="isBank">Banker</span>
+        
+        <!-- <span class="web-view">Welcome,</span> {{activeUser.data.name}} -->
+      </span>
 
       <span class="remaining-space"></span>
 
       <!-- <button mat-button>FAQs</button> -->
-      <a (click)="collectDebt()" *ngIf="!isBank" mat-button color="accent">
+      <button (click)="collectDebt()" *ngIf="!isBank" mat-button>
         <span>Debt Collection</span>
-      </a>
+      </button>
 
-      <a routerLink="/creditrequests" mat-button color="accent">
+      <button routerLink="/creditrequests" mat-button>
         <mat-icon class="mat-18x">money</mat-icon>
         <span>Credit Request</span>
-      </a>
+      </button>
+
+      &nbsp;
 
       <div class="flex-el">
         <div [matMenuTriggerFor]="profile" class="avatar" 
@@ -83,7 +88,7 @@
           </div> -->
         </div>
         <div>
-          <div style="font-size: 16px; font-weight: 400">{{activeUser.data.name}}</div>
+          <div style="font-size: 16px; font-weight: 600; color: #555;">{{activeUser.data.name}}</div>
           <!-- <div class="head-office">Head Office</div> -->
         </div>
       </div>
@@ -94,6 +99,7 @@
             <div class="avatar">
               {{getInitials(activeUser.data.name)}}
             </div>
+            &nbsp;
 
             <div style="margin-top:5px;">
               <div class="user-toolbar-name">{{activeUser.data.name}}</div>

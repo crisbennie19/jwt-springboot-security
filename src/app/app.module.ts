@@ -92,6 +92,7 @@ import { CreditRequestComponent } from './views/creditrequest/creditrequest.comp
 import { CreditRequestComponentMain } from './views/credit/credit-request/credit-request.component';
 
 import { AuthInterceptor } from '../app/api/http.interceptor';
+import { ChangePasswordComponent } from './views/users/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -164,7 +165,8 @@ import { AuthInterceptor } from '../app/api/http.interceptor';
     CreditReportComponent,
     CreditSubjectComponent,
     UserReportComponent,
-    CreditBureauComponent
+    CreditBureauComponent,
+    ChangePasswordComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -229,8 +231,10 @@ import { AuthInterceptor } from '../app/api/http.interceptor';
     CreditRequestHistoryComponent,
     UserReportComponent,
     CreditRequestHistoryComponent,
-    CreditBureauComponent
+    CreditBureauComponent,
+    ChangePasswordComponent
   ],
+  
   bootstrap: [AppComponent],
   
 })
