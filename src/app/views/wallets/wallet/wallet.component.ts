@@ -177,8 +177,8 @@ export class WalletComponent implements OnInit {
     })
   }
 
-  applyFilter(filter:string){
-    this.listData.filter = filter.toLowerCase();
+  applyFilter(){
+    this.listData.filter = this.searchKey.toLowerCase();
   }
 
   clearSearch(){

@@ -36,13 +36,15 @@ export class ChangePasswordComponent implements OnInit {
     if(this.changePasswordForm.invalid){
       return;
     }
+
+    let activeUser = JSON.parse(localStorage.getItem('adminUser') )
     
     let form = this.changePasswordForm
     this.loading = true;
 
     let newpassword = form.get('newpass').value
     let password = form.get('oldpass').value
-    let accountid = this.data.activeUser.data.id
+    let accountid = activeUser.data.id
 
     this.data.usersService.changePassword(accountid,newpassword,password, {})
     .subscribe( res => {

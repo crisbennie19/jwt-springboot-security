@@ -40,7 +40,16 @@
         
                 <div class="align-center">
                   <button mat-raised-button color="accent"
-                  [disabled]="loading">Log in to your account
+                  [disabled]="loading">
+                  <span *ngIf="!loading">Log in to your account</span>
+                  
+                  <div *ngIf="loading" style="display: inline-block; text-align: center;">
+                    <mat-spinner 
+                      color="accent"
+                      [strokeWidth]= 3
+                      [diameter]=18>
+                    </mat-spinner>
+                  </div>
                   </button>
                 </div>
                 &nbsp;

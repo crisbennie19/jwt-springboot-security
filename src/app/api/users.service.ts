@@ -26,6 +26,19 @@ export class UsersService {
     );
   }
 
+  loginOutAdmin(id,body:any){
+    return this.http.post(
+      encodeURI(this._baseUrl + 
+      `entrance/logout?accountid=${id}`), body
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
+
+
+  
+
   getAdminUsers(page:number,size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 
@@ -84,7 +97,6 @@ export class UsersService {
       catchError( err =>  this.errorHandler(err))
     )
   }
-  
   
 
   errorHandler(error:HttpErrorResponse){

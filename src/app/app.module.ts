@@ -7,6 +7,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -106,10 +107,7 @@ import { ChangePasswordComponent } from './views/users/change-password/change-pa
     ReportsComponent,
     CreditRequestComponent,
     CreditRequestComponentMain,
-    
-
     CreditComponent,
-
     MessagesComponent,
     TableComponent,
     AdminUsersListComponent,
@@ -202,12 +200,14 @@ import { ChangePasswordComponent } from './views/users/change-password/change-pa
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    
     NgbModule
   ],
+
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
+
   entryComponents:[
     ComposeComponent,
     EditMessageComponent,
@@ -234,10 +234,10 @@ import { ChangePasswordComponent } from './views/users/change-password/change-pa
     CreditBureauComponent,
     ChangePasswordComponent
   ],
-  
+
   bootstrap: [AppComponent],
-  
 })
+
 export class AppModule { }
 
 platformBrowserDynamic().bootstrapModule(AppModule);

@@ -22,7 +22,6 @@ import { MatSnackBar } from '@angular/material';
 
 export class DataService {
 
-  activeUser = JSON.parse(localStorage.getItem('adminUser') )
 
   private loginAuth = new BehaviorSubject(false);
   isLoggedin = this.loginAuth.asObservable();
@@ -45,16 +44,11 @@ export class DataService {
     private snackBar:MatSnackBar
 
   ) { 
-    // router.events.subscribe(val => {
-    //   console.log(val['url'], "location");
-      
-    //   if (val['url'] == "/") {
-    //     this.snackBar.open('Okay', "Dismiss", {duration:1000})         
-    //   }
-    //   else{
-    //     this.idleLogout()            
-    //   }
-    // });
+    router.events.subscribe(val => {
+      if (localStorage.getItem('adminUser') !== null && val['url'] === "/") {
+        this.loginAuth.next(false);            
+      }
+    });
 
     this.checkLoginStatus()
 
@@ -109,13 +103,34 @@ export class DataService {
       this.loginAuth.next(true);
       // this.router.navigateByUrl('/dashboard');
     } else {
-      this.logout();
+      this.router.navigateByUrl('/');
+      this.loginAuth.next(false);
     }
   }
 
   logout(){
-    localStorage.clear();
-    this.router.navigateByUrl('/');
-    this.loginAuth.next(false);
+
+    let activeUser = JSON.parse(localStorage.getItem('adminUser') )
+   
+    this.snackBar.open("Shutting down...", 'Dismiss', {
+      duration:10000
+    })
+    this.usersService.loginOutAdmin(activeUser.data.id, {})
+    .subscribe (res => {
+      if(res['message'] == 'Success'){
+        localStorage.clear();
+        this.router.navigateByUrl('/');
+        this.loginAuth.next(false);
+        this.snackBar.dismiss()
+      }
+      else{
+        this.snackBar.open(res['data'], 'Dismiss')
+      }
+    }, err => {
+      this.snackBar.open("Error Signing out", 'Dismiss', {
+        duration:7000
+      })
+    })
+    
   }
 }

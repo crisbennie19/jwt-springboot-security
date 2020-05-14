@@ -22,13 +22,7 @@
     <div class="flex-el">
       <div class="search-container">
         <mat-icon class="prefix">search</mat-icon>
-        <input type="text" class="mSearch"
-        (keyup)="applyFilter()"
-
-        [(ngModel)]="searchKey"
-        placeholder="Search...">
-        <mat-icon class="suffix" *ngIf="searchKey != ''"
-        (click)="clearSearch()">close</mat-icon>
+        <input type="text" class="mSearch">
       </div>
       &nbsp;
       &nbsp;
