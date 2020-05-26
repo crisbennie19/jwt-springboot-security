@@ -31,7 +31,6 @@ import { TransactionsComponent } from './views/transactions/transactions.compone
 import { UsersListComponent } from './views/users/users-list/users-list.component';
 import { ChargesComponent } from './views/charges/charges.component';
 import { SavingsComponent } from './views/savings/savings.component';
-import { ReportsComponent } from './views/reports/reports.component';
 import {CreditComponent } from './views/credit/credit.component';
 import { MessagesComponent } from './views/messages/messages.component';
 import { TableComponent } from './table/table.component';
@@ -92,6 +91,17 @@ import { CreditRequestComponent } from './views/creditrequest/creditrequest.comp
 import { CreditRequestComponentMain } from './views/credit/credit-request/credit-request.component';
 
 import { AuthInterceptor } from '../app/api/http.interceptor';
+import { ReportsComponent } from './views/reports/reports.component';
+import { CreditCardReportComponent } from './views/reports/credit-card-report/credit-card-report.component';
+import { InterestReportComponent } from './views/reports/interest-report/interest-report.component';
+import { SavingsReportComponent } from './views/reports/savings-report/savings-report.component';
+import { TransactionReportComponent } from './views/reports/transaction-report/transaction-report.component';
+import { VcardReportComponent } from './views/reports/vcard-report/vcard-report.component';
+import { WalletReportComponent } from './views/reports/wallet-report/wallet-report.component';
+import { SupportComponent } from './views/support/support.component';
+import { PlatformSupportsComponent } from './views/support/platform-supports/platform-supports.component';
+import { SupportTickestComponent } from './views/support/support-tickest/support-tickest.component';
+import { ViewSupportComponent } from './views/support/view-support/view-support.component';
 
 @NgModule({
   declarations: [
@@ -102,10 +112,9 @@ import { AuthInterceptor } from '../app/api/http.interceptor';
     UsersListComponent,
     ChargesComponent,
     SavingsComponent,
-    ReportsComponent,
     CreditRequestComponent,
     CreditRequestComponentMain,
-    
+    ReportsComponent,
 
     CreditComponent,
 
@@ -164,7 +173,17 @@ import { AuthInterceptor } from '../app/api/http.interceptor';
     CreditReportComponent,
     CreditSubjectComponent,
     UserReportComponent,
-    CreditBureauComponent
+    CreditBureauComponent,
+    CreditCardReportComponent,
+    InterestReportComponent,
+    SavingsReportComponent,
+    TransactionReportComponent,
+    VcardReportComponent,
+    WalletReportComponent,
+    SupportComponent,
+    PlatformSupportsComponent,
+    SupportTickestComponent,
+    ViewSupportComponent
   ],
   imports: [
     // ImageViewerModule,

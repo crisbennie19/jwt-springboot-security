@@ -7,7 +7,6 @@ import { CreditRequestComponent } from './views/creditrequest/creditrequest.comp
 import { SavingsComponent } from './views/savings/savings.component';
 import { MessagesComponent } from './views/messages/messages.component';
 import { ChargesComponent } from './views/charges/charges.component';
-import { ReportsComponent } from './views/reports/reports.component';
 import { UsersListComponent } from './views/users/users-list/users-list.component';
 import { UsersComponent } from './views/users/users.component';
 import { LogsComponent } from './views/logs/logs.component';
@@ -18,6 +17,9 @@ import { WalletComponent } from './views/wallets/wallet/wallet.component';
 import { InterestsComponent } from './views/interests/interests.component';
 import { WalletsComponent } from './views/wallets/wallets.component';
 import { SettingsComponent } from './views/settings/settings.component';
+import { ReportsComponent } from './views/reports/reports.component';
+import { SupportComponent } from './views/support/support.component';
+import { ViewSupportComponent } from './views/support/view-support/view-support.component';
 
 
 const routes: Routes = [
@@ -80,7 +82,12 @@ const routes: Routes = [
   {
     path:'users',
     component:UsersComponent
-  }
+  },
+  {
+    path:'support',
+    component:SupportComponent
+  },
+  {path: 'issue-details/:id', component: ViewSupportComponent}
 
 ];
 

@@ -1,0 +1,42 @@
+.mat-expansion-panel-header{
+    
+    
+}
+.formsContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+    
+    margin-left: 10px;
+    
+}
+
+.forms{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+    width: 80%;
+    
+}
+.mat-action-row{
+    display: flex;
+    
+    
+}
+.mat-action-row > div{
+    
+   align-self: flex-end;
+   margin-right: 10%;
+   
+}
+.btn1{
+    margin-right: 10px;
+}
+.matInputs{
+width: 600px;
+}
+.matTextArea{
+    width: 600px;
+    height: 100px;    
+}

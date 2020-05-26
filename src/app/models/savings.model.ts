@@ -16,3 +16,14 @@ export interface Savingstype {
   export interface verifyPerformance{
     bvn:string
   }
+  export interface issueLog{
+    category: string,
+    description: string,
+    initiatoremail: string
+  }
+  export interface newIssue{
+  description: string,
+  issuesid: number,
+  postedbyemail: string,
+  status: string
+  }

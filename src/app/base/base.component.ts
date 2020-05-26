@@ -29,7 +29,9 @@ export class BaseComponent {
     {route:'/logs',icon:'receipt', name:'Logs', role:"ADMINISTRATOR"},
     {route:'/referrals',icon:'insert_comment', name:'Referral', role:"ADMINISTRATOR"},
     {route:'/reports',icon:'report', name:'Report', role:"ADMINISTRATOR"},
+    {route:'/support',icon:'live_help', name:'Support', role:"ADMINISTRATOR"},
     {route:'/settings',icon:'settings', name:'Settings', role:"BANK"}
+
   ]
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)

@@ -9,12 +9,15 @@ import { ReferralService } from './api/referral.service';
 import { SavingsService } from './api/savings.service';
 import { UsersService } from './api/users.service';
 import { ChargesService } from './api/charges.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from } from 'rxjs';
 import { Router } from '@angular/router';
 import { Location } from "@angular/common";
 import { WalletService } from './api/wallet.service';
 import { InterestsService } from './api/interests.service';
+
 import { MatSnackBar } from '@angular/material';
+import { ReportService } from './api/report.service';
+import { IssuesService } from './api/issues.service';
 
 @Injectable({
   providedIn: 'root'
@@ -38,9 +41,11 @@ export class DataService {
     public usersService: UsersService,
     public walletService: WalletService,
     public interestService:InterestsService,
+    public reportService:ReportService,
     private router:Router,
     private location: Location,
-    private snackBar:MatSnackBar
+    private snackBar:MatSnackBar,
+    public supportService:IssuesService
 
   ) { 
     // router.events.subscribe(val => {

@@ -1,0 +1,90 @@
+.container {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+.header {
+	display: flex;
+	
+	max-width: 80%;
+	margin: 2% 2%;
+}
+.previousArrow{
+    cursor: pointer;
+}
+.initiatorMsg {
+	display: flex;
+	height: auto;
+	padding: 5px;
+	align-self: center;
+
+	flex-direction: column;
+	margin-bottom: 10px;
+	width: 100%;
+	background-color: floralwhite;
+}
+.initiatorMsgHeader {
+	display: flex;
+	
+    margin: 20px;
+    border-bottom: 0.5px ;
+}
+.datePosted{
+    margin-left: auto;
+   padding-right: 10px;
+}
+.replyIcon{
+   margin-left: auto;
+}
+.initiatorMsgBody {
+	display: flex;
+	padding-top: 5px;
+	width: 80%;
+	flex-direction: column;
+	margin: 20px;
+}
+.mat-header-form {
+	display: none;
+}
+
+.formsContainer {
+	display: flex;
+	padding-top: 2px;
+	width: 80%;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+
+.forms {
+	display: flex;
+    width: 80%;
+    justify-content: center;
+    
+}
+.formExpandable{
+    flex-direction: column;
+    align-self: center;
+    width: 70%;
+    border-radius: 20px;
+}
+.mat-action-row {
+	display: flex;
+}
+.divs {
+	align-self: flex-end;
+	margin-right: 10%;
+}
+.btn1 {
+	margin-right: 10px;
+}
+
+.mat-form-field{
+    width: 100%;
+    margin-top: 10px;
+}
+.mat-form-field >textarea{
+height: 80px;
+}
+.mat-expansion-panel-header{
+display: flex;
+}

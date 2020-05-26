@@ -1,0 +1,45 @@
+table {
+    width: 100%;
+    cursor: pointer;
+}
+
+.jamez-input{
+    width:150px;
+}
+.mat-column-id{
+    display: none;
+}
+
+.mat-column-ticketid{
+    
+}
+
+.mat-column-status{
+    
+}
+.mat-column-number{
+    
+}
+
+.mat-column-email{
+    word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 28% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+.mat-column-description{
+   display: none;
+}
+.mat-column-category{
+   
+}
+

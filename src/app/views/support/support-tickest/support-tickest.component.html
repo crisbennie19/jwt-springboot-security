@@ -1,0 +1,119 @@
+<div class="component-container">
+  
+    <div class="component-header">
+      <div>All Support Tickets</div>
+    </div>
+    <div class="flex-btw wrap">
+    <div class="flex-el">
+      <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon> 
+        <input type="text" class="mSearch"
+        (keyup)=applyFilter()
+        [(ngModel)]="searchKey"
+        placeholder="Search...">
+        <mat-icon class="suffix" *ngIf="searchKey != ''"
+        (click)="clearSearch()">close</mat-icon>
+      </div>
+      &nbsp;
+      &nbsp;
+
+      <!-- <button mat-raised-button
+      (click)="getTicketList()"
+      color="accent">Search
+  </button> -->
+
+      <div *ngIf="loading">
+        <mat-spinner
+          color="accent"
+          [strokeWidth]= 3
+          [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+      <div>
+      <mat-form-field class="jamez-input"
+      floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="fromdate"
+        [matDatepicker]="pickers" placeholder="Start date">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off"  [(ngModel)]="todate"
+        [matDatepicker]="picker" placeholder="End date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      &nbsp;    
+      <button mat-raised-button
+          (click)="getTicketList()"
+          color="accent">Search date
+      </button>
+    </div>
+    
+    </div> 
+
+    <div  >
+      <!-- <div>{{message}}</div> -->
+
+        <table  mat-table  [dataSource]="listData" matSort  aria-label="Elements">
+           <div *ngIf="showTable" >{{message}}</div>
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef >ID</mat-header-cell>
+            <mat-cell *matCellDef="let row"  data-label="id">{{row.id}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="ticketid">
+            <mat-header-cell *matHeaderCellDef>Ticket ID</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Ticket Id">{{row.ticketid}}</mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="category">{{row.category}}</mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="email">{{row.initiatoremail}}</mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="number">
+            <mat-header-cell *matHeaderCellDef>Number</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Phone Number">{{row.initiatorphone}}</mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Description">{{row.description}}</mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Posted Date">{{row.dateposted|date}}</mat-cell>
+          </ng-container>
+    
+         
+
+
+          <ng-container matColumnDef="status" >
+            <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</mat-cell>
+          </ng-container>
+
+          
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row (click)="getSelectedRow(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </table>
+    
+        <mat-paginator #paginator class="paginator"
+          showFirstLastButtons
+          [length]="tableLength"
+          [pageIndex]="0"
+          [pageSize]="7">
+        </mat-paginator>
+      </div>
+    
+    </div>
