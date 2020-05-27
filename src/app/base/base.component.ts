@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data.service';
 import { verifyRole } from '../helpers/roles';
+import { ChangePasswordComponent } from '../views/users/change-password/change-password.component';
+import { MatDialogConfig, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-base',
@@ -41,7 +43,8 @@ export class BaseComponent {
 
   isBank: any;
 
-  constructor(private breakpointObserver: BreakpointObserver, private data:DataService) {
+  constructor(private breakpointObserver: BreakpointObserver, 
+    private data:DataService, private dialog:MatDialog) {
     this.activeUser = JSON.parse(localStorage.getItem('adminUser') )
 
     this.isBank = verifyRole('BANK')
@@ -60,6 +63,14 @@ export class BaseComponent {
   collectDebt(){
     this.data.creditService.collectDebt();
     // console.log("it is working");
+  }
+
+  changePassword(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = false;
+    dialogConfig.minWidth = "30%";
+    this.dialog.open(ChangePasswordComponent, dialogConfig);
   }
 
   logout(){

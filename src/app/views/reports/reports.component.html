@@ -30,5 +30,30 @@
         </ng-template>
     </mat-tab>
 
+    <mat-tab label="Saving"> 
+        
+       </mat-tab>
+       
+       <mat-tab label="Transation"> 
+        
+       </mat-tab>
+      
+  </mat-tab-group>
 
-</mat-tab-group>
+  <div class="flex-btw wrap">
+    <div class="flex-el">
+      <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon>
+        <input type="text" class="mSearch">
+      </div>
+      &nbsp;
+      &nbsp;
+      <div *ngIf="loading">
+        <mat-spinner
+          color="accent"
+          [strokeWidth]= 3
+          [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+      

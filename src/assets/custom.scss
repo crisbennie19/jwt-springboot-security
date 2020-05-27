@@ -124,6 +124,11 @@ tr.mat-row{
     }
 }
 
+.flex-vertical{
+    display:flex;
+    flex-direction: column;
+}
+
 .flex-end{
     display: flex;
     justify-content: flex-end;

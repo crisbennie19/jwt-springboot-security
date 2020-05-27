@@ -7,6 +7,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
+import { HashLocationStrategy, LocationStrategy, DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -102,6 +103,7 @@ import { SupportComponent } from './views/support/support.component';
 import { PlatformSupportsComponent } from './views/support/platform-supports/platform-supports.component';
 import { SupportTickestComponent } from './views/support/support-tickest/support-tickest.component';
 import { ViewSupportComponent } from './views/support/view-support/view-support.component';
+import { ChangePasswordComponent } from './views/users/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +119,6 @@ import { ViewSupportComponent } from './views/support/view-support/view-support.
     ReportsComponent,
 
     CreditComponent,
-
     MessagesComponent,
     TableComponent,
     AdminUsersListComponent,
@@ -183,7 +184,8 @@ import { ViewSupportComponent } from './views/support/view-support/view-support.
     SupportComponent,
     PlatformSupportsComponent,
     SupportTickestComponent,
-    ViewSupportComponent
+    ViewSupportComponent,
+    ChangePasswordComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -219,12 +221,15 @@ import { ViewSupportComponent } from './views/support/view-support/view-support.
     MatSliderModule,
     MatSnackBarModule,
     MatCheckboxModule,
-    
     NgbModule
   ],
+
   providers: [
+    DatePipe,
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
+
   entryComponents:[
     ComposeComponent,
     EditMessageComponent,
@@ -248,11 +253,13 @@ import { ViewSupportComponent } from './views/support/view-support/view-support.
     CreditRequestHistoryComponent,
     UserReportComponent,
     CreditRequestHistoryComponent,
-    CreditBureauComponent
+    CreditBureauComponent,
+    ChangePasswordComponent
   ],
+
   bootstrap: [AppComponent],
-  
 })
+
 export class AppModule { }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
