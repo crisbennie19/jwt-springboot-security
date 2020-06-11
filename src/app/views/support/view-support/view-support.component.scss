@@ -21,7 +21,7 @@
 	flex-direction: column;
 	margin-bottom: 10px;
 	width: 100%;
-	background-color: floralwhite;
+	// background-color: floralwhite;
 }
 .initiatorMsgHeader {
 	display: flex;
@@ -55,21 +55,33 @@
     justify-content: center;
 }
 
-.forms {
-	display: flex;
-    width: 80%;
-    justify-content: center;
+// .forms {
+// 	display: flex;
+//     width: 80%;
+//     justify-content: center;
     
+// }
+// .formExpandable{
+//     flex-direction: column;
+//     align-self: center;
+//     width: 70%;
+//     border-radius: 20px;
+// }
+// .mat-action-row {
+// 	display: flex;
+// }
+
+.content-wrapper{
+	padding: 10px 40px;
+
 }
-.formExpandable{
-    flex-direction: column;
-    align-self: center;
-    width: 70%;
-    border-radius: 20px;
+
+
+.mat-expansion-panel-body {
+    padding: 0!important;
 }
-.mat-action-row {
-	display: flex;
-}
+
+
 .divs {
 	align-self: flex-end;
 	margin-right: 10%;
@@ -82,9 +94,13 @@
     width: 100%;
     margin-top: 10px;
 }
+
 .mat-form-field >textarea{
-height: 80px;
+	height: 80px;
 }
 .mat-expansion-panel-header{
-display: flex;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgb(170, 170, 170)!important;
+    height: 48px!important;
 }

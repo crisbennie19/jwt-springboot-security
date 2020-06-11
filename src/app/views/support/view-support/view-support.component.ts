@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-view-support',
@@ -27,7 +28,10 @@ export class ViewSupportComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private data: DataService, private router: Router, private fb: FormBuilder) {
+  constructor(private data: DataService, 
+    private router: Router, 
+    private fb: FormBuilder,
+    private snackBar:MatSnackBar) {
 
     this.payload = {
       description: "",
@@ -37,6 +41,7 @@ export class ViewSupportComponent implements OnInit {
     }
 
     const navigation = this.router.getCurrentNavigation();
+
     const issues = navigation.extras.state.data as {
       category: string
       closebyemail: string
@@ -51,10 +56,12 @@ export class ViewSupportComponent implements OnInit {
       status: string
       ticketid: string
     }
+
     this.intListData = issues
     this.form = this.fb.group({
       'responseMessage': ['', Validators.required],
-      'email': ['']
+      'email': [''],
+      'name': ['']
     })
   }
 
@@ -75,6 +82,7 @@ export class ViewSupportComponent implements OnInit {
     this.data.supportService.getIssuesbyIssueID(this.intListData.id).subscribe((res: any) => {
       if(res.message=="Success"){
       this.listData = res.data
+      this.listData = res.data.sort((a, b) => b.index - a.index);
       this.loading=false
       }else {
 
@@ -85,6 +93,10 @@ export class ViewSupportComponent implements OnInit {
   }
 
   supportReply() {
+    if(this.form.invalid){
+      return
+    }
+
     this.loading = true
     this.payload = {
       description: this.form.get('responseMessage').value,
@@ -96,11 +108,16 @@ export class ViewSupportComponent implements OnInit {
     this.data.supportService.postNewIssueLog(this.payload).subscribe((res: any) => {
       if(res.message == "Success"){
         this.getIssuesLog();
-      this.loading = false
-        this.message = res.message
+        this.loading = false
+        this.snackBar.open(res.message, 'Dismiss', {
+          duration:4000,
+        })
         this.submitMsg=true
       }else{
         this.message = res.message
+        this.snackBar.open(res.message, 'Dismiss', {
+          duration:4000,
+        })
         this.submitMsg=true
       }
 

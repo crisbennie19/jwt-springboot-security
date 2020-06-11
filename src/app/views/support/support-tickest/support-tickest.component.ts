@@ -3,6 +3,7 @@ import { DataService } from 'src/app/data.service';
 import { MatTableDataSource, MatSnackBar, MatPaginator, MatSort } from '@angular/material';
 import { Router, NavigationExtras } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { getFirstDayMonth, getDate } from 'src/app/helpers/dateFormat';
 
 @Component({
   selector: 'app-support-tickest',
@@ -20,8 +21,8 @@ export class SupportTickestComponent implements OnInit {
   loading: boolean;
   tableLength: number;
   mydata: any;
-  fromdate: any;
-  todate: any
+  fromdate = getFirstDayMonth(new Date())
+  todate = getDate(new Date())
   response: any;
 
 
@@ -34,12 +35,13 @@ export class SupportTickestComponent implements OnInit {
   }
   getInitList() {
     var date = new Date();
-    var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    const formatdate1 = this.pipes.transform(firstDay, 'yyyy-MM-dd')
-    const formatdate2 = this.pipes.transform(lastDay, 'yyyy-MM-dd')
+    // var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    // var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    // const formatdate1 = this.pipes.transform(firstDay, 'yyyy-MM-dd')
+    // const formatdate2 = this.pipes.transform(lastDay, 'yyyy-MM-dd')
     this.loading = true
-    this.data.supportService.getAllIssues(formatdate1, formatdate2).subscribe((res: any) => {
+    this.data.supportService.getAllIssues(this.fromdate, this.todate)
+    .subscribe((res: any) => {
       if (res.message == "Success") {
         console.log(res)
         this.mydata = res.data;
@@ -51,39 +53,21 @@ export class SupportTickestComponent implements OnInit {
         this.loading = false;
       }
       else {
-
         this.message = res.message
         this.loading = false;
       }
-
-
     }, err => {
       this.loading = false;
-
-
     })
   }
 
   getTicketList() {
+    this.loading = true;
+     let fromdate = getDate(this.fromdate)
+     let todate = getDate(this.todate)
 
-    if (this.searchKey == '' && this.fromdate != null && this.todate != null) {
-
-      this.loading = true
-      const fromday = this.fromdate.getDate();
-      const frommonth = this.fromdate.getMonth() + 1;
-      const fromyear = this.fromdate.getFullYear();
-      const fromdateFormatted = fromyear + '-' + frommonth + '-' + fromday;
-
-
-      const today = this.todate.getDate();
-      const tomonth = this.todate.getMonth() + 1;
-      const toyear = this.todate.getFullYear()
-      const todateFormatted = toyear + '-' + tomonth + '-' + today;
-
-
-      this.data.supportService.getAllIssues(fromdateFormatted, todateFormatted).subscribe((res: any) => {
+      this.data.supportService.getAllIssues(fromdate, todate).subscribe((res: any) => {
         if (res.message == "Success") {
-
           this.mydata = res.data;
           this.loading = false;
           this.tableLength = this.mydata.length;
@@ -92,7 +76,7 @@ export class SupportTickestComponent implements OnInit {
           this.listData.sort = this.sort;
         }
         else {
-
+        this.loading = false;
           this.message = res.message
         }
 
@@ -102,13 +86,13 @@ export class SupportTickestComponent implements OnInit {
 
 
       })
-    }
-    else if (this.fromdate == null || this.todate == null) {
-      this.loading = false
+    // }
+    // else if (this.fromdate == null || this.todate == null) {
+    //   this.loading = false
 
-      this.message = "Please ensure you choose a valid date"
+    //   this.message = "Please ensure you choose a valid date"
 
-    }
+    // }
 
   }
   getSelectedRow(value) {
