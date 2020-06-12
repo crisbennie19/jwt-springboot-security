@@ -111,7 +111,7 @@ export class SavingsService {
   getSavingsType(){
     return this.http.get(
       encodeURI(this._baseUrl + 
-      `swipe_v2/savingstype/list/`)
+      `swipe_admin/savingstype/list/`)
     )
     .pipe(
       catchError( err => this.errorHandler(err) )

@@ -15,113 +15,95 @@
             </mat-spinner>
         </div>
 
-        <div class="replyIcon"><button (click)="openAccordion()" mat-mini-fab color="primary">
+        <!-- <div class="replyIcon">
+            <button (click)="openAccordion()" mat-mini-fab color="primary">
                 <mat-icon>reply</mat-icon>
-            </button></div>
+            </button>
+        </div> -->
     </div>
 
-    <div class="formsContainer" *ngIf="openPanel">
-        <span style="color: green;" *ngIf="submitMsg">{{message}}
-        </span>
+    <!-- [expanded]="hideShow" -->
 
-        <form class="forms" [formGroup]="form">
+    <div class="content-wrapper">
+        <mat-accordion >
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="flex-el has-text-primary">
+                            <mat-icon>edit</mat-icon> &nbsp; <span>REPLY</span>  
+                        </div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <form class="forms" [formGroup]="form">        
+                    <span style="color: green;" *ngIf="submitMsg">{{message}} </span>  
+                    &nbsp;              
+                    <div class="flex-btw">
+                        <mat-form-field appearance="fill" style="width: 45%;">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" name="name" [readonly]="emailDisable">
+                            <span matPrefix style="padding-bottom: 0px;">
+                                <mat-icon> person</mat-icon>
+                            </span>
+                        </mat-form-field>
 
-            <mat-expansion-panel *ngIf="!submitMsg" [expanded]="hideShow" class="formExpandable">
-                <mat-expansion-panel-header class="mat-header-form">
-
+                        <mat-form-field appearance="fill" style="width: 45%;">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput formControlName="email" name="email" [readonly]="emailDisable">
+                            <span matPrefix style="padding-bottom: 0px;">
+                                <mat-icon> mail_outline</mat-icon>
+                            </span>
+                        </mat-form-field>
+                    </div>
+                    
+                    <mat-form-field appearance="fill">
+                        <mat-label>Message</mat-label>
+                        <textarea rows="8" formControlName="responseMessage" matInput></textarea>
+                    </mat-form-field>
+        
+                    <mat-action-row>
+                        <div>
+                            <button class="btn1" mat-button color="warn" (click)="closeAccordion()">Close</button>
+                            <button mat-raised-button color="primary" (click)="supportReply()">Send</button>
+                        </div>
+                    </mat-action-row>
+                </form>
+            </mat-expansion-panel>
+        </mat-accordion>
+    
+        &nbsp;
+        <mat-accordion>
+            <mat-expansion-panel expanded="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="flex-el">
+                            <mat-icon>person</mat-icon>&nbsp;{{intListData.initiatoremail}}
+                        </div>
+                        <div class="datePosted">{{intListData.dateposted}}</div>
+                    </mat-panel-title>
                 </mat-expansion-panel-header>
 
-
-                <mat-form-field>
-
-                    <input matInput formControlName="email" name="email" [readonly]="emailDisable">
-                    <span matPrefix style="padding-bottom: 0px;">
-                        <mat-icon> mail_outline&nbsp;</mat-icon>
-                    </span>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Textarea</mat-label>
-                    <textarea formControlName="responseMessage" matInput></textarea>
-                </mat-form-field>
-                <mat-action-row>
-                    <div>
-                        <button class="btn1" mat-raised-button color="warn" (click)="closeAccordion()">Close</button>
-                        <button mat-raised-button color="primary" (click)="supportReply()">Send</button>
-                    </div>
-                </mat-action-row>
-
+                <div>
+                    {{intListData.description}}
+                </div>
             </mat-expansion-panel>
-
-
-        </form>
-
-
-    </div>
-    <mat-divider></mat-divider>
-
-
-    <div class="initiatorMsg">
-
-        <div class="initiatorMsgHeader">
-            <div><span>
-                    <mat-icon>person</mat-icon>
-                </span>&nbsp;{{intListData.initiatoremail}} </div>
-
-            <div class="datePosted">{{intListData.dateposted}}</div>
-            <mat-divider></mat-divider>
-        </div>
-        <div class="initiatorMsgBody">
-            <div>
-                <!-- <p>{{intListData.description}}</p></div> -->
-                <mat-card>
-                    <!-- <mat-card-header>
-            
-                    </mat-card-header> -->
-                    <mat-card-content>
-                        {{intListData.description}}
-                    </mat-card-content>
-
-                </mat-card>
-
-
-
-            </div>
-        </div>
-
-
-        <div *ngFor="let list of listData">
-            <mat-accordion>
-
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <div>
-                            <mat-icon>person</mat-icon>&nbsp;{{list.postedbyemail}}
-                        </div>
-                        <div class="datePosted">{{list.dateposted }}</div>
-
-                    </mat-expansion-panel-header>
-                    <!-- <p>{{list.postedbyname}},</p>
-          <div>{{list.description}}</div> -->
-
-                    <mat-card>
-                        <!-- <mat-card-header>
+        </mat-accordion>
     
-            </mat-card-header> -->
-                        <mat-card-content>
-                            <p>{{list.postedbyname}},</p>
-                            <div>{{list.description}}</div>
-                        </mat-card-content>
+        <mat-accordion>
+            <mat-expansion-panel  *ngFor="let list of listData">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="flex-el">
+                            <mat-icon>person</mat-icon>&nbsp;{{list?.postedbyemail}}
+                        </div>
+                        <div class="datePosted">{{list?.dateposted}}</div>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-                    </mat-card>
-
-                </mat-expansion-panel>
-
-
-            </mat-accordion>
-        </div>
-
-
-
-
+                <!-- <p> <b>Hello {{list.postedbyname}}</b> ,</p> -->
+                <div>{{list.description}}</div>
+                
+            </mat-expansion-panel>
+        </mat-accordion>
     </div>
+    
 </div>
