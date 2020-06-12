@@ -41,7 +41,7 @@ export class SupportTickestComponent implements OnInit {
     this.loading = true
     this.data.supportService.getAllIssues(formatdate1, formatdate2).subscribe((res: any) => {
       if (res.message == "Success") {
-        console.log(res)
+        
         this.mydata = res.data;
         this.loading = false;
         this.tableLength = this.mydata.length;

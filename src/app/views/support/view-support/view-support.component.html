@@ -21,11 +21,11 @@
     </div>
 
     <div class="formsContainer" *ngIf="openPanel">
-        <span style="color: green;" *ngIf="submitMsg">{{message}} 
-                </span>
+        <span style="color: green;" *ngIf="submitMsg">{{message}}
+        </span>
 
         <form class="forms" [formGroup]="form">
-            
+
             <mat-expansion-panel *ngIf="!submitMsg" [expanded]="hideShow" class="formExpandable">
                 <mat-expansion-panel-header class="mat-header-form">
 
