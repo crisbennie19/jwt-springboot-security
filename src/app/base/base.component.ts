@@ -6,6 +6,7 @@ import { DataService } from '../data.service';
 import { verifyRole } from '../helpers/roles';
 import { ChangePasswordComponent } from '../views/users/change-password/change-password.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-base',
@@ -44,6 +45,7 @@ export class BaseComponent {
   isBank: any;
 
   constructor(private breakpointObserver: BreakpointObserver, 
+    private router: Router,
     private data:DataService, private dialog:MatDialog) {
     this.activeUser = JSON.parse(localStorage.getItem('adminUser') )
 
@@ -61,8 +63,7 @@ export class BaseComponent {
   };
 
   collectDebt(){
-    this.data.creditService.collectDebt();
-    // console.log("it is working");
+    this.router.navigate(['/debtcollection'])
   }
 
   changePassword(){

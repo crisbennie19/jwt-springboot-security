@@ -20,6 +20,7 @@ import { SettingsComponent } from './views/settings/settings.component';
 import { ReportsComponent } from './views/reports/reports.component';
 import { SupportComponent } from './views/support/support.component';
 import { ViewSupportComponent } from './views/support/view-support/view-support.component';
+import { DebtcollectionComponent } from './views/debtcollection/debtcollection.component';
 
 
 const routes: Routes = [
@@ -87,7 +88,8 @@ const routes: Routes = [
     path:'support',
     component:SupportComponent
   },
-  {path: 'issue-details/:id', component: ViewSupportComponent}
+  {path: 'issue-details/:id', component: ViewSupportComponent},
+  {path: 'debtcollection', component: DebtcollectionComponent}
 
 ];
 
