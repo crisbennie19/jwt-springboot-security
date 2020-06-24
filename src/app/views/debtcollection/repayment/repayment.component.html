@@ -1,7 +1,7 @@
 <div class="component-container">
   
     <div class="component-header">
-      <div>All Support Tickets</div>
+      <div>Credit Repayment list</div>
     </div>
     <div class="flex-btw wrap">
       <div class="flex-el">
@@ -43,7 +43,7 @@
         </mat-form-field>
         &nbsp;    
         <button mat-raised-button
-            (click)="getTicketList()"
+            (click)="getDefaultList()"
             color="accent">Search date
         </button>
       </div>
@@ -53,29 +53,34 @@
     <div>
       <!-- <div>{{message}}</div> -->
 
-        <table  mat-table  [dataSource]="listData" matSort  aria-label="Elements">
+        <table class="table" mat-table  [dataSource]="listData" matSort  aria-label="Elements">
            <div *ngIf="showTable" >{{message}}</div>
-          <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef >ID</mat-header-cell>
-            <mat-cell *matCellDef="let row"  data-label="id">{{row.id}}</mat-cell>
+          <ng-container matColumnDef="accountname">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row"  data-label="accountname">{{row.accountname}}</mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="ticketid">
-            <mat-header-cell *matHeaderCellDef>Ticket ID</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Ticket Id">{{row.ticketid}}</mat-cell>
-          </ng-container>
-    
-          <ng-container matColumnDef="category">
-            <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="category">{{row.category}}</mat-cell>
-          </ng-container>
-    
           <ng-container matColumnDef="email">
             <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="email">{{row.initiatoremail}}</mat-cell>
+            <mat-cell *matCellDef="let row"  data-label="email">{{row.accountid}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}</mat-cell>
           </ng-container>
     
-          <ng-container matColumnDef="number">
+          <ng-container matColumnDef="trandate">
+            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="trandate">{{row.trandate | date}}</mat-cell>
+          </ng-container>
+    
+          <!-- <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}</mat-cell>
+          </ng-container> -->
+    
+          <!-- <ng-container matColumnDef="number">
             <mat-header-cell *matHeaderCellDef>Number</mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="Phone Number">{{row.initiatorphone}}</mat-cell>
           </ng-container>
@@ -88,20 +93,20 @@
           <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="Posted Date">{{row.dateposted|date}}</mat-cell>
-          </ng-container>
+          </ng-container> -->
     
          
 
 
-          <ng-container matColumnDef="status" >
+          <!-- <ng-container matColumnDef="status" >
             <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</mat-cell>
-          </ng-container>
+          </ng-container> -->
 
           
 
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-          <mat-row (click)="getSelectedRow(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </table>
     
         <mat-paginator #paginator class="paginator"

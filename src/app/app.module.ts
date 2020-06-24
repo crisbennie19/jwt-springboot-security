@@ -104,6 +104,9 @@ import { PlatformSupportsComponent } from './views/support/platform-supports/pla
 import { SupportTickestComponent } from './views/support/support-tickest/support-tickest.component';
 import { ViewSupportComponent } from './views/support/view-support/view-support.component';
 import { ChangePasswordComponent } from './views/users/change-password/change-password.component';
+import { DebtcollectionComponent } from './views/debtcollection/debtcollection.component';
+import { DefaultUsersComponent } from './views/debtcollection/default-users/default-users.component';
+import { RepaymentComponent } from './views/debtcollection/repayment/repayment.component';
 
 @NgModule({
   declarations: [
@@ -185,7 +188,10 @@ import { ChangePasswordComponent } from './views/users/change-password/change-pa
     PlatformSupportsComponent,
     SupportTickestComponent,
     ViewSupportComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    DebtcollectionComponent,
+    DefaultUsersComponent,
+    RepaymentComponent
   ],
   imports: [
     // ImageViewerModule,

@@ -18,7 +18,7 @@ export class SupportComponent implements OnInit {
 
   getSupportCategory(){
     this.data.supportService.issuesOnPlatform().subscribe((res)=>{
-      console.log(res);
+      
     })
   }
 

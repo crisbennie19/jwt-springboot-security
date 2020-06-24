@@ -1,23 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataService } from 'src/app/data.service';
-import { MatTableDataSource, MatSnackBar, MatPaginator, MatSort } from '@angular/material';
-import { Router, NavigationExtras } from '@angular/router';
-import { DatePipe } from '@angular/common';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { getFirstDayMonth, getDate } from 'src/app/helpers/dateFormat';
+import { DataService } from 'src/app/data.service';
+import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-support-tickest',
-  templateUrl: './support-tickest.component.html',
-  styleUrls: ['./support-tickest.component.scss']
+  selector: 'app-default-users',
+  templateUrl: './default-users.component.html',
+  styleUrls: ['./default-users.component.scss']
 })
-export class SupportTickestComponent implements OnInit {
+export class DefaultUsersComponent implements OnInit {
 
   public listData: MatTableDataSource<any>;
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   message: string = "Please choose a date range to search "
   searchKey: any = '';
-  displayedColumns = ['id', 'ticketid', 'category', 'email', 'number', 'description', 'date', 'status'];
+  displayedColumns = ['name', 'contactmobile',  'contactemail',  'amount'];
   loading: boolean;
   tableLength: number;
   mydata: any;
@@ -33,17 +33,15 @@ export class SupportTickestComponent implements OnInit {
 
     this.getInitList();
   }
+  
   getInitList() {
-    var date = new Date();
-    // var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    // var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    // const formatdate1 = this.pipes.transform(firstDay, 'yyyy-MM-dd')
-    // const formatdate2 = this.pipes.transform(lastDay, 'yyyy-MM-dd')
+   
     this.loading = true
-    this.data.supportService.getAllIssues(this.fromdate, this.todate)
+    this.data.debtCollection.getDefaultUserListByDateRange(this.fromdate, this.todate)
     .subscribe((res: any) => {
+      
       if (res.message == "Success") {
-        
+        console.log(res.data)
         this.mydata = res.data;
         this.loading = false;
         this.tableLength = this.mydata.length;
@@ -51,6 +49,7 @@ export class SupportTickestComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;
+        
       }
       else {
         this.message = res.message
@@ -61,19 +60,20 @@ export class SupportTickestComponent implements OnInit {
     })
   }
 
-  getTicketList() {
+  getDefaultList() {
     this.loading = true;
      let fromdate = getDate(this.fromdate)
      let todate = getDate(this.todate)
 
-      this.data.supportService.getAllIssues(fromdate, todate).subscribe((res: any) => {
+      this.data.debtCollection.getDefaultUserListByDateRange(fromdate, todate).subscribe((res: any) => {
         if (res.message == "Success") {
           this.mydata = res.data;
-          this.loading = false;
-          this.tableLength = this.mydata.length;
-          this.listData = new MatTableDataSource(this.mydata);
-          this.listData.paginator = this.paginator;
-          this.listData.sort = this.sort;
+        this.loading = false;
+        this.tableLength = this.mydata.length;
+        this.listData = new MatTableDataSource(this.mydata);
+        this.listData.paginator = this.paginator;
+        this.listData.sort = this.sort;
+        this.loading = false;
         }
         else {
         this.loading = false;
@@ -86,21 +86,13 @@ export class SupportTickestComponent implements OnInit {
 
 
       })
-    // }
-    // else if (this.fromdate == null || this.todate == null) {
-    //   this.loading = false
-
-    //   this.message = "Please ensure you choose a valid date"
-
-    // }
+    
 
   }
-  getSelectedRow(value) {
-
-    this.router.navigate(['/issue-details', value.id], { state: { data: value } });
-  }
+ 
   applyFilter() {
     this.listData.filter = this.searchKey.toString();
+    this.listData['accountid'].filter = this.searchKey.toString();
 
   }
 

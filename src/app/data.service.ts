@@ -18,6 +18,7 @@ import { InterestsService } from './api/interests.service';
 import { MatSnackBar } from '@angular/material';
 import { ReportService } from './api/report.service';
 import { IssuesService } from './api/issues.service';
+import { DebtcollectionService } from './api/debtcollection.service';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +47,8 @@ export class DataService {
     private router:Router,
     private location: Location,
     private snackBar:MatSnackBar,
-    public supportService:IssuesService
+    public supportService:IssuesService,
+    public debtCollection: DebtcollectionService
 
   ) { 
     router.events.subscribe(val => {
