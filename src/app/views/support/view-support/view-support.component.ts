@@ -84,11 +84,10 @@ export class ViewSupportComponent implements OnInit {
       this.listData = res.data
       this.listData = res.data.sort((a, b) => b.index - a.index);
       this.loading=false
-      }else {
+      }
+      else {
 
       }
-      
-
     });
   }
 
