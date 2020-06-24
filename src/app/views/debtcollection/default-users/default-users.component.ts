@@ -39,21 +39,22 @@ export class DefaultUsersComponent implements OnInit {
     this.loading = true
     this.data.debtCollection.getDefaultUserListByDateRange(this.fromdate, this.todate)
     .subscribe((res: any) => {
-      // console.log(res)
-      //if (res.message == "Success") {
-        
-        this.mydata = res;
+      
+      if (res.message == "Success") {
+        console.log(res.data)
+        this.mydata = res.data;
         this.loading = false;
         this.tableLength = this.mydata.length;
         this.listData = new MatTableDataSource(this.mydata);
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;
-      // }
-      // else {
-      //   this.message = res.message
-      //   this.loading = false;
-      // }
+        
+      }
+      else {
+        this.message = res.message
+        this.loading = false;
+      }
     }, err => {
       this.loading = false;
     })
@@ -65,18 +66,19 @@ export class DefaultUsersComponent implements OnInit {
      let todate = getDate(this.todate)
 
       this.data.debtCollection.getDefaultUserListByDateRange(fromdate, todate).subscribe((res: any) => {
-        // if (res.message == "Success") {
-          this.mydata = res;
-          this.loading = false;
-          this.tableLength = this.mydata.length;
-          this.listData = new MatTableDataSource(this.mydata);
-          this.listData.paginator = this.paginator;
-          this.listData.sort = this.sort;
-        // }
-        // else {
-        // this.loading = false;
-        //   this.message = res.message
-        // }
+        if (res.message == "Success") {
+          this.mydata = res.data;
+        this.loading = false;
+        this.tableLength = this.mydata.length;
+        this.listData = new MatTableDataSource(this.mydata);
+        this.listData.paginator = this.paginator;
+        this.listData.sort = this.sort;
+        this.loading = false;
+        }
+        else {
+        this.loading = false;
+          this.message = res.message
+        }
 
 
       }, err => {
@@ -84,21 +86,13 @@ export class DefaultUsersComponent implements OnInit {
 
 
       })
-    // }
-    // else if (this.fromdate == null || this.todate == null) {
-    //   this.loading = false
-
-    //   this.message = "Please ensure you choose a valid date"
-
-    // }
+    
 
   }
-  // getSelectedRow(value) {
-
-  //   this.router.navigate(['/issue-details', value.id], { state: { data: value } });
-  // }
+ 
   applyFilter() {
     this.listData.filter = this.searchKey.toString();
+    this.listData['accountid'].filter = this.searchKey.toString();
 
   }
 

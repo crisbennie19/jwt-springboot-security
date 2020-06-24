@@ -40,7 +40,7 @@ export class RepaymentComponent implements OnInit {
     this.loading = true
     this.data.debtCollection.getCreditRepayment(1,50)
     .subscribe((res: any) => {
-      console.log(res.data)
+      
       if (res.message == "Success") {
         
         this.mydata = res.data;
