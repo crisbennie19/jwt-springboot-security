@@ -5,6 +5,10 @@
     <button mat-button color="warn" (click)="closeDialog()">Close</button>
   </div>
   <div class="view-container">
+      <div class="view">
+
+    
+      
     <div class="view-column"> 
       <div class="info"> 
         <div class="header">ID</div>
@@ -12,56 +16,56 @@
       </div>
       <div class="info">
         <div class="header">Fullname</div>
-        <div class="content">{{selectedRow.fullname}}</div>
+        <div class="content">{{selectedRow.accountid.name}}</div>
       </div>
       <div class="info">
         <div class="header">Phone number</div>
-        <div class="content">{{selectedRow.phone}}</div>
+        <div class="content">{{selectedRow.accountid.contactmobile}}</div>
       </div>
       <div class="info">
         <div class="header">email</div>
-        <div class="content">{{selectedRow.email}}</div>
+        <div class="content">{{selectedRow.accountid.contactemail}}</div>
       </div>
     </div>
     <div class="view-column">
         <div class="info">
           <div class="header">Account</div>
-          <div class="content">{{selectedRow.accountno}}</div>
+          <div class="content">{{selectedRow.accountid.accountno}}</div>
         </div>
         <div class="info">
-          <div class="header">Account name</div>
-          <div class="content">{{selectedRow.accountname}}</div>
+          <div class="header">Address:</div>
+          <div class="content">{{selectedRow.accountid.contactaddress}}</div>
         </div>
         <div class="info">
-          <div class="header">Bank</div>
-          <div class="content">{{selectedRow.bank}}</div>
+          <div class="header">Gender:</div>
+          <div class="content">{{selectedRow.accountid.gender}}</div>
         </div>
         <div class="info">
-          <div class="header">BVN</div>
-          <div class="content">{{selectedRow.bvn}}</div>
-        </div>
-        <div class="info">
-          <div class="header">Salary range</div>
-          <div class="content">{{selectedRow.salaryrange}}</div>
+          <div class="header">State origin</div>
+          <div class="content">{{selectedRow.accountid.stateorigin}}</div>
         </div>
       </div>
   
       <div class="view-column">
         <div class="info">
-          <div class="header">Work place</div>
-          <div class="content">{{selectedRow.placeofwork}}</div>
+          <div class="header">Amount</div>
+          <div class="content">{{selectedRow.amount | currency: 'NGN' : 'symbol-narrow'}}</div>
         </div>
         <div class="info">
-          <div class="header">DOB</div>
-          <div class="content">{{selectedRow.dob}}</div>
+          <div class="header">Charges</div>
+          <div class="content">{{selectedRow.charges  | currency: 'NGN' : 'symbol-narrow'}}</div>
         </div>
         <div class="info">
-          <div class="header">Date reg</div>
-          <div class="content">{{selectedRow.datereg}}</div>
+          <div class="header">Date Created</div>
+          <div class="content">{{selectedRow.datecreated | date}}</div>
         </div>
         <div class="info">
           <div class="header">Status</div>
           <div class="content">{{selectedRow.status}}</div>
         </div>
+      </div>
+    </div>
+      <div class="img">
+          <img [src] = "selectedRow.accountid.photograph" alt="passport"/>
       </div>
   </div>

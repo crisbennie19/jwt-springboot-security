@@ -1,7 +1,7 @@
 <div class="component-container">
   
     <div class="component-header">
-      <div>Credit Defaulter List</div>
+      <div>Credit Issuance</div>
     </div>
     <div class="flex-btw wrap">
       <div class="flex-el">
@@ -26,7 +26,7 @@
         </div>
       </div>
       
-      <div>
+      <!-- <div>
         <mat-form-field class="jamez-input"
         floatLabel="never">
           <input matInput autocomplete="off" [(ngModel)]="fromdate"
@@ -46,64 +46,49 @@
             (click)="getDefaultList()"
             color="accent">Search date
         </button>
-      </div>
+      </div> -->
     
     </div> 
 
     <div>
-      <!-- <div>{{message}}</div> -->
 
         <table class="table" mat-table  [dataSource]="listData" matSort  aria-label="Elements">
            <div *ngIf="showTable" >{{message}}</div>
-          <ng-container matColumnDef="name">
+          <ng-container matColumnDef="accountname">
             <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-            <mat-cell *matCellDef="let row"  data-label="name">{{row.accountid.name}}</mat-cell>
+            <mat-cell *matCellDef="let row"  data-label="accountname">{{row.accountholder}}</mat-cell>
           </ng-container>
 
-          <ng-container matColumnDef="contactmobile">
-            <mat-header-cell *matHeaderCellDef>Number</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Number">{{row.accountid.contactmobile}}</mat-cell>
+          <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+            <mat-cell *matCellDef="let row"  data-label="email">{{row.accountholderemail}}</mat-cell>
           </ng-container>
-    
-          <ng-container matColumnDef="contactemail">
-            <mat-header-cell *matHeaderCellDef>contactemail</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="contactemail">{{row.accountid.contactemail}}</mat-cell>
+
+          <ng-container matColumnDef="phone">
+            <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.accountholderphone }}</mat-cell>
           </ng-container>
+
     
-          <ng-container matColumnDef="amount" >
+
+          <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}</mat-cell>
           </ng-container>
     
-          <!-- <ng-container matColumnDef="number">
-            <mat-header-cell *matHeaderCellDef>Number</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Phone Number">{{row.initiatorphone}}</mat-cell>
-          </ng-container>
-    
-          <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Description">{{row.description}}</mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="date">
+          <ng-container matColumnDef="trandate">
             <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Posted Date">{{row.dateposted|date}}</mat-cell>
-          </ng-container> -->
+            <mat-cell *matCellDef="let row" data-label="trandate">{{row.trandate | date}}</mat-cell>
+          </ng-container>
     
-      
-
-
+ 
          
+
 
           
 
-          <mat-header-row *matHeaderRowDef="displayedColumns">
-         
-          </mat-header-row>
-          <mat-row  *matRowDef="let row; columns: displayedColumns;" (click) = viewRow(row)
-          matTooltip="Click to view more information about the user" matTooltipPosition="above"
-        aria-label="Button that displays a tooltip when focused or hovered over">
-          ></mat-row>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row  *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </table>
     
         <mat-paginator #paginator class="paginator"

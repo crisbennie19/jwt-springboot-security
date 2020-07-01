@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog, MatDialogConfig } from '@angular/material';
 import { getFirstDayMonth, getDate } from 'src/app/helpers/dateFormat';
 import { DataService } from 'src/app/data.service';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { DefaulterViewComponent } from './defaulter-view/defaulter-view.component';
 
 @Component({
   selector: 'app-default-users',
@@ -27,7 +28,7 @@ export class DefaultUsersComponent implements OnInit {
 
 
 
-  constructor(private data: DataService, private router: Router, private pipes: DatePipe) { }
+  constructor(private data: DataService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -41,7 +42,7 @@ export class DefaultUsersComponent implements OnInit {
     .subscribe((res: any) => {
       
       if (res.message == "Success") {
-        console.log(res.data)
+        //console.log(res.data)
         this.mydata = res.data;
         this.loading = false;
         this.tableLength = this.mydata.length;
@@ -99,5 +100,15 @@ export class DefaultUsersComponent implements OnInit {
   clearSearch() {
     this.searchKey = '';
     this.applyFilter()
+  }
+  viewRow(rowValues){
+    const dialConfig = new MatDialogConfig();
+    dialConfig.disableClose = false;
+    dialConfig.autoFocus = false;
+    dialConfig.data = rowValues;
+    dialConfig.minWidth = "40%";
+    dialConfig.maxHeight = "90vh"
+    this.dialog.open(DefaulterViewComponent,dialConfig)
+     
   }
 }
