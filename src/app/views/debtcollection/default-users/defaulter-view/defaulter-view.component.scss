@@ -1,9 +1,15 @@
 .view-container{
-    width:100%;
+    width:670px;
     display:flex;
     justify-content: space-between;
+    .view{
+        display: flex;
+        flex: 2 1 80%;
+        
+    }
     .view-column{
-        width:28%;
+        width:50%;
+        margin-left: 20px;
         .info{
             margin:15px auto;
             .header{
@@ -19,7 +25,15 @@
             }
         }
     }
+    .img{
+    flex: 1 1 100px;
+    height: 100px;
+    border: 1px solid;
+    margin: 10px auto;
+    
 }
+}
+
 
 
 @media screen and (max-width:670px){

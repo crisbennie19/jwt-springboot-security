@@ -63,7 +63,6 @@ export class UsersListComponent implements OnInit {
           this.status="Enable"
         }
       });
-      console.log(this.list.values);   
       this.listData.paginator = this.paginator;
       this.listData.sort = this.sort;
     }, err => {

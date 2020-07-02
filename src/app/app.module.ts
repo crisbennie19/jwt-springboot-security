@@ -107,6 +107,8 @@ import { ChangePasswordComponent } from './views/users/change-password/change-pa
 import { DebtcollectionComponent } from './views/debtcollection/debtcollection.component';
 import { DefaultUsersComponent } from './views/debtcollection/default-users/default-users.component';
 import { RepaymentComponent } from './views/debtcollection/repayment/repayment.component';
+import { DefaulterViewComponent } from './views/debtcollection/default-users/defaulter-view/defaulter-view.component';
+import { CreditIssuanceComponent } from './views/debtcollection/credit-issuance/credit-issuance.component';
 
 @NgModule({
   declarations: [
@@ -191,7 +193,9 @@ import { RepaymentComponent } from './views/debtcollection/repayment/repayment.c
     ChangePasswordComponent,
     DebtcollectionComponent,
     DefaultUsersComponent,
-    RepaymentComponent
+    RepaymentComponent,
+    DefaulterViewComponent,
+    CreditIssuanceComponent
   ],
   imports: [
     // ImageViewerModule,
@@ -260,7 +264,8 @@ import { RepaymentComponent } from './views/debtcollection/repayment/repayment.c
     UserReportComponent,
     CreditRequestHistoryComponent,
     CreditBureauComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    DefaulterViewComponent
   ],
 
   bootstrap: [AppComponent],
