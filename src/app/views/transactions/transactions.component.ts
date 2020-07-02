@@ -36,7 +36,7 @@ export class TransactionsComponent implements OnInit {
 
   getTransactionList(){
     this.loading = true;
-    this.data.transactionService.getTransactions(0,100)
+    this.data.transactionService.getTransactions(0,300)
     .pipe(
       map( res => res['data'])
     )

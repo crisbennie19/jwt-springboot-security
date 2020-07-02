@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { verifyRole } from 'src/app/helpers/roles';
 
 @Component({
   selector: 'app-users',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  isAdmin:boolean
+
+  constructor() { 
+    this.isAdmin = verifyRole('ADMINISTRATOR')
+  }
 
   ngOnInit() {
   }
+
 
 }

@@ -11,19 +11,19 @@
           <div class="menu-wrapper">
             <mat-nav-list>
               <!-- <div class="nav-header">NAVIGATIONS</div> -->
-              <div *ngIf="isBank == 'BANK'">
+              <!-- <div>
                 <div *ngFor="let menu of menuList">
-                  <a mat-list-item [routerLink]="menu.route" *ngIf="menu.role == isBank" 
+                  <a mat-list-item [routerLink]="menu.route"  
                   routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
                     true}"> 
                     <mat-icon>{{menu.icon}}</mat-icon> 
                     <span class="sidebar-name"> {{menu.name}} </span>
                   </a>
                 </div>
-              </div>
+              </div> -->
 
-              <div *ngIf="isBank != 'BANK'">
-                <div *ngFor="let menu of menuList">
+              <div>
+                <div *ngFor="let menu of authorizedMenu">
                   <a mat-list-item [routerLink]="menu.route" 
                   routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
                     true}"> 
@@ -67,11 +67,11 @@
       <span class="remaining-space"></span>
 
       <!-- <button mat-button>FAQs</button> -->
-      <button (click)="collectDebt()" *ngIf="!isBank" mat-button>
+      <button (click)="collectDebt()" *ngIf="isBank || isFinance || isAdmin" mat-button>
         <span>Debt Collection</span>
       </button>
 
-      <button routerLink="/creditrequests" mat-button>
+      <button routerLink="/creditrequests" *ngIf="isAdmin || isBank" mat-button>
         <mat-icon class="mat-18x">money</mat-icon>
         <span>Credit Request</span>
       </button>
@@ -113,27 +113,6 @@
           </div>
         </div>
       </mat-menu>
-
-      <!-- <button mat-button color="warn" >
-        <mat-icon class="mat-18x">power_settings_new</mat-icon>
-        <span>Logout</span>
-      </button> -->
-
-      <!-- <div style="border-right:1px solid #ddd; padding-right:5px" class="flex-el">
-        <button mat-icon-button>
-          <mat-icon class="mat-18x" color="accent">power_settings_new</mat-icon>
-        </button>
-        <span style="color:#fafafa; font-weight:500; font-size:16px">Logout</span>
-        &nbsp;
-      </div> -->
-
-      <!-- <div style=" position:relative; padding-right:5px">
-        <button mat-icon-button>
-          <mat-icon class="mat-24x" style="color:#fafafa">notifications_none</mat-icon>
-        </button>  -->
-        <!-- <mat-icon style="padding-left: 10px;position:absolute; right:-2px; top:4px;"
-        class="mat-15x" color="accent">fiber_manual_record</mat-icon> -->
-      <!-- </div> -->
     </mat-toolbar>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>

@@ -38,7 +38,6 @@ export class SavingsListComponent implements OnInit {
     this.getSavingsList();
   }
   triggerFilter(event){    
-    console.log("========================================================")
     let filtername = event.value
     switch (filtername) {
       case 'type':

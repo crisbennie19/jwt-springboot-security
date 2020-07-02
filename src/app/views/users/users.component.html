@@ -2,10 +2,10 @@
   <mat-tab label="Users"> 
     <app-users-list></app-users-list>
   </mat-tab>
-  <mat-tab label="Administrative users">
+  <mat-tab label="Administrative users" *ngIf="isAdmin">
     <app-admin-users-list></app-admin-users-list>
   </mat-tab>
-  <mat-tab label="Administrative roles">
+  <mat-tab label="Administrative roles" *ngIf="isAdmin">
     <app-admin-roles></app-admin-roles>
   </mat-tab>
 </mat-tab-group>
