@@ -33,20 +33,26 @@ export class SupportSearchComponent implements OnInit {
   searchKey: any = '';
 
   
-  transactionColumn = ['amount', 'transactiondate','action'];
-  walletColumn = ['amount', 'lastmodified','action'];
-  chargesColumn = [ 'description','amount', 'trandate','action'];
-  defaultColumn = [ 'amount','charges','datecreated','datepaid','action'];
-  vcardColumn = ['amount', 'transdate','action'];
-  savingsColumn = ['amount', 'datecreated','action'];
+  transactionColumn = ['transactiondate','amount'];
+  walletColumn = ['lastmodified','amount'];
+  chargesColumn = ['trandate', 'description','amount'];
+  defaultColumn = ['datecreated','datepaid', 'amount','charges'];
+  vcardColumn = [ 'transdate','amount'];
+  savingsColumn = ['datecreated','amount'];
 
   loading: boolean;
   tableLength: number;
-  mydata: any;
+  mydata: any = [];
  
   selectCategory:any
   
-  searchCategory = ["Defaultusers","Transaction","Wallet","Charges","Savings","Vcards"]
+  searchCategory = [{value:"Defaultusers", name:'Defaulter'},
+                    {value:"Transaction", name:'Transactions'},
+                    {value:"Wallet", name:'Wallet'},
+                    {value:"Charges", name:'Charges'},
+                    {value:"Savings", name:'Savings'},
+                    {value:"Vcards", name:'Vcards'}
+                  ]
 
   
   constructor(private data: DataService, private dialog:MatDialog) { }

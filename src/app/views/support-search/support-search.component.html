@@ -10,8 +10,8 @@
         <mat-form-field class="jamez-input" required floatLabel="never">
           <mat-label>Search category</mat-label>
           <mat-select [(ngModel)]="selectCategory">
-            <mat-option *ngFor="let category of searchCategory" [value]="category">
-              {{category}}
+            <mat-option *ngFor="let category of searchCategory" [value]="category.value">
+              {{category.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -21,7 +21,7 @@
       <div>
         <mat-form-field class="jamez-input" required floatLabel="never" style="width: 250px;">
           <input matInput type="text" [(ngModel)]="searchParam" 
-          placeholder="Email or phone or Account Id">
+          placeholder="Customer email or phone number">
         </mat-form-field>
       </div>
 
@@ -51,22 +51,27 @@
         <button mat-raised-button (click)="searchSupport()" 
         color="accent">Search</button>
       </div>
-      
     </div>
 
     &nbsp;
-    <div class="flex-el">
-      <div class="search-container">
-        <mat-icon class="prefix">search</mat-icon>
-        <input type="text" class="mSearch" (keyup)=applyFilter() 
-        [(ngModel)]="searchKey" placeholder="Search...">
-      </div>
-      &nbsp;
-      &nbsp;
+    <div class="flex-btw">
+      <div class="flex-el">
+        <div class="search-container">
+          <mat-icon class="prefix">search</mat-icon>
+          <input type="text" class="mSearch" (keyup)=applyFilter() 
+          [(ngModel)]="searchKey" placeholder="Search...">
+        </div>
+        &nbsp;
+        &nbsp;
 
-      <div *ngIf="loading">
-        <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
-        </mat-spinner>
+        <div *ngIf="loading">
+          <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
+          </mat-spinner>
+        </div>
+      </div>
+
+      <div *ngIf="mydata.length != 0">
+        <button mat-flat-button color="primary"> View User Details </button>
       </div>
     </div>
 
@@ -74,7 +79,9 @@
 
 
   <div>
-    <div *ngIf="error" style="align-content: center; font-size: 18px; color: rosybrown;">{{message}}</div>
+    <div *ngIf="error" style="align-content: center; font-size: 18px; color: rosybrown;">
+      {{message}}
+    </div>
     <div *ngIf="!error">
       <div *ngIf="charges">
         <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
@@ -177,9 +184,9 @@
             <mat-cell *matCellDef="let row" data-label="transactiondate">
               {{row.transactiondate | date}}</mat-cell>
           </ng-container>
-          
+
           <ng-container matColumnDef="action">
-            <th*matHeaderCellDef>Actions</th>
+            <th *matHeaderCellDef>Actions</th>
             <td *matCellDef="let row">
               <button mat-icon-button (click)="viewSearch(row)">
                 <mat-icon class="mat-18x">visibility</mat-icon>
@@ -244,7 +251,8 @@
 
           <ng-container matColumnDef="lastmodified">
             <mat-header-cell *matHeaderCellDef>Last savings</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="lastmodified">{{row.lastmodified | date}}</mat-cell>
+            <mat-cell *matCellDef="let row" data-label="lastmodified">
+              {{row.lastmodified | date}}</mat-cell>
           </ng-container>
 
           <mat-header-row *matHeaderRowDef="walletColumn"></mat-header-row>
