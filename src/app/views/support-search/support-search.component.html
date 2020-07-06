@@ -3,12 +3,63 @@
   <div class="component-header">
     <div>Customer Support</div>
   </div>
-  <div class="flex-btw wrap">
+
+  <!-- <div class="flex-btw wrap"> -->
+    <div class="flex-el wrap">
+      <div>
+        <mat-form-field class="jamez-input" required floatLabel="never">
+          <mat-label>Search category</mat-label>
+          <mat-select [(ngModel)]="selectCategory">
+            <mat-option *ngFor="let category of searchCategory" [value]="category">
+              {{category}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      &nbsp;
+
+      <div>
+        <mat-form-field class="jamez-input" required floatLabel="never" style="width: 250px;">
+          <input matInput type="text" [(ngModel)]="searchParam" 
+          placeholder="Email or phone or Account Id">
+        </mat-form-field>
+      </div>
+
+      &nbsp;
+
+      <div>
+        <mat-form-field class="jamez-input" required floatLabel="never">
+          <input matInput autocomplete="off" [(ngModel)]="dateFrom" 
+          [matDatepicker]="pickers" placeholder="Start date">
+          <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+          <mat-datepicker #pickers></mat-datepicker>
+        </mat-form-field>
+      </div>
+      &nbsp;
+
+      <div>
+        <mat-form-field class="jamez-input" floatLabel="never">
+          <input matInput autocomplete="off" [(ngModel)]="dateTo" 
+          [matDatepicker]="picker" placeholder="End date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      
+      &nbsp;
+      <div>
+        <button mat-raised-button (click)="searchSupport()" 
+        color="accent">Search</button>
+      </div>
+      
+    </div>
+
+    &nbsp;
     <div class="flex-el">
       <div class="search-container">
         <mat-icon class="prefix">search</mat-icon>
-        <input type="text" class="mSearch" (keyup)=applyFilter() [(ngModel)]="searchKey" placeholder="Search...">
-
+        <input type="text" class="mSearch" (keyup)=applyFilter() 
+        [(ngModel)]="searchKey" placeholder="Search...">
       </div>
       &nbsp;
       &nbsp;
@@ -19,37 +70,7 @@
       </div>
     </div>
 
-    <div class="searchParam">
-      <mat-form-field>
-        <mat-label>Search category</mat-label>
-        <mat-select [(ngModel)]="selectCategory">
-          <mat-option *ngFor="let category of searchCategory" [value]="category">
-            {{category}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      &nbsp;
-      <div class="search-container">
-        <input type="text" class="mSearch" [(ngModel)]="searchParam" placeholder="Email or phone or Account Id">
-      </div>
-      &nbsp;
-      <mat-form-field class="jamez-input" required floatLabel="never">
-        <input matInput autocomplete="off" [(ngModel)]="dateFrom" [matDatepicker]="pickers" placeholder="Start date">
-        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
-        <mat-datepicker #pickers></mat-datepicker>
-      </mat-form-field>
-      &nbsp;
-      <mat-form-field class="jamez-input" floatLabel="never">
-        <input matInput autocomplete="off" [(ngModel)]="dateTo" [matDatepicker]="picker" placeholder="End date">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      &nbsp;
-      <button mat-raised-button (click)="searchSupport()" color="accent">Search date
-      </button>
-    </div>
-
-  </div>
+  <!-- </div> -->
 
 
   <div>
@@ -84,15 +105,13 @@
               </button>
             </td>
           </ng-container>
-
-
-
-
-
-
         </table>
 
-        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+        <mat-paginator #paginator 
+          class="paginator" 
+          showFirstLastButtons 
+          [length]="tableLength" 
+          [pageIndex]="0"
           [pageSize]="7">
         </mat-paginator>
       </div>
@@ -136,7 +155,9 @@
         </table>
 
 
-        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+        <mat-paginator #paginator class="paginator" 
+          showFirstLastButtons 
+          [length]="tableLength" [pageIndex]="0"
           [pageSize]="7">
         </mat-paginator>
       </div>
@@ -146,30 +167,35 @@
         <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
           <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}
+            <mat-cell *matCellDef="let row" data-label="amount">
+              {{row.amount | currency:'NGN':'symbol-narrow'}}
             </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="transactiondate">
             <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="transactiondate">{{row.transactiondate | date}}</mat-cell>
+            <mat-cell *matCellDef="let row" data-label="transactiondate">
+              {{row.transactiondate | date}}</mat-cell>
           </ng-container>
-
-          <mat-header-row *matHeaderRowDef="transactionColumn"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: transactionColumn;"></mat-row>
-
+          
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-            <td mat-cell *matCellDef="let row">
+            <th*matHeaderCellDef>Actions</th>
+            <td *matCellDef="let row">
               <button mat-icon-button (click)="viewSearch(row)">
                 <mat-icon class="mat-18x">visibility</mat-icon>
               </button>
             </td>
           </ng-container>
 
+          <mat-header-row *matHeaderRowDef="transactionColumn"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: transactionColumn;"></mat-row>          
         </table>
 
-        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+        <mat-paginator #paginator 
+          class="paginator" 
+          showFirstLastButtons 
+          [length]="tableLength" 
+          [pageIndex]="0"
           [pageSize]="7">
         </mat-paginator>
       </div>
@@ -191,8 +217,8 @@
           <mat-row *matRowDef="let row; columns: vcardColumn;"></mat-row>
 
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-            <td mat-cell *matCellDef="let row">
+            <th *matHeaderCellDef mat-sort-header>Actions</th>
+            <td *matCellDef="let row">
               <button mat-icon-button (click)="viewSearch(row)">
                 <mat-icon class="mat-18x">visibility</mat-icon>
               </button>
@@ -201,7 +227,9 @@
 
         </table>
 
-        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+        <mat-paginator #paginator 
+        class="paginator" 
+        showFirstLastButtons [length]="tableLength" [pageIndex]="0"
           [pageSize]="7">
         </mat-paginator>
       </div>
@@ -223,8 +251,8 @@
           <mat-row *matRowDef="let row; columns: walletColumn;"></mat-row>
 
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-            <td mat-cell *matCellDef="let row">
+            <th *matHeaderCellDef mat-sort-header>Actions</th>
+            <td *matCellDef="let row">
               <button mat-icon-button (click)="viewSearch(row)">
                 <mat-icon class="mat-18x">visibility</mat-icon>
               </button>
@@ -233,7 +261,9 @@
 
         </table>
 
-        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+        <mat-paginator #paginator class="paginator" 
+          showFirstLastButtons 
+          [length]="tableLength" [pageIndex]="0"
           [pageSize]="7">
         </mat-paginator>
       </div>
@@ -256,8 +286,8 @@
           <mat-row *matRowDef="let row; columns: savingsColumn;"></mat-row>
 
           <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
-            <td mat-cell *matCellDef="let row">
+            <th *matHeaderCellDef mat-sort-header>Actions</th>
+            <td *matCellDef="let row">
               <button mat-icon-button (click)="viewSearch(row)">
                 <mat-icon class="mat-18x">visibility</mat-icon>
               </button>
@@ -266,7 +296,9 @@
 
         </table>
 
-        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+        <mat-paginator #paginator class="paginator" 
+          showFirstLastButtons 
+          [length]="tableLength" [pageIndex]="0"
           [pageSize]="7">
         </mat-paginator>
       </div>
