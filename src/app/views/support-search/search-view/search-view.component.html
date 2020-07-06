@@ -1,0 +1,29 @@
+<div class="component-header">
+    <div>
+      <mat-icon class="mat-18x">save_alt</mat-icon> &nbsp;Search Result View
+    </div>
+    <button mat-button color="warn" (click)="closeDialog()">Close</button>
+  </div>
+  <div class="view-container">
+    <div class="view-column">
+      <div class="info">
+        <div class="header">Amount</div>
+        <div class="content">{{selectedRow.amount}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Charges</div>
+        <div class="content">{{selectedRow.charges}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Date Created</div>
+        <div class="content">{{selectedRow.datecreated | date}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Date paid</div>
+        <div class="content">{{selectedRow.datepaid | date}}</div>
+      </div>
+    </div>
+    
+    
+  </div>
+  &nbsp;

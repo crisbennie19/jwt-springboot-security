@@ -16,7 +16,7 @@
         </div>
         &nbsp;
         &nbsp;
-        
+         
         <div *ngIf="loading">
           <mat-spinner
             color="accent"
@@ -54,7 +54,7 @@
       <!-- <div>{{message}}</div> -->
 
         <table  mat-table  [dataSource]="listData" matSort  aria-label="Elements">
-           <div *ngIf="showTable" >{{message}}</div>
+           <!-- <div *ngIf="showTable" >{{message}}</div> -->
           <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef >ID</mat-header-cell>
             <mat-cell *matCellDef="let row"  data-label="id">{{row.id}}</mat-cell>

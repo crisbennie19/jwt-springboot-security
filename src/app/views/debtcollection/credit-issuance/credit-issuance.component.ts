@@ -43,6 +43,7 @@ export class CreditIssuanceComponent implements OnInit {
         this.loading = false;
         this.tableLength = this.mydata.length;
         this.listData = new MatTableDataSource(this.mydata);
+        //console.log(this.listData)
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;

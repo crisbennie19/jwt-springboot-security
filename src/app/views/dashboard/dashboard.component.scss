@@ -24,7 +24,18 @@ $tertiary-color:#17223E;
         // height:100px;
     }
 }
-
+.mat-grid-tile{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    .mat-card{
+        
+        width:300px;
+    }
+}
+.mat-grid-list{
+    padding: 0px;
+}
 .last-updated{
     color:#aaa; 
     font-size:12px;
@@ -38,7 +49,7 @@ $tertiary-color:#17223E;
     // position:relative;
     width:28%;
     width:300px;
-    margin:0 20px;
+    margin:10px 33px;
 }
 
 .mat-card{
@@ -96,8 +107,9 @@ $tertiary-color:#17223E;
     }
     
     .left-card{
-        width:90%;
-        margin:20px 0;
+        
+        margin:10px 5px;
+            width:100%;
     }
 }
 

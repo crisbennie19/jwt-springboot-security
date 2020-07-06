@@ -1,0 +1,278 @@
+<div class="component-container">
+
+  <div class="component-header">
+    <div>Customer Support</div>
+  </div>
+  <div class="flex-btw wrap">
+    <div class="flex-el">
+      <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon>
+        <input type="text" class="mSearch" (keyup)=applyFilter() [(ngModel)]="searchKey" placeholder="Search...">
+
+      </div>
+      &nbsp;
+      &nbsp;
+
+      <div *ngIf="loading">
+        <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+
+    <div class="searchParam">
+      <mat-form-field>
+        <mat-label>Search category</mat-label>
+        <mat-select [(ngModel)]="selectCategory">
+          <mat-option *ngFor="let category of searchCategory" [value]="category">
+            {{category}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      &nbsp;
+      <div class="search-container">
+        <input type="text" class="mSearch" [(ngModel)]="searchParam" placeholder="Email or phone or Account Id">
+      </div>
+      &nbsp;
+      <mat-form-field class="jamez-input" required floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="dateFrom" [matDatepicker]="pickers" placeholder="Start date">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="dateTo" [matDatepicker]="picker" placeholder="End date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <button mat-raised-button (click)="searchSupport()" color="accent">Search date
+      </button>
+    </div>
+
+  </div>
+
+
+  <div>
+    <div *ngIf="error" style="align-content: center; font-size: 18px; color: rosybrown;">{{message}}</div>
+    <div *ngIf="!error">
+      <div *ngIf="charges">
+        <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+          <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="description">{{row.description}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="trandate">
+            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="trandate">{{row.trandate | date}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="chargesColumn"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: chargesColumn;"></mat-row>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="viewSearch(row)">
+                <mat-icon class="mat-18x">visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+
+
+
+
+
+        </table>
+
+        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+          [pageSize]="7">
+        </mat-paginator>
+      </div>
+
+      <div *ngIf="default">
+        <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="charges">
+            <mat-header-cell *matHeaderCellDef>Charges</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="charges">{{row.charges | currency:'NGN':'symbol-narrow'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="datecreated">
+            <mat-header-cell *matHeaderCellDef>Date Created</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="datecreated">{{row.datecreated | date}}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="datepaid">
+            <mat-header-cell *matHeaderCellDef>Date Paid</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="datepaid">{{row.datepaid | date}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="defaultColumn"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: defaultColumn;"></mat-row>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="viewSearch(row)">
+                <mat-icon class="mat-18x">visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+        </table>
+
+
+        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+          [pageSize]="7">
+        </mat-paginator>
+      </div>
+
+
+      <div *ngIf="trans">
+        <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="transactiondate">
+            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="transactiondate">{{row.transactiondate | date}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="transactionColumn"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: transactionColumn;"></mat-row>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="viewSearch(row)">
+                <mat-icon class="mat-18x">visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+        </table>
+
+        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+          [pageSize]="7">
+        </mat-paginator>
+      </div>
+
+      <div *ngIf="vcard">
+        <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="transdate">
+            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="transdate">{{row.transdate | date}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="vcardColumn"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: vcardColumn;"></mat-row>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="viewSearch(row)">
+                <mat-icon class="mat-18x">visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+        </table>
+
+        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+          [pageSize]="7">
+        </mat-paginator>
+      </div>
+
+      <div *ngIf="wallet">
+        <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="lastmodified">
+            <mat-header-cell *matHeaderCellDef>Last savings</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="lastmodified">{{row.lastmodified | date}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="walletColumn"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: walletColumn;"></mat-row>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="viewSearch(row)">
+                <mat-icon class="mat-18x">visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+        </table>
+
+        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+          [pageSize]="7">
+        </mat-paginator>
+      </div>
+
+
+      <div *ngIf="savings">
+        <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="datecreated">
+            <mat-header-cell *matHeaderCellDef>Saving date</mat-header-cell>
+            <mat-cell *matCellDef="let row" data-label="datecreated">{{row.datecreated | date}}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="savingsColumn"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: savingsColumn;"></mat-row>
+
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="viewSearch(row)">
+                <mat-icon class="mat-18x">visibility</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+        </table>
+
+        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+          [pageSize]="7">
+        </mat-paginator>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -16,18 +16,18 @@ export class SavingsListComponent implements OnInit {
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['account','amount','savingtype', 'trantype','date','canwithdraw','action'];
+  displayedColumns = ['account','amount','savingtype', 'date','cashoutdate','action'];
   public listData: MatTableDataSource<any>; 
 
   savingsFilter:string = "accountholder";
   placeholder = 'Phone or email'
   searchKey: any = ''; // Search box model
   fromdate: Date = null;
-  todate:Date = null; 
+  todate:Date = null;  
   loading: boolean;
   tableLength: number;
   response: any;
-
+  cashout: string;
   constructor(
     private data:DataService,
     private snackBar:MatSnackBar,
@@ -162,6 +162,7 @@ export class SavingsListComponent implements OnInit {
     )
     .subscribe( res => {
       this.response = res;
+      
       this.loading = false;
       this.tableLength = this.response.length
       this.listData = new MatTableDataSource(this.response);        

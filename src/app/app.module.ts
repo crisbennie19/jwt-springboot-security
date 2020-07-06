@@ -109,6 +109,9 @@ import { DefaultUsersComponent } from './views/debtcollection/default-users/defa
 import { RepaymentComponent } from './views/debtcollection/repayment/repayment.component';
 import { DefaulterViewComponent } from './views/debtcollection/default-users/defaulter-view/defaulter-view.component';
 import { CreditIssuanceComponent } from './views/debtcollection/credit-issuance/credit-issuance.component';
+import { SupportSearchComponent } from './views/support-search/support-search.component';
+import { OkraCheckComponent } from './views/okra-check/okra-check.component';
+import { SearchViewComponent } from './views/support-search/search-view/search-view.component';
 
 @NgModule({
   declarations: [
@@ -195,7 +198,12 @@ import { CreditIssuanceComponent } from './views/debtcollection/credit-issuance/
     DefaultUsersComponent,
     RepaymentComponent,
     DefaulterViewComponent,
-    CreditIssuanceComponent
+    CreditIssuanceComponent,
+    SupportSearchComponent,
+    OkraCheckComponent,
+    SearchViewComponent
+    
+    
   ],
   imports: [
     // ImageViewerModule,
@@ -265,7 +273,8 @@ import { CreditIssuanceComponent } from './views/debtcollection/credit-issuance/
     CreditRequestHistoryComponent,
     CreditBureauComponent,
     ChangePasswordComponent,
-    DefaulterViewComponent
+    DefaulterViewComponent,
+    SearchViewComponent
   ],
 
   bootstrap: [AppComponent],

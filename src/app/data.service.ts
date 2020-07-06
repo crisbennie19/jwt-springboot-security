@@ -20,6 +20,9 @@ import { ReportService } from './api/report.service';
 import { IssuesService } from './api/issues.service';
 import { DebtcollectionService } from './api/debtcollection.service';
 import { CreditIssuanceService } from './api/credit-issuance.service';
+import { SupportService } from './api/support.service';
+import { SwipebalanceService } from './api/swipebalance.service';
+import { OkraService } from './api/okra.service';
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +53,10 @@ export class DataService {
     private snackBar:MatSnackBar,
     public supportService:IssuesService,
     public debtCollection: DebtcollectionService,
-    public creditIssuance:CreditIssuanceService
-
+    public creditIssuance:CreditIssuanceService,
+    public supportSearch: SupportService,
+    public swipeBalance: SwipebalanceService,
+    public okra:OkraService
   ) { 
     router.events.subscribe(val => {
       if (localStorage.getItem('adminUser') !== null && val['url'] === "/") {

@@ -52,7 +52,6 @@ export class BaseComponent {
     private data:DataService, private dialog:MatDialog) {
     this.activeUser = JSON.parse(localStorage.getItem('adminUser') )
 
-    console.log(this.activeUser.data.roles, 'user roles');
     
     this.authorizedMenu = this.menuList.filter( el => {
       return this.activeUser.data.roles.some( (role) => el.role.includes(role))
@@ -63,9 +62,6 @@ export class BaseComponent {
     this.isSupport = verifyRole('SUPPORT')
     this.isFinance = verifyRole('FINANCE')
 
-    console.log(this.isFinance,'this.isFinance');
-    console.log(this.isBank,'this.isBank');
-    console.log(this.isSupport,'this.isSupport');
     
   }
 

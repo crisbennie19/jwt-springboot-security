@@ -2,23 +2,25 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'app-savings-balance-view',
-  templateUrl: './savings-balance-view.component.html',
-  styleUrls: ['./savings-balance-view.component.scss']
+  selector: 'app-search-view',
+  templateUrl: './search-view.component.html',
+  styleUrls: ['./search-view.component.scss']
 })
-export class SavingsBalanceViewComponent implements OnInit {
-  
+export class SearchViewComponent implements OnInit {
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public selectedRow:any,
-  private dialogRef: MatDialogRef<SavingsBalanceViewComponent>,
+  private dialogRef: MatDialogRef<SearchViewComponent>,
   ) { }
 
   ngOnInit() { 
+    console.log(this.selectedRow.data)
   }
 
   closeDialog(){
     this.dialogRef.close()
     event.preventDefault();
   }
+
 
 }
