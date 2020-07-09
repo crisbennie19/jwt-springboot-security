@@ -148,8 +148,7 @@
         <div class="flex-btw">
           <div style="font-size:15px; font-weight:500">Paystack:</div>
           <div *ngIf="loadingpaystack">
-            <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
-            </mat-spinner>
+            <span style="font-size: 12px; font-weight: 200;">loading...</span>
 
 
           </div>
@@ -161,8 +160,7 @@
         <div class="flex-btw">
           <div style="font-size:15px; font-weight:500">Monify:</div>
           <div *ngIf="loadingmonify">
-            <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
-            </mat-spinner>
+              <span style="font-size: 12px; font-weight: 200;">loading...</span>
           </div>
           <!-- <div *ngIf="loadingmonify">{{errorMsg}}</div> -->
           <div class="digits" style="font-size:18px;" *ngIf="!loadingmonify">

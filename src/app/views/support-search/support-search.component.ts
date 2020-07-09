@@ -159,11 +159,12 @@ clearSearch() {
   this.searchKey = '';
   this.applyFilter()
 }
-viewSearch(row){
+viewSearch(){
+  
   const dialogConfig = new MatDialogConfig();
   dialogConfig.disableClose = false;
   dialogConfig.autoFocus = false;
-  dialogConfig.data = row
+  dialogConfig.data = this.mydata
   dialogConfig.minWidth = '60%'
   dialogConfig.maxHeight = '90vh'
   this.dialog.open(SearchViewComponent, dialogConfig)

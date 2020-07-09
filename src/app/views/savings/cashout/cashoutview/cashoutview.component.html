@@ -1,0 +1,83 @@
+<div class="component-header">
+    <div>
+      <mat-icon class="mat-18x">account_balance_wallet</mat-icon> &nbsp;User Details
+    </div>
+    <button mat-button color="warn" (click)="closeDialog()">Close</button>
+  </div>
+  <div class="view-container">
+    <div class="view">
+
+    <div class="view-column"> 
+      <div class="info"> 
+        <div class="header">Account ID</div>
+        <div class="content">{{selectedRow.accountid}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Fullname</div>
+        <div class="content">{{selectedRow.accountname}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Phone Number</div>
+        <div class="content">{{selectedRow.accountphone}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Email</div>
+        <div class="content">{{selectedRow.accountemail}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Channel</div>
+        <div class="content">{{selectedRow.channel}}</div>
+      </div>
+    </div>
+    <div class="view-column">
+        <div class="info">
+          <div class="header">Amount</div>
+          <div class="content">{{selectedRow.amount}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Balance before</div>
+          <div class="content">{{selectedRow.balancebefore}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Balance after</div>
+          <div class="content">{{selectedRow.balanceafter}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Interest amount</div>
+          <div class="content">{{selectedRow.interestamount}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Saving type</div>
+          <div class="content">{{selectedRow.savingtype}}</div>
+        </div>
+      </div>
+  
+      <div class="view-column">
+        <div class="info">
+          <div class="header">Reference</div>
+          <div class="content">{{selectedRow.reference}}</div>
+        </div>
+
+        <div class="info">
+            <div class="header">Transaction Id</div>
+            <div class="content">{{selectedRow.transactionid }}</div>
+          </div>
+      
+        <div class="info">
+            <div class="header">Transaction type</div>
+            <div class="content">{{selectedRow.trantype }}</div>
+          </div>
+        <div class="info">
+          <div class="header">Saving date</div>
+          <div class="content">{{selectedRow.startdate |date }}</div>
+        </div>
+        <div class="info">
+          <div class="header">Cashout date</div>
+          <div class="content">{{selectedRow.cashoutdate |date}}</div>
+        </div>
+      </div>
+      </div>
+      <div class="img">
+        <img [src]="selectedRow.photograph" alt="passport" />
+      </div>
+  </div>

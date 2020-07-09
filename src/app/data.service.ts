@@ -23,6 +23,7 @@ import { CreditIssuanceService } from './api/credit-issuance.service';
 import { SupportService } from './api/support.service';
 import { SwipebalanceService } from './api/swipebalance.service';
 import { OkraService } from './api/okra.service';
+import { CashoutReminderService } from './api/cashout-reminder.service';
 
 @Injectable({
   providedIn: 'root'
@@ -56,7 +57,8 @@ export class DataService {
     public creditIssuance:CreditIssuanceService,
     public supportSearch: SupportService,
     public swipeBalance: SwipebalanceService,
-    public okra:OkraService
+    public okra:OkraService,
+    public cashoutService: CashoutReminderService
   ) { 
     router.events.subscribe(val => {
       if (localStorage.getItem('adminUser') !== null && val['url'] === "/") {

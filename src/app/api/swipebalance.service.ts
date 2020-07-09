@@ -31,6 +31,16 @@ export class SwipebalanceService {
         catchError(err => this.errorHandler(err))
       );
   }
+  getAirvendBalance(){
+    return this.http.get(
+      encodeURI(this._baseUrl +
+        `balance/airvendbalance`)
+    )
+      .pipe(
+        catchError(err => this.errorHandler(err))
+      );
+  }
+
   errorHandler(error: HttpErrorResponse) {
     return Observable.throw(error.message || "Server Error")
   }

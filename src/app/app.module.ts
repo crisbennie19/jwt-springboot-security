@@ -112,6 +112,8 @@ import { CreditIssuanceComponent } from './views/debtcollection/credit-issuance/
 import { SupportSearchComponent } from './views/support-search/support-search.component';
 import { OkraCheckComponent } from './views/okra-check/okra-check.component';
 import { SearchViewComponent } from './views/support-search/search-view/search-view.component';
+import { CashoutComponent } from './views/savings/cashout/cashout.component';
+import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashoutview.component';
 
 @NgModule({
   declarations: [
@@ -181,7 +183,6 @@ import { SearchViewComponent } from './views/support-search/search-view/search-v
     UserReportComponent,
     CreditReportComponent,
     CreditSubjectComponent,
-    UserReportComponent,
     CreditBureauComponent,
     CreditCardReportComponent,
     InterestReportComponent,
@@ -201,7 +202,9 @@ import { SearchViewComponent } from './views/support-search/search-view/search-v
     CreditIssuanceComponent,
     SupportSearchComponent,
     OkraCheckComponent,
-    SearchViewComponent
+    SearchViewComponent,
+    CashoutComponent,
+    CashoutviewComponent
     
     
   ],
@@ -274,7 +277,8 @@ import { SearchViewComponent } from './views/support-search/search-view/search-v
     CreditBureauComponent,
     ChangePasswordComponent,
     DefaulterViewComponent,
-    SearchViewComponent
+    SearchViewComponent,
+    CashoutviewComponent
   ],
 
   bootstrap: [AppComponent],

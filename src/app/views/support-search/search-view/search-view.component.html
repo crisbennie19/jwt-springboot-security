@@ -1,29 +1,83 @@
 <div class="component-header">
     <div>
-      <mat-icon class="mat-18x">save_alt</mat-icon> &nbsp;Search Result View
+      <mat-icon class="mat-18x">account_balance_wallet</mat-icon> &nbsp;User Details
     </div>
     <button mat-button color="warn" (click)="closeDialog()">Close</button>
   </div>
   <div class="view-container">
-    <div class="view-column">
-      <div class="info">
-        <div class="header">Amount</div>
-        <div class="content">{{selectedRow.amount}}</div>
+    <div class="view">
+
+    <div class="view-column"> 
+      <div class="info"> 
+        <div class="header">AccountNo</div>
+        <div class="content">{{selectedRow.accountno==null?'Not available':selectedRow.accountno}}</div>
       </div>
       <div class="info">
-        <div class="header">Charges</div>
-        <div class="content">{{selectedRow.charges}}</div>
+        <div class="header">Fullname</div>
+        <div class="content">{{selectedRow.name==null?'Not available':selectedRow.name}}</div>
       </div>
       <div class="info">
-        <div class="header">Date Created</div>
-        <div class="content">{{selectedRow.datecreated | date}}</div>
+        <div class="header">Phone Number</div>
+        <div class="content">{{selectedRow.contactmobile==null?'Not available':selectedRow.contactmobile}}</div>
       </div>
       <div class="info">
-        <div class="header">Date paid</div>
-        <div class="content">{{selectedRow.datepaid | date}}</div>
+        <div class="header">Email</div>
+        <div class="content">{{selectedRow.contactemail==null?'Not available':selectedRow.contactemail}}</div>
+      </div>
+      <div class="info">
+        <div class="header">Address</div>
+        <div class="content">{{selectedRow.contactaddress==null?'Not available':selectedRow.contactaddress}}</div>
       </div>
     </div>
-    
-    
+    <div class="view-column">
+        <div class="info">
+          <div class="header">Gender</div>
+          <div class="content">{{selectedRow.gender==null?'Not available':selectedRow.gender}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Card Status</div>
+          <div class="content">{{selectedRow.cardstatus==false?'Card not activated':'Card is Active'}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Card Creation Date</div>
+          <div class="content">{{selectedRow.datecreated |date}}</div>
+        </div>
+        <div class="info">
+          <div class="header">Card Expire Date</div>
+          <div class="content">{{selectedRow.datexpire |date}}</div>
+        </div>
+        <div class="info">
+          <div class="header">BVN Verification</div>
+          <div class="content">{{selectedRow.bvnverify ==false?'BVN not verified':'BVN verified'}}</div>
+        </div>
+      </div>
+  
+      <div class="view-column">
+        <div class="info">
+          <div class="header">Active</div>
+          <div class="content">{{selectedRow.active ==false?'Not Active':'Active'}}</div>
+        </div>
+
+        <div class="info">
+            <div class="header">Pin Status</div>
+            <div class="content">{{selectedRow.pinstatus ==null?'Pin not set':'Active pin'}}</div>
+          </div>
+      
+        <div class="info">
+            <div class="header">Registrtion Status</div>
+            <div class="content">{{selectedRow.regCompleted ==false?'Incompleted Registraction':'Completed'}}</div>
+          </div>
+        <div class="info">
+          <div class="header">State of Origin</div>
+          <div class="content">{{selectedRow.stateorigin ==null?'Not available':selectedRow.gender}}</div>
+        </div>
+        <div class="info">
+          <div class="header">LGA</div>
+          <div class="content">{{selectedRow.lga==null?'Not available':selectedRow.gender}}</div>
+        </div>
+      </div>
+      </div>
+      <div class="img">
+        <img [src]="selectedRow.photograph" alt="passport" />
+      </div>
   </div>
-  &nbsp;
