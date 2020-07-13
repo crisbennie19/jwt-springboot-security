@@ -20,15 +20,15 @@ export class BaseComponent {
 
   
   menuList = [
-    {route:'/dashboard',icon:'dashboard', name:'Dashboard', role:["ADMINISTRATOR","FINANCE"]},
+    {route:'/dashboard',icon:'dashboard', name:'Dashboard', role:["ADMINISTRATOR","ACCOUNT"]},
     {route:'/wallet',icon:'account_balance_wallet', name:'Wallet', role:["ADMINISTRATOR"]},
-    {route:'/transactions',icon:'compare_arrows', name:'Transactions', role:["ADMINISTRATOR","FINANCE"]},
+    {route:'/transactions',icon:'compare_arrows', name:'Transactions', role:["ADMINISTRATOR","ACCOUNT"]},
     // {route:'/charges',icon:'import_export', name:'Charges'},
     {route:'/interests',icon:'monetization_on', name:'Interests', role:["ADMINISTRATOR"]},
     {route:'/messages',icon:'email', name:'Messages', role:["ADMINISTRATOR"]},
     {route:'/users',icon:'account_box', name:'Users', role:["ADMINISTRATOR","SUPPORT"]},
-    {route:'/credit',icon:'credit_card', name:'Credit', role:["ADMINISTRATOR","BANK","FINANCE"]},
-    {route:'/savings',icon:'save_alt', name:'Savings', role:["ADMINISTRATOR","BANK","FINANCE"]},
+    {route:'/credit',icon:'credit_card', name:'Credit', role:["ADMINISTRATOR","BANK","ACCOUNT"]},
+    {route:'/savings',icon:'save_alt', name:'Savings', role:["ADMINISTRATOR","BANK","ACCOUNT"]},
     {route:'/logs',icon:'receipt', name:'Logs', role:["ADMINISTRATOR"]},
     {route:'/referrals',icon:'insert_comment', name:'Referral', role:["ADMINISTRATOR"]},
     {route:'/reports',icon:'report', name:'Report', role:["ADMINISTRATOR"]},
@@ -60,7 +60,7 @@ export class BaseComponent {
     this.isBank = verifyRole('BANK')
     this.isAdmin = verifyRole('ADMINISTRATOR')
     this.isSupport = verifyRole('SUPPORT')
-    this.isFinance = verifyRole('FINANCE')
+    this.isFinance = verifyRole('ACCOUNT')
 
     
   }
