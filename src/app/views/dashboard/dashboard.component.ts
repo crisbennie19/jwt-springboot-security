@@ -23,9 +23,11 @@ export class DashboardComponent implements OnInit {
 
   paystackBalance: any
   monifyBalance: any
+  airvendBalance:any
   flutterwaveBalance: number
   loadingpaystack: boolean
   loadingmonify: boolean
+  loadingairvend:boolean
   errorMsg: string;
 
 
@@ -47,40 +49,14 @@ export class DashboardComponent implements OnInit {
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    // this.getTransactionList();
+   
     this.dashboardDetails();
     this.getPaystack();
     this.getMonify()
+    ///this.getAirvend();
   }
 
-  // getTransactionList(){
-  //   this.loading = true;
-  //   this.data.transactionService.getTransactions(0,5)
-  //   .pipe(
-  //     map( res => res['data'])
-  //   )
-  //   .subscribe( res => {
-  //      this.response = {
-  //       "totallock": res.totallock,
-  //       "totaltarget": res.totaltarget,
-  //       "totalcore": res.totalcore,
-  //       "totalinterest": res.totalinterest,
-  //     }
-  //     //this.response = res;
-  //     this.loading = false;
-  //     this.tableLength = this.response.length;
-  //     console.log(this.response)
 
-  //     this.listData = new MatTableDataSource(this.response);        
-  //     // this.listData.paginator = this.paginator;
-  //     // this.listData.sort = this.sort;
-  //   }, err => {
-  //     this.loading = false;
-  //     // this.snackBar.open("Check your network and try again", "Dismiss", {
-  //     //   duration:2000
-  //     // })
-  //   })
-  // }
   getPaystack() {
     this.loadingpaystack = true
     this.data.swipeBalance.getPaystackBalance().subscribe((res: any) => {
@@ -115,6 +91,26 @@ export class DashboardComponent implements OnInit {
 
     }, err => {
       this.loadingmonify = false
+      this.errorMsg = "Network error"
+    })
+  }
+
+  getAirvend() {
+    this.loadingairvend = true
+    this.data.swipeBalance.getAirvendBalance().subscribe((res: any) => {
+      console.log(res)
+      if (res['message'] != null) {
+        this.loadingairvend = false
+        this.airvendBalance = res['data']
+
+      }
+      else {
+        this.loadingairvend = false
+        this.errorMsg = "Not avaailable"
+      }
+
+    }, err => {
+      this.loadingairvend = false
       this.errorMsg = "Network error"
     })
   }

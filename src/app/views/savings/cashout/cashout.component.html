@@ -1,0 +1,231 @@
+<div class="component-container">
+  <div class="flex-btw wrap">
+    <div class="flex-el">
+      <div class="search-container">
+        <mat-icon class="prefix">search</mat-icon>
+        <input type="text" class="mSearch" [(ngModel)]="searchKey" placeholder="search" (keyup)="applyFilter()">
+        <mat-icon class="suffix" *ngIf="searchKey != ''" (click)="clearSearch()">close</mat-icon>
+      </div>
+      &nbsp;
+
+      <div *ngIf="loading">
+        <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
+        </mat-spinner>
+      </div>
+    </div>
+    <div class="search-container">
+      <mat-icon class="prefix">search</mat-icon>
+      <input type="text" class="mSearch" [(ngModel)]="days" placeholder="number of days">
+      &nbsp;
+      <button mat-raised-button (click)="getDailysavingsByDays()" color="accent">Search</button>
+    </div>
+
+    <div>
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="targetDate" [matDatepicker]="picker" placeholder="End date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <button mat-raised-button (click)="getSavingsByDate()" color="accent">Search</button>
+    </div>
+  </div>
+
+
+  <div>
+    <div *ngIf="displaysavings && !display3savings && displayDaysColumn">
+      <table mat-table class="full-width-table" [dataSource]="listData" matSort aria-label="Elements">
+        <ng-container matColumnDef="accountname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Name</th>
+          <td mat-cell *matCellDef="let row" data-label="Account Holder">{{row.accountname}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="accountphone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+          <td mat-cell *matCellDef="let row" data-label="Phone number">{{row.accountphone}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+          <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="interestamount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Interest</th>
+          <td mat-cell *matCellDef="let row" data-label="Interest">{{row.interestamount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="savingtype">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Saving type</th>
+          <td mat-cell *matCellDef="let row" data-label="Saving Type">{{row.savingtype}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="startdate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Savings date</th>
+          <td mat-cell *matCellDef="let row" data-label="Savings Date">{{row.startdate |date}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+          <td mat-cell *matCellDef="let row" data-label="Actions">
+            <button mat-icon-button (click)="viewSearch(row)">
+              <mat-icon class="mat-18x">visibility</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="no-activity">
+          <mat-footer-cell *matFooterCellDef>
+            No record found
+          </mat-footer-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displaySavingsColumn"></tr>
+        <tr mat-row *matRowDef="let row; columns: displaySavingsColumn;"></tr>
+        <mat-footer-row *matFooterRowDef="['no-activity']" [ngClass]="{'hide': tableLength != 0 }">
+        </mat-footer-row>
+      </table>
+
+      <mat-paginator #paginator showFirstLastButtons [length]="tableLength" [pageIndex]="0" [pageSize]="7">
+      </mat-paginator>
+    </div>
+
+    <div *ngIf="display3savings && !displaysavings && !displaytargetsavings">
+      <table mat-table class="full-width-table" [dataSource]="listData" matSort aria-label="Elements">
+        
+        <ng-container matColumnDef="accountname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Name</th>
+          <td mat-cell *matCellDef="let row" data-label="Account Holder">{{row.data.accountname}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="accountphone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+          <td mat-cell *matCellDef="let row" data-label="Phone number">{{row.data.accountphone}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+          <td mat-cell *matCellDef="let row" data-label="Amount">{{row.data.amount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="interestamount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Interest</th>
+          <td mat-cell *matCellDef="let row" data-label="Interest">{{row.data.interestamount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="savingtype">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Saving type</th>
+          <td mat-cell *matCellDef="let row" data-label="Saving Type">{{row.data.savingtype}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="startdate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Savings date</th>
+          <td mat-cell *matCellDef="let row" data-label="Savings Date">{{row.data.startdate |date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="total_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout amount</th>
+          <td mat-cell *matCellDef="let row" data-label="Cashout amount">{{row.total_amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cashoutdate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout date</th>
+          <td mat-cell *matCellDef="let row" data-label="Cashout Date">{{row.data.cashoutdate |date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+          <td mat-cell *matCellDef="let row" data-label="Actions">
+            <button mat-icon-button (click)="viewSearch(row.data)">
+              <mat-icon class="mat-18x">visibility</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="no-activity">
+          <mat-footer-cell *matFooterCellDef>
+            No record found
+          </mat-footer-cell>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayDaysColumn"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayDaysColumn;"></tr>
+        <mat-footer-row *matFooterRowDef="['no-activity']" [ngClass]="{'hide': tableLength != 0 }">
+        </mat-footer-row>
+      </table>
+
+      <mat-paginator #paginator showFirstLastButtons [length]="tableLength" [pageIndex]="0" [pageSize]="7">
+      </mat-paginator>
+    </div>
+
+    <div *ngIf="displaytargetsavings &&  !displaysavings && !display3savings ">
+      <table mat-table class="full-width-table" [dataSource]="listData" matSort aria-label="Elements">
+        <ng-container matColumnDef="accountname">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Name</th>
+          <td mat-cell *matCellDef="let row" data-label="Account Holder">{{row.data.accountname}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="accountphone">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+          <td mat-cell *matCellDef="let row" data-label="Phone number">{{row.data.accountphone}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+          <td mat-cell *matCellDef="let row" data-label="Amount">{{row.data.amount }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="interestamount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Interest</th>
+          <td mat-cell *matCellDef="let row" data-label="Interest">{{row.data.interestamount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="savingtype">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Saving type</th>
+          <td mat-cell *matCellDef="let row" data-label="Saving Type">{{row.data.savingtype}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="startdate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Savings date</th>
+          <td mat-cell *matCellDef="let row" data-label="Savings Date">{{row.data.startdate |date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="total_amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout amount</th>
+          <td mat-cell *matCellDef="let row" data-label="Cashout amount">{{row.total_amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cashoutdate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout date</th>
+          <td mat-cell *matCellDef="let row" data-label="Cashout Date">{{row.data.cashoutdate |date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+          <td mat-cell *matCellDef="let row" data-label="Actions">
+            <button mat-icon-button (click)="viewSearch(row.data)">
+              <mat-icon class="mat-18x">visibility</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="no-activity">
+          <mat-footer-cell *matFooterCellDef>
+            No record found
+          </mat-footer-cell>
+        </ng-container> 
+
+        <tr mat-header-row *matHeaderRowDef="displayTargetColumn"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayTargetColumn;"></tr>
+        <mat-footer-row *matFooterRowDef="['no-activity']" [ngClass]="{'hide': tableLength != 0 }">
+        </mat-footer-row>
+      </table>
+
+      <mat-paginator #paginator showFirstLastButtons [length]="tableLength" [pageIndex]="0" [pageSize]="7">
+      </mat-paginator>
+    </div>
+
+  </div>
+
+</div>

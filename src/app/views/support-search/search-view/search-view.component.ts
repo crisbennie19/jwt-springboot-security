@@ -9,12 +9,12 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 export class SearchViewComponent implements OnInit {
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public selectedRow:any,
+    @Inject(MAT_DIALOG_DATA) public selectedRows:any,
   private dialogRef: MatDialogRef<SearchViewComponent>,
   ) { }
-
+  selectedRow = this.selectedRows[0].accountid
   ngOnInit() { 
-    console.log(this.selectedRow.data)
+    
   }
 
   closeDialog(){
