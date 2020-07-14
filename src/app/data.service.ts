@@ -125,7 +125,7 @@ export class DataService {
   }
 
   logout(){
-
+    
     let activeUser = JSON.parse(localStorage.getItem('adminUser') )
    
     this.snackBar.open("Shutting down...", 'Dismiss', {

@@ -6,7 +6,8 @@
             </span>
         </div>
         <div>
-            {{intListData.category}}</div>
+            <!-- {{intListData.category}}-->
+            </div> 
 
         &nbsp;
         &nbsp;
@@ -71,7 +72,7 @@
         </mat-accordion>
     
         &nbsp;
-        <mat-accordion>
+        <!-- <mat-accordion>
             <mat-expansion-panel expanded="true">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -86,7 +87,7 @@
                     {{intListData.description}}
                 </div>
             </mat-expansion-panel>
-        </mat-accordion>
+        </mat-accordion> -->
     
         <mat-accordion>
             <mat-expansion-panel  *ngFor="let list of listData">
@@ -100,9 +101,11 @@
                 </mat-expansion-panel-header>
 
                 <!-- <p> <b>Hello {{list.postedbyname}}</b> ,</p> -->
-                <div>{{list.description}}</div>
+                <div style="padding: 17px 10px;">{{list.description}}</div>
                 
             </mat-expansion-panel>
+            &nbsp;
+
         </mat-accordion>
     </div>
     

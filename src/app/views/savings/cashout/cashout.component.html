@@ -15,20 +15,25 @@
     </div>
     <div class="search-container">
       <mat-icon class="prefix">search</mat-icon>
-      <input type="text" class="mSearch" [(ngModel)]="days" placeholder="number of days">
+      <input type="text" class="mSearch" [(ngModel)]="days" placeholder="Number of days">
       &nbsp;
       <button mat-raised-button (click)="getDailysavingsByDays()" color="accent">Search</button>
     </div>
 
     <div>
       <mat-form-field class="jamez-input" floatLabel="never">
-        <input matInput autocomplete="off" [(ngModel)]="targetDate" [matDatepicker]="picker" placeholder="End date">
+        <input matInput autocomplete="off" [(ngModel)]="targetDate" [matDatepicker]="picker" placeholder="Specify date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       &nbsp;
       <button mat-raised-button (click)="getSavingsByDate()" color="accent">Search</button>
     </div>
+  </div>
+
+
+  <div style="font-size: larger; font-weight: 500;margin: 10px 0;">
+    Total Amount : &#8358;{{totalAmount | number}}
   </div>
 
 
@@ -47,7 +52,7 @@
 
         <ng-container matColumnDef="amount">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-          <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount }}</td>
+          <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount}}</td>
         </ng-container>
 
         <ng-container matColumnDef="interestamount">
@@ -106,7 +111,7 @@
 
         <ng-container matColumnDef="amount">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-          <td mat-cell *matCellDef="let row" data-label="Amount">{{row.data.amount }}</td>
+          <td mat-cell *matCellDef="let row" data-label="Amount">{{row.data.amount}}</td>
         </ng-container>
 
         <ng-container matColumnDef="interestamount">
@@ -126,7 +131,7 @@
 
         <ng-container matColumnDef="total_amount">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout amount</th>
-          <td mat-cell *matCellDef="let row" data-label="Cashout amount">{{row.total_amount}}</td>
+          <td mat-cell *matCellDef="let row" data-label="Cashout amount">{{row.total_amount | number}}</td>
         </ng-container>
 
         <ng-container matColumnDef="cashoutdate">
@@ -193,7 +198,7 @@
 
         <ng-container matColumnDef="total_amount">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout amount</th>
-          <td mat-cell *matCellDef="let row" data-label="Cashout amount">{{row.total_amount}}</td>
+          <td mat-cell *matCellDef="let row" data-label="Cashout amount">{{row.total_amount | number}}</td>
         </ng-container>
 
         <ng-container matColumnDef="cashoutdate">

@@ -39,6 +39,7 @@ export class CashoutComponent implements OnInit {
   displaySavingsColumn = ['accountname', 'accountphone', 'amount', 'interestamount', 'savingtype', 'startdate', 'action'];
   displayTargetColumn = ['accountname', 'accountphone', 'amount', 'interestamount', 'savingtype', 'startdate', 'total_amount', 'cashoutdate', 'action'];
   displayDaysColumn = ['accountname', 'accountphone', 'amount', 'interestamount', 'savingtype', 'startdate', 'total_amount', 'cashoutdate', 'action'];
+  totalAmount: number = 0;
 
 
 
@@ -60,6 +61,7 @@ export class CashoutComponent implements OnInit {
 
       if (res.message == "Success") {
         this.mydata = res.data;
+        this.computeTotalAmount(res['data'])
         this.loading = false;
         this.error = false
         this.tableLength = this.mydata.length;
@@ -77,9 +79,8 @@ export class CashoutComponent implements OnInit {
     }, err => {
       this.loading = false;
     })
-
-
   }
+
   getDailysavingsByDays() {
     this.displaysavings = false
     this.display3savings = true
@@ -87,10 +88,10 @@ export class CashoutComponent implements OnInit {
     this.loading = true;
     this.data.cashoutService.getDailySavingsByDay(this.days).subscribe((res: any) => {
 
-
       if (res.message == "Success") {
 
         this.mydata = res.data;
+        this.computeTotalAmount(res['data'])
         this.loading = false;
         this.error = false
         this.tableLength = this.mydata.length;
@@ -98,7 +99,6 @@ export class CashoutComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;
-
       }
       else {
         this.message = res.message
@@ -108,8 +108,17 @@ export class CashoutComponent implements OnInit {
     }, err => {
       this.loading = false;
     })
+  }
 
 
+  computeTotalAmount(data){
+    this.totalAmount = 0
+    for (let i = 0; i < data.length; i++) {
+      this.totalAmount += data[i].total_amount;
+    }
+
+    console.log(this.totalAmount, 'Total maturity amount');
+  
   }
 
   getSavingsByDate() {
@@ -122,7 +131,7 @@ export class CashoutComponent implements OnInit {
 
 
       if (res.message == "Success") {
-
+        this.computeTotalAmount(res['data'])
         this.mydata = res.data;
         this.loading = false;
         this.error = false

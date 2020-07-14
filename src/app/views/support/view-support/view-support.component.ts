@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/data.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
@@ -26,13 +26,21 @@ export class ViewSupportComponent implements OnInit {
 
   emailDisable: boolean = true
   form: FormGroup;
+  issueId: any;
 
 
   constructor(private data: DataService, 
     private router: Router, 
     private fb: FormBuilder,
-    private snackBar:MatSnackBar) {
-
+    private snackBar:MatSnackBar,
+    private route: ActivatedRoute) {
+      
+    this.route.params.subscribe( params => {
+      this.issueId = params.id
+    });
+      
+    this.getIssuesLog()
+    
     this.payload = {
       description: "",
       issuesid: null,
@@ -40,24 +48,24 @@ export class ViewSupportComponent implements OnInit {
       status: ""
     }
 
-    const navigation = this.router.getCurrentNavigation();
+    // const navigation = this.router.getCurrentNavigation();
 
-    const issues = navigation.extras.state.data as {
-      category: string
-      closebyemail: string
-      closebyname: string
-      dateclose: string
-      dateposted: string
-      description: string
-      id: number
-      initiatoremail: string
-      initiatorphone: string
-      issuesLogList: null
-      status: string
-      ticketid: string
-    }
+    // const issues = navigation.extras.state.data as {
+    //   category: string
+    //   closebyemail: string
+    //   closebyname: string
+    //   dateclose: string
+    //   dateposted: string
+    //   description: string
+    //   id: number
+    //   initiatoremail: string
+    //   initiatorphone: string
+    //   issuesLogList: null
+    //   status: string
+    //   ticketid: string
+    // }
 
-    this.intListData = issues
+    // this.intListData = issues
     this.form = this.fb.group({
       'responseMessage': ['', Validators.required],
       'email': [''],
@@ -79,7 +87,7 @@ export class ViewSupportComponent implements OnInit {
 
   getIssuesLog() {
     this.loading = true
-    this.data.supportService.getIssuesbyIssueID(this.intListData.id).subscribe((res: any) => {
+    this.data.supportService.getIssuesbyIssueID(this.issueId).subscribe((res: any) => {
       if(res.message=="Success"){
       this.listData = res.data
       this.listData = res.data.sort((a, b) => b.index - a.index);
@@ -99,9 +107,9 @@ export class ViewSupportComponent implements OnInit {
     this.loading = true
     this.payload = {
       description: this.form.get('responseMessage').value,
-      issuesid: this.intListData.id,
+      issuesid: this.issueId,
       postedbyemail: this.form.get('email').value,
-      status: this.intListData.status
+      status: 'IN PROGRESS' //This should be dynamic
     }
 
     this.data.supportService.postNewIssueLog(this.payload).subscribe((res: any) => {
