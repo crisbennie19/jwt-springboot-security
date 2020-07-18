@@ -16,7 +16,7 @@ export class CreditIssuanceComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   message: string = "Please choose a date range to search "
   searchKey: any = '';
-  displayedColumns = ['accountname','email','phone','amount', 'trandate'];
+  displayedColumns = ['accountname','email','phone', 'trandate','amount'];
   loading: boolean;
   tableLength: number;
   mydata: any;

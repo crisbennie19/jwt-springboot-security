@@ -67,7 +67,9 @@
 
           <ng-container matColumnDef="amount">
             <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}</mat-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">
+              <div style="text-align: right;">{{row.amount | number}}</div>
+            </mat-cell>
           </ng-container>
     
           <ng-container matColumnDef="trandate">

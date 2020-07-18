@@ -51,10 +51,9 @@
     </div> 
 
     <div>
-      <!-- <div>{{message}}</div> -->
 
         <table class="table" mat-table  [dataSource]="listData" matSort  aria-label="Elements">
-           <!-- <div *ngIf="showTable" >{{message}}</div> -->
+
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
             <mat-cell *matCellDef="let row"  data-label="name">{{row.accountid.name}}</mat-cell>
@@ -66,37 +65,17 @@
           </ng-container>
     
           <ng-container matColumnDef="contactemail">
-            <mat-header-cell *matHeaderCellDef>contactemail</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Contact Email</mat-header-cell>
             <mat-cell *matCellDef="let row" data-label="contactemail">{{row.accountid.contactemail}}</mat-cell>
           </ng-container>
     
           <ng-container matColumnDef="amount" >
             <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="amount">{{row.amount | currency:'NGN':'symbol-narrow'}}</mat-cell>
+            <mat-cell *matCellDef="let row" data-label="amount">
+              <div style="text-align: right;">{{row.amount | number}}</div>
+            </mat-cell>
           </ng-container>
     
-          <!-- <ng-container matColumnDef="number">
-            <mat-header-cell *matHeaderCellDef>Number</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Phone Number">{{row.initiatorphone}}</mat-cell>
-          </ng-container>
-    
-          <ng-container matColumnDef="description">
-            <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Description">{{row.description}}</mat-cell>
-          </ng-container>
-      
-          <ng-container matColumnDef="date">
-            <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-            <mat-cell *matCellDef="let row" data-label="Posted Date">{{row.dateposted|date}}</mat-cell>
-          </ng-container> -->
-    
-      
-
-
-         
-
-          
-
           <mat-header-row *matHeaderRowDef="displayedColumns">
          
           </mat-header-row>

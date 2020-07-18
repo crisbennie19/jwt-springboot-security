@@ -7,12 +7,15 @@ table {
 .jamez-input{
     width:150px;
 }
+
 .mat-column-trandate{
     justify-content: center;
 }
+
 .mat-column-amount{
-    justify-content: center;
+    justify-content: flex-end;
 }
+
 .mat-column-email{
     width: auto !important;
 }

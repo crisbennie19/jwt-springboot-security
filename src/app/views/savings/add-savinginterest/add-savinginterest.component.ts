@@ -21,6 +21,7 @@ export class AddSavinginterestComponent implements OnInit {
       id: 0
     }
   }
+
   loading: boolean;
   tableLength: any;
   listData: any;
@@ -33,7 +34,6 @@ export class AddSavinginterestComponent implements OnInit {
     private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-
     this.getTypeList();
     this.addInterestForm = this.formBuilder.group({
       'savingstype':[0, Validators.required],

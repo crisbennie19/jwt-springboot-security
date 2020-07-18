@@ -45,24 +45,29 @@
   <div>
     <table mat-table class="full-width-table" [dataSource]="listData" 
     matSort aria-label="Elements">
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-        <td mat-cell *matCellDef="let row" data-label="Description">{{row.description}}</td>
+      <ng-container matColumnDef="accountno">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Number</th>
+        <td mat-cell *matCellDef="let row" data-label="Account Number">{{row.accountnumber}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="account">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account holder</th>
+      <ng-container matColumnDef="accountname">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Holder</th>
         <td mat-cell *matCellDef="let row" data-label="Account Holder">{{row.accountname}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone number</th>
-        <td mat-cell *matCellDef="let row" data-label="Phone Number">{{row.accountphone}}</td>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Email</th>
+        <td mat-cell *matCellDef="let row" data-label="Phone Number">{{row.accountemail}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Approved amount</th>
+        <td mat-cell *matCellDef="let row" data-label="Phone Number">{{row.approveamount}}</td>
       </ng-container>
 
       <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Request date</th>
-        <td mat-cell *matCellDef="let row" data-label="Request Date">{{row.daterequested | date}}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Approval date</th>
+        <td mat-cell *matCellDef="let row" data-label="Request Date">{{row.approvaldate | date}}</td>
       </ng-container>
   
       <ng-container matColumnDef="status">
@@ -101,6 +106,7 @@
     </table>
   
     <mat-paginator #paginator
+    showFirstLastButtons
       [length]="tableLength"
       [pageIndex]="0"
       [pageSize]="7">

@@ -18,7 +18,7 @@ export class RepaymentComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   message: string = "Please choose a date range to search "
   searchKey: any = '';
-  displayedColumns = ['accountname','email','amount',  'trandate'];
+  displayedColumns = ['accountname','email','trandate','amount'];
   loading: boolean;
   tableLength: number;
   mydata: any;

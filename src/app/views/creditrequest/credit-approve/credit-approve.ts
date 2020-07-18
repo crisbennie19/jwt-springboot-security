@@ -15,7 +15,7 @@ export class CreditApproveComponent implements OnInit {
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['description','account','phone','date', 'status'];
+  displayedColumns = ['accountno','accountname','email','amount','date', 'status'];
   public listData: MatTableDataSource<any>; 
 
   creditFilter:string = "accountholder";

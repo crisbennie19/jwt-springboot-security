@@ -34,7 +34,6 @@ import { ChargesComponent } from './views/charges/charges.component';
 import { SavingsComponent } from './views/savings/savings.component';
 import {CreditComponent } from './views/credit/credit.component';
 import { MessagesComponent } from './views/messages/messages.component';
-import { TableComponent } from './table/table.component';
 import { AdminUsersListComponent } from './views/users/admin-users-list/admin-users-list.component';
 import { AdminUserAddComponent } from './views/users/admin-user-add/admin-user-add.component';
 import { AdminUsersEditComponent } from './views/users/admin-users-edit/admin-users-edit.component';
@@ -130,7 +129,6 @@ import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashou
 
     CreditComponent,
     MessagesComponent,
-    TableComponent,
     AdminUsersListComponent,
     AdminUserAddComponent,
     AdminUsersEditComponent,
