@@ -146,7 +146,7 @@ export class CreditService {
   getCreditRequestHistory(page:number, size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 
-      `swipe_admin/list/credit_request/history?page=${page}&size=${size}`)
+      `swipe_admin/credit_request/history?page=${page}&size=${size}`)
     )
     .pipe(
       catchError( err => this.errorHandler(err))
