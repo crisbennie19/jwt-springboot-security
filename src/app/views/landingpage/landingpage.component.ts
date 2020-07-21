@@ -4,6 +4,7 @@ import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
+import { menuList } from 'src/app/helpers/roles';
 
 @Component({
   selector: 'app-landingpage',
@@ -22,6 +23,10 @@ export class LandingpageComponent implements OnInit {
 
   year = new Date().getFullYear()
 
+  menuList = menuList.menu
+  authorizedMenu: { route: string; icon: string; name: string; role: string[]; }[];
+  activeUser: any;
+
 
   constructor(
     private formBuilder:FormBuilder,
@@ -39,7 +44,15 @@ export class LandingpageComponent implements OnInit {
     })
   }
 
-  
+  checkRole(user){
+    // this.activser = JSON.parse(localStorage.getItem('adminUser') )
+
+    
+    this.authorizedMenu = this.menuList.filter( el => {
+      return user.data.roles.some( (role) => el.role.includes(role))
+    });
+  }
+
   showPass(){
     this.pass = document.querySelector('#loginpassword');
     if(this.pass.type == "password"){
@@ -71,19 +84,13 @@ export class LandingpageComponent implements OnInit {
         localStorage.setItem('adminUser', JSON.stringify(res['data']))
         let activeUser = JSON.parse(localStorage.getItem('adminUser') )
         let isBank;
+
+        this.checkRole(activeUser)
+
         this.data.setToken(res['data'].tokendata.access_token);
         this.data.loginUser(true)
 
-        isBank = activeUser.data.roles.find( role => {
-          return role == 'BANK'
-        })
-
-        if(isBank == "BANK"){
-          this.router.navigate(['/credit']);
-        }
-        else{
-          this.router.navigate(['/dashboard']);
-        }
+        this.router.navigate([this.authorizedMenu[0].route]);
 
         this.loading = false
       }

@@ -21,6 +21,7 @@ import { ReportsComponent } from './views/reports/reports.component';
 import { SupportComponent } from './views/support/support.component';
 import { ViewSupportComponent } from './views/support/view-support/view-support.component';
 import { DebtcollectionComponent } from './views/debtcollection/debtcollection.component';
+import { AccessGuard } from './guard/access.guard';
 
 
 const routes: Routes = [
@@ -30,47 +31,91 @@ const routes: Routes = [
   },
   {
     path:'dashboard',
-    component:DashboardComponent
+    component:DashboardComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","ACCOUNT"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'interests',
-    component:InterestsComponent
+    component:InterestsComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'wallet',
-    component:WalletsComponent
+    component:WalletsComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'transactions',
-    component:TransactionsComponent
+    component:TransactionsComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","ACCOUNT"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'creditrequests',
-    component:CreditRequestComponent
+    component:CreditRequestComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","BANK"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'credit',
-    component:CreditComponent
+    component:CreditComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","BANK","ACCOUNT"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'savings',
-    component:SavingsComponent
+    component:SavingsComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","BANK","ACCOUNT"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'messages',
-    component:MessagesComponent
+    component:MessagesComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'settings',
-    component:SettingsComponent
+    component:SettingsComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","BANK"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'reports',
-    component:ReportsComponent
+    component:ReportsComponent,
+    data:{
+      allowedRoles: ["ADMINISTRATOR"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'logs',
-    component:LogsComponent
+    component:LogsComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'withdrawal',
@@ -78,18 +123,36 @@ const routes: Routes = [
   },
   {
     path:'referrals',
-    component:ReferralComponent
+    component:ReferralComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'users',
-    component:UsersComponent
+    component:UsersComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","SUPPORT"]
+    },
+    canActivate:[AccessGuard]
   },
   {
     path:'support',
-    component:SupportComponent
+    component:SupportComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","SUPPORT"]
+    },
+    canActivate:[AccessGuard]
   },
-  {path: 'issue-details/:id', component: ViewSupportComponent},
-  {path: 'debtcollection', component: DebtcollectionComponent}
+  {path: 'issue-details/:id', 
+    component: ViewSupportComponent,
+    data:{
+      allowedRoles:["ADMINISTRATOR","SUPPORT"]
+    }
+  },
+
+  // {path: 'debtcollection', component: DebtcollectionComponent}
 
 ];
 

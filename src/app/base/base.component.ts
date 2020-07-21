@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from '../data.service';
-import { verifyRole } from '../helpers/roles';
+import { verifyRole, menuList } from '../helpers/roles';
 import { ChangePasswordComponent } from '../views/users/change-password/change-password.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
@@ -14,27 +14,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./base.component.scss']
 })
 export class BaseComponent {
-
   activeUser:any;
   dataService:DataService = null;
-
   
-  menuList = [
-    {route:'/dashboard',icon:'dashboard', name:'Dashboard', role:["ADMINISTRATOR","ACCOUNT"]},
-    {route:'/wallet',icon:'account_balance_wallet', name:'Wallet', role:["ADMINISTRATOR"]},
-    {route:'/transactions',icon:'compare_arrows', name:'Transactions', role:["ADMINISTRATOR","ACCOUNT"]},
-    // {route:'/charges',icon:'import_export', name:'Charges'},
-    {route:'/interests',icon:'monetization_on', name:'Interests', role:["ADMINISTRATOR"]},
-    {route:'/messages',icon:'email', name:'Messages', role:["ADMINISTRATOR"]},
-    {route:'/users',icon:'account_box', name:'Users', role:["ADMINISTRATOR","SUPPORT"]},
-    {route:'/credit',icon:'credit_card', name:'Credit', role:["ADMINISTRATOR","BANK","ACCOUNT"]},
-    {route:'/savings',icon:'save_alt', name:'Savings', role:["ADMINISTRATOR","BANK","ACCOUNT"]},
-    {route:'/logs',icon:'receipt', name:'Logs', role:["ADMINISTRATOR"]},
-    {route:'/referrals',icon:'insert_comment', name:'Referral', role:["ADMINISTRATOR"]},
-    {route:'/reports',icon:'report', name:'Report', role:["ADMINISTRATOR"]},
-    {route:'/support',icon:'live_help', name:'Support', role:["ADMINISTRATOR","SUPPORT"]},
-    {route:'/settings',icon:'settings', name:'Settings', role:["ADMINISTRATOR","BANK"]}
-  ]
+  menuList = menuList.menu
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
