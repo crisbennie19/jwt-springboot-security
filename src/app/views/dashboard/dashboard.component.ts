@@ -34,14 +34,21 @@ export class DashboardComponent implements OnInit {
   lastUpdate = Date.now();
   dashboard = {
     "totalusers": 0,
+    "dailyusers":0,
     "totalcard": 0,
-    "totalinterest": 0,
-    "totalcredit": 0,
-    "totallock": 0,
-    "totaltarget": 0,
-    "totalcore": 0,
-    "totalsaving": 0,
-    "totalcharges": 0
+    "dailycard" : 0,
+    "totalinterest": 0.0,
+    "totalcredit": 0.0,
+    "dailycredit" : 0.0,
+    "totallock": 0.0,
+    "totaltarget": 0.0,
+    "totalcore": 0.0,
+    "totalsaving": 0.0,
+    "dailysaving" : 0.0,
+    "totalcharges": 0.0,
+    "dailycharges" : 0.0,
+    "totalwallet" : 0.0
+   
   };
 
 
@@ -115,7 +122,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-
+  
   dashboardDetails() {
     this.loading = true;
     this.data.dashboardService.getDashboard()

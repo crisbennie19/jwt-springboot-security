@@ -28,6 +28,7 @@ export class SavingsListComponent implements OnInit {
   tableLength: number;
   response: any;
   cashout: string;
+  daterRangeMsg:"No record found for the date range "
   constructor(
     private data:DataService,
     private snackBar:MatSnackBar,
@@ -36,7 +37,7 @@ export class SavingsListComponent implements OnInit {
 
   ngOnInit() {
     this.getSavingsList();
-  }
+  } 
   triggerFilter(event){    
     let filtername = event.value
     switch (filtername) {
@@ -154,13 +155,43 @@ export class SavingsListComponent implements OnInit {
     
   }
 
+  searchByDate(){
+    if(this.fromdate != null && this.todate != null ){
+      const fromday = this.fromdate.getDate();
+      const frommonth = this.fromdate.getMonth();
+      const fromyear = this.fromdate.getFullYear();
+      const fromdateFormatted = fromyear+'-'+frommonth+'-'+fromday;
+
+      const today = this.todate.getDate();
+      const tomonth = this.todate.getMonth();
+      const toyear = this.todate.getFullYear()
+      const todateFormatted = toyear+'-'+tomonth+'-'+today;
+      
+      this.loading = true;
+      this.data.savingsService.getSavingsByDateRange(fromdateFormatted,todateFormatted)
+      .pipe(map( res => res['data'])) 
+      .subscribe( (res:any) => {
+
+        this.loading = false;
+      this.tableLength = res.length
+      this.listData = new MatTableDataSource(res);        
+      this.listData.paginator = this.paginator;
+      this.listData.sort = this.sort;
+      }, err => {
+        this.loading = false;
+        
+      })
+    }
+    
+  }
   getSavingsList(){
     this.loading = true;
     this.data.savingsService.getSavings(0,100)
     .pipe(
       map( res => res['data'])
     )
-    .subscribe( res => {
+    .subscribe( (res:any) => {
+      console.log(res)
       this.response = res;
       
       this.loading = false;

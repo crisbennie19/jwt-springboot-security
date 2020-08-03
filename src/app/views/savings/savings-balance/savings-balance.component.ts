@@ -11,7 +11,7 @@ import { format } from 'url';
   selector: 'app-savings-balance',
   templateUrl: './savings-balance.component.html',
   styleUrls: ['./savings-balance.component.scss']
-})
+}) 
 
 export class SavingsBalanceComponent implements OnInit {
 
@@ -90,6 +90,36 @@ export class SavingsBalanceComponent implements OnInit {
       //   duration:2500
       // })
     })
+  }
+ 
+  searchByDate(){
+    if(this.fromdate != null && this.todate != null ){
+      const fromday = this.fromdate.getDate();
+      const frommonth = this.fromdate.getMonth();
+      const fromyear = this.fromdate.getFullYear();
+      const fromdateFormatted = fromyear+'-'+frommonth+'-'+fromday;
+
+      const today = this.todate.getDate();
+      const tomonth = this.todate.getMonth();
+      const toyear = this.todate.getFullYear()
+      const todateFormatted = toyear+'-'+tomonth+'-'+today;
+      
+      this.loading = true;
+      this.data.savingsService.getSavingsBalanceByDateRange(fromdateFormatted,todateFormatted)
+      .pipe(map( res => res['data'])) 
+      .subscribe( (res:any) => {
+
+        this.loading = false;
+      this.tableLength = res.length
+      this.listData = new MatTableDataSource(res);        
+      this.listData.paginator = this.paginator;
+      this.listData.sort = this.sort;
+      }, err => {
+        this.loading = false;
+        
+      })
+    }
+    
   }
 
   applyFilter(){

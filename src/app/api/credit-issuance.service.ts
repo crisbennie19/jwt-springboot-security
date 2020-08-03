@@ -16,6 +16,7 @@ getCreditIssuance(page:number, size:number){
   return this.http.get(
     encodeURI(this._baseUrl + 
     `swipe_admin/credit-issuance/list?page=${page}&size=${size}`)
+    
   )
   .pipe(
     catchError( err => this.errorHandler(err))

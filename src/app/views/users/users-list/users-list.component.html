@@ -20,7 +20,27 @@
         </mat-spinner>
       </div>
     </div>
-
+    <div  >
+      <mat-form-field class="jamez-input"
+      floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="fromdate"
+        [matDatepicker]="pickers" placeholder="Start date">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off"  [(ngModel)]="todate"
+        [matDatepicker]="picker" placeholder="End date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      &nbsp;
+      <button mat-raised-button
+      (click)="searchByDate()"
+      color="accent">Search</button>
+      
+    </div>
   </div>
   
   <div>
@@ -52,6 +72,11 @@
         <td mat-cell *matCellDef="let row" data-label="Email Address">{{row.email}}</td>
       </ng-container>
   
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date register</th>
+        <td mat-cell *matCellDef="let row" data-label="date">{{row.datereg |date}}</td>
+      </ng-container>
+
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
         <td mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</td>

@@ -27,6 +27,7 @@ export class InterestListComponent implements OnInit {
   response: any;
   daterRangeMsg:"No record found for the date range "
   searchBack:boolean;
+  dateButton:string = "Search"
 
   constructor(private data:DataService,
     private snackBar:MatSnackBar) { }
@@ -70,9 +71,7 @@ export class InterestListComponent implements OnInit {
           this.searchBack = true;
         }, err => {
           this.loading = false;
-          // this.snackBar.open("Check your network and try again", "Dismiss", {
-          //   duration:2500
-          // })
+         
         })
         break;
 
@@ -127,7 +126,7 @@ export class InterestListComponent implements OnInit {
     )
     .subscribe( res => {
       this.response = res;
-      this.loading = true;
+      this.loading = false;
       
       this.tableLength = this.response.length
       this.listData = new MatTableDataSource(this.response);
@@ -141,7 +140,7 @@ export class InterestListComponent implements OnInit {
     })
   }
   searchByDate(){
-    console.log(this.fromdate +" "+ this.todate)
+   
     if(this.searchKey == '' && this.fromdate != null && this.todate != null ){
       const fromday = this.fromdate.getDate();
       const frommonth = this.fromdate.getMonth()+1;
@@ -165,6 +164,7 @@ export class InterestListComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.searchBack = true;
+        
       }, err => {
         this.loading = false;
         // this.snackBar.open("Check your network and try again", "Dismiss", {

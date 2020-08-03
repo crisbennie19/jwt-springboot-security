@@ -21,6 +21,7 @@ export class ReportService {
         catchError(err => this.errorHandler(err))
       );
   }
+   
 
   getWeeklyCreditReport(month, year) {
     return this.http.get(this._baseUrl +

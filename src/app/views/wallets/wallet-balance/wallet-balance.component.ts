@@ -14,7 +14,7 @@ export class WalletBalanceComponent implements OnInit {
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['name','email','phone','currency','amount','date'];
+  displayedColumns = ['name','email','phone','amount','date'];
   public listData: MatTableDataSource<any>;
 
   savingsFilter:string = "accountholder";
