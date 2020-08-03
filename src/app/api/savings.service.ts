@@ -79,7 +79,7 @@ export class SavingsService {
   getSavingsByDateRange(from, to){
     return this.http.get(
       encodeURI(this._baseUrl + 
-      `swipe_admin/v2/list/savings/date_range?from=${from}&to=${to}`)
+      `swipe_admin/list/savings/date_range?from=${from}&to=${to}`)
     )
     .pipe(
       catchError( err => this.errorHandler(err) )

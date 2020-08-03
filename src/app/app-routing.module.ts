@@ -49,7 +49,7 @@ const routes: Routes = [
     path:'wallet',
     component:WalletsComponent,
     data:{
-      allowedRoles:["ADMINISTRATOR"]
+      allowedRoles:["ADMINISTRATOR","ACCOUNT"]
     },
     canActivate:[AccessGuard]
   },
@@ -105,7 +105,7 @@ const routes: Routes = [
     path:'reports',
     component:ReportsComponent,
     data:{
-      allowedRoles: ["ADMINISTRATOR"]
+      allowedRoles: ["ADMINISTRATOR","ACCOUNT"]
     },
     canActivate:[AccessGuard]
   },
@@ -125,7 +125,7 @@ const routes: Routes = [
     path:'referrals',
     component:ReferralComponent,
     data:{
-      allowedRoles:["ADMINISTRATOR"]
+      allowedRoles:["ADMINISTRATOR","SUPPORT"]
     },
     canActivate:[AccessGuard]
   },
