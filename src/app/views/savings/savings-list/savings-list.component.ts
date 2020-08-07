@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { SavingsViewComponent } from '../savings-view/savings-view.component';
 
 import * as moment from 'moment';
+import { SavingsTimelineComponent } from '../savings-timeline/savings-timeline.component';
 @Component({
   selector: 'app-savings-list',
   templateUrl: './savings-list.component.html',
@@ -16,7 +17,7 @@ export class SavingsListComponent implements OnInit {
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['account','amount','savingtype', 'date','cashoutdate','action'];
+  displayedColumns = ['account','amount','savingtype','status', 'date','cashoutdate','action','timeline'];
   public listData: MatTableDataSource<any>; 
 
   savingsFilter:string = "accountholder";
@@ -36,7 +37,7 @@ export class SavingsListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.getSavingsList();
+    this.getSavingsList(); 
   } 
   triggerFilter(event){    
     let filtername = event.value
@@ -59,7 +60,7 @@ export class SavingsListComponent implements OnInit {
 
   filterSearch(){
     if(this.searchKey != ''){
-      console.log(this.searchKey)
+     
       let filter = this.savingsFilter
       switch (filter) {
         case 'type':
@@ -191,7 +192,7 @@ export class SavingsListComponent implements OnInit {
       map( res => res['data'])
     )
     .subscribe( (res:any) => {
-      console.log(res)
+     
       this.response = res;
       
       this.loading = false;
@@ -201,9 +202,7 @@ export class SavingsListComponent implements OnInit {
       this.listData.sort = this.sort;
     }, err => {
       this.loading = false;
-      // this.snackBar.open("Check your network and try again", "Dismiss", {
-      //   duration:2500
-      // })
+    
     })
   }
 
@@ -215,6 +214,16 @@ export class SavingsListComponent implements OnInit {
     dialogConfig.minWidth = '60%'
     dialogConfig.maxHeight = '90vh'
     this.dialog.open(SavingsViewComponent, dialogConfig)
+  }
+
+  savingTimeline(row){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = false;
+    dialogConfig.data = row
+    dialogConfig.maxWidth = '40%'
+    dialogConfig.maxHeight = '90vh'
+    this.dialog.open(SavingsTimelineComponent, dialogConfig)
   }
 
   addEvent(type:string, event:MatDatepickerInputEvent<Date>){

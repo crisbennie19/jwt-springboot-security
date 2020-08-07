@@ -113,6 +113,8 @@ import { OkraCheckComponent } from './views/okra-check/okra-check.component';
 import { SearchViewComponent } from './views/support-search/search-view/search-view.component';
 import { CashoutComponent } from './views/savings/cashout/cashout.component';
 import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashoutview.component';
+import { ActiveSavingsComponent } from './views/savings/active-savings/active-savings.component';
+import { SavingsTimelineComponent } from './views/savings/savings-timeline/savings-timeline.component';
 
 @NgModule({
   declarations: [
@@ -202,7 +204,9 @@ import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashou
     OkraCheckComponent,
     SearchViewComponent,
     CashoutComponent,
-    CashoutviewComponent
+    CashoutviewComponent,
+    ActiveSavingsComponent,
+    SavingsTimelineComponent
     
     
   ],
@@ -276,7 +280,8 @@ import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashou
     ChangePasswordComponent,
     DefaulterViewComponent,
     SearchViewComponent,
-    CashoutviewComponent
+    CashoutviewComponent,
+    SavingsTimelineComponent
   ],
 
   bootstrap: [AppComponent],
