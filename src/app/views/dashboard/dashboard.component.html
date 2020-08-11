@@ -17,7 +17,7 @@
 
         <div class="title">Daily Users</div>
         <div class="digits">{{dashboard.dailyusers | number }}</div>
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
         <div class="title">Total Users</div>
         <div class="digits">{{dashboard.totalusers | number }}</div>
 
@@ -46,7 +46,7 @@
         &nbsp;
         <div class="title">Daily Savings</div>
         <div class="digits">{{dashboard.dailysaving | currency:'NGN':'symbol-narrow' }}</div>
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
         <div class="title">Total Savings</div>
         <div class="digits">{{dashboard.totalsaving | currency:'NGN':'symbol-narrow' }}</div>
         <br>
@@ -72,7 +72,7 @@
 
         <div class="title">Daily Charges</div>
         <div class="digits">{{dashboard.dailycharges| currency:'NGN':'symbol-narrow'}}</div>
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
         <div class="title">Total Charges</div>
         <div class="digits">{{dashboard.totalcharges| currency:'NGN':'symbol-narrow'}}</div>
 
@@ -168,7 +168,7 @@
           <div class="digits" style="font-size:18px;" >
             {{dashboard.totalwallet | currency:'NGN':'symbol-narrow'}}</div>
         </div>
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
         <div class="flex-btw">
           <div style="font-size:15px; font-weight:500">Paystack:</div>
           <div *ngIf="loadingpaystack">
@@ -176,6 +176,14 @@
           </div>
           <div class="digits" style="font-size:18px;" *ngIf="!loadingpaystack">
             {{paystackBalance | currency:'NGN':'symbol-narrow'}}</div>
+        </div>
+        <div class="flex-btw">
+          <div style="font-size:15px; font-weight:500">Flutter:</div>
+          <div *ngIf="loadingfluttter">
+            <span style="font-size: 12px; font-weight: 200;">loading...</span>
+          </div>
+          <div class="digits" style="font-size:18px;" *ngIf="!loadingfluttter">
+            {{flutterwaveBalance | currency:'NGN':'symbol-narrow'}}</div>
         </div>
 
         <div class="flex-btw">

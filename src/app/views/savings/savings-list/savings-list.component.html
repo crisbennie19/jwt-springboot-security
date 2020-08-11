@@ -67,14 +67,14 @@
         <td mat-cell *matCellDef="let row"  data-label="Amount">{{row.amount}}</td>
       </ng-container>
 
+      <!-- <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let row"  data-label="staus">{{row.status}}</td>
+      </ng-container> -->
+
       <ng-container matColumnDef="savingtype">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Savings type</th>
         <td mat-cell *matCellDef="let row" data-label="Savings Type">{{row.savingtype}}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Saving status</th>
-        <td mat-cell *matCellDef="let row" data-label="Savings Type">{{row.status}}</td>
       </ng-container>
 
 
@@ -82,7 +82,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout date</th>
         <td mat-cell *matCellDef="let row" data-label="cashoutdate">{{row.savingtype=="SwipeLock"?row.cashoutdate:row.targetdate | date}}</td>
       </ng-container>
-      row.savingtype=="SwipeLock"
+      
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>

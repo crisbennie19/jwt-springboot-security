@@ -115,6 +115,7 @@ import { CashoutComponent } from './views/savings/cashout/cashout.component';
 import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashoutview.component';
 import { ActiveSavingsComponent } from './views/savings/active-savings/active-savings.component';
 import { SavingsTimelineComponent } from './views/savings/savings-timeline/savings-timeline.component';
+import { AllSavingsComponent } from './views/savings/all-savings/all-savings.component';
 
 @NgModule({
   declarations: [
@@ -206,7 +207,8 @@ import { SavingsTimelineComponent } from './views/savings/savings-timeline/savin
     CashoutComponent,
     CashoutviewComponent,
     ActiveSavingsComponent,
-    SavingsTimelineComponent
+    SavingsTimelineComponent,
+    AllSavingsComponent
     
     
   ],

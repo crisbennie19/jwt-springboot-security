@@ -7,17 +7,17 @@ import * as moment from 'moment';
 import { SavingsTimelineComponent } from '../savings-timeline/savings-timeline.component';
 import { SavingsViewComponent } from '../savings-view/savings-view.component';
 @Component({
-  selector: 'app-active-savings',
-  templateUrl: './active-savings.component.html',
-  styleUrls: ['./active-savings.component.scss']
+  selector: 'app-all-savings',
+  templateUrl: './all-savings.component.html',
+  styleUrls: ['./all-savings.component.scss']
 })
-export class ActiveSavingsComponent implements OnInit {
+export class AllSavingsComponent  implements OnInit {
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['account', 'amount', 'savingtype', 'date', 'cashoutdate', 'action', 'timeline'];
+  displayedColumns = ['account', 'amount', 'savingtype', 'status','date', 'cashoutdate', 'action', 'timeline'];
   public listData: MatTableDataSource<any>;
 
   savingsFilter: string = "accountholder";
@@ -70,12 +70,10 @@ export class ActiveSavingsComponent implements OnInit {
             .pipe(map(res => res['data']))
             .subscribe((res:any) => {
               this.response = res
-              this.activeSavings = this.response.filter( data => {
-                return data.status == 'IMMATURED' || data.status == 'MATURED'
-             })
+             
               this.loading = false;
-              this.tableLength = this.activeSavings.length
-              this.listData = new MatTableDataSource(this.activeSavings);
+              this.tableLength = this.response.length
+              this.listData = new MatTableDataSource(this.response);
               this.listData.paginator = this.paginator;
               this.listData.sort = this.sort;
             }, err => {
@@ -92,11 +90,9 @@ export class ActiveSavingsComponent implements OnInit {
             .subscribe((res:any) => {
               this.loading = false;
               this.response = res
-              this.activeSavings = this.response.filter( data => {
-                return data.status == 'IMMATURED' || data.status == 'MATURED'
-             })
-              this.tableLength = this.activeSavings.length
-              this.listData = new MatTableDataSource(this.activeSavings);
+            
+              this.tableLength = this.response.length
+              this.listData = new MatTableDataSource(this.response);
               this.listData.paginator = this.paginator;
               this.listData.sort = this.sort;
             }, err => {
@@ -112,12 +108,10 @@ export class ActiveSavingsComponent implements OnInit {
             .pipe(map(res => res['data']))
             .subscribe((res:any) => {
               this.response = res
-              this.activeSavings = this.response.filter( data => {
-                return data.status == 'IMMATURED' || data.status == 'MATURED'
-             })
+            
               this.loading = false;
               this.tableLength = this.response.length
-              this.listData = new MatTableDataSource(this.activeSavings);
+              this.listData = new MatTableDataSource(this.response);
               this.listData.paginator = this.paginator;
               this.listData.sort = this.sort;
             }, err => {
@@ -148,12 +142,12 @@ export class ActiveSavingsComponent implements OnInit {
         .pipe(map(res => res['data']))
         .subscribe((res:any) => {
           this.response = res
-          this.activeSavings = this.response.filter( data => {
-            return data.status == 'IMMATURED' || data.status == 'MATURED'
-         })
+        //   this.activeSavings = this.response.filter( data => {
+        //     return data.status == 'IMMATURED' || data.status == 'MATURED'
+        //  })
           this.loading = false;
-          this.tableLength = this.activeSavings.length
-          this.listData = new MatTableDataSource(this.activeSavings);
+          this.tableLength = this.response.length
+          this.listData = new MatTableDataSource(this.response);
           this.listData.paginator = this.paginator;
           this.listData.sort = this.sort;
         }, err => {
@@ -187,13 +181,10 @@ export class ActiveSavingsComponent implements OnInit {
         .pipe(map(res => res['data']))
         .subscribe((res: any) => {
           this.response = res
-          this.activeSavings = this.response.filter( data => {
-            return data.status == 'IMMATURED' || data.status == 'MATURED'
-
-         })
+        
           this.loading = false;
-          this.tableLength = this.activeSavings.length
-          this.listData = new MatTableDataSource(this.activeSavings);
+          this.tableLength = this.response.length
+          this.listData = new MatTableDataSource(this.response);
           this.listData.paginator = this.paginator;
           this.listData.sort = this.sort;
         }, err => {
@@ -210,14 +201,11 @@ export class ActiveSavingsComponent implements OnInit {
     this.data.savingsService.getSavings(0, 100)
       .subscribe((res: any) => {
           this.response = res.data
-          this.activeSavings = this.response.filter( data => {
-            return data.status == 'IMMATURED' || data.status == 'MATURED'
-         })
-         
+        
 
           this.loading = false;
-          this.tableLength = this.activeSavings.length
-          this.listData = new MatTableDataSource(this.activeSavings);
+          this.tableLength = this.response.length
+          this.listData = new MatTableDataSource(this.response);
           this.listData.paginator = this.paginator;
           this.listData.sort = this.sort;
         
@@ -266,11 +254,9 @@ export class ActiveSavingsComponent implements OnInit {
       ).subscribe((res:any) => {
         this.response = res;
         this.loading = false;
-        this.activeSavings = this.response.filter( data => {
-          return data.status == 'IMMATURED' || data.status == 'MATURED'
-       })
+      
         this.tableLength = this.activeSavings.length
-        this.listData = new MatTableDataSource(this.activeSavings);
+        this.listData = new MatTableDataSource(this.response);
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
       }, err => {

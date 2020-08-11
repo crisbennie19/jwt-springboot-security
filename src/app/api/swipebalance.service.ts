@@ -31,6 +31,16 @@ export class SwipebalanceService {
         catchError(err => this.errorHandler(err))
       );
   }
+  getFlutterBalance(){
+    return this.http.get(
+      encodeURI(this._baseUrl +
+        `balance/flutterBalance`)
+    )
+      .pipe(
+        catchError(err => this.errorHandler(err))
+      );
+  }
+
   getAirvendBalance(){
     return this.http.get(
       encodeURI(this._baseUrl +

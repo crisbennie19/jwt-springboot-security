@@ -24,8 +24,9 @@ export class DashboardComponent implements OnInit {
   paystackBalance: any
   monifyBalance: any
   airvendBalance:any
-  flutterwaveBalance: number
+  flutterwaveBalance: any
   loadingpaystack: boolean
+  loadingfluttter:boolean
   loadingmonify: boolean
   loadingairvend:boolean
   errorMsg: string;
@@ -60,6 +61,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardDetails();
     this.getPaystack();
     this.getMonify()
+    this.getFlutter()
     ///this.getAirvend();
   }
 
@@ -83,6 +85,26 @@ export class DashboardComponent implements OnInit {
 
 
   }
+  getFlutter() {
+    this.loadingfluttter = true
+    this.data.swipeBalance.getFlutterBalance().subscribe((res: any) => {
+
+      if (res['status'] == "success") {
+        this.loadingfluttter = false
+        this.flutterwaveBalance = res['data'][0].available_balance;
+
+      }
+      else {
+        this.loadingfluttter = false
+      }
+
+    }, err => {
+      this.loadingfluttter = false
+    })
+
+
+  }
+
   getMonify() {
     this.loadingmonify = true
     this.data.swipeBalance.getMonifyBalance().subscribe((res: any) => {
