@@ -5,7 +5,7 @@
     <button mat-button color="warn" (click)="closeDialog()">Close</button>
 
   </div>
-
+ 
 <div>
     <table mat-table class="full-width-table" [dataSource]="listData" 
     matSort aria-label="Elements">
@@ -17,7 +17,7 @@
 
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-        <td mat-cell *matCellDef="let row"  data-label="Amount">{{row.autosaveamount}}</td>
+        <td mat-cell *matCellDef="let row"  data-label="Amount">{{row.amount}}</td>
       </ng-container>
 
       <ng-container matColumnDef="interestrate">

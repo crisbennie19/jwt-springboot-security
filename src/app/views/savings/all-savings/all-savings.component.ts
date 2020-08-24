@@ -31,6 +31,8 @@ export class AllSavingsComponent  implements OnInit {
   cashout: string;
   daterRangeMsg: "No record found for the date range "
   activeSavings: any;
+  flutterwaveBalance:any
+  loadingfluttter:boolean
   constructor(
     private data: DataService,
     private snackBar: MatSnackBar,
@@ -39,6 +41,7 @@ export class AllSavingsComponent  implements OnInit {
 
   ngOnInit() {
     this.getSavingsList();
+    this.getFlutter();
   }
   triggerFilter(event) {
     let filtername = event.value
@@ -163,7 +166,25 @@ export class AllSavingsComponent  implements OnInit {
     }
 
   }
+  getFlutter() {
+    this.loadingfluttter = true
+    this.data.swipeBalance.getFlutterBalance().subscribe((res: any) => {
 
+      if (res['status'] == "success") {
+        this.loadingfluttter = false
+        this.flutterwaveBalance = res['data'][0].available_balance;
+
+      }
+      else {
+        this.loadingfluttter = false
+      }
+
+    }, err => {
+      this.loadingfluttter = false
+    })
+
+
+  }
   searchByDate() {
     if (this.fromdate != null && this.todate != null) {
       const fromday = this.fromdate.getDate()+1;

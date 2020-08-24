@@ -116,6 +116,8 @@ import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashou
 import { ActiveSavingsComponent } from './views/savings/active-savings/active-savings.component';
 import { SavingsTimelineComponent } from './views/savings/savings-timeline/savings-timeline.component';
 import { AllSavingsComponent } from './views/savings/all-savings/all-savings.component';
+import { TransactionViewComponent } from './views/transactions/transaction-view/transaction-view.component';
+import { DailySavingsComponent } from './views/savings/daily-savings/daily-savings.component';
 
 @NgModule({
   declarations: [
@@ -208,7 +210,9 @@ import { AllSavingsComponent } from './views/savings/all-savings/all-savings.com
     CashoutviewComponent,
     ActiveSavingsComponent,
     SavingsTimelineComponent,
-    AllSavingsComponent
+    AllSavingsComponent,
+    TransactionViewComponent,
+    DailySavingsComponent
     
     
   ],
@@ -283,7 +287,8 @@ import { AllSavingsComponent } from './views/savings/all-savings/all-savings.com
     DefaulterViewComponent,
     SearchViewComponent,
     CashoutviewComponent,
-    SavingsTimelineComponent
+    SavingsTimelineComponent,
+    TransactionViewComponent
   ],
 
   bootstrap: [AppComponent],

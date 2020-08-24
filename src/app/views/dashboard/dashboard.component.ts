@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
   getAirvend() {
     this.loadingairvend = true
     this.data.swipeBalance.getAirvendBalance().subscribe((res: any) => {
-      console.log(res)
+     
       if (res['message'] != null) {
         this.loadingairvend = false
         this.airvendBalance = res['data']

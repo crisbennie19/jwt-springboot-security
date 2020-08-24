@@ -16,7 +16,6 @@ export class SavingsListComponent implements OnInit {
   @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['account','amount','savingtype', 'date','cashoutdate','action','timeline'];
   public listData: MatTableDataSource<any>; 
 
@@ -31,6 +30,8 @@ export class SavingsListComponent implements OnInit {
   cashout: string;
   daterRangeMsg:"No record found for the date range "
   activeSavings: any;
+  flutterwaveBalance:any
+  loadingfluttter:boolean
   constructor(
     private data:DataService,
     private snackBar:MatSnackBar,
@@ -39,6 +40,7 @@ export class SavingsListComponent implements OnInit {
 
   ngOnInit() {
     this.getSavingsList(); 
+    this.getFlutter();
   } 
   triggerFilter(event){    
     let filtername = event.value
@@ -229,6 +231,25 @@ export class SavingsListComponent implements OnInit {
       this.loading = false;
     
     })
+  }
+  getFlutter() {
+    this.loadingfluttter = true
+    this.data.swipeBalance.getFlutterBalance().subscribe((res: any) => {
+
+      if (res['status'] == "success") {
+        this.loadingfluttter = false
+        this.flutterwaveBalance = res['data'][0].available_balance;
+
+      }
+      else {
+        this.loadingfluttter = false
+      }
+
+    }, err => {
+      this.loadingfluttter = false
+    })
+
+
   }
 
   viewSaving(row){

@@ -50,7 +50,8 @@
     </div>
     <div class="info">
       <div class="header">Target date</div>
-      <div class="content">{{selectedRow.targetdate}}</div>
+     
+      <div class="content">{{ selectedRow.savingtype=="SwipeLock"?selectedRow.cashoutdate:selectedRow.targetdate =='----'?'Core is anytime':selectedRow.targetdate| date}}</div>
     </div> 
     <div class="info">
       <div class="header">Can withdraw</div>

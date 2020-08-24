@@ -15,7 +15,7 @@ export class DefaulterViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.selectedRow)
+    
   }
 
   closeDialog(){
