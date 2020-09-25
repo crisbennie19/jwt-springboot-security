@@ -1,4 +1,9 @@
 <mat-tab-group>
+    <mat-tab label="Savings">
+        <ng-template matTabContent>
+            <app-savings-report></app-savings-report>
+        </ng-template>
+    </mat-tab>
     <mat-tab label="Credit Card">
         <ng-template matTabContent>
             <app-credit-card-report></app-credit-card-report>
@@ -9,11 +14,7 @@
             <app-wallet-report></app-wallet-report>
         </ng-template>
     </mat-tab>
-    <mat-tab label="Savings">
-        <ng-template matTabContent>
-            <app-savings-report></app-savings-report>
-        </ng-template>
-    </mat-tab>
+  
     <mat-tab label="Transaction">
         <ng-template matTabContent>
             <app-transaction-report></app-transaction-report>
@@ -30,10 +31,7 @@
         </ng-template>
     </mat-tab>
 
-    <mat-tab label="Saving"> 
-        
-       </mat-tab>
-       
+      
        <mat-tab label="Transation"> 
         
        </mat-tab>

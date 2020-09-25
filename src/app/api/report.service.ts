@@ -251,7 +251,7 @@ export class ReportService {
   // Download Report Attachment////
   getDailySavingsAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailysavingslog/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/savingslog/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -615,6 +615,7 @@ export class ReportService {
         catchError(err => this.errorHandler(err))
       );
   }
+  
 
   errorHandler(error: HttpErrorResponse) {
     return Observable.throw(error.message || "Server Error")

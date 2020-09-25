@@ -5,6 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
+
+
 import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
 import { HashLocationStrategy, LocationStrategy, DatePipe } from '@angular/common';
@@ -22,7 +24,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatCardModule, MatMenuModule, MatInputModule, MatDialogModule,MatFormFieldModule,MatSelectModule,
   MatRadioModule,MatTooltipModule, MatSliderModule, MatCheckboxModule,MatSnackBarModule
   ,MatNativeDateModule,
-  MAT_DIALOG_DATA
+  MAT_DIALOG_DATA,
+  MAT_DATE_FORMATS
 } from '@angular/material';
 
 
@@ -118,6 +121,8 @@ import { SavingsTimelineComponent } from './views/savings/savings-timeline/savin
 import { AllSavingsComponent } from './views/savings/all-savings/all-savings.component';
 import { TransactionViewComponent } from './views/transactions/transaction-view/transaction-view.component';
 import { DailySavingsComponent } from './views/savings/daily-savings/daily-savings.component';
+import { MailcrudComponent } from './views/reports/mailcrud/mailcrud.component';
+import { ReportmailsendComponent } from './views/reports/reportmailsend/reportmailsend.component';
 
 @NgModule({
   declarations: [
@@ -212,7 +217,9 @@ import { DailySavingsComponent } from './views/savings/daily-savings/daily-savin
     SavingsTimelineComponent,
     AllSavingsComponent,
     TransactionViewComponent,
-    DailySavingsComponent
+    DailySavingsComponent,
+    MailcrudComponent,
+    ReportmailsendComponent
     
     
   ],
@@ -256,7 +263,7 @@ import { DailySavingsComponent } from './views/savings/daily-savings/daily-savin
   providers: [
     DatePipe,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 
   entryComponents:[
@@ -288,7 +295,8 @@ import { DailySavingsComponent } from './views/savings/daily-savings/daily-savin
     SearchViewComponent,
     CashoutviewComponent,
     SavingsTimelineComponent,
-    TransactionViewComponent
+    TransactionViewComponent,
+    ReportmailsendComponent
   ],
 
   bootstrap: [AppComponent],
