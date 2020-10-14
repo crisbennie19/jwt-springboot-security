@@ -165,8 +165,17 @@
         </mat-form-field>
       </div>
     </div>
+
+
+
     <table mat-table [dataSource]="listData" matSort aria-label="Elements"
       *ngIf="daily && !weekly && !quartely && !yearly">
+
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</td>
+      </ng-container>
+
       <ng-container matColumnDef="card">
         <th mat-header-cell *matHeaderCellDef>Card</th>
         <td mat-cell *matCellDef="let row" data-label="Card">{{row.card}}</td>
@@ -220,8 +229,57 @@
     </table>
 
 
-    <!-- <!-- ////////weekly table////////////////////////////////////// -->
+    <!-- ////////weekly table////////////////////////////////////// -->
 
+
+    <table mat-table class="full-width-table" [dataSource]="listData" matSort aria-label="Elements"
+    *ngIf="!daily && weekly && !quartely && !yearly">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let row" data-label="NAME">{{row.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="week1">
+      <th mat-header-cell *matHeaderCellDef>Week1</th>
+      <td mat-cell *matCellDef="let row" data-label="Week1">{{row.week1}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="week2">
+      <th mat-header-cell *matHeaderCellDef>Week2</th>
+      <td mat-cell *matCellDef="let row" data-label="Week2">{{row.week2}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="week3">
+      <th mat-header-cell *matHeaderCellDef>Week3</th>
+      <td mat-cell *matCellDef="let row" data-label="Week3">{{row.week3}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="week4">
+      <th mat-header-cell *matHeaderCellDef>Week4</th>
+      <td mat-cell *matCellDef="let row" data-label="Week4">{{row.week4}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="week5">
+      <th mat-header-cell *matHeaderCellDef>Week5</th>
+      <td mat-cell *matCellDef="let row" data-label="week5">{{row.week5}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="no-activity">
+      <mat-footer-cell *matFooterCellDef>
+        No record found
+      </mat-footer-cell>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsWeekly; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsWeekly;"></tr>
+    <mat-footer-row *matFooterRowDef="['no-activity']" [ngClass]="{'hide': tableLength != 0 }">
+    </mat-footer-row>
+  </table>
 
     <!-- ///////Quartely table////////////////////////////////////// -->
 
@@ -299,7 +357,7 @@
         <th mat-header-cell *matHeaderCellDef>FEB</th>
         <td mat-cell *matCellDef="let row" data-label="FEB">{{row.february}}</td>
       </ng-container>
-
+ 
       <ng-container matColumnDef="mar">
         <th mat-header-cell *matHeaderCellDef>MAR</th>
         <td mat-cell *matCellDef="let row" data-label="MAR">{{row.march}}</td>

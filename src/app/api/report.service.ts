@@ -56,12 +56,14 @@ export class ReportService {
       );
   }
 
-  getWeeklyCreditReportAttachment(end_day, page, year, type, size, start_day) {
+  getWeeklyCredictAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllycreditcard/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/weeklycredicard/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
+     
+
   }
 
   getQuartelyCreditReportAttachment(end_day, page, year, type, size, start_day) {
@@ -156,9 +158,9 @@ export class ReportService {
       );
   }
 
-  getWeeklyWalletReportAttachment(end_day, page, year, type, size, start_day) {
+  getWeeklyWalletReportAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllywallet/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/weeklywallet/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -257,12 +259,14 @@ export class ReportService {
       );
   }
 
-  getWeeklySavingsAttachment(end_day, page, year, type, size, start_day) {
+  getWeeklySavingsAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllysavingslog/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/weeklysavingslog/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
+     
+
   }
 
   getQuartelySavingsReportAttachment(end_day, page, year, type, size, start_day) {
@@ -320,7 +324,7 @@ export class ReportService {
 
   getDailyTransactionReport(day, month, year) {
     return this.http.get(this._baseUrl +
-      `reports/daily/savingslog?report_day=${day}&report_month=${month}&report_year=${year}`)
+      `reports/daily/transaction?report_day=${day}&report_month=${month}&report_year=${year}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -328,7 +332,7 @@ export class ReportService {
 
   getWeeklyTransactionReport(month, year) {
     return this.http.get(this._baseUrl +
-      `reports/weeklysavingslog?report_month=${month}&report_year=${year}`)
+      `reports/weeklytransaction?report_month=${month}&report_year=${year}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -336,7 +340,7 @@ export class ReportService {
 
   getQuarterlyTransactionReport(endDate, year, startDate) {
     return this.http.get(this._baseUrl +
-      `reports/quarterlly/savingslog?end_date=${endDate}&q_year=${year}&start_date=${startDate}`)
+      `reports/quarterlly/transaction?end_date=${endDate}&q_year=${year}&start_date=${startDate}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -344,7 +348,7 @@ export class ReportService {
 
   getYearlyTransactionReport(year) {
     return this.http.get(this._baseUrl +
-      `reports/yearllysavingslog?report_year=${year}`)
+      `reports/yearllytransaction?report_year=${year}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -353,15 +357,15 @@ export class ReportService {
   // Download Report Attachment////
   getDailyTransactionAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailysavingslog/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/dailytransaction/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
   }
 
-  getWeeklyTransactionAttachment(end_day, page, year, type, size, start_day) {
+  getWeeklyTransactionAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllysavingslog/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/weeklytransaction/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -369,7 +373,7 @@ export class ReportService {
 
   getQuartelyTransactionReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllysavingslog/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/quarterllytransction/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -377,7 +381,7 @@ export class ReportService {
 
   getYearlyTransactionReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllysavingslog/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/yearllytransaction/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -386,7 +390,7 @@ export class ReportService {
   //Send report Attachment By Email
   postDailyTransactionReportSendByEmail(body) {
     return this.http.post(this._baseUrl +
-      `reports/dailysavingslog/attachement`, body)
+      `reports/dailytransaction/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -394,7 +398,7 @@ export class ReportService {
 
   postWeeklyTransactionReportSendByEmail(body) {
     return this.http.post(this._baseUrl +
-      `reports/weeklysavingslog/attachement`, body)
+      `reports/weeklytransaction/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -402,7 +406,7 @@ export class ReportService {
 
   postQuartelyTransactionReportSendByEmail(body) {
     return this.http.post(this._baseUrl +
-      `reports/quarterllysavingslog/attachement`, body)
+      `reports/quarterllytransaction/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -410,7 +414,7 @@ export class ReportService {
 
   postYearlyTransactionReportSendByEmail(body) {
     return this.http.get(this._baseUrl +
-      `reports/yearllysavingslog/attachement`, body)
+      `reports/yearllytransaction/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -459,9 +463,9 @@ export class ReportService {
       );
   }
 
-  getWeeklyInterestAttachment(end_day, page, year, type, size, start_day) {
+  getWeeklyInterestAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllyinterest/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/weeklyinterest/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -559,9 +563,9 @@ export class ReportService {
       );
   }
 
-  getWeeklyVCardAttachment(end_day, page, year, type, size, start_day) {
+  getWeeklyVCardAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllyvcard/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/weeklyvcard/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );

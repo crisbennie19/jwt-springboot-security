@@ -22,7 +22,8 @@ export class WalletReportComponent implements OnInit {
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['card', 'sunday', 'monday', 'tuesday', 'wednessday', 'thursday', 'friday', 'saturday'];
-  //displayedColumnsWeekly = ['card', 'sunday', 'monday', 'tuesday', 'wednessday', 'thursday', 'friday','saturday'];
+
+  displayedColumnsWeekly = ['name', 'week1', 'week2', 'week3', 'week4', 'week5', 'status'];
 
   displayedColumnsQuarterly = ['name', 'channel', 'q1', 'q2', 'q3', 'q4', 'status'];
 
@@ -47,6 +48,7 @@ export class WalletReportComponent implements OnInit {
   invalidMsg: string
   invalid: boolean
   dataList:boolean
+  download:string
 
   public months = [
     { name: 'January', last: '31', id: 1, month: '01' },
@@ -120,13 +122,26 @@ export class WalletReportComponent implements OnInit {
   }
   getWeeklyReport() {
     this.loading = true;
+    this.listData = new MatTableDataSource([])
+    if (this.m == "" || this.y =="") {
+      this.loading = false;
+      this.invalid = true
+      this.invalidMsg = "Please select the year"
+    } else {
     this.data.reportService.getWeeklyWalletReport(this.m, this.y).subscribe((res: any) => {
-      console.log(res)
-      // this.listData = new MatTableDataSource(res.data);        
-      // this.listData.paginator = this.paginator;
-      // this.listData.sort = this.sort;
+      this.loading = false
+      this.invalid = false
+      this.tableLength = res.data.length
+      this.listData = new MatTableDataSource(res.data);
+      this.dataList =true
+      this.listData.paginator = this.paginator;
+      this.listData.sort = this.sort;
 
+    }, err => {
+      this.loading = false
+      this.errorMessage = "Poor network, try again"
     })
+  }
   }
 
   getQuartelyReport() {
@@ -187,22 +202,68 @@ export class WalletReportComponent implements OnInit {
 
 
   downloadPdf(){
-    let date = moment(this.todate, 'YYYY-MM-DD');
     this.loading = true;
-    const day = date.date();
-      const month = date.month() + 1;
-      const year = date.year(); 
-    this.loading = true;
-    this.data.reportService.getDailyWalletReportAttachment(0,day, month, year,"PDF", 100)
-    .subscribe( res => {
-      downloadFilePDF(res)
-      this.loading = false;
-    }, err => {
-      this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
-        duration:4000
+    if(this.download =="daily"){
+       let date = moment(this.todate, 'YYYY-MM-DD');
+      this.loading = true;
+      const day = date.date();
+        const month = date.month() + 1;
+        const year = date.year(); 
+       this.data.reportService.getDailyWalletReportAttachment(0,day, month, year,"PDF", 100)
+      .subscribe( res => {
+        downloadFilePDF(res)
+        this.loading = false;
+      }, err => {
+        this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
+          duration:4000
+        })
+        this.loading = false; 
       })
-      this.loading = false; 
-    })
+    }
+    if(this.download =="weekly"){
+      this.loading = true;
+       this.data.reportService.getWeeklyWalletReportAttachment(0,this.m, this.y,"PDF", 100)
+      .subscribe( res => {
+        downloadFilePDF(res)
+        this.loading = false;
+      }, err => {
+        this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
+          duration:4000
+        })
+        this.loading = false; 
+      })
+  
+    }
+    if(this.download =="quartely"){
+      this.loading = true;
+      
+       this.data.reportService.getQuartelyWalletReportAttachment(this.endquarter,0,this.y,"PDF", 100,this.startquarter)
+      .subscribe( res => {
+        downloadFilePDF(res)
+        this.loading = false;
+      }, err => {
+        this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
+          duration:4000
+        })
+        this.loading = false; 
+      })
+  
+    }
+    if(this.download =="yearly"){
+      this.loading = true;
+     
+       this.data.reportService.getYearlyWalletReportAttachment(0,this.y,"PDF", 100)
+      .subscribe( res => {
+        downloadFilePDF(res)
+        this.loading = false;
+      }, err => {
+        this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
+          duration:4000
+        })
+        this.loading = false; 
+      })
+  
+    }
   }
 
 
