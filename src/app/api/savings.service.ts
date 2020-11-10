@@ -25,7 +25,19 @@ export class SavingsService {
       catchError( err => this.errorHandler(err) )
     );
   }
+  getSavingsTimeline(id:number){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_credit/savingslog/timeline?savingid=${id}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
 
+
+
+  
   getSavingsBalance(page:number, size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 
@@ -96,7 +108,16 @@ export class SavingsService {
       catchError( err => this.errorHandler(err) )
     );
   }
-   
+  getDailySavings(transDate:string){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/list/dailysaving?transactiondate=${transDate}`)
+      
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
   createUpdateSavingsInterest(body:Interest):Observable<Interest>{
     return this.http.post<Interest>(
       encodeURI(this._baseUrl + 

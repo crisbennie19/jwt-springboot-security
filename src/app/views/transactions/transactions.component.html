@@ -22,6 +22,10 @@
         [diameter]=18>
       </mat-spinner>
     </div>
+    &nbsp;
+    <button mat-raised-button
+    (click)="getTransactionList()"
+    color="accent">Get all</button>
   </div>
     <div>
     <mat-form-field class="jamez-input"
@@ -80,10 +84,19 @@
         <td mat-cell *matCellDef="let row" data-label="Date">{{row.trandate|date}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="charges">
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let row"  data-label="Actions">
+          <button mat-icon-button (click)="viewTransaction(row)">
+            <mat-icon class="mat-18x">visibility</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="charges">
         <th mat-header-cell *matHeaderCellDef>Charges</th>
         <td mat-cell *matCellDef="let row" data-label="Charges">{{row.deduction}}</td>
-      </ng-container>
+      </ng-container> -->
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

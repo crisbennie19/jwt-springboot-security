@@ -30,7 +30,6 @@ export class AccessGuard implements CanActivate {
     }
 
     let activeUser = JSON.parse(localStorage.getItem('adminUser') )
-    console.log(activeUser, 'user');
     
     
     return allowedRoles.some( r => activeUser.data.roles.includes(r) )

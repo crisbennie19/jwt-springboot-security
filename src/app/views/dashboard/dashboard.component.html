@@ -15,6 +15,9 @@
         </div>
         &nbsp;
 
+        <div class="title">Daily Users</div>
+        <div class="digits">{{dashboard.dailyusers | number }}</div>
+        <!-- <mat-divider></mat-divider> -->
         <div class="title">Total Users</div>
         <div class="digits">{{dashboard.totalusers | number }}</div>
 
@@ -41,6 +44,9 @@
           </div>
         </div>
         &nbsp;
+        <div class="title">Daily Savings</div>
+        <div class="digits">{{dashboard.dailysaving | currency:'NGN':'symbol-narrow' }}</div>
+        <!-- <mat-divider></mat-divider> -->
         <div class="title">Total Savings</div>
         <div class="digits">{{dashboard.totalsaving | currency:'NGN':'symbol-narrow' }}</div>
         <br>
@@ -64,6 +70,9 @@
         </div>
         &nbsp;
 
+        <div class="title">Daily Charges</div>
+        <div class="digits">{{dashboard.dailycharges| currency:'NGN':'symbol-narrow'}}</div>
+        <!-- <mat-divider></mat-divider> -->
         <div class="title">Total Charges</div>
         <div class="digits">{{dashboard.totalcharges| currency:'NGN':'symbol-narrow'}}</div>
 
@@ -77,21 +86,29 @@
     <mat-grid-tile>
       <mat-card>
         <div style="display:flex; justify-content:space-between">
-          <div style="text-align:center">
-            <img src="assets/images/land-card.png" width="150" alt="">
+          <div class="rounded">
+            <mat-icon>credit_card</mat-icon>
           </div>
+          <div class="title" style="font-size:20px; font-weight:400">Swipe Credit </div>
         </div>
         &nbsp;
+           <div class="flex-btw">
+            <div class="title" style="font-size:15px; font-weight:500">Daily Credit:</div>
+            <div class="digits" style="font-size:18px;"> {{dashboard.dailycredit | currency:'NGN':'symbol-narrow'}}</div>
+          </div>
+          <div class="flex-btw">
+            <div class="title" style="font-size:15px; font-weight:500">Total Credit:</div>
+            <div class="digits" style="font-size:18px;"> {{dashboard.totalcredit | currency:'NGN':'symbol-narrow'}}</div>
+          </div>
+        &nbsp;
         <div class="flex-btw">
-          <div class="title">Cards given:</div>
+          <div class="title">Daily Cards:</div>
+          <div class="digits" style="font-size:18px;"> {{dashboard.dailycard | number}}</div>
+          <div class="title">Total Cards:</div>
           <div class="digits" style="font-size:18px;"> {{dashboard.totalcard | number}}</div>
-        </div>
 
-        <div class="flex-btw">
-          <div class="title">Credit spent:</div>
-
-          <div class="digits" style="font-size:18px;"> {{dashboard.totalcredit | currency:'NGN':'symbol-narrow'}}</div>
         </div>
+      
         <br>
         <mat-divider></mat-divider>
         <br>
@@ -146,15 +163,27 @@
         </div>
         &nbsp;
         <div class="flex-btw">
+          <div style="font-size:15px; font-weight:500">Total wallet:</div>
+         
+          <div class="digits" style="font-size:18px;" >
+            {{dashboard.totalwallet | currency:'NGN':'symbol-narrow'}}</div>
+        </div>
+        <!-- <mat-divider></mat-divider> -->
+        <div class="flex-btw">
           <div style="font-size:15px; font-weight:500">Paystack:</div>
           <div *ngIf="loadingpaystack">
             <span style="font-size: 12px; font-weight: 200;">loading...</span>
-
-
           </div>
-          <!-- <div *ngIf="loadingmonify">{{errorMsg}}</div> -->
           <div class="digits" style="font-size:18px;" *ngIf="!loadingpaystack">
             {{paystackBalance | currency:'NGN':'symbol-narrow'}}</div>
+        </div>
+        <div class="flex-btw">
+          <div style="font-size:15px; font-weight:500">Flutter:</div>
+          <div *ngIf="loadingfluttter">
+            <span style="font-size: 12px; font-weight: 200;">loading...</span>
+          </div>
+          <div class="digits" style="font-size:18px;" *ngIf="!loadingfluttter">
+            {{flutterwaveBalance | currency:'NGN':'symbol-narrow'}}</div>
         </div>
 
         <div class="flex-btw">

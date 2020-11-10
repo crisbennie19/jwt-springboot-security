@@ -7,7 +7,7 @@ export interface dailyReports {
 export interface weeklyReports {
     
 }
-export interface quarterlyReports {
+export interface quarterlyReports { 
 }
 export interface yearlyReports {
 }

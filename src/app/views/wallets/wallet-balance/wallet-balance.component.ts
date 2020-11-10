@@ -14,7 +14,7 @@ export class WalletBalanceComponent implements OnInit {
   @ViewChild(MatSort,{static: false}) sort: MatSort;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['name','email','phone','currency','amount','date'];
+  displayedColumns = ['name','email','phone','amount','date'];
   public listData: MatTableDataSource<any>;
 
   savingsFilter:string = "accountholder";
@@ -107,7 +107,7 @@ export class WalletBalanceComponent implements OnInit {
   }
 
   searchByDate(){
-    console.log(this.fromdate +" "+ this.todate)
+    
     if(this.searchKey == '' && this.fromdate != null && this.todate != null ){
       const fromday = this.fromdate.getDate();
       const frommonth = this.fromdate.getMonth()+1;
@@ -124,7 +124,7 @@ export class WalletBalanceComponent implements OnInit {
       .pipe(map( res => res['data']))
       .subscribe( res => {
         this.response = res;
-        console.log(res)
+       
         this.loading = false;
         this.tableLength = res.length
         this.listData = new MatTableDataSource(res);

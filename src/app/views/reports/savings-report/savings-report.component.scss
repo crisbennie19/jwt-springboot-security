@@ -1,0 +1,26 @@
+ .attachment
+ {
+     display: flex;
+      justify-content: flex-end;
+     
+ }
+ .header{
+     display: flex;
+     
+ }
+ .reportParameter{
+     display: flex;
+     justify-content: space-between;
+ }
+ .container {
+    height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  .search{
+      display: flex;
+      justify-content: space-between;
+  }

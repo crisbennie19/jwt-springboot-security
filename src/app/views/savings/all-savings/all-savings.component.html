@@ -1,0 +1,134 @@
+<div class="component-container">
+    <div class="flex-btw wrap">
+      <div class="flex-el">
+        <div class="search-container">
+          <mat-icon class="prefix">search</mat-icon>
+          <input type="text" class="mSearch"
+          [(ngModel)]="searchKey"
+          [placeholder]="placeholder"
+          (keyup)="applyFilter()">
+          <mat-icon class="suffix" *ngIf="searchKey != ''"
+          (click)="clearSearch()">close</mat-icon>
+        </div>
+        &nbsp;
+       
+        <div *ngIf="loading">
+          <mat-spinner 
+            color="accent"
+            [strokeWidth]= 3
+            [diameter]=18>
+          </mat-spinner>
+        </div>
+        &nbsp;
+        <button mat-raised-button
+        (click)="getSavingsList()"
+        color="accent">Get all</button>
+      </div>
+  
+      <div>
+        <mat-form-field class="jamez-input"
+        floatLabel="never">
+          <input matInput autocomplete="off" [(ngModel)]="fromdate"
+          [matDatepicker]="pickers" placeholder="Start date">
+          <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+          <mat-datepicker #pickers></mat-datepicker>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field class="jamez-input" floatLabel="never">
+          <input matInput autocomplete="off"  [(ngModel)]="todate"
+          [matDatepicker]="picker" placeholder="End date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        &nbsp;
+        <button mat-raised-button
+        (click)="searchByDate()"
+        color="accent">Search</button>
+      </div>
+    </div>
+  
+    &nbsp;
+    <div class="flutterBalance" >
+      <div style="font-size:15px; font-weight:500">Flutterwave Balance:</div>&nbsp;
+      <div *ngIf="loadingfluttter">
+        <span style="font-size: 12px; font-weight: 200;">loading...</span>
+      </div>
+      <div class="digits" style="font-size:18px;" *ngIf="!loadingfluttter">
+        {{flutterwaveBalance | currency:'NGN':'symbol-narrow'}}</div>
+    </div>
+    <div>
+      <table mat-table class="full-width-table" [dataSource]="listData" 
+      matSort aria-label="Elements">
+        <ng-container matColumnDef="account">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Account holder</th>
+          <td mat-cell *matCellDef="let row" data-label="Account Holder">{{row.accountname}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Saving date</th>
+          <td mat-cell *matCellDef="let row" data-label="Date">{{row.startdate|date}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+          <td mat-cell *matCellDef="let row"  data-label="Amount">{{row.amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+          <td mat-cell *matCellDef="let row"  data-label="staus">{{row.status}}</td>
+        </ng-container>
+  
+        <ng-container matColumnDef="savingtype">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Savings type</th>
+          <td mat-cell *matCellDef="let row" data-label="Savings Type">{{row.savingtype}}</td>
+        </ng-container>
+  
+  
+        <ng-container matColumnDef="cashoutdate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Cashout date</th>
+          <td mat-cell *matCellDef="let row" data-label="cashoutdate">{{row.savingtype=="SwipeLock"?row.cashoutdate:row.targetdate =='----'?'Core is anytime':row.targetdate| date}}</td>
+        </ng-container>
+        
+  
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+          <td mat-cell *matCellDef="let row"  data-label="Actions">
+            <button mat-icon-button (click)="viewSaving(row)">
+              <mat-icon class="mat-18x">visibility</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="timeline">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Savings timeline</th>
+          <td mat-cell *matCellDef="let row"  data-label="Timeline">
+            <button mat-icon-button (click)="savingTimeline(row)">
+              <mat-icon class="mat-18x">timeline</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="no-activity">
+          <mat-footer-cell *matFooterCellDef>
+            No record found
+          </mat-footer-cell>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <mat-footer-row *matFooterRowDef="['no-activity']" 
+          [ngClass]="{'hide': tableLength != 0 }">
+        </mat-footer-row>
+      </table>
+    
+      <mat-paginator #paginator
+      showFirstLastButtons
+        [length]="tableLength"
+        [pageIndex]="0"
+        [pageSize]="7">
+      </mat-paginator>
+    </div>
+  
+  </div>
+    

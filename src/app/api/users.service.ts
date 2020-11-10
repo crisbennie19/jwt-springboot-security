@@ -58,7 +58,15 @@ export class UsersService {
       catchError( err => this.errorHandler(err) )
     );
   }
-
+  getUserByDateRange(fromDate:string, toDate:string){
+    return this.http.get(
+      encodeURI(this._baseUrl + 
+      `swipe_admin/user/list/date_range?from=${fromDate}&to=${toDate}`)
+    )
+    .pipe(
+      catchError( err => this.errorHandler(err) )
+    );
+  }
    
   createAdminUser(body:AdminUser,roles):Observable<AdminUser>{
     return this.http.post<AdminUser>(

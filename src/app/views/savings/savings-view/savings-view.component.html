@@ -28,7 +28,7 @@
     </div>
     <div class="info">
       <div class="header">Reference</div>
-      <div class="content">{{selectedRow.reference}}</div>
+      <div class="content">{{selectedRow.reference}}</div> 
     </div>
   </div>
   <div class="view-column">
@@ -50,8 +50,9 @@
     </div>
     <div class="info">
       <div class="header">Target date</div>
-      <div class="content">{{selectedRow.targetdate}}</div>
-    </div>
+     
+      <div class="content">{{ selectedRow.savingtype=="SwipeLock"?selectedRow.cashoutdate:selectedRow.targetdate =='----'?'Core is anytime':selectedRow.targetdate| date}}</div>
+    </div> 
     <div class="info">
       <div class="header">Can withdraw</div>
       <div class="content">{{selectedRow.canwithdraw == true?'Yes':'No'}}</div>

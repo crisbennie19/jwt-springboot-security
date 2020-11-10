@@ -10,6 +10,6 @@ export class SavingsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  }
+  } 
 
 }

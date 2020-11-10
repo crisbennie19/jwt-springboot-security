@@ -1,0 +1,32 @@
+<div class="container">
+<div class="header">
+    <button><mat-icon>close</mat-icon></button>
+</div>
+    <div>
+        <h3>Add the email you wish to send to</h3>
+      
+    </div>
+    <div class="content" >
+        <form [formGroup] ="mailInput">
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Enter email address" formControlName ="mail"  />
+            </mat-form-field>
+            <button color="primary" mat-raised-button (click)="addMail()" style="padding-left: 10px;">Add email</button>
+           </div> 
+            
+    
+    
+    </form>
+            <mat-list *ngFor="let item of mailList; let i = index"  class="list">
+                
+          <mat-list-item >{{item}}</mat-list-item>
+          <button color="warn" mat-button (click)="delete(i) " ><mat-icon>delete</mat-icon></button>
+          
+              </mat-list>
+              <button color="primary" mat-raised-button (click)="sendMail()">send email</button>
+    </div>
+  
+
+
+</div>

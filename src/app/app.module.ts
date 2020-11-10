@@ -5,6 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
+
+
 import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
 import { HashLocationStrategy, LocationStrategy, DatePipe } from '@angular/common';
@@ -22,7 +24,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule,
   MatCardModule, MatMenuModule, MatInputModule, MatDialogModule,MatFormFieldModule,MatSelectModule,
   MatRadioModule,MatTooltipModule, MatSliderModule, MatCheckboxModule,MatSnackBarModule
   ,MatNativeDateModule,
-  MAT_DIALOG_DATA
+  MAT_DIALOG_DATA,
+  MAT_DATE_FORMATS
 } from '@angular/material';
 
 
@@ -113,6 +116,13 @@ import { OkraCheckComponent } from './views/okra-check/okra-check.component';
 import { SearchViewComponent } from './views/support-search/search-view/search-view.component';
 import { CashoutComponent } from './views/savings/cashout/cashout.component';
 import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashoutview.component';
+import { ActiveSavingsComponent } from './views/savings/active-savings/active-savings.component';
+import { SavingsTimelineComponent } from './views/savings/savings-timeline/savings-timeline.component';
+import { AllSavingsComponent } from './views/savings/all-savings/all-savings.component';
+import { TransactionViewComponent } from './views/transactions/transaction-view/transaction-view.component';
+import { DailySavingsComponent } from './views/savings/daily-savings/daily-savings.component';
+import { MailcrudComponent } from './views/reports/mailcrud/mailcrud.component';
+import { ReportmailsendComponent } from './views/reports/reportmailsend/reportmailsend.component';
 
 @NgModule({
   declarations: [
@@ -202,7 +212,14 @@ import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashou
     OkraCheckComponent,
     SearchViewComponent,
     CashoutComponent,
-    CashoutviewComponent
+    CashoutviewComponent,
+    ActiveSavingsComponent,
+    SavingsTimelineComponent,
+    AllSavingsComponent,
+    TransactionViewComponent,
+    DailySavingsComponent,
+    MailcrudComponent,
+    ReportmailsendComponent
     
     
   ],
@@ -246,7 +263,7 @@ import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashou
   providers: [
     DatePipe,
     {provide: LocationStrategy, useClass: HashLocationStrategy},
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 
   entryComponents:[
@@ -276,7 +293,10 @@ import { CashoutviewComponent } from './views/savings/cashout/cashoutview/cashou
     ChangePasswordComponent,
     DefaulterViewComponent,
     SearchViewComponent,
-    CashoutviewComponent
+    CashoutviewComponent,
+    SavingsTimelineComponent,
+    TransactionViewComponent,
+    ReportmailsendComponent
   ],
 
   bootstrap: [AppComponent],

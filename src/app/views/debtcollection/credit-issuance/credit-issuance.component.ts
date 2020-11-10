@@ -34,16 +34,16 @@ export class CreditIssuanceComponent implements OnInit {
   getInitList() {
    
     this.loading = true
-    this.data.creditIssuance.getCreditIssuance(1,10000)
+    this.data.creditIssuance.getCreditIssuance(0,10000)
     .subscribe((res: any) => {
-      console.log(res)
+     
       if (res.message == "Success") {
         
         this.mydata = res.data;
         this.loading = false;
         this.tableLength = this.mydata.length;
         this.listData = new MatTableDataSource(this.mydata);
-        //console.log(this.listData)
+        
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;

@@ -117,7 +117,7 @@ export class CashoutComponent implements OnInit {
       this.totalAmount += data[i].total_amount;
     }
 
-    console.log(this.totalAmount, 'Total maturity amount');
+    
   
   }
 

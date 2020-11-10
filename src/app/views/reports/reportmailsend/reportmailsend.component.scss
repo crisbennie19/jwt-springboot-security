@@ -1,0 +1,12 @@
+.list{
+    display:flex
+}
+.header{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    top: 0;
+}
+.content{
+    align-self: center;
+}

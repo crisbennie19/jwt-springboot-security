@@ -112,7 +112,6 @@ export class WalletComponent implements OnInit {
 
   }
   searchByDate(){
-    console.log(this.fromdate +" "+ this.todate)
     if(this.searchKey == '' && this.fromdate != null && this.todate != null ){
       const fromday = this.fromdate.getDate();
       const frommonth = this.fromdate.getMonth()+1;

@@ -14,7 +14,7 @@
       <button mat-icon-button
       (click)="filterSearch()"
       color="accent">
-      <mat-icon>send</mat-icon>
+   
       </button>
       &nbsp;
       <div *ngIf="loading">
@@ -24,6 +24,10 @@
           [diameter]=18>
         </mat-spinner>
       </div>
+      &nbsp;
+    <button mat-raised-button
+    (click)="getInterestsList()"
+    color="accent">Get all</button>
     </div>
 
     <div  >
@@ -45,6 +49,7 @@
       <button mat-raised-button
       (click)="searchByDate()"
       color="accent">Search</button>
+      
     </div>
   </div>
 
