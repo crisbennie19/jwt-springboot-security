@@ -304,7 +304,6 @@ export class SavingsListComponent implements OnInit {
 
   }
 
-
   applyFilter(){
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }

@@ -75,6 +75,8 @@ export class SavingsReportComponent implements OnInit {
 
   ngOnInit() {
     // this.getDailyReportList();
+    console.log("this is savings");
+    
   }
 
 
@@ -206,22 +208,23 @@ export class SavingsReportComponent implements OnInit {
 
   downloadPdf(){
     this.loading = true;
-  if(this.download =="daily"){
+
+    if(this.download == "daily"){
      let date = moment(this.todate, 'YYYY-MM-DD');
-    this.loading = true;
-    const day = date.date();
+      this.loading = true;
+      const day = date.date();
       const month = date.month() + 1;
       const year = date.year(); 
      this.data.reportService.getDailySavingsAttachment(0,day, month, year,"PDF", 100)
-    .subscribe( res => {
-      downloadFilePDF(res)
-      this.loading = false;
-    }, err => {
-      this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
-        duration:4000
+      .subscribe( res => {
+        downloadFilePDF(res)
+        this.loading = false;
+      }, err => {
+        this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
+          duration:4000
+        })
+        this.loading = false; 
       })
-      this.loading = false; 
-    })
   }
   if(this.download =="weekly"){
     this.loading = true;
@@ -252,20 +255,20 @@ export class SavingsReportComponent implements OnInit {
     })
 
   }
+
   if(this.download =="yearly"){
     this.loading = true;
-   
-     this.data.reportService.getYearlySavingsReportAttachment(0,this.y,"PDF", 100)
-    .subscribe( res => {
-      downloadFilePDF(res)
-      this.loading = false;
+  
+    this.data.reportService.getYearlySavingsReportAttachment(0,this.y,"PDF", 100)
+      .subscribe( res => {              
+        downloadFilePDF(res)
+        this.loading = false;
     }, err => {
       this.snackBar.open('Error downloading Report, Contact Admin', 'Dismiss', {
         duration:4000
       })
       this.loading = false; 
     })
-
   }
    
   }

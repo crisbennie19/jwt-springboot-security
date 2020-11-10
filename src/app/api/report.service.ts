@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+const headers = new HttpHeaders({
+  'Content-Type': 'application/json'
+})
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class ReportService {
 
   constructor(private http: HttpClient, private base: HttpService) { }
@@ -253,7 +258,9 @@ export class ReportService {
   // Download Report Attachment////
   getDailySavingsAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/savingslog/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/savingslog/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -261,17 +268,17 @@ export class ReportService {
 
   getWeeklySavingsAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/weeklysavingslog/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/weeklysavingslog/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`,
+      {headers:headers, responseType: 'blob' as 'json'})
       .pipe(
         catchError(err => this.errorHandler(err))
       );
-     
-
   }
 
   getQuartelySavingsReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllysavingslog/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/quarterllysavingslog/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`,
+      {headers:headers, responseType: 'blob' as 'json'})
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -279,7 +286,9 @@ export class ReportService {
 
   getYearlySavingsReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllysavingslog/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/yearllysavingslog/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
