@@ -171,9 +171,9 @@
     <table mat-table [dataSource]="listData" matSort aria-label="Elements"
       *ngIf="daily && !weekly && !quartely && !yearly">
 
-      <ng-container matColumnDef="Name">
+      <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</td>
+        <td mat-cell *matCellDef="let row" data-label="Name">{{row.status}}</td>
       </ng-container>
 
       <ng-container matColumnDef="card">
