@@ -25,16 +25,24 @@ export class RepaymentComponent implements OnInit {
   fromdate = getFirstDayMonth(new Date())
   todate = getDate(new Date())
   response: any;
-
+  totalAmount: number = 0;
 
 
   constructor(private data: DataService, private router: Router, private pipes: DatePipe) { }
 
   ngOnInit() {
 
-    this.getInitList();
+    this.getDefaultList();
   }
   
+  
+  getComputeTotal(data){
+    this.totalAmount=0
+       for(let i=0; i<=data.length;i++){
+      this.totalAmount += data[i].amount
+    }
+    }
+
   getInitList() {
    
     this.loading = true
@@ -73,6 +81,7 @@ export class RepaymentComponent implements OnInit {
           this.listData = new MatTableDataSource(this.mydata);
           this.listData.paginator = this.paginator;
           this.listData.sort = this.sort;
+          this.getComputeTotal(this.mydata)
         }
         else {
         this.loading = false;

@@ -25,6 +25,7 @@ export class DefaultUsersComponent implements OnInit {
   fromdate = getFirstDayMonth(new Date())
   todate = getDate(new Date())
   response: any;
+  totalAmount: number = 0;
 
 
 
@@ -34,7 +35,13 @@ export class DefaultUsersComponent implements OnInit {
 
     this.getInitList();
   }
-  
+
+  getComputeTotal(data){
+    this.totalAmount=0
+       for(let i=0; i<=data.length;i++){
+      this.totalAmount += data[i].amount
+    }
+    }
   getInitList() {
    
     this.loading = true
@@ -50,7 +57,7 @@ export class DefaultUsersComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;
-        
+        this.getComputeTotal(this.mydata)
       }
       else {
         this.message = res.message
@@ -75,6 +82,7 @@ export class DefaultUsersComponent implements OnInit {
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;
+        this.getComputeTotal(this.mydata)
         }
         else {
         this.loading = false;

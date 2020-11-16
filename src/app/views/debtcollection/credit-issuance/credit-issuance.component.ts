@@ -23,39 +23,81 @@ export class CreditIssuanceComponent implements OnInit {
   fromdate = getFirstDayMonth(new Date())
   todate = getDate(new Date())
   response: any;
-
+  totalAmount: number = 0;
 
 
   constructor(private data: DataService, private router: Router) { }
 
   ngOnInit() {
-    this.getInitList()
+    this.getDefaultList()
   }
-  getInitList() {
+  getComputeTotal(data){
+    this.totalAmount=0
+       for(let i=0; i<=data.length;i++){
+      this.totalAmount += data[i].amount
+    }
+    }
+
+  // getInitList() {
    
-    this.loading = true
-    this.data.creditIssuance.getCreditIssuance(0,10000)
-    .subscribe((res: any) => {
-     
-      if (res.message == "Success") {
+  //   this.loading = true
+  //   this.data.creditIssuance.getCreditIssuance(0,10000)
+  //   .subscribe((res: any) => {
+  //     if (res.message == "Success") {
         
-        this.mydata = res.data;
+  //       this.mydata = res.data;
+  //       this.loading = false;
+  //       this.tableLength = this.mydata.length;
+  //       this.listData = new MatTableDataSource(this.mydata);
+        
+  //       this.listData.paginator = this.paginator;
+  //       this.listData.sort = this.sort;
+  //       this.loading = false;
+  //       this.getComputeTotal(this.mydata)
+  //     }
+  //     else {
+  //        this.message = res.message
+  //        this.loading = false;
+  //      }
+  //   }, err => {
+  //     this.loading = false;
+  //   })
+  // }
+
+  getDefaultList() {
+    this.loading = true;
+     let fromdate = getDate(this.fromdate)
+     let todate = getDate(this.todate)
+
+      this.data.creditIssuance.getCreditIssuanceByDateRange(fromdate, todate).subscribe((res: any) => {
+        if (res.message == "Success") {
+          this.mydata = res.data;
         this.loading = false;
         this.tableLength = this.mydata.length;
         this.listData = new MatTableDataSource(this.mydata);
-        
         this.listData.paginator = this.paginator;
         this.listData.sort = this.sort;
         this.loading = false;
-      }
-      else {
-         this.message = res.message
-         this.loading = false;
-       }
-    }, err => {
-      this.loading = false;
-    })
+        this.getComputeTotal(this.mydata)
+        }
+        else {
+        this.loading = false;
+          this.message = res.message
+        }
+
+
+      }, err => {
+        this.loading = false;
+
+
+      })
+    
+
   }
+
+
+
+
   applyFilter() {
     this.listData.filter = this.searchKey.toString();
     this.listData.filter = this.searchKey.toString();

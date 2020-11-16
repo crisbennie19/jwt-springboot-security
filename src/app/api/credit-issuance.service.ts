@@ -24,6 +24,15 @@ getCreditIssuance(page:number, size:number){
 
 }
 
+getCreditIssuanceByDateRange(datefrom:string,dateto:string){
+  return this.http.get(
+    encodeURI(this._baseUrl +
+      `swipe_admin/credit-issuance/list/date_range?from=${datefrom}&to=${dateto}`)
+  ).pipe(
+    catchError(err => this.errorHandler(err))
+  );
+}
+
 errorHandler(error:HttpErrorResponse){
   return Observable.throw(error.message || "Server Error") 
 }

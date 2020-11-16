@@ -1,8 +1,11 @@
 <div class="component-container">
-  <div class="flex-btw">
-    <div class="normal-flex-el">
+  <div class="component-header">
+    <div>Credit Card</div>
+  </div>
+  <div class="flex-btw wrap">
+    <div class="flex-el">
       <div class="search-container">
-        <mat-icon class="prefix">search</mat-icon>
+        <mat-icon class="prefix">search</mat-icon> 
         <input type="text" class="mSearch"
         (keyup)=applyFilter()
         [(ngModel)]="searchKey"
@@ -12,8 +15,9 @@
       </div>
       &nbsp;
       &nbsp;
+      
       <div *ngIf="loading">
-        <mat-spinner 
+        <mat-spinner
           color="accent"
           [strokeWidth]= 3
           [diameter]=18>
@@ -21,30 +25,33 @@
       </div>
       &nbsp;
       <button mat-raised-button
-      (click)="getCardList()"
+      (click)="getInitList()"
       color="accent">Get all</button>
     </div>
-
+    
     <div>
       <mat-form-field class="jamez-input"
       floatLabel="never">
         <input matInput autocomplete="off" [(ngModel)]="fromdate"
-        [matDatepicker]="pickers" placeholder="Start date" (dateInput)="addEvent('change', $event)">
+        [matDatepicker]="pickers" placeholder="Start date">
         <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
         <mat-datepicker #pickers></mat-datepicker>
       </mat-form-field>
       &nbsp;
       <mat-form-field class="jamez-input" floatLabel="never">
         <input matInput autocomplete="off"  [(ngModel)]="todate"
-        [matDatepicker]="picker" placeholder="End date" (dateInput)="addEvent('change', $event)">
+        [matDatepicker]="picker" placeholder="End date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      &nbsp;
-     
+      &nbsp;    
+      <button mat-raised-button
+          (click)="getCreditCardList()"
+          color="accent">Search date
+      </button>
     </div>
-
-  </div>
+  
+  </div> 
   
   <div>
     <table mat-table class="full-width-table" [dataSource]="listData" 
