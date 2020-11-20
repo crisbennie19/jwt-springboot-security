@@ -124,7 +124,7 @@ export class DataService {
     }
   }
 
-  logout(){
+  logout(){ 
     
     let activeUser = JSON.parse(localStorage.getItem('adminUser') )
    

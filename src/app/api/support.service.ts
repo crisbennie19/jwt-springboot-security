@@ -3,14 +3,15 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpService } from './http.service';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class SupportService {
   constructor(private http: HttpClient, private base: HttpService) { }
 
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   getSupportByCharges(category:string,dateFrom: String, dateTo: String, param: String) {
     return this.http.get(
       encodeURI(this._baseUrl +

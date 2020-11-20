@@ -4,6 +4,7 @@ import { HttpService } from './http.service';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AdminUser } from '../models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,10 @@ import { AdminUser } from '../models/user.model';
 export class UsersService {
   constructor( private http: HttpClient, private base:HttpService ) { }
 
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   // login
-
+ 
   loginAdmin(body:any){
     return this.http.post(
       encodeURI(this._baseUrl + 

@@ -75,7 +75,6 @@ export class SavingsReportComponent implements OnInit {
 
   ngOnInit() {
     // this.getDailyReportList();
-    console.log("this is savings");
     
   }
 

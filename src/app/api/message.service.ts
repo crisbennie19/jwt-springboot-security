@@ -4,6 +4,7 @@ import { HttpService } from './http.service';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Message } from '../models/message.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class MessageService {
   
   constructor( private http: HttpClient, private base:HttpService ) { }
 
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   getMessages(){
     return this.http.get(
       encodeURI(this._baseUrl + 

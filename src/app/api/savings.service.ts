@@ -4,6 +4,7 @@ import { HttpService } from './http.service';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Interest, Savingstype } from '../models/savings.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class SavingsService {
   
   constructor( private http: HttpClient, private base:HttpService ) { }
 
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   // Savings list and filters
   getSavings(page:number, size:number){
     return this.http.get(

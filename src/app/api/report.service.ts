@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 const headers = new HttpHeaders({
   'Content-Type': 'application/json'
@@ -15,8 +16,8 @@ const headers = new HttpHeaders({
 export class ReportService {
 
   constructor(private http: HttpClient, private base: HttpService) { }
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   ////////////////////////////////////// Credit card reports //////////////////////////////////
 
   getDailyCreditReport(day, month, year) {

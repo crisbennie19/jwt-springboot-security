@@ -3,6 +3,7 @@ import { HttpService } from './http.service';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,8 +23,8 @@ export class TransactionsService {
 
   constructor( private http: HttpClient, private base:HttpService ) { }
 
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   getTransactions(page:number,size:number){
 
     return this.http.get(

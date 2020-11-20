@@ -4,6 +4,7 @@ import { HttpService } from './http.service';
 import { catchError, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { verifyPerformance } from '../models/savings.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { verifyPerformance } from '../models/savings.model';
 export class CreditService {
   constructor( private http: HttpClient, private base:HttpService ) { }
 
-  private _baseUrl = this.base.baseurl
+  private _baseUrl = environment.base_api
 
   getCredits(page:number,size:number){
     return this.http.get(
