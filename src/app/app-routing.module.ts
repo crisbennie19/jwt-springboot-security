@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { TransactionsComponent } from './views/transactions/transactions.component';
 import { CreditComponent } from './views/credit/credit.component';
@@ -157,7 +157,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules,
+      scrollPositionRestoration: 'top', useHash: false
+   })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { } 

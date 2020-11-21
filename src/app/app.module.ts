@@ -9,7 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
-import { HashLocationStrategy, LocationStrategy, DatePipe } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, DatePipe, PathLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -262,7 +262,7 @@ import { ReportmailsendComponent } from './views/reports/reportmailsend/reportma
 
   providers: [
     DatePipe,
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 

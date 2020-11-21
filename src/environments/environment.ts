@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  base_api: 'https://swipe.ng:8443/base_api/',
+  base_api: 'https://swipe.ng:8443/catalog/',
   production: false
 };
 
