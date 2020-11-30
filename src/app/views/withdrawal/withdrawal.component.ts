@@ -87,37 +87,34 @@ export class WithdrawalComponent implements OnInit {
 
 
       })
-    
-
   }
+
   getWithdrawalByDate() {
     this.loading = true;
      
-     let todate = getDate(this.todate)
+    let todate = getDate(this.todate)
 
-      this.data.withdrawal.getWithdrawlByDate(todate).subscribe((res: any) => {
-        if (res.message == "Success") {
-          this.mydata = res.data;
-        this.loading = false;
-        this.tableLength = this.mydata.length;
-        this.listData = new MatTableDataSource(this.mydata);
-        this.listData.paginator = this.paginator;
-        this.listData.sort = this.sort;
-        this.loading = false;
-        }
-        else {
-        this.loading = false;
-          this.message = res.message
-        }
-
-
-      }, err => {
-        this.loading = false;
+    this.data.withdrawal.getWithdrawlByDate(todate).subscribe((res: any) => {
+      if (res.message == "Success") {
+        this.mydata = res.data;
+      this.loading = false;
+      this.tableLength = this.mydata.length;
+      this.listData = new MatTableDataSource(this.mydata);
+      this.listData.paginator = this.paginator;
+      this.listData.sort = this.sort;
+      this.loading = false;
+      }
+      else {
+      this.loading = false;
+        this.message = res.message
+      }
 
 
-      })
-    
+    }, err => {
+      this.loading = false;
 
+
+    })
   }
  
   applyFilter() {
@@ -152,11 +149,14 @@ export class WithdrawalComponent implements OnInit {
 
   }
 
-  viewRow(rowValues){
+  viewRow(row){
+
+    console.log(row,'..row');
+    
     const dialConfig = new MatDialogConfig();
     dialConfig.disableClose = false;
     dialConfig.autoFocus = false;
-    dialConfig.data = rowValues.walletdetails;
+    dialConfig.data = row.walletdetails;
     dialConfig.minWidth = "40%";
     dialConfig.maxHeight = "90vh"
     this.dialog.open(WithdrawalViewComponent,dialConfig)

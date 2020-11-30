@@ -11,6 +11,7 @@ export class WithdrawalViewComponent implements OnInit {
 list:any
 
 public listData: MatTableDataSource<any>;
+
 @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
 @ViewChild(MatSort, { static: false }) sort: MatSort;
 displayedColumns = ['accountname', 'accountphone',  'amount',  'walletbalance','channel','trandate'];
@@ -24,9 +25,9 @@ loading: boolean;
 
   ngOnInit() {
    
-    //console.log(this.selectedRow[0])
+    console.log(this.selectedRow,'...selected')
     
-    this.listData = new MatTableDataSource(this.selectedRow)
+    // this.listData = new MatTableDataSource(this.selectedRow)
   }
 
   closeDialog(){
