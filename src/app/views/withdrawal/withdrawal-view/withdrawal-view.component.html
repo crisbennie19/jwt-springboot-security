@@ -15,14 +15,14 @@
       <ng-container matColumnDef="amount" class="flex-start">
         <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Amount">
-          <div>{{row.amount | number}}</div>
+          <div>{{row.amount }}</div>
         </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="walletbalance"  class="flex-start">
         <mat-header-cell *matHeaderCellDef>Wallet balance</mat-header-cell>
         <mat-cell *matCellDef="let row" data-label="Wallet balance">
-          <div>{{row.walletbalance | number}}</div>
+          <div>{{row.balance }}</div>
         </mat-cell>
       </ng-container>
 

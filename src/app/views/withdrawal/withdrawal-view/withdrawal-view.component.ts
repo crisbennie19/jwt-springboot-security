@@ -23,10 +23,10 @@ loading: boolean;
   ) { }
 
   ngOnInit() {
-   
-    //console.log(this.selectedRow[0])
+    this.list = JSON.parse(this.selectedRow)
+    console.log(this.list )
     
-    this.listData = new MatTableDataSource(this.selectedRow)
+    this.listData = new MatTableDataSource(this.list )
   }
 
   closeDialog(){
