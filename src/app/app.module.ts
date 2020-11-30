@@ -123,6 +123,7 @@ import { TransactionViewComponent } from './views/transactions/transaction-view/
 import { DailySavingsComponent } from './views/savings/daily-savings/daily-savings.component';
 import { MailcrudComponent } from './views/reports/mailcrud/mailcrud.component';
 import { ReportmailsendComponent } from './views/reports/reportmailsend/reportmailsend.component';
+import { WithdrawalViewComponent } from './views/withdrawal/withdrawal-view/withdrawal-view.component';
 
 @NgModule({
   declarations: [
@@ -219,7 +220,8 @@ import { ReportmailsendComponent } from './views/reports/reportmailsend/reportma
     TransactionViewComponent,
     DailySavingsComponent,
     MailcrudComponent,
-    ReportmailsendComponent
+    ReportmailsendComponent,
+    WithdrawalViewComponent
     
     
   ],
@@ -296,7 +298,8 @@ import { ReportmailsendComponent } from './views/reports/reportmailsend/reportma
     CashoutviewComponent,
     SavingsTimelineComponent,
     TransactionViewComponent,
-    ReportmailsendComponent
+    ReportmailsendComponent,
+    WithdrawalViewComponent
   ],
 
   bootstrap: [AppComponent],

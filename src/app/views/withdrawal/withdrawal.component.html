@@ -1,91 +1,97 @@
 <div class="component-container">
+
   <div class="component-header">
-    <div>
-      <div class="flex-el">
-        <mat-form-field class="jamez-input"
-        floatLabel="never">
-          <input matInput autocomplete="off" [(ngModel)]="fromdate"
-          [matDatepicker]="pickers" placeholder="Start date">
-          <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
-          <mat-datepicker #pickers></mat-datepicker>
-        </mat-form-field>
-        &nbsp;
-        <mat-form-field class="jamez-input" floatLabel="never">
-          <input matInput autocomplete="off"  [(ngModel)]="todate"
-          [matDatepicker]="picker" placeholder="End date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        &nbsp;
-        <button mat-raised-button 
-        (click)="filterSearch()"
-        color="accent">Search</button>
-        &nbsp;
-        <div *ngIf="loading">
-          <mat-spinner 
-            color="accent"
-            [strokeWidth]= 3
-            [diameter]=18>
-          </mat-spinner>
+    <div>Withdrawal List</div>
+    <span>{{message2}}</span>
+  </div>
+  <div class="flex-btw wrap" style="margin-bottom:20px;">
+    <div class="flex">
+      <div class="search-container">
+        <div>
+          <input type="text" class="mSearch" style="margin: 0px;"
+         
+          [(ngModel)]="email"
+          placeholder="Search email...">
+         
         </div>
+        <div>
+          &nbsp;
+          <button mat-raised-button (click)="getWithdrawalByEmail()" color="accent">Search email
+          </button>
+        </div>
+
+        <div *ngIf="loading">
+        <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
+        </mat-spinner>
       </div>
+      </div>
+
+      
     </div>
+
     <div>
-      <button mat-button color="accent">
-        <mat-icon class="mat-18x">local_printshop</mat-icon> &nbsp;
-        <span>Print</span> 
+      <mat-form-field class="jamez-input" floatLabel="never">
+        <input matInput autocomplete="off" [(ngModel)]="todate" [matDatepicker]="pickers" placeholder="Search date">
+        <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+        <mat-datepicker #pickers></mat-datepicker>
+      </mat-form-field>
+
+      &nbsp;
+      <button mat-raised-button (click)="getWithdrawalByDate()" color="accent">Search date
       </button>
     </div>
+
   </div>
-  
+
   <div>
-    <table mat-table class="full-width-table" [dataSource]="listData" matSort aria-label="Elements">
-      
-      <ng-container matColumnDef="bank">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank name</th>
-        <td mat-cell *matCellDef="let row"  data-label="Bank Name">{{row.bank}}</td>
+
+    <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+
+      <ng-container matColumnDef="accountname">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="name">{{row.accountname}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-        <td mat-cell *matCellDef="let row" data-label="Description">{{row.description}}</td>
+      <ng-container matColumnDef="accountnumber">
+        <mat-header-cell *matHeaderCellDef>Account</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Account">{{row.accountnumber}}</mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="accno">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account number</th>
-        <td mat-cell *matCellDef="let row" data-label="Account Number">{{row.accountnumber}}</td>
+      <ng-container matColumnDef="amount" class="flex-start">
+        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Amount">
+          <div>{{row.amount | number}}</div>
+        </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="accname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Account name</th>
-        <td mat-cell *matCellDef="let row" data-label="Account Name">{{row.accountname}}</td>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-        <td mat-cell *matCellDef="let row" data-label="Amount">{{row.amount|currency:'N'}}</td>
+      <ng-container matColumnDef="walletbalance"  class="flex-start">
+        <mat-header-cell *matHeaderCellDef>Wallet balance</mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="Wallet balance">
+          <div>{{row.walletbalance | number}}</div>
+        </mat-cell>
       </ng-container>
 
-      <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-        <td mat-cell *matCellDef="let row" data-label="Date">{{row.date}}</td>
-      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+        <td mat-cell *matCellDef="let row" data-label="Action">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_horiz</mat-icon>
+          </button>
 
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-        <td mat-cell *matCellDef="let row" data-label="Status">{{row.status}}</td>
+          <mat-menu #menu="matMenu">
+            <button (click)=viewRow(row) mat-menu-item style="color:#6637b1">View</button>
+            <button mat-menu-item style="color:#44b137" (click) = "approve(row)">Approve</button>
+            <button mat-menu-item style="color:crimson" (click) = "decline(row)">Decline</button>
+
+          </mat-menu>
+        </td>
       </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </table>
-  
-    <mat-paginator #paginator
-    showFirstLastButtons
-     
-      [pageIndex]="0"
-      [pageSize]="6">
+
+    <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+      [pageSize]="7">
     </mat-paginator>
   </div>
 

@@ -12,7 +12,7 @@ export class WalletService {
   constructor( private http: HttpClient, private base:HttpService ) { }
 
   private _baseUrl = environment.base_api
-  
+   
   getWallets(page:number,size:number){
     return this.http.get(
       encodeURI(this._baseUrl + 

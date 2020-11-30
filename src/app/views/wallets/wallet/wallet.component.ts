@@ -152,7 +152,7 @@ export class WalletComponent implements OnInit {
     dialogConfig.data = row
     dialogConfig.minWidth = '60%';
     dialogConfig.maxHeight = '90vh';
-    this.dialog.open(WalletViewComponent, dialogConfig)
+    this.dialog.open(WalletViewComponent, dialogConfig) 
   }
 
   getWalletsList(){

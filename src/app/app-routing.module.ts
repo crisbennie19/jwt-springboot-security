@@ -118,10 +118,6 @@ const routes: Routes = [
     canActivate:[AccessGuard]
   },
   {
-    path:'withdrawal',
-    component:WithdrawalComponent
-  },
-  {
     path:'referrals',
     component:ReferralComponent,
     data:{
@@ -152,7 +148,14 @@ const routes: Routes = [
     }
   },
 
-  // {path: 'debtcollection', component: DebtcollectionComponent}
+  {path: 'withdrawal', 
+  component: WithdrawalComponent,
+  data:{
+    allowedRoles:["ADMINISTRATOR"]
+  }
+},
+
+  // {path: 'debtcollection', component: DebtcollectionComponent} WithdrawalComponent
 
 ];
 
