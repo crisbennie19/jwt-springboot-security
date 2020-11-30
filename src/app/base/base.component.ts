@@ -35,7 +35,6 @@ export class BaseComponent {
     private data:DataService, private dialog:MatDialog) {
     this.activeUser = JSON.parse(localStorage.getItem('adminUser') )
 
-    
     this.authorizedMenu = this.menuList.filter( el => {
       return this.activeUser.data.roles.some( (role) => el.role.includes(role))
     });
@@ -44,14 +43,10 @@ export class BaseComponent {
     this.isAdmin = verifyRole('ADMINISTRATOR')
     this.isSupport = verifyRole('SUPPORT')
     this.isFinance = verifyRole('ACCOUNT')
-
-    
   }
-
 
   accessMenu(value){
     this.menuList
-
   }
 
   getInitials(string) {
@@ -79,5 +74,4 @@ export class BaseComponent {
   logout(){
     this.data.logout();
   }
-
 }
