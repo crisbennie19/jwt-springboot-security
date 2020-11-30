@@ -108,7 +108,7 @@ export class CashoutComponent implements OnInit {
     }, err => {
       this.loading = false;
     })
-  }
+  } 
 
 
   computeTotalAmount(data){

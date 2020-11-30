@@ -62,8 +62,8 @@
                 Recover your password
               </div>
               <div class="header-text" style="margin-top:20px;font-size:16px">Enter your email address</div>
-              <form [formGroup]="forgotPasswordForm" (ngSubmit)="forgotPassword()">
-                <p class="text-center text-secondary">{{forgotPasswordMessage}}</p>
+              <form [formGroup]="" >
+                <p class="text-center text-secondary"></p>
                 <mat-form-field>
                   <span matPrefix>
                     <mat-icon class="mat-18x position-relative prefix-icon">email</mat-icon> &nbsp;
@@ -81,13 +81,13 @@
                 </mat-form-field> -->
           
                 <div class="mb-3">
-                  <button mat-raised-button class="signin-button full-width" color="primary" [disabled]="toggleResetLoading">NEXT <i
-                      *ngIf="toggleResetLoading" class="fa fa-spinner fa-pulse fa-fw"></i>
+                  <button mat-raised-button class="signin-button full-width" color="primary" >NEXT <i
+                       class="fa fa-spinner fa-pulse fa-fw"></i>
                   </button>
                 </div>
           
                 <div class="flex-center">
-                  <a (click)="toggleForgotPassword()" style="
+                  <a  style="
                     font-size: 15px; cursor: pointer;" >
                     Sign In
                   </a>

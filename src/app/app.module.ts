@@ -9,7 +9,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment'
 // import { ImageViewerModule } from 'ng2-image-viewer';
-import { HashLocationStrategy, LocationStrategy, DatePipe } from '@angular/common';
+import { HashLocationStrategy, LocationStrategy, DatePipe, PathLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -123,6 +123,7 @@ import { TransactionViewComponent } from './views/transactions/transaction-view/
 import { DailySavingsComponent } from './views/savings/daily-savings/daily-savings.component';
 import { MailcrudComponent } from './views/reports/mailcrud/mailcrud.component';
 import { ReportmailsendComponent } from './views/reports/reportmailsend/reportmailsend.component';
+import { WithdrawalViewComponent } from './views/withdrawal/withdrawal-view/withdrawal-view.component';
 
 @NgModule({
   declarations: [
@@ -219,7 +220,8 @@ import { ReportmailsendComponent } from './views/reports/reportmailsend/reportma
     TransactionViewComponent,
     DailySavingsComponent,
     MailcrudComponent,
-    ReportmailsendComponent
+    ReportmailsendComponent,
+    WithdrawalViewComponent
     
     
   ],
@@ -262,7 +264,7 @@ import { ReportmailsendComponent } from './views/reports/reportmailsend/reportma
 
   providers: [
     DatePipe,
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 
@@ -296,7 +298,8 @@ import { ReportmailsendComponent } from './views/reports/reportmailsend/reportma
     CashoutviewComponent,
     SavingsTimelineComponent,
     TransactionViewComponent,
-    ReportmailsendComponent
+    ReportmailsendComponent,
+    WithdrawalViewComponent
   ],
 
   bootstrap: [AppComponent],

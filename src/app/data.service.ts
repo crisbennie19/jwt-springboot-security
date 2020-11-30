@@ -24,6 +24,7 @@ import { SupportService } from './api/support.service';
 import { SwipebalanceService } from './api/swipebalance.service';
 import { OkraService } from './api/okra.service';
 import { CashoutReminderService } from './api/cashout-reminder.service';
+import { WithdrawalRequestService } from './api/withdrawal-request.service';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +59,8 @@ export class DataService {
     public supportSearch: SupportService,
     public swipeBalance: SwipebalanceService,
     public okra:OkraService,
-    public cashoutService: CashoutReminderService
+    public cashoutService: CashoutReminderService,
+    public withdrawal:WithdrawalRequestService
   ) { 
     router.events.subscribe(val => {
       if (localStorage.getItem('adminUser') !== null && val['url'] === "/") {
@@ -124,7 +126,7 @@ export class DataService {
     }
   }
 
-  logout(){
+  logout(){ 
     
     let activeUser = JSON.parse(localStorage.getItem('adminUser') )
    

@@ -33,7 +33,7 @@ export class LandingpageComponent implements OnInit {
     private data:DataService,
     private snackBar:MatSnackBar,
     private router: Router) { }
-
+ 
   SigninForm:FormGroup
   message:string = '';
 

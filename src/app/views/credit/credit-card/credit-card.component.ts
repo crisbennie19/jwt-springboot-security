@@ -4,6 +4,7 @@ import { DataService } from 'src/app/data.service';
 import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
+import { getFirstDayMonth, getDate } from 'src/app/helpers/dateFormat';
 @Component({
   selector: 'app-credit-card',
   templateUrl: './credit-card.component.html',
@@ -20,18 +21,21 @@ export class CreditCardComponent implements OnInit {
 
   searchKey: any = ''; // left search box model
   creditFilter:string = "accountholder";
-  fromdate: Date = null;
-  todate:Date = null; 
+ 
   placeholder = 'Phone or email'
   
   loading: boolean;
   tableLength: number;
+  fromdate = getFirstDayMonth(new Date())
+  todate = getDate(new Date())
+  mydata: any;
+  message: string = "Please choose a date range to search "
 
   constructor(private data:DataService,
     private snackBar:MatSnackBar) { }
 
   ngOnInit() {
-    this.getCardList();
+    this.getInitList()
   }
 
   triggerFilter(event){    
@@ -53,7 +57,7 @@ export class CreditCardComponent implements OnInit {
 
   }
 
-  getCardList(){
+  getInitList(){
     this.loading = true;
     this.data.cardService.getCards(0,100)
     .pipe(
@@ -71,10 +75,38 @@ export class CreditCardComponent implements OnInit {
       
     }, err => {
       this.loading = false;
-      // this.snackBar.open("Check your network and try again", "Dismiss", {
-      //   duration:2000
-      // })
+    
     })
+  }
+
+  getCreditCardList() {
+    this.loading = true;
+     let fromdate = getDate(this.fromdate)
+     let todate = getDate(this.todate)
+
+      this.data.cardService.getCardsByDateRange(fromdate, todate).subscribe((res: any) => {
+        if (res.message == "Success") {
+          this.mydata = res.data;
+        this.loading = false;
+        this.tableLength = this.mydata.length;
+        this.listData = new MatTableDataSource(this.mydata);
+        this.listData.paginator = this.paginator;
+        this.listData.sort = this.sort;
+        this.loading = false;
+        }
+        else {
+        this.loading = false;
+          this.message = res.message
+        }
+
+
+      }, err => {
+        this.loading = false;
+
+
+      })
+    
+
   }
 
   activateCard(e){

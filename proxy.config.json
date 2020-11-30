@@ -1,8 +1,0 @@
-{
-  "/base_api/*": {
-    "target": "https://swipe.ng:8443",
-    "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug"
-  } 
-}

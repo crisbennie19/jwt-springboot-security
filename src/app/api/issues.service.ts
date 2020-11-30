@@ -4,6 +4,7 @@ import { HttpService } from './http.service';
 import { catchError } from 'rxjs/operators';
 import { Observable, from } from 'rxjs';
 import { newIssue, issueLog } from '../models/savings.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ import { newIssue, issueLog } from '../models/savings.model';
 export class IssuesService {
 
   constructor(private http: HttpClient, private base: HttpService) { }
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   issuesOnPlatform() {
     return this.http.get(
       encodeURI(this._baseUrl +

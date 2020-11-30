@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { HttpService } from './http.service';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 const headers = new HttpHeaders({
   'Content-Type': 'application/json'
@@ -15,8 +16,8 @@ const headers = new HttpHeaders({
 export class ReportService {
 
   constructor(private http: HttpClient, private base: HttpService) { }
-  private _baseUrl = this.base.baseurl
-
+  private _baseUrl = environment.base_api
+  
   ////////////////////////////////////// Credit card reports //////////////////////////////////
 
   getDailyCreditReport(day, month, year) {
@@ -55,7 +56,9 @@ export class ReportService {
   // Download Report Attachment////
   getDailyCreditReportAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailycreditcard/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/dailycreditcard/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -63,7 +66,9 @@ export class ReportService {
 
   getWeeklyCredictAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/weeklycredicard/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/weeklycredicard/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -73,7 +78,9 @@ export class ReportService {
 
   getQuartelyCreditReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllycreditcard/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/quarterllycreditcard/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -81,7 +88,9 @@ export class ReportService {
 
   getYearlyCreditReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllycreditcard/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/yearllycreditcard/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -157,7 +166,10 @@ export class ReportService {
   // Download Report Attachment////
   getDailyWalletReportAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailywallet/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/dailywallet/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`
+      ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -165,7 +177,9 @@ export class ReportService {
 
   getWeeklyWalletReportAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/weeklywallet/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/weeklywallet/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -173,7 +187,9 @@ export class ReportService {
 
   getQuartelyWalletReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllywallet/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/quarterllywallet/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -181,7 +197,9 @@ export class ReportService {
 
   getYearlyWalletReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllywallet/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/yearllywallet/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -366,7 +384,9 @@ export class ReportService {
   // Download Report Attachment////
   getDailyTransactionAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailytransaction/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/dailytransaction/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -374,7 +394,9 @@ export class ReportService {
 
   getWeeklyTransactionAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/weeklytransaction/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/weeklytransaction/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -382,7 +404,9 @@ export class ReportService {
 
   getQuartelyTransactionReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllytransction/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/quarterllytransction/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -390,7 +414,9 @@ export class ReportService {
 
   getYearlyTransactionReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllytransaction/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/yearllytransaction/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -466,7 +492,9 @@ export class ReportService {
   // Download Report Attachment////
   getDailyInterestAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailyinterest/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/dailyinterest/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -474,7 +502,9 @@ export class ReportService {
 
   getWeeklyInterestAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/weeklyinterest/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/weeklyinterest/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -482,7 +512,9 @@ export class ReportService {
 
   getQuartelyInterestReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllyinterest/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/quarterllyinterest/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -490,7 +522,9 @@ export class ReportService {
 
   getYearlyInterestReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllyinterest/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/yearllyinterest/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -566,7 +600,9 @@ export class ReportService {
   // Download Report Attachment////
   getDailyVCardAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailyvcard/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/dailyvcard/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -574,7 +610,9 @@ export class ReportService {
 
   getWeeklyVCardAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/weeklyvcard/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/weeklyvcard/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -582,7 +620,9 @@ export class ReportService {
 
   getQuartelyVCardReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllyvcard/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}`)
+      `reports/quarterllyvcard/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -590,7 +630,9 @@ export class ReportService {
 
   getYearlyVCardReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllyvcard/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}`)
+      `reports/yearllyvcard/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      {headers:headers, responseType: 'blob' as 'json'}
+      )
       .pipe(
         catchError(err => this.errorHandler(err))
       );

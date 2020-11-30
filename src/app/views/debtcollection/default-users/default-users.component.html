@@ -49,7 +49,9 @@
       </div>
     
     </div> 
-
+    <div style="font-size: larger; font-weight: 500;margin: 10px 0;">
+      Total Amount : &#8358;{{totalAmount | number}}
+    </div>
     <div>
 
         <table class="table" mat-table  [dataSource]="listData" matSort  aria-label="Elements">
@@ -57,7 +59,7 @@
           <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
             <mat-cell *matCellDef="let row"  data-label="name">{{row.accountid.name}}</mat-cell>
-          </ng-container>
+          </ng-container> 
 
           <ng-container matColumnDef="contactmobile">
             <mat-header-cell *matHeaderCellDef>Number</mat-header-cell>
