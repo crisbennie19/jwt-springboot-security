@@ -151,7 +151,7 @@ const routes: Routes = [
   {path: 'withdrawal', 
   component: WithdrawalComponent,
   data:{
-    allowedRoles:["ADMINISTRATOR"]
+    allowedRoles:["ADMINISTRATOR","ACCOUNT"]
   }
 },
 

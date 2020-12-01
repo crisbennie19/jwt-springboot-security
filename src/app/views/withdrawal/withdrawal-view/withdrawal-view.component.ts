@@ -8,26 +8,25 @@ import { DefaulterViewComponent } from '../../debtcollection/default-users/defau
   styleUrls: ['./withdrawal-view.component.scss']
 })
 export class WithdrawalViewComponent implements OnInit {
-list:any
-
-public listData: MatTableDataSource<any>;
 @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-@ViewChild(MatSort, { static: false }) sort: MatSort;
+@ViewChild(MatSort, { static: false }) sort: MatSort;  
+list:any
+public listData: MatTableDataSource<any>;
+
 displayedColumns = ['accountname', 'accountphone',  'amount',  'walletbalance','channel','trandate'];
 loading: boolean;
   tableLength: number;
   constructor(@Inject(MAT_DIALOG_DATA) public selectedRow: any,
-  private dialogRef : MatDialogRef<DefaulterViewComponent>,
-  
+  private dialogRef : MatDialogRef<WithdrawalViewComponent>,
   
   ) { }
 
   ngOnInit() {
     this.list = JSON.parse(this.selectedRow)
-    console.log(this.list )
     
     this.listData = new MatTableDataSource(this.list )
-  }
+   
+      }
 
   closeDialog(){
    this.dialogRef.close()

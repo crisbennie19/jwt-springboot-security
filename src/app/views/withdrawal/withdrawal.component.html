@@ -2,7 +2,7 @@
 
   <div class="component-header">
     <div>Withdrawal List</div>
-    <span>{{message2}}</span>
+    
   </div>
   <div class="flex-btw wrap" style="margin-bottom:20px;">
     <div class="flex">
@@ -18,6 +18,11 @@
           &nbsp;
           <button mat-raised-button (click)="getWithdrawalByEmail()" color="accent">Search email
           </button>
+          &nbsp;
+          &nbsp;
+          <button mat-raised-button
+          (click)="getWithdrawalList()"
+          color="accent">Get all</button>
         </div>
 
         <div *ngIf="loading">
@@ -44,50 +49,53 @@
   </div>
 
   <div>
-
-    <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+   <div><span >{{message2}}</span></div>
+    <table class="table" mat-table 
+    [dataSource]="listData" matSort aria-label="Elements">
 
       <ng-container matColumnDef="accountname">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *matCellDef="let row" data-label="name">{{row.accountname}}</mat-cell>
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let row" data-label="name">{{row.accountname}}</td>
       </ng-container>
 
       <ng-container matColumnDef="accountnumber">
-        <mat-header-cell *matHeaderCellDef>Account</mat-header-cell>
-        <mat-cell *matCellDef="let row" data-label="Account">{{row.accountnumber}}</mat-cell>
+        <th mat-header-cell *matHeaderCellDef>Account</th>
+        <td mat-cell *matCellDef="let row" data-label="name">{{row.accountnumber}}</td>
       </ng-container>
 
       <ng-container matColumnDef="amount" class="flex-start">
-        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
-        <mat-cell *matCellDef="let row" data-label="Amount">
-          <div>{{row.amount | number}}</div>
-        </mat-cell>
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let row" data-label="Amount">
+          <div>{{row.amount | number}}</div> 
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="walletbalance"  class="flex-start">
-        <mat-header-cell *matHeaderCellDef>Wallet balance</mat-header-cell>
-        <mat-cell *matCellDef="let row" data-label="Wallet balance">
+        <th mat-header-cell *matHeaderCellDef>Wallet balance</th>
+        <td mat-cell *matCellDef="let row" data-label="Wallet balance">
           <div>{{row.walletbalance | number}}</div>
-        </mat-cell>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
         <td mat-cell *matCellDef="let row" data-label="Action">
+
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_horiz</mat-icon>
           </button>
 
           <mat-menu #menu="matMenu">
-            <button (click)=viewRow(row) mat-menu-item style="color:#6637b1">View</button>
-            <button mat-menu-item style="color:#44b137" (click) = "approve(row)">Approve</button>
-            <button mat-menu-item style="color:crimson" (click) = "decline(row)">Decline</button>
-
+            <button (click)=viewRow(row) mat-menu-item>View</button>
+            <button mat-menu-item style="color:#44b137" (click)="approve(row)">Approve</button>
+            <button mat-menu-item style="color:crimson" (click)="decline(row)">Decline</button>
           </mat-menu>
         </td>
       </ng-container>
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
     </table>
 
     <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"

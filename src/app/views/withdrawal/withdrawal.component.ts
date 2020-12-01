@@ -54,7 +54,7 @@ export class WithdrawalComponent implements OnInit {
         this.loading = false;
       }
       else {
-        this.message = res.message
+        this.message = res.data
         this.loading = false;
       }
     }, err => {
@@ -78,7 +78,7 @@ export class WithdrawalComponent implements OnInit {
         }
         else {
         this.loading = false;
-          this.message = res.message
+          this.message = res.data
         }
 
 
@@ -87,37 +87,34 @@ export class WithdrawalComponent implements OnInit {
 
 
       })
-    
-
   }
+
   getWithdrawalByDate() {
     this.loading = true;
      
-     let todate = getDate(this.todate)
+    let todate = getDate(this.todate)
 
-      this.data.withdrawal.getWithdrawlByDate(todate).subscribe((res: any) => {
-        if (res.message == "Success") {
-          this.mydata = res.data;
-        this.loading = false;
-        this.tableLength = this.mydata.length;
-        this.listData = new MatTableDataSource(this.mydata);
-        this.listData.paginator = this.paginator;
-        this.listData.sort = this.sort;
-        this.loading = false;
-        }
-        else {
-        this.loading = false;
-          this.message = res.message
-        }
-
-
-      }, err => {
-        this.loading = false;
+    this.data.withdrawal.getWithdrawlByDate(todate).subscribe((res: any) => {
+      if (res.message == "Success") {
+        this.mydata = res.data;
+      this.loading = false;
+      this.tableLength = this.mydata.length;
+      this.listData = new MatTableDataSource(this.mydata);
+      this.listData.paginator = this.paginator;
+      this.listData.sort = this.sort;
+      this.loading = false;
+      }
+      else {
+      this.loading = false;
+        this.message = res.data
+      }
 
 
-      })
-    
+    }, err => {
+      this.loading = false;
 
+
+    })
   }
  
   applyFilter() {
@@ -133,6 +130,7 @@ export class WithdrawalComponent implements OnInit {
   
 
   approve(row){
+    this.loading = true;
     const payload = {
       "auth": "SWIPE.@#$.%",
       "requestid":row.id ,
@@ -140,23 +138,41 @@ export class WithdrawalComponent implements OnInit {
     }
 
     this.data.withdrawal.getWithdrawal_aprove_decline(payload).subscribe((res:any)=>{
-       if(res.data =="Success"){
-         this.message2 = "Success!"
+       if(res.message =="Success"){
+        this.loading = false;
+        this.message2 = res.data
        }else{
-         this.message2 ="Failed"
+        this.message2 = res.data
        }
     })
   }
 
   decline(row){
+    this.loading = true;
+    const payload = {
+      "auth": "SWIPE.@#$.%",
+      "requestid":row.id ,
+      "status": "decline"
+    }
 
+    this.data.withdrawal.getWithdrawal_aprove_decline(payload).subscribe((res:any)=>{
+       if(res.message =="Success"){
+        this.loading = false;
+         this.message2 = res.data
+       }else{
+         this.message2 =res.data
+         this.loading = false;
+       }
+    })
   }
 
-  viewRow(rowValues){
+  viewRow(row){
+
+    
     const dialConfig = new MatDialogConfig();
     dialConfig.disableClose = false;
     dialConfig.autoFocus = false;
-    dialConfig.data = rowValues.walletdetails;
+    dialConfig.data = row.walletdetails;
     dialConfig.minWidth = "40%";
     dialConfig.maxHeight = "90vh"
     this.dialog.open(WithdrawalViewComponent,dialConfig)
