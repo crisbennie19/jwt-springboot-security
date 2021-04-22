@@ -19,7 +19,7 @@ export class IncomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("......", this.data);
+    
     this.getIncome();
   }
 
