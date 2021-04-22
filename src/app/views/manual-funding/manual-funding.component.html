@@ -1,0 +1,100 @@
+<div class="component-container">
+
+    <div class="component-header">
+        <div>Fund card</div>
+
+    </div>
+
+    <div class="flex-btw wrap">
+        <div class="flex-el">
+            <div class="search-container">
+
+                <input type="text" class="mSearch" (keyup)=applyFilter() [(ngModel)]="email" placeholder="Email...">
+                <mat-icon class="suffix" *ngIf="email != ''" (click)="clearSearch()">close</mat-icon>
+            </div>
+            &nbsp;
+            &nbsp;
+            <div>
+                <mat-form-field class="jamez-input" floatLabel="never">
+                    <input matInput autocomplete="off" [(ngModel)]="fromdate" [matDatepicker]="pickers"
+                        placeholder="Start date">
+                    <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+                    <mat-datepicker #pickers></mat-datepicker>
+                </mat-form-field>
+                &nbsp;
+                <mat-form-field class="jamez-input" floatLabel="never">
+                    <input matInput autocomplete="off" [(ngModel)]="todate" [matDatepicker]="picker"
+                        placeholder="End date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                &nbsp;
+                <button mat-raised-button (click)="getCustomerByEmail()" color="accent">Search
+                </button>
+            </div>
+            &nbsp;
+            &nbsp;
+            <div *ngIf="loading">
+                <mat-spinner color="accent" [strokeWidth]=3 [diameter]=18>
+                </mat-spinner>
+            </div>
+
+        </div>
+        <div *ngIf="name">
+            <span>Name:</span>
+            <span>{{name}}</span>
+        </div>
+    </div>
+
+
+    <div>
+        <!-- <div *ngIf="message2"><span>{{response}}</span></div> -->
+        <table class="table" mat-table [dataSource]="listData" matSort aria-label="Elements">
+
+            <ng-container matColumnDef="credit">
+                <th mat-header-cell *matHeaderCellDef>Credit</th>
+                <td mat-cell *matCellDef="let row" data-label="credit">{{row.credit}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="debit">
+                <th mat-header-cell *matHeaderCellDef>Debit</th>
+                <td mat-cell *matCellDef="let row" data-label="debit">{{row.debit}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="trans_date">
+                <th mat-header-cell *matHeaderCellDef>Transaction date</th>
+                <td mat-cell *matCellDef="let row" data-label="trans_date">{{row.trans_date | date}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="clear_date">
+                <th mat-header-cell *matHeaderCellDef>Clear date</th>
+                <td mat-cell *matCellDef="let row" data-label="clear_date">{{row.cleared_date | date}}</td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Actions</th>
+                <td mat-cell *matCellDef="let row" data-label="Action">
+
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="viewIncome(row)">View income</button>
+                        <button mat-menu-item style="color:#44b137" (click)="fundCard(row)">Fund card</button>
+                    </mat-menu>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+        <mat-paginator #paginator class="paginator" showFirstLastButtons [length]="tableLength" [pageIndex]="0"
+            [pageSize]="7">
+        </mat-paginator>
+    </div>
+
+</div>

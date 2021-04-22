@@ -351,7 +351,7 @@ export class ReportService {
 
   getDailyTransactionReport(day, month, year) {
     return this.http.get(this._baseUrl +
-      `reports/daily/transaction?report_day=${day}&report_month=${month}&report_year=${year}`)
+      `reports/daily/transactions?report_day=${day}&report_month=${month}&report_year=${year}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -359,7 +359,7 @@ export class ReportService {
 
   getWeeklyTransactionReport(month, year) {
     return this.http.get(this._baseUrl +
-      `reports/weeklytransaction?report_month=${month}&report_year=${year}`)
+      `reports/weeklytransactions?report_month=${month}&report_year=${year}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -367,7 +367,7 @@ export class ReportService {
 
   getQuarterlyTransactionReport(endDate, year, startDate) {
     return this.http.get(this._baseUrl +
-      `reports/quarterlly/transaction?end_date=${endDate}&q_year=${year}&start_date=${startDate}`)
+      `reports/quarterlly/transactions?end_date=${endDate}&q_year=${year}&start_date=${startDate}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -375,7 +375,7 @@ export class ReportService {
 
   getYearlyTransactionReport(year) {
     return this.http.get(this._baseUrl +
-      `reports/yearllytransaction?report_year=${year}`)
+      `reports/yearllytransactions?report_year=${year}`)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -384,7 +384,7 @@ export class ReportService {
   // Download Report Attachment////
   getDailyTransactionAttachment(page, day, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/dailytransaction/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      `reports/dailytransactions/downlaod?page=${page}&report_day=${day}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
       {headers:headers, responseType: 'blob' as 'json'}
       )
       .pipe(
@@ -394,7 +394,7 @@ export class ReportService {
 
   getWeeklyTransactionAttachment(page, month, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/weeklytransaction/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      `reports/weeklytransactions/downlaod?page=${page}&report_month=${month}&report_year=${year}&reporttype=${type}&size=${size}` ,
       {headers:headers, responseType: 'blob' as 'json'}
       )
       .pipe(
@@ -404,7 +404,7 @@ export class ReportService {
 
   getQuartelyTransactionReportAttachment(end_day, page, year, type, size, start_day) {
     return this.http.get(this._baseUrl +
-      `reports/quarterllytransction/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}` ,
+      `reports/quarterllytransctions/downlaod?end_day=${end_day}&page=${page}&report_year=${year}&reporttype=${type}&size=${size}&start_day=${start_day}` ,
       {headers:headers, responseType: 'blob' as 'json'}
       )
       .pipe(
@@ -414,7 +414,7 @@ export class ReportService {
 
   getYearlyTransactionReportAttachment(page, year, type, size) {
     return this.http.get(this._baseUrl +
-      `reports/yearllytransaction/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}` ,
+      `reports/yearllytransactions/downlaod?page=${page}&report_year=${year}&reporttype=${type}&size=${size}` ,
       {headers:headers, responseType: 'blob' as 'json'}
       )
       .pipe(
@@ -425,7 +425,7 @@ export class ReportService {
   //Send report Attachment By Email
   postDailyTransactionReportSendByEmail(body) {
     return this.http.post(this._baseUrl +
-      `reports/dailytransaction/attachement`, body)
+      `reports/dailytransactions/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -433,7 +433,7 @@ export class ReportService {
 
   postWeeklyTransactionReportSendByEmail(body) {
     return this.http.post(this._baseUrl +
-      `reports/weeklytransaction/attachement`, body)
+      `reports/weeklytransactions/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -441,7 +441,7 @@ export class ReportService {
 
   postQuartelyTransactionReportSendByEmail(body) {
     return this.http.post(this._baseUrl +
-      `reports/quarterllytransaction/attachement`, body)
+      `reports/quarterllytransactions/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
@@ -449,7 +449,7 @@ export class ReportService {
 
   postYearlyTransactionReportSendByEmail(body) {
     return this.http.get(this._baseUrl +
-      `reports/yearllytransaction/attachement`, body)
+      `reports/yearllytransactions/attachement`, body)
       .pipe(
         catchError(err => this.errorHandler(err))
       );
